@@ -1,0 +1,29 @@
+scale,type,response_var,formula,variable_of_interest,r2_marginal,r2_conditional,chisq,p_value,model_used,status
+1e-4,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.960583585300213,0.960583585300213,19.6509585014867,0.03273234260529497,binomial,ok
+1e-4,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,NA,NA,NA,NA,NA,missing value where TRUE/FALSE needed
+1e-4,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,0.957261561828297,0.957261561828297,69.71467562080089,5.033276164509913e-11,quasibinomial,ok
+1e-4,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,NA,NA,NA,NA,NA,missing value where TRUE/FALSE needed
+0.001,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.896450233084523,0.896450233084523,20.917469604156025,0.02167646306906055,binomial,ok
+0.001,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,NA,NA,NA,NA,NA,missing value where TRUE/FALSE needed
+0.001,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,0.8920186255708301,0.8920186255708301,35.292285155115735,1.1130418638110512e-4,quasibinomial,ok
+0.001,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,NA,NA,NA,NA,NA,missing value where TRUE/FALSE needed
+0.01,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.7929722950788782,0.7929722950788782,33.756591355506316,2.030734787180388e-4,binomial,ok
+0.01,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,0.960301256216417,0.960301256216417,13.089692476462599,0.21870016958799796,binomial,ok
+0.01,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,0.795906742920659,0.795906742920659,33.17747449010083,2.542954696744781e-4,quasibinomial,ok
+0.01,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,0.9599678994155738,0.9599678994155738,37.07757031930152,5.487115621396105e-5,quasibinomial,ok
+0.1,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.7835330617242048,0.7835330617242048,52.13047479438484,1.0793718717640162e-7,binomial,ok
+0.1,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,0.95277013178512715,0.95277013178512715,35.436878871011814,1.0514112740357477e-4,binomial,ok
+0.1,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,0.7986770631114123,0.7986770631114123,45.23285078953065,1.974136001630928e-6,quasibinomial,ok
+0.1,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,0.9505864527566387,0.9505864527566387,40.96813535877581,1.1431683699444713e-5,quasibinomial,ok
+1,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.7522306019043662,0.7522306019043662,79.65365216055307,5.869663514444117e-13,binomial,ok
+1,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,0.948825082653836,0.948825082653836,49.95986406213953,2.714829684637674e-7,binomial,ok
+1,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,0.8015934036633122,0.8015934036633122,54.44566398970396,4.00759688133611e-8,quasibinomial,ok
+1,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,0.9492193733347029,0.9492193733347029,61.127310424643554,2.216320349975013e-9,quasibinomial,ok
+10,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.7693790147766673,0.7693790147766673,162.64941530734404,9.192388869054694e-30,binomial,ok
+10,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,0.8901672612710065,0.8901672612710065,51.703931669308446,1.29452781718351e-7,binomial,ok
+10,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,0.8176857157938089,0.8176857157938089,60.800924182665916,2.5558201461373432e-9,quasibinomial,ok
+10,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,1,1,-5.3443056534536885e-12,1,quasibinomial,ok
+100,p_a,non_native_percent,response_value ~ habitat_group,habitat_group,0.22662352488349885,0.22662352488349885,147.94294613209837,9.87283948642481e-27,binomial,ok
+100,p_a,invasive_percent,response_value ~ habitat_group,habitat_group,0.8871726531753681,0.8871726531753681,39.76381433522644,1.8646544254644195e-5,binomial,ok
+100,p_a,binary_non_native,response_value ~ habitat_group,habitat_group,1,1,-259808.57735339503,1,binomial,ok
+100,p_a,binary_invasive,response_value ~ habitat_group,habitat_group,1,1,-2.1948431274716477e-12,1,quasibinomial,ok
