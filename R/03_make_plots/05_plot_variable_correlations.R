@@ -1,11 +1,5 @@
 library(tidyverse)
-library(lme4)
-library(performance)
 library(car)
-library(piecewiseSEM)
-
-
-
 
 sp <- read_csv("data/database_analysis_summary.csv")
 header_data <- read_csv("data/header_data_prepared.csv") %>%

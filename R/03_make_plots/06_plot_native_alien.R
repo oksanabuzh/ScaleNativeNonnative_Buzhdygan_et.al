@@ -3,13 +3,7 @@
 # Load necessary libraries
 library(tidyverse)
 library(lme4)
-library(performance)
 library(car)
-library(piecewiseSEM)
-library(emmeans)
-library(multcomp)
-
-
 
 sjPlot::set_theme(base = theme_bw(),
   axis.textsize.x = 0.9, axis.textsize.y = 0.9, axis.textcolor = "black",

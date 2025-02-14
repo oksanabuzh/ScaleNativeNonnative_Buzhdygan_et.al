@@ -4,10 +4,6 @@
 # Load necessary libraries
 library(tidyverse)
 
-library(jtools)
-
-
-
 # Load the data and prepare it ----------------------------------------------
 results <- read_csv("data/model_results_summary.csv") %>%
   filter(model_id == "climate" | model_id == "disturbance")

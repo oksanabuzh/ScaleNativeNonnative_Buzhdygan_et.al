@@ -1,13 +1,7 @@
 # Purpose: Run ordination for 100 m2 plots
-
-
-dev.off
-
 library(tidyverse)
 library(vegan)
-library(ggplot2)
 library(ggrepel)
-library(devtools)
 
 # Load the data and prepare it ----------------------------------------------
 

@@ -1,9 +1,6 @@
 # Variance explained by each predictor
-rm(list = ls(all = TRUE))
-
 # Packages
 library(tidyverse)
-library(ggplot2)
 
 # Data
 alien_dat <- read_csv("data/model_results_summary.csv") %>%
