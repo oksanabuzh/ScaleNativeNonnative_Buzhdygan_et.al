@@ -12,7 +12,6 @@ header_data <- read_csv("data/header_data_prepared.csv") |>
 coeff_SAR <- coeff_SAR |> left_join(header_data, by = "series")
 raw_data <- raw_data |> left_join(header_data, by = "series")
 
-
 coeff_SAR_wide <- coeff_SAR |>
   dplyr::select(-p_value_slope, -r_squared) |>
   pivot_wider(names_from = richness_type, values_from = c(c, z))
@@ -100,4 +99,4 @@ SAR_curves <- raw_data |>
   labs(y = "Species richness", x = "Scale")
 
 ggsave("img/SAR_curves.png", SAR_curves, width = 20, height = 7,
-       units = "cm", scale = 1.1)
+  units = "cm", scale = 1.1)

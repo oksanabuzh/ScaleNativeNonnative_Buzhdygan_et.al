@@ -50,16 +50,16 @@ plot_roads <- ggplot() +
   labs(title = "Road density (map + extracted)") +
   theme(axis.title = element_blank())
 
-ggsave("img/roads_map.png", 
-       plot = plot_roads, 
-       width = 16, height = 10, units = "cm", scale = 1.3)
+ggsave("img/roads_map.png",
+  plot = plot_roads,
+  width = 16, height = 10, units = "cm", scale = 1.3)
 
 # Add the new variables to the header data -------------------------------
 headers_raw <- read_csv("data-raw/headers.csv")
 
 new_vars <- headers_raw |>
   left_join(as.data.frame(location_roads) |> dplyr::select(series, roads),
-            by = "series")
+    by = "series")
 # we set the road density to 0 where it is NA because we checked the data points and
 # they are in the middle of nowhere
 new_vars$roads[is.na(new_vars$roads)] <- 0

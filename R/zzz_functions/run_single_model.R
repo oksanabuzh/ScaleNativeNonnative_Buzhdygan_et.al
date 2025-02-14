@@ -131,7 +131,7 @@ run_single_model <- function(data_to_model,
           r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())["theoretical", ]
           # print(environment() |> ls())
           # print(MuMIn::r.squaredGLMM(model_1, envir = environment()))
-            
+
           # Partial R2 for fixed effects, only for variable of interest
           # keep only Rsq but all variables
           # This can only be run if the model converges. But the conversion criteria are
@@ -223,10 +223,10 @@ run_single_model <- function(data_to_model,
 #' @importFrom dplyr bind_rows filter
 #' @importFrom tibble tibble
 run_single_model_quasi <- function(data_to_model,
-                             response_variable,
-                             fixed_effects,
-                             random_effect = "series",
-                             use_optim = TRUE) {
+                                   response_variable,
+                                   fixed_effects,
+                                   random_effect = "series",
+                                   use_optim = TRUE) {
   # Check if the data contains all necessary variables
   necessary_variables <- c(response_variable, fixed_effects)
   if (!all(necessary_variables %in% colnames(data_to_model))) {
@@ -239,7 +239,7 @@ run_single_model_quasi <- function(data_to_model,
   model_formula <- paste(
     response_variable, "~", paste(fixed_effects, collapse = " + ")
   )
-  
+
   # # Warning log to record all the warnings during the run of the function
   warning_log <- character()
   # Use tryCatch to handle errors
@@ -250,43 +250,43 @@ run_single_model_quasi <- function(data_to_model,
           model_converged <- TRUE
           used_model <- "quasibinomial"
           # Check over/underdispersion
-            # If overdispersion, use quasibinomial
-            model_1 <- MASS::glmmPQL(
-              formula(model_formula),
-              random = formula(paste0("~ 1 | ", random_effect)),
-              data = data_to_model,
-              family = quasibinomial,
-              weights = total_species
-            )
+          # If overdispersion, use quasibinomial
+          model_1 <- MASS::glmmPQL(
+            formula(model_formula),
+            random = formula(paste0("~ 1 | ", random_effect)),
+            data = data_to_model,
+            family = quasibinomial,
+            weights = total_species
+          )
           # Extract relevant model output ---------------------------------------------
-          
 
-            slope <- summary(model_1)$tTable[, c("Value", "p-value")]
-            slope <- slope |>
-              as_tibble(rownames = "predictor") |>
-              rename_all(~ c("predictor", "slope", "p_value_slope")) |>
-              # remove the intercept
-              filter(predictor != "(Intercept)")
-            # add standardized slope
-            slope$std_slope <- NA
-        
-          
+
+          slope <- summary(model_1)$tTable[, c("Value", "p-value")]
+          slope <- slope |>
+            as_tibble(rownames = "predictor") |>
+            rename_all(~ c("predictor", "slope", "p_value_slope")) |>
+            # remove the intercept
+            filter(predictor != "(Intercept)")
+          # add standardized slope
+          slope$std_slope <- NA
+
+
           # Chisq and p-value for all
           chisq <- car::Anova(model_1) |>
             as_tibble(rownames = "predictor") |>
             select(predictor, Chisq, `Pr(>Chisq)`) |>
             rename_all(~ c("predictor", "chisq", "p_value_chisq"))
-          
+
           # r2 take theoretical R2m & R2c
           r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())["theoretical", ]
           # print(environment() |> ls())
           # print(MuMIn::r.squaredGLMM(model_1, envir = environment()))
-          
+
           # Partial R2 for fixed effects, only for variable of interest
           # keep only Rsq but all variables
           # This can only be run if the model converges. But the conversion criteria are
           # very strict. So we use tryCatch here to catch errors
-          
+
           r2_part <- tryCatch(
             {
               r2glmm::r2beta(model_1, partial = TRUE, method = "sgv") |>
@@ -298,10 +298,10 @@ run_single_model_quasi <- function(data_to_model,
               tibble(predictor = slope$predictor, r2_partial = NA)
             }
           )
-          
+
           # remove the overall model r2
           r2_part <- r2_part |> filter(predictor != "Model")
-          
+
           # Combine everything in one table
           model_results <- slope |>
             left_join(chisq, by = "predictor") |>
@@ -310,7 +310,7 @@ run_single_model_quasi <- function(data_to_model,
               r2m = r2["R2m"],
               r2c = r2["R2c"]
             )
-          
+
           output <- tibble(
             model_res = list(model_results),
             status = "ok",
@@ -340,4 +340,3 @@ run_single_model_quasi <- function(data_to_model,
     }
   )
 }
-

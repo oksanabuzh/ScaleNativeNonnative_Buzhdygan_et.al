@@ -48,4 +48,3 @@ to_plot |>
   geom_point() +
   facet_grid(response ~ predictor, scales = "free") +
   theme_classic()
-

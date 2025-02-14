@@ -162,29 +162,29 @@ model_results <- data_for_models |>
 # first, we select the model to run again with quasi
 model_quasi <- model_results |> filter(
   scale == 0.001 &
-  model_id == "climate" &
-  response_var == "non_native_percent"
-) |> 
+    model_id == "climate" &
+    response_var == "non_native_percent"
+) |>
   select(all_of(names(data_for_models)))
 
-model_quasi_result <- model_quasi |> 
-  rowwise() |> 
+model_quasi_result <- model_quasi |>
+  rowwise() |>
   mutate(
-  run_single_model_quasi(
-    data_to_model = data,
-    response_variable = "response_value",
-    random_effect = random_variable,
-    fixed_effects = predictors
+    run_single_model_quasi(
+      data_to_model = data,
+      response_variable = "response_value",
+      random_effect = random_variable,
+      fixed_effects = predictors
+    )
   )
-)
 
 # remove the binomial model and add instead the new quasibinomial model
-model_results <- model_results |> 
+model_results <- model_results |>
   filter(
     !(scale == 0.001 &
       model_id == "climate" &
       response_var == "non_native_percent")
-  ) |> 
+  ) |>
   bind_rows(model_quasi_result)
 
 # check the status of the model runs

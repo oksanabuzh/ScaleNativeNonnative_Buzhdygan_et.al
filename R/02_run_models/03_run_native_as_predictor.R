@@ -35,7 +35,7 @@ species <- species |> left_join(header_data, by = c("series", "subplot"))
 species <- species |> left_join(disturbance_data, by = c("series", "subplot", "scale"))
 
 # Scale predictor variables ----------------------------------------------
-# Predictor variables are on very different scales which causes problems in the 
+# Predictor variables are on very different scales which causes problems in the
 # models. Therefore, we rescale some of the variables
 species <- species |> mutate(
   cover_gravel_stones = cover_gravel_stones / 100,
@@ -43,7 +43,7 @@ species <- species |> mutate(
   built_up_2km = built_up_2km / 100,
   cover_litter = cover_litter / 100,
   cover_herbs_sum = cover_herbs_sum / 100
-) 
+)
 
 # Prepare the data for the models -------------------------------------------
 
@@ -133,5 +133,5 @@ model_results_summary <- model_results_summary |>
   unnest(model_res)
 
 # Save the model results as R data file and CSV file
-#saveRDS(model_results, "data/model_results.rds")
+# saveRDS(model_results, "data/model_results.rds")
 write_csv(model_results_summary, "data/model_results_summary_OB.csv")
