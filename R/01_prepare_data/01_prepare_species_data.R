@@ -26,14 +26,8 @@ species <- read_csv("data-raw/database_analysis_tpl.csv") |>
 
 # classification of non-native species
 non_native_species <- read_csv("data-raw/non_native_species.csv") |> 
-  select(taxon_tpl, naturalisation_level)
+  select(taxon_tpl, naturalisation_level, introduction_time)
 
-
-smae_sp <- non_native_species %>% filter(!taxon_tpl %in% species$species) 
-smae_sp    
-
-# non_native_species %>% filter(taxon_tpl=="Prunus cerasifera")
-  
 # Add classification to vegetation data -----------------------------------
 
 species <- species |> 
@@ -87,12 +81,24 @@ invasive_summary <- species |>
   pivot_wider(names_from = naturalisation_level, values_from = total_species, 
               values_fill = 0) |> 
   # we are only interested in invasive species
-  select(series, subplot, scale, invasive)
+  select(series, subplot, scale, invasive, naturalised, casual)
+
+# Introduction time: neophyte, archeophyte
+introduction_summary <- species |> 
+  filter(!is.na(introduction_time)) |> 
+  group_by(series, subplot, scale, introduction_time) |> 
+  summarize(
+    total_species = n_distinct(species),
+    .groups = "drop"
+  ) |> 
+  pivot_wider(names_from = introduction_time, values_from = total_species, 
+              values_fill = 0)
 
 # Bring them together
 summary_presence_absence <- species_summary |> 
   left_join(category_summary, by = c("series", "subplot", "scale")) |> 
-  left_join(invasive_summary, by = c("series", "subplot", "scale")) |> 
+  left_join(invasive_summary, by = c("series", "subplot", "scale")) |>
+  left_join(introduction_summary, by = c("series", "subplot", "scale")) |>
   # replace all NAs with 0
   mutate(across(everything(), ~replace_na(., 0)))
 
@@ -129,12 +135,25 @@ invasive_summary_cover <- species |>
   pivot_wider(names_from = naturalisation_level, values_from = total_species_cover, 
               values_fill = 0) |> 
   # we are only interested in invasive species
-  select(series, subplot, scale, invasive)
+  select(series, subplot, scale, invasive, naturalised, casual)
+
+# Introduction time: neophyte, archeophyte
+introduction_summary_cover <- species |> 
+  filter(response == "cover") |>
+  filter(!is.na(introduction_time)) |> 
+  group_by(series, subplot, scale, introduction_time) |> 
+  summarize(
+    total_species_cover = sum(value),
+    .groups = "drop"
+  ) |> 
+  pivot_wider(names_from = introduction_time, values_from = total_species_cover, 
+              values_fill = 0)
 
 # Bring them together
 summary_cover <- species_summary_cover |> 
   left_join(category_summary_cover, by = c("series", "subplot", "scale")) |> 
-  left_join(invasive_summary_cover, by = c("series", "subplot", "scale")) |> 
+  left_join(invasive_summary_cover, by = c("series", "subplot", "scale")) |>
+  left_join(introduction_summary_cover, by = c("series", "subplot", "scale")) |>
   # replace all NAs with 0
   mutate(across(everything(), ~replace_na(., 0)))
 
