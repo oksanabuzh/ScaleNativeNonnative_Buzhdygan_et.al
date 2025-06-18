@@ -22,7 +22,8 @@ species <- species |> filter(type == "p_a")
 # Add additional columns to the species data
 species <- species |> mutate(
   non_native_percent = non_native / total_species,
-  invasive_percent = invasive / total_species
+  invasive_percent = invasive / total_species,
+  neophyte_percent = neophyte / total_species
 )
 
 # Join the species data with the climate principal component data
@@ -50,7 +51,7 @@ species <- species |> mutate(
 # Pivot the data to long format and select relevant variables
 data_for_models <- species |>
   pivot_longer(
-    cols = c(non_native_percent, invasive_percent),
+    cols = c(non_native_percent, invasive_percent, neophyte_percent),
     names_to = "response_var",
     values_to = "response_value"
   ) |>
@@ -133,7 +134,8 @@ data_for_models <- data_for_models |>
   mutate(
     use_optimizers = case_when(
       response_var == "non_native_percent" ~ FALSE,
-      response_var == "invasive_percent" ~ TRUE
+      response_var == "invasive_percent" ~ TRUE,
+      response_var == "neophyte_percent" ~ TRUE
     )
   )
 
