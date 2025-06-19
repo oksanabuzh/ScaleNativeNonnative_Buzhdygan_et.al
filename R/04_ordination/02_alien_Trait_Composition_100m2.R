@@ -1,7 +1,7 @@
 # Purpose: Run ordination for 100 m2 plots
 
 
-dev.off
+#dev.off
 
 library(tidyverse)
 library(vegan)
@@ -41,9 +41,11 @@ names(com)
 # write.csv(com, "data/non-native_matr_OB.csv")
 
 # Traits of the alien species----
-traits_st <- read_csv("data/non-native_trait_matrix.csv")
+traits_st <- read_csv("data/non-native_trait_matrix.csv") %>% 
+  select(-naturalisation_category)
+names(traits_st)
 
-trait <- com[1:87] %>% 
+trait <- com[1:87] %>% # select only species
   pivot_longer(-c("series"), names_to = "taxon_tpl", values_to = "abund") %>% 
   distinct(taxon_tpl) %>% 
   left_join(traits_st, by="taxon_tpl")%>% 
@@ -54,7 +56,7 @@ row.names(trait)
 
 str(trait)
 
-trait[, 2:5] 
+trait[, 2:4] 
 
 Com_comp <- com[1:87] %>% 
   dplyr::select(-series) %>% 
@@ -82,7 +84,7 @@ library(FD)
 
 # functcomp  - function for calculation of functional composition matrix
 
-FNComp <- functcomp(trait[, 2:5], Com_comp, 
+FNComp <- functcomp(trait[, 2:4], Com_comp, 
                       CWM.type = "all") #  bin.num - indicates binary traits to be treated as continuous  
   
 FNComp
@@ -109,13 +111,14 @@ tibble(series= com$series) %>%
          Origin_unknown = "origin_unknown",
          Casual ="naturalisation_level_casual",
          Invasive ="naturalisation_level_invasive",
-         Naturalised ="naturalisation_level_naturalised",         
-         Agriophyte ="naturalisation_category_agriophyte",
+         Naturalised ="naturalisation_level_naturalised"         
+       #  Agriophyte ="naturalisation_category_agriophyte",
        #  Colonophyte ="naturalisation_category_colonophyte",     
-         Ephemerophyte ="naturalisation_category_ephemerophyte",
-         Epoecophyte ="naturalisation_category_epoecophyte",      
-         Ergasiophigophyte ="naturalisation_category_ergasiophigophyte",
-         Hemiepoecophyte ="naturalisation_category_hemiepoecophyte") %>% 
+       #  Ephemerophyte ="naturalisation_category_ephemerophyte",
+        # Epoecophyte ="naturalisation_category_epoecophyte",      
+       #  Ergasiophigophyte ="naturalisation_category_ergasiophigophyte",
+        # Hemiepoecophyte ="naturalisation_category_hemiepoecophyte"
+       ) %>% 
   select(-Origin_unknown)
 
 names(FuncComp)
@@ -176,8 +179,8 @@ write.csv(PERM_mod1, "results/PERMANOVA_FuncTraits_Table_S4_B.csv")
 
 names(variabl)
 
-rankindex(variabl[, 2:21],
-          variabl[, 22:35])
+rankindex(variabl[, 2:16],
+          variabl[, 17:29])
 
 
 set.seed(11)
@@ -246,14 +249,14 @@ sites.scores
 
 # Assign colours for the traits:
 
-names(variabl[, 2:21])
+names(variabl[, 2:16])
 
 col= c("blue", "blue", 
     #   "limegreen", "limegreen",  
       "orange", "orange", "orange", "orange","orange", "orange", "orange", "orange","orange","orange",
-       "red", "red", "red", 
+       "red", "red", "red") 
      #  "darkmagenta", "darkmagenta", "darkmagenta", "darkmagenta","darkmagenta","darkmagenta","darkmagenta",
-       "darkcyan", "darkcyan", "darkcyan", "darkcyan","darkcyan")
+     #  "darkcyan", "darkcyan", "darkcyan", "darkcyan","darkcyan")
     
 p1  <- ggplot(data = sites.scores, 
               aes(x = NMDS1, y = NMDS2)) +
@@ -267,8 +270,9 @@ p1  <- ggplot(data = sites.scores,
                      filter(!species=="Origin_unknown"),
                    aes(x=NMDS1,y=NMDS2,label=species), size = 3.6, colour= col) + 
   theme(axis.title = element_text(size = 13, face = "bold", colour = "black"), 
-        panel.background = element_blank(), panel.border = element_rect(fill = NA, 
-                                                                        colour = "grey30", size=0.5), 
+        panel.background = element_blank(), 
+        panel.border = element_rect(fill = NA, 
+                                    colour = "grey30", linewidth=0.5), 
         axis.ticks = element_blank(), 
         axis.text = element_text(size = 13, colour = "black"))
 
@@ -298,7 +302,8 @@ coord_cont <- as.data.frame(scores(fit1, "vectors")) %>%
          Roads="roads",
          Distr.Frqnc="Disturbance.Frequency",
          Distr.Sevr="Disturbance.Severity")) %>% 
-  filter(Variables_new %in% c("ClimatePC", "pH", "Stones", "Herb.covr", "Builtup") )
+  filter(Variables_new %in% c("ClimatePC", "pH", 
+                              "Stones", "Herb.covr", "Builtup", "Distr.Sevr") )
 
 coord_cont
 
@@ -308,8 +313,8 @@ ordiArrowMul(fit1)
 # rescale  all arrows to fill an ordination plot, 
 # where fill =  shows proportion of plot to be filled by the arrows
 coord_cont_standrd  <- coord_cont %>% 
-  mutate(stand.NMDS1=stand.NMDS1 * ordiArrowMul(fit1, rescale=TRUE, fill = 0.9))%>% 
-  mutate(stand.NMDS2=stand.NMDS2 * ordiArrowMul(fit1, rescale=TRUE, fill = 0.9))
+  mutate(stand.NMDS1=stand.NMDS1 * ordiArrowMul(fit1, rescale=TRUE, fill = 0.4))%>% 
+  mutate(stand.NMDS2=stand.NMDS2 * ordiArrowMul(fit1, rescale=TRUE, fill = 0.4))
 
 coord_cont_standrd
 
@@ -331,9 +336,10 @@ ggplot(data = sites.scores,
             aes(x = stand.NMDS1+0.02*sign(stand.NMDS1), 
                 y = stand.NMDS2+0.02*sign(stand.NMDS2), 
                 label = Variables_new), 
-            colour = "black", fontface = "bold", size = 4)+
-  
-  geom_point (data = species.scores %>% 
+            colour = "black", fontface = "bold", size = 4,
+            vjust=c(0, 0.5, 0,   0, 0, 0), 
+            hjust=c(0, 0, 0.7, 0, 0, 0))+
+    geom_point (data = species.scores %>% 
                 filter(!species=="Origin_unknown"), 
               size = 2, pch=19, colour= col) + #, colour=Col, fill=Col
   geom_text_repel (data=species.scores %>% 
@@ -349,9 +355,7 @@ ggplot(data = sites.scores,
 
 factor(coord_cont$Variables_new)
 
-#  ClimatePC   pH          Heat.stress    Stones          
-#  Herb.cov    Litter      Grazing        Mowing      
-#  Builtup     Roads       Dist.Freqnc    Dist.Sev  
+#  Builtup Stones Herb.covr Distr.Sevr ClimatePC pH
 
 
 
@@ -366,12 +370,8 @@ p1+
             aes(x = NMDS1+0.01*sign(NMDS1), y = NMDS2+0.01*sign(NMDS2),
                 label = Variables_new), 
             colour = "black", fontface = "bold", size = 4 ,
-            vjust=c(-0.3, 0.7, 0.7, 0.5, 
-                    0.9, 0.9, 0.5, 0,
-                    0.5, 0.5, 0, 0), 
-            hjust=c(0.5, 0, 0.7, 0.9, 
-                    0.9, 1, 0.3, 0.5, 
-                    0.8, 0, 1, 0.3)) # adjust text positions
+            vjust=c(0, 0, 0, 0.5, 0), 
+            hjust=c(0, 0, 0, 0.5, 0)) # adjust text positions
 
 
 factor(coord_cont$Variables_new)

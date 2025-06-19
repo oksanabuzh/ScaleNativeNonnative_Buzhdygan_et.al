@@ -1,6 +1,6 @@
 # Purpose: Run ordination for 100 m2 plots
 
-dev.off
+#dev.off
 
 library(tidyverse)
 library(vegan)
@@ -131,6 +131,7 @@ fit2 <- vegan::envfit(nmds2   ~  pca1_clima +
 fit2
 
 
+
 set.seed(1)
 plot(nmds2, display = "species",
      scaling = "species")
@@ -226,8 +227,11 @@ ordiArrowMul(fit2)
 # rescale  all arrows to fill an ordination plot, 
 # where fill =  shows proportion of plot to be filled by the arrows
 coord_cont_standrd2  <- coord_cont2 %>% 
-  mutate(stand.NMDS1=stand.NMDS1 * ordiArrowMul(fit2, rescale=TRUE, fill = 0.2))%>% 
-  mutate(stand.NMDS2=stand.NMDS2 * ordiArrowMul(fit2, rescale=TRUE, fill = 0.2))
+  mutate(stand.NMDS1=stand.NMDS1 * ordiArrowMul(fit2, rescale=TRUE, fill = 0.25))%>% 
+  mutate(stand.NMDS2=stand.NMDS2 * ordiArrowMul(fit2, rescale=TRUE, fill = 0.25)) %>% 
+  filter(Variables_new %in% c("ClimatePC", "pH", 
+                              "Stones", "Heat.stress","Herb.covr", 
+                              "Grazing", "Distr.Sevr", "Distr.Sevr") )
 
 coord_cont_standrd2
 
@@ -243,17 +247,20 @@ ggplot(data = species.scores2,
                data = coord_cont_standrd2, linewidth =0.7, alpha = 1, 
                colour = "gray55", 
                arrow = arrow(length = unit(0.03, "npc"))) +
+  
+  
+   geom_text_repel (data=species.scores2,
+                   aes(x=NMDS1,y=NMDS2,label=short_name, colour=naturalisation_level), 
+                   max.overlaps=100 #, colour="#00BA38"
+                   ) + 
+  
   geom_text(data = coord_cont_standrd2, 
             aes(x = stand.NMDS1+0.001*sign(stand.NMDS1), 
                 y = stand.NMDS2+0.001*sign(stand.NMDS2), 
                 label = Variables_new), 
             colour = "black", fontface = "bold", size = 4) +
   
-   geom_text_repel (data=species.scores2,
-                   aes(x=NMDS1,y=NMDS2,label=short_name, colour=naturalisation_level), 
-                   max.overlaps=100 #, colour="#00BA38"
-                   ) + 
-  scale_color_manual(values = c("#619CFF", "#F8766D", "#00BA38"))+
+  scale_color_manual(values = c("blue", "red", "forestgreen"))+
  xlim(-0.031,0.033)+ #ylim(-0.95,0.7)
   theme(axis.title = element_text(size = 13, face = "bold", colour = "black"), 
         panel.background = element_blank(), panel.border = element_rect(fill = NA, 
@@ -268,17 +275,7 @@ factor(coord_cont$Variables_new)
 #  Builtup     Roads       Dist.Freqnc    Dist.Sev  
 
 
-geom_text(data = coord_cont_standrd2, 
-          aes(x = stand.NMDS1+0.001*sign(stand.NMDS1), 
-              y = stand.NMDS2+0.001*sign(stand.NMDS2), 
-              label = Variables_new), 
-          colour = "black", fontface = "bold", size = 4,
-          vjust=c(1, -0.1, 0.8, 0.8, 
-                  1.7, 1, 1, 0.8,
-                  1, 0.8, 0.2, 0.7), 
-          hjust=c(0.5, 0, 0.9, 0.5, 
-                  0.8, 0, 0, 0, 
-                  0.1, 0.3, -0.1, 0.3)) +
+
 
 
 
