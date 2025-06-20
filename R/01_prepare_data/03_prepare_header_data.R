@@ -25,6 +25,10 @@ header_vars <- c("series", "dataset", "subplot",
 header_data <- header_data |>
   select(all_of(header_vars))
 
+# Create a new variable that sums up gravel and stone cover
+header_data <- header_data |>
+  mutate(cover_gravel_stones = cover_gravel + cover_stones)
+
 # Select relevant variables from the landcover header
 header_data_landcover <- header_data_landcover |>
   select(series, dataset, subplot, builtup_250m, cropland_250m, builtup_500m, cropland_500m,
