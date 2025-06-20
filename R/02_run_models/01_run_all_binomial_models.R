@@ -42,6 +42,10 @@ species <- species |> mutate(
   cover_gravel_stones = cover_gravel_stones / 100,
   roads = roads / 100,
   built_up_2km = built_up_2km / 100,
+  builtup_250m = builtup_250m / 100,
+  builtup_500m = builtup_500m / 100,
+  cropland_250m = cropland_250m / 100,
+  cropland_500m = cropland_500m / 100,
   cover_litter = cover_litter / 100,
   cover_herbs_sum = cover_herbs_sum / 100
 )
@@ -79,11 +83,28 @@ predictors_model_3 <- c("native")
 # Model 4
 predictors_model4 <- c("pca1_clima", "native")
 
+# Model 5 (revision): Add other buffer radius options
+# urban and cropland buffer 250 m
+predictors_model_5 <- c(
+  "pca1_clima", "pH", "microrelief", "heat_index",
+  "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
+  "builtup_250m", "cropland_250m",  "grazing_intencity", "mowing", "abandonment"
+)
+
+# urban and cropland buffer 500 m
+predictors_model_6 <- c(
+  "pca1_clima", "pH", "microrelief", "heat_index",
+  "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
+  "builtup_500m", "cropland_500m",  "grazing_intencity", "mowing", "abandonment"
+)
+
 # Check which target predictors are not in the data
 predictors_model_1[!predictors_model_1 %in% colnames(species)]
 predictors_model_2[!predictors_model_2 %in% colnames(species)]
 predictors_model_3[!predictors_model_3 %in% colnames(species)]
 predictors_model4[!predictors_model4 %in% colnames(species)]
+predictors_model_5[!predictors_model_5 %in% colnames(species)]
+predictors_model_6[!predictors_model_6 %in% colnames(species)]
 
 # Add the predictors and a model_id as a new column to the table
 # "climate" represents model one "disturbance" represents model 2
@@ -91,7 +112,7 @@ predictors_model4[!predictors_model4 %in% colnames(species)]
 # Remove zeroes is a column that states if zero values in the response should be
 # removed from the data or not
 data_for_models <- expand_grid(
-  model_id = c("climate", "disturbance", "native", "climate_native"),
+  model_id = c("climate", "disturbance", "native", "climate_native", "builtup_250m", "builtup_500m"),
   remove_zeroes = c(TRUE, FALSE),
   data_for_models
 )
@@ -116,7 +137,9 @@ data_for_models <- data_for_models |>
       model_id == "climate" ~ list(predictors_model_1),
       model_id == "disturbance" ~ list(predictors_model_2),
       model_id == "native" ~ list(predictors_model_3),
-      model_id == "climate_native" ~ list(predictors_model4)
+      model_id == "climate_native" ~ list(predictors_model4),
+      model_id == "builtup_250m" ~ list(predictors_model_5),
+      model_id == "builtup_500m" ~ list(predictors_model_6)
     )
   )
 
@@ -138,7 +161,6 @@ data_for_models <- data_for_models |>
       response_var == "neophyte_percent" ~ TRUE
     )
   )
-
 # Run the model for each group ------------------------------------
 model_results <- data_for_models |>
   rowwise() |>
