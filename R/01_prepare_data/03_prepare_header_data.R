@@ -6,6 +6,8 @@
 library(tidyverse)
 
 header_data <- read_csv("data-raw/headers.csv")
+# read header data with land cover buffers
+header_data_landcover <- read_csv("data-raw/header_landcover_buffers.csv")
 
 # Select only predictors of interest and info on series and subplots
 # This gives a better overview of the data
@@ -22,6 +24,15 @@ header_vars <- c("series", "dataset", "subplot",
 
 header_data <- header_data |>
   select(all_of(header_vars))
+
+# Select relevant variables from the landcover header
+header_data_landcover <- header_data_landcover |>
+  select(series, dataset, subplot, builtup_250m, cropland_250m, builtup_500m, cropland_500m,
+         builtup_1000m, cropland_1000m, builtup_2000m, cropland_2000m)
+
+# Add landcover buffers to the header
+header_data <- header_data |>
+  left_join(header_data_landcover, by = c("series", "dataset", "subplot"))
 
 # Header data: Contains data for the two corners. 
 # But for the 100 m2 plot we need to calculate the mean for all numerical vars
