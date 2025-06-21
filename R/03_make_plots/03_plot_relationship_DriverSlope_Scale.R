@@ -9,9 +9,15 @@ library(jtools)
 
 
 # Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary.csv")%>% 
-  filter(model_id=="climate" | model_id=="disturbance") 
-
+results <- read_csv("data/model_results_summary_OB.csv")%>% 
+  filter(model_id=="climate" | model_id=="disturbance") %>% 
+  bind_rows(results <- read_csv("data/model_results_summary_OB.csv")%>% 
+  filter(model_id%in% c("builtup_250m", "builtup_500m") & 
+           predictor %in% c("builtup_1000m", "cropland_1000m",
+                            "builtup_250m",  "cropland_250m",
+                            "builtup_500m",  "cropland_500m"))) 
+results %>% 
+  pull(predictor)
 # to transform back slopes
 #  mutate(slope=case_when(
  #   predictor=="cover_gravel_stones"~ slope*100,
@@ -38,6 +44,7 @@ results <- results |>
 
 
 
+
 # Reorder Predictor variables based on the standardized effect of the small scale
 variable_order <- results |>
   filter(response_var == "non_native_percent" & scale == 100) |>
@@ -54,7 +61,7 @@ results <- results |>
     response_var = factor(response_var,
                           levels =
                             c(
-                              "non_native_percent", "invasive_percent" 
+                              "non_native_percent", "invasive_percent", "neophyte_percent"
                             )
     ),
     predictor = factor(predictor, levels = variable_order)
@@ -74,7 +81,13 @@ results <- results %>% mutate(variable_new=
                                            "Grazing"= "grazing_intencity", 
                                            "Mowing"= "mowing", 
                                            "Abandonment"= "abandonment", 
-                                           "Urban built-up"= "built_up_2km",  
+                                           #"Urban built-up"= "built_up_2km", 
+                                           "Urban built-up (1000 m)"= "builtup_1000m",  
+                                           "Croplands cover (1000 m)"= "cropland_1000m",
+                                           "Urban built-up (250 m)"= "builtup_250m",  
+                                           "Croplands cover (250 m)"= "cropland_250m",
+                                            "Urban built-up (500 m)"= "builtup_500m",  
+                                           "Croplands cover (500 m)"= "cropland_500m",
                                            "Road density"= "roads", 
                                            "Disturbance frequency"= "Disturbance.Frequency", 
                                            "Disturbance severity"= "Disturbance.Severity"
@@ -83,14 +96,23 @@ results <- results %>% mutate(variable_new=
                                    "Climate PC", "Soil pH",   "Heat index", 
                                    "Microrelief", "Gravel & stone cover",
                                    "Herb cover", "Litter cover", 
-                                   "Grazing", "Mowing", "Abandonment", 
-                                   "Urban built-up","Road density",  
+                                   "Grazing", "Mowing", "Abandonment",  "Road density",  
+                                   "Croplands cover (250 m)", "Urban built-up (250 m)",
+                                   "Croplands cover (500 m)", "Urban built-up (500 m)",
+                                   "Croplands cover (1000 m)", "Urban built-up (1000 m)",
+                                  
                                    "Disturbance frequency", "Disturbance severity")) %>% 
   mutate(variable_new =fct_relevel(variable_new, rev)) %>%
   mutate(response_var_new=factor(case_when(response_var=="non_native_percent"~
-                                             "Proportion of alien species",
-                                           response_var=="invasive_percent"~
-                                             "Proportion of invasive species")))
+                                           "Alien species, %",
+                                         response_var=="invasive_percent"~
+                                           "Invasive species, %",
+                                         response_var=="neophyte_percent"~
+                                           "Neophytes, %")))%>% 
+  filter(!variable_new=="Mowing")
+
+
+
 
 # Plots of scale-dependency of driver effects -----
 
@@ -131,14 +153,16 @@ ggplot(results %>%
     model_type_alien$predictor, 
     model_type_alien$signif) +
   geom_point(col = "gray22", size = 2, alpha = 0.6) +
-  labs(y = "Slope of the driver effect on proportion of alien species", 
+  labs(y = "Slope of the driver effect on % all aliens", 
        x = expression(paste('Grain size, ', m^{2}))) +
   theme_bw()+
   theme(axis.text.x = element_text(size = 7, colour = "black"), 
         axis.text.y = element_text(size = 6, colour = "black"),
         axis.title = element_text(size = 13, colour = "black"), 
-        legend.text = element_text(size = 10, colour = "black")) +
-  facet_wrap(~reorder(variable_new, desc(variable_new)), scales = "free", nrow = 7) +
+        legend.text = element_text(size = 10, colour = "black"),        
+        strip.background=element_rect(colour="black",
+                                      fill="#EFF7EF")) +
+  facet_wrap(~reorder(variable_new, desc(variable_new)), scales = "free", ncol = 2) +
   #   facet_wrap(~variable_new, scales = "free", nrow = 7) +
   scale_x_continuous(breaks=c(-6.907755, -4.605170, -2.302585,  0.000000,  2.302585,  4.605170),
                      labels=c("0.001", "0.01", "0.1", "1", "10", "100"))
@@ -183,19 +207,72 @@ ggplot(results %>%
     model_type_invas$predictor, 
     model_type_invas$signif) +
   geom_point(col = "gray22", size = 2, alpha = 0.6) +
-  labs(y = "Slope of the driver effect on proportion of invasive species", 
+  labs(y = "Slope of the driver effect on % invasive species", 
        x = expression(paste('Grain size, ', m^{2}))) +
   theme_bw()+
   theme(axis.text.x = element_text(size = 7, colour = "black"), 
         axis.text.y = element_text(size = 6, colour = "black"),
         axis.title = element_text(size = 13, colour = "black"), 
-        legend.text = element_text(size = 10, colour = "black")) +
-  facet_wrap(~reorder(variable_new, desc(variable_new)), scales = "free", nrow = 7) +
+        legend.text = element_text(size = 10, colour = "black"),        
+        strip.background=element_rect(colour="black",
+                                      fill="#F9F0F0")) +
+  facet_wrap(~reorder(variable_new, desc(variable_new)), scales = "free", ncol = 2) +
   scale_x_continuous(breaks = c(-2.302585, 0.000000, 2.302585, 4.605170),
                      labels = c("0.1", "1", "10", "100"))
 
 
+# Neophytes species ----
+# Predicted effects with scale 
 
+
+model_type_neophytes <- read_csv("results/Model_selection_Table.csv") %>% 
+  filter(response_var=="neophyte_percent") %>% 
+  # dplyr::select(variable_new, predictor, final_model) %>% 
+  mutate(my.formula=case_when(final_model== "m1" ~ "y ~ x",
+                              .default ="y ~ poly(x, 2)"))%>% 
+  mutate(p_value = case_when(final_model == "m1" ~ m1.p.value,
+                             TRUE ~ m2.p.value)) %>% 
+  mutate(signif=case_when(p_value < 0.05  ~ "Sign",
+                          p_value >= 0.05 & p_value < 0.095 ~ "Marg",
+                          .default ="Nonsig")) %>% 
+  dplyr::select(variable_new, predictor, my.formula, final_model, signif, p_value) 
+
+results %>% 
+  filter(response_var=="neophyte_percent") %>% 
+ # filter(!scale==0.0001) %>% 
+  pull(response_var)
+
+ggplot(results %>% 
+         filter(response_var=="neophyte_percent") %>% 
+         filter(!scale %in% c(0.0001, 0.001, 0.01)), 
+       aes(log(scale), slope)) +
+  mapply(function(x, z, signif) 
+    geom_smooth(method="lm", 
+                data=function(d) subset(d, predictor==z), 
+                formula = x, 
+                fill="slateblue", col="slateblue",  alpha=0.07,
+                linetype = ifelse(signif == "Sign"| signif == "Marg",
+                                  "solid", "dashed"),
+                linewidth = case_when(
+                  signif == "Sign" ~ 1.1,
+                  signif == "Nonsig" ~ 0.5,
+                  .default = 0.4)),
+    model_type_alien$my.formula, 
+    model_type_alien$predictor, 
+    model_type_alien$signif) +
+  geom_point(col = "gray22", size = 2, alpha = 0.6) +
+  labs(y = "Slope of the driver effect on % neophytes", 
+       x = expression(paste('Grain size, ', m^{2}))) +
+  theme_bw()+
+  theme(axis.text.x = element_text(size = 7, colour = "black"), 
+        axis.text.y = element_text(size = 6, colour = "black"),
+        axis.title = element_text(size = 13, colour = "black"), 
+        legend.text = element_text(size = 10, colour = "black"),
+        strip.background=element_rect(colour="black",
+                                      fill="#F4F3FB")) +
+  facet_wrap(~reorder(variable_new, desc(variable_new)), scales = "free", ncol = 2) +
+  scale_x_continuous(breaks = c(-2.302585, 0.000000, 2.302585, 4.605170),
+                     labels = c("0.1", "1", "10", "100"))
 # END ----------
 
 

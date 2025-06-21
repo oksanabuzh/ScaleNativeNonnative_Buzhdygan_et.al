@@ -1,18 +1,25 @@
 # Purpose: Plot standardized effects of the predictors on the response variables
-
+dev.off()
 
 # Load necessary libraries
 library(tidyverse)
 
 # Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary.csv") %>% 
-  filter(model_id=="climate" | model_id=="disturbance")
+results <- read_csv("data/model_results_summary_OB.csv") %>% 
+  filter(model_id=="climate" | model_id=="disturbance") %>% 
+    bind_rows(results <- read_csv("data/model_results_summary_OB.csv")%>% 
+                filter(model_id%in% c("builtup_250m", "builtup_500m") & 
+                         predictor %in% c("builtup_1000m", "cropland_1000m",
+                                          "builtup_250m",  "cropland_250m",
+                                          "builtup_500m",  "cropland_500m"))) 
 
 str(results)
 
 names(results)
 
+
 unique(results$model_id)
+unique(results$response_var)
 
 write_csv(results %>% 
             filter(!scale==0.0001) %>% 
@@ -21,9 +28,8 @@ write_csv(results %>%
 
 
 
-# We can only plot standardized effects for the binary response variables
 results <- results |>
-  filter(response_var %in% c("non_native_percent", "invasive_percent"))
+  filter(response_var %in% c("non_native_percent", "invasive_percent", "neophyte_percent"))
 
 
 # Add information whether the models have just one predictor or whether
@@ -58,14 +64,14 @@ results <- results |>
     response_var = factor(response_var,
       levels =
         c(
-          "non_native_percent", "invasive_percent"
+          "non_native_percent", "invasive_percent", "neophyte_percent"
         )
     ),
     predictor = factor(predictor, levels = variable_order)
   )
 
 
-
+unique(results$predictor)
 results <- results %>% mutate(variable_new=
                      fct_recode(predictor,
                                 "Climate PC"= "pca1_clima", 
@@ -78,8 +84,14 @@ results <- results %>% mutate(variable_new=
                                 "Grazing"= "grazing_intencity", 
                                 "Mowing"= "mowing", 
                                 "Abandonment"= "abandonment", 
-                                "Urban built-up"= "built_up_2km",  
-                                "Road density"= "roads", 
+                               # "Urban built-up"= "built_up_2km",  
+                               "Urban built-up (1000 m)"= "builtup_1000m",  
+                               "Croplands cover (1000 m)"= "cropland_1000m",
+                               "Urban built-up (250 m)"= "builtup_250m",  
+                               "Croplands cover (250 m)"= "cropland_250m",
+                                "Urban built-up (500 m)"= "builtup_500m",  
+                               "Croplands cover (500 m)"= "cropland_500m",
+                               "Road density"= "roads", 
                                 "Disturbance frequency"= "Disturbance.Frequency", 
                                 "Disturbance severity"= "Disturbance.Severity"
                                                    )) %>% 
@@ -87,14 +99,17 @@ results <- results %>% mutate(variable_new=
              "Climate PC", "Soil pH",   "Heat index", 
              "Microrelief", "Gravel & stone cover",
              "Herb cover", "Litter cover", 
-             "Grazing", "Mowing", "Abandonment", 
-              "Urban built-up","Road density",  
+             "Grazing", "Mowing", "Abandonment", "Road density",  
+            "Croplands cover (250 m)", "Croplands cover (500 m)", "Croplands cover (1000 m)", 
+               "Urban built-up (250 m)","Urban built-up (500 m)", "Urban built-up (1000 m)",
              "Disturbance frequency", "Disturbance severity")) %>% 
   mutate(variable_new =fct_relevel(variable_new, rev)) %>%
   mutate(response_var_new=factor(case_when(response_var=="non_native_percent"~
-                                   "Proportion of alien species",
+                                   "Alien species, %",
                                  response_var=="invasive_percent"~
-                                   "Proportion of invasive species")))
+                                   "Invasive species, %",
+                                 response_var=="neophyte_percent"~
+                                   "Neophytes, %")))
 
   
 
@@ -134,8 +149,8 @@ std_effect_plot <- results %>%
 
 std_effect_plot
 
-ggsave("img/std_effect_plot_Fig_3AB.png", std_effect_plot, width = 20, height = 20, 
-       units = "cm")
+#ggsave("img/std_effect_plot_Fig_3AB.png", std_effect_plot, width = 20, height = 20, 
+#       units = "cm")
 
 
 
@@ -158,8 +173,8 @@ std_effect_plot_suppl <- results %>%
   #                   alpha = significance) ) +
   geom_vline(xintercept = 0, linetype = "dashed") +
   scale_color_manual(values = c( "red", "blue")) +
-  facet_grid(~ scale ) +
-  scale_x_continuous(limits = c(-1.3, 1)) +
+  facet_grid(~ scale , scales = "free_x") +
+ # scale_x_continuous(limits = c(-1.3, 1)) +
   scale_alpha_manual(values = c("significant" = 1, "not significant" = 0.4)) +
   labs(
     x = "Standardized effect of the driver",
@@ -173,6 +188,7 @@ std_effect_plot_suppl <- results %>%
         axis.text.x = element_text(size=7)
   )
 
+?facet_grid()
 
 
 std_effect_plot_suppl
@@ -182,3 +198,4 @@ std_effect_plot_suppl
 
 
 # END ------------------------------
+

@@ -5,8 +5,13 @@ library(dplyr)
 library(purrr)
 
 # Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary.csv")%>% 
-  filter(model_id=="climate" | model_id=="disturbance") 
+results <- read_csv("data/model_results_summary_OB.csv")%>% 
+  filter(model_id=="climate" | model_id=="disturbance") %>% 
+  bind_rows(results <- read_csv("data/model_results_summary_OB.csv")%>% 
+              filter(model_id%in% c("builtup_250m", "builtup_500m") & 
+                       predictor %in% c("builtup_1000m", "cropland_1000m",
+                                        "builtup_250m",  "cropland_250m",
+                                        "builtup_500m",  "cropland_500m")))
 
 
 read_csv("data/model_results_summary.csv")%>% 
@@ -89,9 +94,44 @@ invasive_select <- models_run_invasive %>%
 invasive_select
 
 
+# (3) Neophites ----
+# Run models without and with the polinomial:
+models_run_neophyte <- results %>% 
+  filter(response_var=="neophyte_percent") %>% 
+  filter(!scale==0.0001) %>% 
+ # filter(!scale %in% c(0.0001, 0.001, 0.01)) %>% 
+  mutate(predictor = as_factor(predictor)) %>% 
+  # group_by(predictor) %>% 
+  split(f = as.factor(.$predictor)) %>% 
+  # group_split(predictor) %>% 
+  lapply(function(df) {
+    model_list=list(
+      mod1=lm(slope ~ log(scale), data=df),
+      mod2=lm(slope ~ poly(log(scale), 2), data=df))  
+  })
+
+
+# select best model based on the logLik test
+
+neophyte_select <- models_run_neophyte %>%
+  #setNames(vars) %>%
+  map_dfr(with, c(m1 = glance(mod1)[stats] ,
+                  m2 = glance(mod2)[stats],
+                  logLik_pval = pval(mod1, mod2)), 
+          .id = "response")  %>% 
+  mutate(final_model=case_when(logLik_pval<0.05 ~ "m2_poly",
+                               .default ="m1")) %>% 
+  mutate(final_mod_formula=case_when(logLik_pval<0.05 ~ "slope ~ poly(log(scale), 2)",
+                                     .default ="slope ~ log(scale)")) %>% 
+  rename(predictor=response) %>% 
+  mutate(response_var="neophyte_percent", .after=predictor)
+
+
+neophyte_select
+
 # Merge tables: 
 
-Table <- bind_rows(alien_select, invasive_select) %>% 
+Table <- bind_rows(alien_select, invasive_select, neophyte_select) %>% 
   mutate(variable_new=
                fct_recode(predictor,
                           "Climate PC"= "pca1_clima", 
@@ -104,7 +144,12 @@ Table <- bind_rows(alien_select, invasive_select) %>%
                           "Grazing"= "grazing_intencity", 
                           "Mowing"= "mowing", 
                           "Abandonment"= "abandonment", 
-                          "Urban built-up"= "built_up_2km",  
+                          "Urban built-up (1000 m)"= "builtup_1000m",  
+                          "Croplands cover (1000 m)"= "cropland_1000m",
+                          "Urban built-up (250 m)"= "builtup_250m",  
+                          "Croplands cover (250 m)"= "cropland_250m",
+                           "Urban built-up (500 m)"= "builtup_500m",  
+                          "Croplands cover (500 m)"= "cropland_500m",
                           "Road density"= "roads", 
                           "Disturbance frequency"= "Disturbance.Frequency", 
                           "Disturbance severity"= "Disturbance.Severity"),
@@ -114,12 +159,16 @@ Table <- bind_rows(alien_select, invasive_select) %>%
                                    "Microrelief", "Gravel & stone cover",
                                    "Herb cover", "Litter cover", 
                                    "Grazing", "Mowing", "Abandonment", 
-                                   "Urban built-up","Road density",  
+                                   "Croplands cover (250 m)", "Urban built-up (250 m)",
+                                   "Croplands cover (500 m)", "Urban built-up (500 m)",
+                                   "Croplands cover (1000 m)", "Urban built-up (1000 m)",
+                                   "Road density",  
                                    "Disturbance frequency", "Disturbance severity")) %>% 
   arrange(response_var, variable_new)
 
 
-Table
+Table %>% 
+  print(n=Inf)
 
 write_csv(Table, "results/Model_selection_Table.csv")
 

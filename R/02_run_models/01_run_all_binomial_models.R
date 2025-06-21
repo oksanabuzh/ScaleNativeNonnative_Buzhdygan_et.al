@@ -39,17 +39,20 @@ species <- species |> left_join(disturbance_data, by = c("series", "subplot", "s
 # Predictor variables are on very different scales which causes problems in the
 # models. Therefore, we rescale some of the variables
 species <- species |> mutate(
+  grazing=log1p(grazing),
   cover_gravel_stones = cover_gravel_stones / 100,
   roads = roads / 100,
-  built_up_2km = built_up_2km / 100,
-  builtup_250m = builtup_250m / 100,
-  builtup_500m = builtup_500m / 100,
-  cropland_250m = cropland_250m / 100,
-  cropland_500m = cropland_500m / 100,
+  builtup_1000m = log1p(builtup_1000m), # builtup_1000m / 100,
+  builtup_250m = log1p(builtup_250m), #builtup_250m / 100,
+  builtup_500m = log1p(builtup_500m), #builtup_500m / 100,
+  cropland_1000m = log1p(cropland_500m), # cropland_500m / 100,
+    cropland_250m = log1p(cropland_250m), # cropland_250m / 100,
+  cropland_500m = log1p(cropland_500m), # cropland_500m / 100,
   cover_litter = cover_litter / 100,
   cover_herbs_sum = cover_herbs_sum / 100
 )
-
+names(species)
+log1p(species$grazing)
 # Prepare the data for the models -------------------------------------------
 
 # Pivot the data to long format and select relevant variables
@@ -71,7 +74,7 @@ data_for_models <- species |>
 predictors_model_1 <- c(
   "pca1_clima", "pH", "microrelief", "heat_index",
   "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "built_up_2km", "grazing_intencity", "mowing", "abandonment"
+  "builtup_1000m", "cropland_1000m", "grazing_intencity", "mowing", "abandonment"
 )
 
 # Model 2
@@ -88,14 +91,16 @@ predictors_model4 <- c("pca1_clima", "native")
 predictors_model_5 <- c(
   "pca1_clima", "pH", "microrelief", "heat_index",
   "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "builtup_250m", "cropland_250m",  "grazing_intencity", "mowing", "abandonment"
+  "builtup_250m", "cropland_250m",  
+  "grazing_intencity", "mowing", "abandonment"
 )
 
 # urban and cropland buffer 500 m
 predictors_model_6 <- c(
   "pca1_clima", "pH", "microrelief", "heat_index",
   "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "builtup_500m", "cropland_500m",  "grazing_intencity", "mowing", "abandonment"
+  "builtup_500m", "cropland_500m",  
+  "grazing_intencity", "mowing", "abandonment"
 )
 
 # Check which target predictors are not in the data
@@ -120,7 +125,7 @@ data_for_models <- expand_grid(
 # we only want to remove zeroes for native and climate_native models
 data_for_models <- data_for_models |>
   filter(
-    !(model_id %in% c("climate", "disturbance") & remove_zeroes)
+    !(model_id %in% c("climate", "disturbance", "builtup_250m", "builtup_500m") & remove_zeroes)
   )
 
 # Remove the zeroes from the response_value column for those models where the
@@ -224,4 +229,4 @@ model_results_summary <- model_results_summary |>
 
 # Save the model results as R data file and CSV file
 saveRDS(model_results, "data/model_results.rds")
-write_csv(model_results_summary, "data/model_results_summary.csv")
+write_csv(model_results_summary, "data/model_results_summary_OB.csv")
