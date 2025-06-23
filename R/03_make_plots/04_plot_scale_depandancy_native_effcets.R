@@ -154,11 +154,6 @@ ggplot(mod2s_pred, aes(log(x), predicted)) +
 cor(invas_dat$slope, invas_dat$scale, use = "pairwise.complete.obs", 
     method = "pearson")
 
-Hmisc::rcorr(log(invas_dat$slope+10), log(invas_dat$scale), type = "spearman")
-
-Hmisc::rcorr(log(invas_dat$slope+10), log(invas_dat$scale), type = "pearson")
-
-
 # R2 plot
 
 dodge_width <- 0.5
@@ -183,3 +178,83 @@ ggplot(invas_dat,
   scale_y_continuous(breaks=c(-9.210340, -6.907755, -4.605170, -2.302585,  0.000000,  2.302585,  4.605170),
                      labels=c("0.0001", "0.001", "0.01", "0.1", "1", "10", "100"))
 
+
+#------------------------------------------------------------------------------#
+
+# (3) Neophytes,  %  ----
+neoph_dat <- read_csv("data/model_results_summary.csv")%>% 
+  filter(model_id=="native") %>%   # filter only models that have native as a single predictor
+  filter(remove_zeroes==TRUE) %>%  # remove plots when alian are 0
+  filter(response_var=="neophyte_percent") %>% 
+  filter(!scale %in% c(0.0001, 0.001, 0.01))
+
+
+names(neoph_dat)
+
+invas_dat %>% 
+  dplyr::select(scale, slope, p_value_slope, r2_partial, r2m, r2c) %>% 
+  mutate(random=r2c-r2m)
+
+
+mod3.1<- lm(slope ~ log(scale), data=neoph_dat) 
+mod3.2<- lm(slope ~ poly(log(scale), 2), data=neoph_dat) 
+
+anova(mod3.1, mod3.2)
+Anova(mod3.1)
+Anova(mod3.2)
+summary(mod3.2)
+
+
+plot_model(mod3.2,type = "pred", terms=c("scale"),  show.data=T)
+
+
+mod3s_pred <- get_model_data(mod3.2,type = "pred", terms="scale[0.1:100, by=0.001]")
+
+
+ggplot(mod3s_pred, aes(log(x), predicted)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), 
+              fill="slateblue", alpha = 0.1)+
+  # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
+  geom_point(data=neoph_dat, 
+             aes(log(scale), slope), pch=20, stroke=1,
+             col="gray22", size=3, alpha=1) +
+  labs(y="Slope (effect of native SR)", 
+       x=expression(paste('Grain size, ', m^{2}))) +
+  # guides(shape = "none") +
+  theme(axis.text.x = element_text(size=8), 
+        axis.text.y = element_text(size=8),
+        axis.title=element_text(size=11), 
+        legend.text = element_text(size=10)) +
+  geom_line(linetype=1, linewidth=1,  col="slateblue") +
+  scale_x_continuous(limits = c(-6.907755,5),
+                     breaks=c(-6.907755, -4.605170, -2.302585,  0.000000,  2.302585,  4.605170),
+                     labels=c("0.001", "0.01", "0.1", "1", "10", "100"))
+
+
+
+cor(neoph_dat$slope, neoph_dat$scale, use = "pairwise.complete.obs", 
+    method = "pearson")
+
+# R2 plot
+
+dodge_width <- 0.5
+
+ggplot(neoph_dat,
+       aes(y=log(scale), x = r2m)) +
+  geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
+  geom_point(position = position_dodge(width = dodge_width), size = 3,
+             fill="slateblue", pch=23) +
+  geom_errorbarh(aes(xmin = 0, xmax = r2m),col="slateblue", linetype = "dashed",
+                 position = position_dodge(width = dodge_width), height = 0.1) +
+  theme(legend.key=element_blank()) +
+  # theme_bw()+
+  theme(axis.text.x = element_text(size=8), 
+        axis.text.y = element_text(size=8),
+        axis.title=element_text(size=11, face="bold"), 
+        legend.text = element_text(size=10)) +
+  #  theme(axis.title.x=element_text(vjust=-0.1), axis.title.y=element_text(vjust=2))+
+  labs(y=expression(paste("Grain size, ", m^{2})),
+       x= expression(paste("Variance explained, ", R^{2})))+
+  xlim(0,0.1) +
+  scale_y_continuous(breaks=c(-9.210340, -6.907755, -4.605170, -2.302585,  0.000000,  2.302585,  4.605170),
+                     labels=c("0.0001", "0.001", "0.01", "0.1", "1", "10", "100"))

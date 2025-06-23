@@ -5,9 +5,9 @@ dev.off()
 library(tidyverse)
 
 # Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary_OB.csv") %>% 
+results <- read_csv("data/model_results_summary.csv") %>% 
   filter(model_id=="climate" | model_id=="disturbance") %>% 
-    bind_rows(results <- read_csv("data/model_results_summary_OB.csv")%>% 
+    bind_rows(results <- read_csv("data/model_results_summary.csv")%>% 
                 filter(model_id%in% c("builtup_250m", "builtup_500m") & 
                          predictor %in% c("builtup_1000m", "cropland_1000m",
                                           "builtup_250m",  "cropland_250m",
@@ -187,8 +187,6 @@ std_effect_plot_suppl <- results %>%
         axis.text.y = element_text(size=10) ,
         axis.text.x = element_text(size=7)
   )
-
-?facet_grid()
 
 
 std_effect_plot_suppl

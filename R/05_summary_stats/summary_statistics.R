@@ -1,4 +1,3 @@
-
 # Purpose: Summary statistics for vegetation data 
 
 # Load packages
@@ -32,6 +31,7 @@ alien_species <- species_list |>
   mutate(alien_level=case_when(is.na(naturalisation_level) ~ "native", 
                                .default = naturalisation_level))
 
+factor(alien_species$alien_level)
 
 alien_species %>% 
   group_by( alien_level) %>% 
@@ -81,17 +81,6 @@ results%>%
 results%>% 
   filter(model_id=="native") %>% 
   count(response_var, scale)
-
-# 1) bring the variables to the same scale
-# 2) check_convergence(mod1, tolerance=1.3)
-# 3) 2 models: mod 1 and 2 (below) per scale and response variable
-#      response variables  (only based on p/a  data:
-# non_native_percent = non_native / total_species,
-# invasive_percent = invasive / total_species,
-# 
-# 4) use optimiser only for invasive_percent
-#  control = glmerControl(optimizer = "bobyqa",
-#                  optCtrl = list(maxfun = 50000)),
 
 
 
@@ -192,6 +181,8 @@ alien_dat |> filter(type == "p_a") %>%
         axis.ticks.y = element_blank()) 
 
 
+
+
 # Invasive:
 
 alien_dat |> filter(type == "p_a") %>% 
@@ -233,6 +224,7 @@ alien_dat <- alien_dat %>%
 
 
 alien_dat
+
 
 
 ## non_native_percent ----
@@ -286,7 +278,7 @@ ggplot(alien_dat %>%  filter(type == "p_a" &  scale == 100),
 
 
 
-## invasive_percent ----
+## native SR ----
 
 alien_dat$dataset
 
@@ -296,7 +288,7 @@ alien_dat %>%  filter(type == "p_a" &  scale == 100) %>%
 
 
 mod2h<- glm(native ~ 
-              habitat_broad, # + #  habitat_group +
+              habitat_broad, # +   habitat_group +
             #  (1|dataset),
             family = poisson(), 
             data = alien_dat %>%  filter(type == "p_a" &  scale == 100))
