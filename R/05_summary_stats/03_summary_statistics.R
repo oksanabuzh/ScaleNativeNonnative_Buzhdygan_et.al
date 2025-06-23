@@ -17,8 +17,9 @@ sp_data <- read_csv("data/database_analysis_summary.csv") %>%
   left_join(climate_pc, by = "series")
 
 
-# How many plots contain aliens?
-## Number of plots where aliens occur:
+# Plot counts and % -----
+## Table S3 -----
+# How many plots contain aliens? Number of plots where aliens occur:
 
 plot_proportion <- sp_data %>%  
   filter(type == "p_a") %>% 
@@ -51,8 +52,8 @@ plot_proportion
 
 write.csv(plot_proportion, "results/plot_proportions_TableS3.csv")
 
-#  Plots:
-# Alien 
+##  Fig. 1 (D, E, F)-----
+## Fig.1 D - Aliens 
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_alien)) + 
   geom_bar(position="stack", stat="identity", colour = "black", fill="forestgreen")+
@@ -72,8 +73,7 @@ plot_proportion  %>%
 
 
 
-
-# Invasive:
+## Fig.1 E - Invasives
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_invasive)) + 
   geom_bar(position="stack", stat="identity", colour = "black", fill="brown")+
@@ -92,7 +92,7 @@ plot_proportion  %>%
   xlim(-1, 47)
 
 
-# Neophytes:
+# ## Fig.1 F - Neophytes
 
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_neophyte)) + 
@@ -112,7 +112,7 @@ plot_proportion  %>%
   xlim(-1, 45)
 
 
-# Habitat -----------------------------------------------------------------------
+# Habitat effects-----------------------------------------------------------------------
 names(alien_dat)
 
 alien_dat <- alien_dat %>% 

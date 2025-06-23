@@ -13,7 +13,7 @@ header_data_landcover <- read_csv("data-raw/header_landcover_buffers.csv")
 # This gives a better overview of the data
 # make a list of interesting predictor variables
 header_vars <- c("series", "dataset", "subplot",
-                 "habitat_group", "economic_use", "zonality", "lon", "lat", "altitude", "BIO1",
+                 "habitat_group", "habitat_broad", "economic_use", "zonality", "lon", "lat", "altitude", "BIO1",
                  "BIO12", "BIO7", "BIO15", "pH", "depth_mean", "cover_herbs",
                  "cover_herbs_sum", "inclination", "heat_index", "cover_litter", "grazing",
                  "grazing_intencity", "mowing", "burning", "abandonment",
@@ -23,7 +23,7 @@ header_vars <- c("series", "dataset", "subplot",
 )
 
 header_data <- header_data |>
-  select(all_of(header_vars))
+  dplyr::select(all_of(header_vars))
 
 # Create a new variable that sums up gravel and stone cover
 header_data <- header_data |>
@@ -31,7 +31,7 @@ header_data <- header_data |>
 
 # Select relevant variables from the landcover header
 header_data_landcover <- header_data_landcover |>
-  select(series, dataset, subplot, builtup_250m, cropland_250m, builtup_500m, cropland_500m,
+  dplyr::select(series, dataset, subplot, builtup_250m, cropland_250m, builtup_500m, cropland_500m,
          builtup_1000m, cropland_1000m, builtup_2000m, cropland_2000m)
 
 # Add landcover buffers to the header
@@ -49,7 +49,7 @@ header_data_mean <- header_data |>
 header_data <- bind_rows(header_data, header_data_mean) 
 
 # Make categorical variables ordinal -----------------------------------------
-header_data |> select(where(is.character))
+header_data |> dplyr::select(where(is.character))
 header_data <- header_data |> 
   mutate(
     zonality = ifelse(zonality == "zonal", 1, 0)
