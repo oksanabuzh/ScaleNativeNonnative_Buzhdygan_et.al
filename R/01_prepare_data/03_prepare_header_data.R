@@ -42,7 +42,7 @@ header_data <- header_data |>
 # But for the 100 m2 plot we need to calculate the mean for all numerical vars
 header_data_mean <- header_data |>
   summarise(across(where(is.numeric), \(x) mean(x, na.rm = TRUE)),
-            .by = c(dataset, series, habitat_group, zonality)) |>
+            .by = c(dataset, series, habitat_group, habitat_broad, zonality)) |>
   mutate(subplot = "x")
 
 # Add the mean data to the header data

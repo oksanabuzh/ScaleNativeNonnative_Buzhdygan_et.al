@@ -2,7 +2,7 @@
 
 # Load packages
 library(tidyverse)
-
+library(sjPlot)
 
 # Load data ------------------------------------------------
 sp_data <- read_csv("data/database_analysis_summary.csv") %>% 
@@ -115,36 +115,47 @@ plot_proportion  %>%
 # Habitat effects-----------------------------------------------------------------------
 names(alien_dat)
 
-alien_dat <- alien_dat %>% 
+alien_data_100 <- sp_data %>% 
+ # filter(scale==100) %>% 
+  left_join(read_csv("data/header_data_prepared.csv") %>% 
+  filter(subplot=="x") %>%
+  dplyr::select(-subplot), 
+  by="series") %>% 
+  dplyr::select(-subplot) %>% 
   mutate(habitat_broad=fct_relevel(habitat_broad, 
                                    c("saline", "complex", "dry", "wet", 
                                      "mesic", "fringe", "alpine")),
          habitat_group=fct_relevel(habitat_group, 
                                    c("saline", "pody", "sandy", "xeric",
                                      "rocky", "meso-xeric", "heats" , "wet", 
-                                     "mesic", "fringe", "alpine"))) %>% 
-  arrange(habitat_group)
+                                     "mesic", "fringe", "alpine"))) 
 
 
-alien_dat
+alien_data_100
 
+alien_data_100$habitat_group
+alien_data_100$habitat_broad
 
 
 ## non_native_percent ----
-mod1h<- glm(non_native_percent ~ 
-              habitat_broad, # habitat_group ,
-            #  (1|dataset),
-            weights = total_species,
-            family = binomial, 
-            data = alien_dat %>%  filter(type == "p_a" &  scale == 100) )
+
+mod1h<- glm(non_native_percent ~ habitat_broad, 
+            weights = total_species, family = binomial, 
+            data = alien_dat %>%  filter(type == "p_a" &  scale == 100))
 
 #check_convergence(mod1h)
 Anova(mod1h)
 summary(mod1h)
 
-library(sjPlot)
 # plot_model(mod1h,type = "pred", terms=c("scale","habitat_group"),  show.data=T)
 
+Table_mod1h <- emmeans(mod1h, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
+  as.tibble()
+Table_mod1h
+
+Table_mod1h_means <- emmeans(mod1h, list(pairwise ~ habitat_broad))$`emmeans of habitat_broad` %>% 
+  as.tibble()
+Table_mod1h_means
 
 
 emmeans_m1_habitat <- cld(emmeans(mod1h, list(pairwise ~ habitat_broad)), 
@@ -159,8 +170,9 @@ emmeans_m1_habitat
 col = c("#4e3910", "#CC6600",  "yellow3", "#CC99FF", "#0066FF" ,  "#00B200",  "#006600")
 col2 = c("#4e3910", "#CC6600",  "yellow", "#CC99FF", "#0066FF" ,  "#00B200",  "#006600")
 
-ggplot(alien_dat %>%  filter(type == "p_a" &  scale == 100), 
-       aes(habitat_broad, non_native_percent, col=habitat_broad))+
+alien_data_100 %>%  
+  filter(type == "p_a" &  scale == 100) %>% 
+  ggplot(aes(habitat_broad, non_native_percent, col=habitat_broad))+
   geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
   geom_point( aes(fill=habitat_broad), pch=21,
               size=2, alpha=0.4, stroke = 0.8, 
@@ -183,22 +195,22 @@ ggplot(alien_dat %>%  filter(type == "p_a" &  scale == 100),
 
 ## native SR ----
 
-alien_dat$dataset
-
-
-alien_dat %>%  filter(type == "p_a" &  scale == 100) %>% 
-  pull(dataset)
-
 
 mod2h<- glm(native ~ 
-              habitat_broad, # +   habitat_group +
-            #  (1|dataset),
+              habitat_broad,
             family = poisson(), 
-            data = alien_dat %>%  filter(type == "p_a" &  scale == 100))
+            data = alien_data_100 %>%  filter(type == "p_a" &  scale == 100))
 
 # check_convergence(mod2h)
 car::Anova(mod2h)
 summary(mod2h)
+
+Table_mod2h <- emmeans(mod2h, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
+  as.tibble()
+
+Table_mod2h_means <- emmeans(mod2h, list(pairwise ~ habitat_broad))$`emmeans of habitat_broad` %>% 
+  as.tibble()
+Table_mod2h_means
 
 
 emmeans_m2_habitat <- cld(emmeans(mod2h, list(pairwise ~ habitat_broad)), 
@@ -207,15 +219,8 @@ emmeans_m2_habitat
 
 
 
-
-
-#         saline    complex       dry       wet       mesic        fringe       alpine
-col = c("#4e3910", "#CC6600",  "yellow3", "#CC99FF", "#0066FF" ,  "#00B200",  "#006600")
-col2 = c("#4e3910", "#CC6600",  "yellow", "#CC99FF", "#0066FF" ,  "#00B200",  "#006600")
-
-
-ggplot(alien_dat %>%  filter(type == "p_a" &  scale == 100), 
-       aes(habitat_broad, native, col=habitat_broad))+
+alien_data_100 %>%  filter(type == "p_a" &  scale == 100) %>% 
+ggplot(aes(habitat_broad, native, col=habitat_broad))+
   geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
   geom_point( aes(fill=habitat_broad), pch=21,
               size=2, alpha=0.4, stroke = 0.8, 
@@ -234,7 +239,22 @@ ggplot(alien_dat %>%  filter(type == "p_a" &  scale == 100),
             size=4, col="black" , position=position_dodge(0))
 
 
+# save posthoc tables
+post_hoc_table <- Table_mod1h %>% 
+  dplyr::select(-df) %>% 
+  left_join(Table_mod2h %>% dplyr::select(-df), by="1") %>% 
+  setNames(c("Habitats", "estimate", "SE", "z-ratio", "p-value",
+                        "estimate2", "SE2", "z-ratio2", "p-value2"))
+
+# write_csv(post_hoc_table, "results/habitat_posthoc_TableS5.csv")
 
 
-            
 
+
+emmeans_table <- Table_mod1h_means %>% 
+  dplyr::select(-df) %>% 
+  left_join(Table_mod2h_means %>% dplyr::select(-df), by="habitat_broad") %>% 
+  setNames(c("habitats", "emmean", "SE", "asymp.LCL", "asymp.UCL",
+             "emmean2", "SE2", "asymp.LCL2", "asymp.UCL2"))
+
+# write_csv(emmeans_table, "results/emmeans_TableS5.csv")
