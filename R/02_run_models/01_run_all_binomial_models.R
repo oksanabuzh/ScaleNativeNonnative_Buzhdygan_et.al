@@ -39,7 +39,6 @@ species <- species |> left_join(disturbance_data, by = c("series", "subplot", "s
 # Predictor variables are on very different scales which causes problems in the
 # models. Therefore, we rescale some of the variables
 species <- species |> mutate(
-  grazing=log1p(grazing),
   cover_gravel_stones = cover_gravel_stones / 100,
   roads = roads / 100,
   builtup_1000m = log1p(builtup_1000m), # builtup_1000m / 100,
@@ -52,7 +51,6 @@ species <- species |> mutate(
   cover_herbs_sum = cover_herbs_sum / 100
 )
 names(species)
-log1p(species$grazing)
 # Prepare the data for the models -------------------------------------------
 
 # Pivot the data to long format and select relevant variables

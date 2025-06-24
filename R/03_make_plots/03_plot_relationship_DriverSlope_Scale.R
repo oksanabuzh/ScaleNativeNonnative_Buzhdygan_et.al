@@ -11,7 +11,7 @@ library(jtools)
 # Load the data and prepare it ----------------------------------------------
 results <- read_csv("data/model_results_summary.csv")%>% 
   filter(model_id=="climate" | model_id=="disturbance") %>% 
-  bind_rows(results <- read_csv("data/model_results_summary_OB.csv")%>% 
+  bind_rows(results <- read_csv("data/model_results_summary.csv")%>% 
   filter(model_id%in% c("builtup_250m", "builtup_500m") & 
            predictor %in% c("builtup_1000m", "cropland_1000m",
                             "builtup_250m",  "cropland_250m",

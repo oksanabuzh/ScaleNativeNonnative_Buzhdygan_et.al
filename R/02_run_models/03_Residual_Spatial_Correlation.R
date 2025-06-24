@@ -125,21 +125,21 @@ dM_m1
 # equal to 1/(distance between point i and point j).
 
 # (3) calculate Moran’s I (DHARMa works using ape package)
-autocor_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_mod1a, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_mod1a, distMat = dM_m1)[c("statistic" , "p.value")] %>% 
+as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1a")
 
 
-autocor_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_mod1b, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_mod1b, distMat = dM_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1b")
 
-autocor_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_mod1c, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_mod1c, distMat = dM_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1c")
@@ -176,7 +176,7 @@ dM_m2
  
 
 autocor_mod2 <- DHARMa::testSpatialAutocorrelation(res.sim_mod2, distMat = dM_m2)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model2")
@@ -210,7 +210,7 @@ dM_m3
 
 
 autocor_mod3 <- DHARMa::testSpatialAutocorrelation(res.sim_mod3, distMat = dM_m3)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model3")
@@ -282,21 +282,21 @@ diag(dM_inv_m1) <- 0
 dM_inv_m1
 
 # (3) calculate Moran’s I (DHARMa works using ape package)
-autocor_inv_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod1a, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_inv_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod1a, distMat = dM_inv_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1a")
 
 
-autocor_inv_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod1b, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_inv_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod1b, distMat = dM_inv_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1b")
 
-autocor_inv_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod1c, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_inv_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod1c, distMat = dM_inv_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1c")
@@ -328,7 +328,7 @@ dM_inv_m2
 # (3) calculate Moran’s I (DHARMa works using ape package)
 
 autocor_inv_mod2 <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod2, distMat = dM_inv_m2)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model2")
@@ -356,7 +356,7 @@ dM_inv_m3
 
 # (3) calculate Moran’s I (DHARMa works using ape package)
 autocor_inv_mod3 <- DHARMa::testSpatialAutocorrelation(res.sim_inv_mod3, distMat = dM_inv_m3)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model3")
@@ -430,21 +430,21 @@ diag(dM_neoph_m1) <- 0
 dM_neoph_m1
 
 # (3) calculate Moran’s I (DHARMa works using ape package)
-autocor_neoph_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod1a, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_neoph_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod1a, distMat = dM_neoph_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1a")
 
 
-autocor_neoph_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod1b, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_neoph_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod1b, distMat = dM_neoph_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1b")
 
-autocor_neoph_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod1c, distMat = dM_a)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+autocor_neoph_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod1c, distMat = dM_neoph_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model1c")
@@ -476,7 +476,7 @@ dM_neoph_m2
 # (3) calculate Moran’s I (DHARMa works using ape package)
 
 autocor_neoph_mod2 <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod2, distMat = dM_neoph_m2)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model2")
@@ -504,7 +504,7 @@ dM_neoph_m3
 
 # (3) calculate Moran’s I (DHARMa works using ape package)
 autocor_neoph_mod3 <- DHARMa::testSpatialAutocorrelation(res.sim_neoph_mod3, distMat = dM_neoph_m3)[c("statistic" , "p.value")] %>% 
-  as.data.frame() %>% mutate(stats=c("Obs.I ", "Exp.I", "sd")) %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
   pivot_wider(names_from="stats",values_from ="statistic") %>%  
   pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
   mutate(model="model3")
@@ -520,11 +520,15 @@ neophyte_SpatAutocor %>%
 
 #(4) merge data------
 SpatAutocorResid <- alien_SpatAutocor %>% 
-bind_rows(invasive_SpatAutocor, neophyte_SpatAutocor)
+bind_rows(invasive_SpatAutocor, neophyte_SpatAutocor) %>% 
+  pivot_wider(names_from = "statistic", values_from = "values") %>% 
+  relocate(p.value, .after="sd") %>% 
+  mutate(Obs.I=round(Obs.I, 4),
+         Exp.I=round(Exp.I, 4),
+         sd=round(sd, 4),
+         p.value=round(p.value, 2))
 
+SpatAutocorResid
 
-SpatAutocorResid %>% 
-    filter(statistic=="p.value")
-
-write_csv(SpatAutocorResid %>% 
-            rename("MoransI_statistics"= "statistic"), "results/SpatAutocorResid_TableS5.csv")
+write_csv(SpatAutocorResid ,
+          "results/SpatAutocorResid_TableS5.csv")
