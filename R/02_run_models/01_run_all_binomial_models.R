@@ -45,7 +45,7 @@ species <- species |> mutate(
   builtup_1000m = log1p(builtup_1000m), # builtup_1000m / 100,
   builtup_250m = log1p(builtup_250m), #builtup_250m / 100,
   builtup_500m = log1p(builtup_500m), #builtup_500m / 100,
-  cropland_1000m = log1p(cropland_500m), # cropland_500m / 100,
+  cropland_1000m = log1p(cropland_1000m), # cropland_1000m / 100,
     cropland_250m = log1p(cropland_250m), # cropland_250m / 100,
   cropland_500m = log1p(cropland_500m), # cropland_500m / 100,
   cover_litter = cover_litter / 100,

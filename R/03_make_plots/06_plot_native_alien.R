@@ -321,7 +321,7 @@ names(alien_dat)
 
 ### native SR ----
 mod1s<- glmer(non_native_percent ~ 
-            #  pca1_clima +
+              pca1_clima +
                 native +
                 (1|dataset),
               weights = total_species,
@@ -339,6 +339,7 @@ plot_model(mod1s,type = "pred", terms=c("native"),  show.data=T)
 
 
 mod1s_pred <- get_model_data(mod1s,type = "pred", terms="native[0:94, by=0.001]")
+
 
 ggplot(mod1s_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1)+
@@ -401,10 +402,8 @@ ggplot(mod2s_pred, aes(x, predicted)) +
 
 ## invasive_percent ----
 
-
-### native SR ----
 mod1s_inv<- glmer(invasive_percent ~ 
-               # pca1_clima +
+                pca1_clima +
                 poly(native, 2) +
                  #  native +
                 (1|dataset),
@@ -497,7 +496,7 @@ ggplot(mod2s_inv_pred, aes(x, predicted)) +
 
 ### native SR ----
 mod1s_neoph<- glmer(neophyte_percent ~ 
-                    # pca1_clima +
+                     pca1_clima +
                     poly(native, 2) +
                     #  native +
                     (1|dataset),

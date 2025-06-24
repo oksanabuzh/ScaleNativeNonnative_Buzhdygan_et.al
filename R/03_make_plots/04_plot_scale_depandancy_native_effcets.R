@@ -15,10 +15,12 @@ set_theme(base = theme_bw(),
 
 # (1) Alien species,  %  ----
 alien_dat <- read_csv("data/model_results_summary.csv")%>% 
-  filter(model_id=="native") %>%   # filter only models that have native as a single predictor
+  filter(model_id=="climate_native") %>%   # filter only models that have native as a single predictor
   filter(remove_zeroes==TRUE) %>%  # remove plots when alien are 0
   filter(response_var=="non_native_percent") %>% 
-  filter(!scale==0.0001) 
+  filter(!scale==0.0001) %>% 
+  filter(predictor=="native")
+
 
 
 names(alien_dat)
@@ -38,6 +40,7 @@ summary(mod1)
 par(mfrow=c(2,2))
 plot(mod2)
 par(mfrow=c(1,1))
+
 
 plot_model(mod2,type = "pred", terms=c("scale"),  show.data=T)
 
@@ -92,7 +95,7 @@ ggplot(alien_dat,
   #  theme(axis.title.x=element_text(vjust=-0.1), axis.title.y=element_text(vjust=2))+
   labs(y=expression(paste("Grain size, ", m^{2})),
        x= expression(paste("Variance explained, ", R^{2})))+
-  xlim(0,0.11) +
+ # xlim(0,0.11) +
   scale_y_continuous(breaks=c(-6.907755, -4.605170, -2.302585,  0.000000,  2.302585,  4.605170),
                      labels=c("0.001", "0.01", "0.1", "1", "10", "100"))
 
@@ -102,10 +105,13 @@ ggplot(alien_dat,
 
 # (2) Invasive species,  %  ----
 invas_dat <- read_csv("data/model_results_summary.csv")%>% 
-  filter(model_id=="native") %>%   # filter only models that have native as a single predictor
+  filter(model_id=="climate_native") %>%   # filter only models that have native as a single predictor
   filter(remove_zeroes==TRUE) %>%  # remove plots when alian are 0
   filter(response_var=="invasive_percent") %>% 
-  filter(!scale %in% c(0.0001, 0.001, 0.01))
+  filter(!scale %in% c(0.0001, 0.001, 0.01)) %>% 
+  filter(predictor=="native")
+
+
 
 
 names(invas_dat)
@@ -183,10 +189,12 @@ ggplot(invas_dat,
 
 # (3) Neophytes,  %  ----
 neoph_dat <- read_csv("data/model_results_summary.csv")%>% 
-  filter(model_id=="native") %>%   # filter only models that have native as a single predictor
+  filter(model_id=="climate_native") %>%   # filter only models that have native as a single predictor
   filter(remove_zeroes==TRUE) %>%  # remove plots when alian are 0
   filter(response_var=="neophyte_percent") %>% 
-  filter(!scale %in% c(0.0001, 0.001, 0.01))
+  filter(!scale %in% c(0.0001, 0.001, 0.01))%>% 
+  filter(predictor=="native")
+
 
 
 names(neoph_dat)

@@ -1,170 +1,772 @@
-model_id,scale,response_var,remove_zeroes,model_res,status,model_converged,model_used
-climate,1e-4,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,1e-4,invasive_percent,FALSE,NA,pwrssUpdate did not converge in (maxit) iterations,NA,NA
-climate,1e-4,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-climate,0.001,invasive_percent,FALSE,NA,"Lapack routine dgesv: system is exactly singular: U[13,13] = 0",NA,NA
-climate,0.001,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-climate,0.01,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,0.01,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate,0.01,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",FALSE,NA
-climate,0.1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,0.1,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,0.1,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,1,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate,10,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,10,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,10,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,100,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,100,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,100,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,1e-4,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,1e-4,invasive_percent,FALSE,NA,"nlminb problem, convergence error code = 1
-  message = false convergence (8)",TRUE,NA
-disturbance,1e-4,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-disturbance,0.001,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,0.001,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,0.001,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,0.01,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,0.01,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,0.01,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,0.1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,0.1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,0.1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-disturbance,10,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,10,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,10,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,100,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,100,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-disturbance,100,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,1e-4,non_native_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1e-4,invasive_percent,TRUE,NA,Response is constant,NA,NA
-native,1e-4,neophyte_percent,TRUE,NA,"Invalid grouping factor specification, series",NA,NA
-native,0.001,non_native_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.001,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.001,neophyte_percent,TRUE,NA,grouping factors must have > 1 sampled level,NA,NA
-native,0.01,non_native_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.01,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.01,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.1,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,0.1,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.1,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,1,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,10,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,10,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,10,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,100,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,100,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,100,neophyte_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,1e-4,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1e-4,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1e-4,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-native,0.001,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.001,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.001,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.01,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.01,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.01,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.1,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,0.1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,10,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,10,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,10,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,100,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-native,100,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-native,100,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,1e-4,non_native_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1e-4,invasive_percent,TRUE,NA,Response is constant,NA,NA
-climate_native,1e-4,neophyte_percent,TRUE,NA,"Invalid grouping factor specification, series",NA,NA
-climate_native,0.001,non_native_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.001,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.001,neophyte_percent,TRUE,NA,grouping factors must have > 1 sampled level,NA,NA
-climate_native,0.01,non_native_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.01,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.01,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.1,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,0.1,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.1,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,1,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,10,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,10,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,10,neophyte_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,100,non_native_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,100,invasive_percent,TRUE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,100,neophyte_percent,TRUE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,1e-4,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1e-4,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1e-4,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-climate_native,0.001,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,0.001,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.001,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.01,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,0.01,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.01,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,0.1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,0.1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-climate_native,10,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,10,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,10,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,100,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,100,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate_native,100,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,1e-4,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,1e-4,invasive_percent,FALSE,NA,pwrssUpdate did not converge in (maxit) iterations,NA,NA
-builtup_250m,1e-4,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-builtup_250m,0.001,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,0.001,invasive_percent,FALSE,NA,"Lapack routine dgesv: system is exactly singular: U[13,13] = 0",NA,NA
-builtup_250m,0.001,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-builtup_250m,0.01,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,0.01,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",FALSE,NA
-builtup_250m,0.01,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-builtup_250m,0.1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,0.1,invasive_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-builtup_250m,0.1,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,1,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-builtup_250m,10,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,10,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,10,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,100,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,100,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_250m,100,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,1e-4,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,1e-4,invasive_percent,FALSE,NA,pwrssUpdate did not converge in (maxit) iterations,NA,NA
-builtup_500m,1e-4,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-builtup_500m,0.001,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,0.001,invasive_percent,FALSE,NA,"Lapack routine dgesv: system is exactly singular: U[13,13] = 0",NA,NA
-builtup_500m,0.001,neophyte_percent,FALSE,NA,Response is constant,NA,NA
-builtup_500m,0.01,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,0.01,invasive_percent,FALSE,NA,system is computationally singular: reciprocal condition number = 2.11782e-16,NA,NA
-builtup_500m,0.01,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-builtup_500m,0.1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,0.1,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,0.1,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,1,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,1,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,1,neophyte_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
-builtup_500m,10,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,10,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,10,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,100,non_native_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,100,invasive_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-builtup_500m,100,neophyte_percent,FALSE,NA,"unused arguments (Predictor, Std.Estimate)",TRUE,NA
-climate,0.001,non_native_percent,FALSE,NA,"unused arguments (predictor, Chisq, `Pr(>Chisq)`)",TRUE,NA
+model_id,scale,response_var,remove_zeroes,predictor,slope,p_value_slope,std_slope,chisq,p_value_chisq,r2_partial,r2m,r2c,status,model_converged,model_used
+climate,1e-4,non_native_percent,FALSE,pca1_clima,-4.562727658811156,3.584895275560877e-5,NA,18.88733603044061,1.386701868309321e-5,0.08276395188952014,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,pH,-0.27833759496225186,0.3947759187567481,NA,0.7629636399834301,0.3824026475259611,2.4223779421968673e-4,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,microrelief,0.09015491225281151,3.585300855354818e-4,NA,14.122829520761494,1.7125270755497023e-4,0.0013101912521756522,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,heat_index,6.8522244485460675,1.2553798577525718e-5,NA,21.739226551636936,3.1233893504634453e-6,0.012646116519621975,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,cover_litter,-1.3459518260343593,1.8526738273131284e-4,NA,15.578284250936463,7.91585233728263e-5,7.98230773647575e-4,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,cover_herbs_sum,0.4547888177912313,0.3027781561134867,NA,1.1203841750237897,0.2898357461700438,1.0950274816926792e-4,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,cover_gravel_stones,4.4580435081707295,0.0011865583958147925,NA,11.544363441506997,6.79549630720704e-4,0.0032185451882219903,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,builtup_1000m,1.1360729318093112,0.0012687676363015976,NA,11.402424545606026,7.334831532176803e-4,0.006435402645904381,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,cropland_1000m,-0.17358519717213558,0.6634493898808721,NA,0.1990518600190301,0.6554872481435682,1.890169879084199e-4,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,grazing_intencity,0.48521435984582545,0.4130363656233289,NA,0.704404655126699,0.40130761247472835,4.811464244608082e-4,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,mowing,4.002489334730809,0.013133681634676745,NA,6.576072842679871,0.010335868423250408,0.003966728867702943,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,1e-4,non_native_percent,FALSE,abandonment,-0.2747904600899047,0.8119516183889584,NA,0.05939179907290156,0.8074598218187644,4.6624347483568096e-5,0.7886532874902217,0.9316765971297796,ok,TRUE,quasibinomial
+climate,0.01,non_native_percent,FALSE,pca1_clima,-1.3598067617319398,9.40334262440306e-6,-0.8071,19.628952698606586,9.403342624403078e-6,0.10667418547905305,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,pH,-0.18344428498725238,0.37449856599921033,-0.086,0.7886832927856562,0.3744985659992103,0.0029448979179600284,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,microrelief,0.03769634917582574,0.11202188685925529,0.0903,2.5254631286293066,0.1120218868592554,0.0010787910374787442,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,heat_index,-0.9250992148144128,0.2247905539060109,-0.0865,1.4735237077545802,0.22479055390601094,0.010456679626889044,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,cover_litter,0.6324289626549867,0.18133837453144674,0.0816,1.7866212334896612,0.18133837453144677,0.0016064958554611677,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,cover_herbs_sum,1.0296543086495369,0.01744897661525043,0.1496,5.650642622519084,0.017448976615250442,0.03756929806758905,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,cover_gravel_stones,0.19636318448923296,0.848202529809087,0.0155,0.0366386951814451,0.8482025298090868,0.005353492399037805,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,builtup_1000m,0.1425521377121988,0.3474794930624446,0.0569,0.8826404753328613,0.3474794930624447,0.006464531798208365,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,cropland_1000m,-0.24695673045226138,0.08298298586277886,-0.1334,3.0054879772576455,0.08298298586277891,0.017801647703752033,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,grazing_intencity,0.09073457593199924,0.7172017778930656,0.0325,0.13118961717447694,0.7172017778930657,0.004191730037476437,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,mowing,0.9314417951742028,0.09662144746531795,0.0882,2.7604435133433944,0.09662144746531881,0.007982750608627999,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,non_native_percent,FALSE,abandonment,0.31628153435838774,0.47200743311367577,0.0669,0.5172726106639872,0.4720074331136759,0.003957224985196868,0.3834598654244518,0.4391815801233764,ok,TRUE,binomial
+climate,0.01,invasive_percent,FALSE,pca1_clima,312205460400806.7,5.012352298040203e-77,NA,1187.0506098962394,3.977182703626897e-260,0.7294715637250749,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,pH,77146093599314.97,1.4334070845600916e-9,NA,43.600672046114,4.0270073162335504e-11,0.10808620092177613,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,microrelief,-1324201366199.1714,0.37128856083725525,NA,0.8377727262604051,0.3600345501028923,0.0017948290992329423,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,heat_index,61375615257963.195,0.09886181762057909,NA,2.8739799600270475,0.09002199924938005,0.0066067847444726945,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,cover_litter,257608684674226.47,9.011303416769549e-14,NA,70.9215046088043,3.7172402784448575e-17,0.15856798454191676,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,cover_herbs_sum,-112667674048618.89,8.336212438289346e-5,NA,17.08389222844953,3.576435721805888e-5,0.044374263389499645,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,cover_gravel_stones,-6311111039188127,3.2595113964042702e-143,NA,13612.327909194291,0,0.9794323464141751,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,builtup_1000m,206448748223042.2,4.618133846733093e-46,NA,466.84408057918273,1.557846752841095e-103,0.5844759115559226,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,cropland_1000m,340098357754112.6,1.859662764727681e-79,NA,1642.3351837879338,0,0.8322008246881712,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,grazing_intencity,27319559886468.363,0.04833921911569007,NA,4.119531009109092,0.04239082847670901,0.009459037239747597,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,mowing,-63633914095571.48,0.06206601852425147,NA,3.674440804251011,0.055252785039221375,0.0059969850512143754,1,1,ok,TRUE,quasibinomial
+climate,0.01,invasive_percent,FALSE,abandonment,436936621676811.94,5.855498576417369e-39,NA,307.9400251451961,6.137352967888507e-69,0.4243609040629972,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,pca1_clima,200605609014760.28,2.857500361020038e-67,NA,869.1343939556531,5.0322553774726925e-191,0.6637864372120318,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,pH,206499641204839.75,3.3345972703803033e-50,NA,554.0085313980286,1.6903528562423483e-122,0.6062716855713618,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,microrelief,16082547420328.154,5.8999685502123684e-30,NA,219.14944843014567,1.3864754193900313e-49,0.31988796992862334,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,heat_index,-214273402890243.34,1.758193580155116e-12,NA,62.12138040630905,3.2292624468762653e-15,0.1256877352016965,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,cover_litter,457726425990552.7,2.6686785232536422e-42,NA,397.08315068257167,2.376303036642543e-88,0.5134093375155785,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,cover_herbs_sum,166561162022658.7,4.347137371129557e-13,NA,66.21375171214714,4.045800252447734e-16,0.15252218862753905,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,cover_gravel_stones,1489994268117868,8.585326650834333e-74,NA,1345.5582435213726,1.4220226909149513e-294,0.8247817794438593,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,builtup_1000m,-39233053561587.34,3.262737393621159e-7,NA,29.899513170334057,4.550270683091665e-8,0.08264212323026947,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,cropland_1000m,217388134599603.66,2.352467950431385e-70,NA,1189.972555006225,9.216165456587181e-261,0.7822994379840705,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,grazing_intencity,-656420428929264.5,5.327212295793238e-120,NA,4217.713757883257,0,0.9072094509206751,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,mowing,-1204923635527546.5,1.7583209808362537e-99,NA,2336.391264005422,0,0.7932254604499716,1,1,ok,TRUE,quasibinomial
+climate,0.01,neophyte_percent,FALSE,abandonment,-1433217534114370,9.42374671452432e-132,NA,5875.786669204093,0,0.9336274290866531,1,1,ok,TRUE,quasibinomial
+climate,0.1,non_native_percent,FALSE,pca1_clima,-1.416127383949965,1.2409913228838947e-10,-0.84,41.399342312681604,1.2409913228838937e-10,0.23157860492165683,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,pH,-0.279219677714342,0.048569815997830716,-0.1313,3.890159317239664,0.04856981599783077,0.009573473565698366,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,microrelief,0.04262261955963015,0.007747771981370332,0.1021,7.090867846684241,0.007747771981370337,0.007188670058738242,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,heat_index,-0.11692472005933993,0.8206430660137899,-0.0109,0.05140103027481204,0.8206430660137899,2.3789931392204363e-6,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,cover_litter,0.6934143386327631,0.03742522757190239,0.0895,4.330955664514672,0.03742522757190234,0.020572819398014343,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,cover_herbs_sum,0.5472928274841583,0.07047563475117374,0.0798,3.2719074827835564,0.07047563475117363,0.01737257687095852,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,cover_gravel_stones,0.01706130943246859,0.9786789354165658,0.0013,7.142348540201955e-4,0.9786789354165659,0.0012509497124400984,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,builtup_1000m,0.23114763380778328,0.019735988240159125,0.0923,5.435097555920212,0.01973598824015915,0.008325783340430765,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,cropland_1000m,-0.265150198846491,0.005963768891971787,-0.1432,7.561217507535797,0.005963768891971794,0.009472746256484178,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,grazing_intencity,0.05528807786678866,0.7597888479868039,0.0199,0.09348800357794715,0.7597888479868039,0.001539940135293144,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,mowing,0.35897815609713046,0.44334458091701806,0.0339,0.5876105850371386,0.4433445809170182,2.4393769659325013e-4,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,non_native_percent,FALSE,abandonment,0.16755758728793846,0.5883269834763168,0.0355,0.2929645919699921,0.5883269834763167,2.0960087444336e-4,0.3889307064406438,0.42870484390762614,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,pca1_clima,-1.3599654144200268,0.019462015413872928,-0.6763,5.459517927350942,0.019462015413872904,0.021152535916421918,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,pH,-0.6836369833766521,0.031946076331491643,-0.2696,4.601388325615195,0.031946076331491643,0.0022458826651509467,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,microrelief,0.061524291787573966,0.11335301773881046,0.1236,2.5068400741744985,0.11335301773880985,8.913626708876239e-4,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,heat_index,1.0015844558909848,0.45443579218871344,0.0784,0.5595644334368876,0.45443579218871355,0.013460672034770488,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,cover_litter,1.3613172563112768,0.09919072777982199,0.1473,2.718507443264546,0.09919072777982225,0.00725601023908628,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,cover_herbs_sum,-1.3770674890846564,0.08443187158130887,-0.1683,2.9774562833125695,0.08443187158130863,0.00615961152336944,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,cover_gravel_stones,-5.727850202771989,0.23806354010035388,-0.3793,1.3920243060763877,0.23806354010035394,0.021910662188976315,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,builtup_1000m,0.7175199370330744,4.2753923807401634e-4,0.2401,12.407821935927238,4.2753923807401623e-4,0.013917032526417015,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,cropland_1000m,0.2082811036369965,0.4345868029004904,0.0943,0.6105340468702228,0.4345868029004903,0.003685318884148605,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,grazing_intencity,0.0891477966001193,0.8397273828685,0.0269,0.040901907976649186,0.8397273828684999,1.6572147679999106e-5,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,mowing,0.22191854499276586,0.8415652578893543,0.0176,0.0399567039953681,0.8415652578893543,9.433339988409058e-6,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,invasive_percent,FALSE,abandonment,-0.1596994738609352,0.8371572785431958,-0.0284,0.04224299301621373,0.8371572785431957,0.0025989438886061702,0.4937235045365238,0.6273813176529186,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,pca1_clima,-0.907157013251656,0,-0.5145,12998.463656746982,0,4.798516607956287e-8,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,pH,-0.806927515991206,0,-0.3629,10744.992052025664,0,1.1880818436969279e-4,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,microrelief,0.05398850996658923,8.049205767621643e-13,0.1237,51.27010676381243,8.049205767621643e-13,0.0014014325151701585,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,heat_index,0.7202998253212345,0.4921070853478327,0.0643,0.471915894699238,0.4921070853478327,5.020124086735183e-10,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,cover_litter,1.0789562247571416,0,0.1332,18355.447384781397,0,0.014983471967117386,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,cover_herbs_sum,-0.607691090411787,0,-0.0847,5821.158175926997,0,0.002751193332056179,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,cover_gravel_stones,-5.263405878496806,0.1689757914868262,-0.3976,1.8920064144967148,0.1689757914868262,0.020521030963304224,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,builtup_1000m,0.5865210978854019,0,0.2239,5429.101851379215,0,0.013517547004444314,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,cropland_1000m,0.3219998872748402,0,0.1663,1646.236031740765,0,0.010548094804388605,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,grazing_intencity,-0.6313883921572427,0,-0.2169,6290.710961071991,0,0.0040969790261629205,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,mowing,0.8743917088664547,0,0.079,11257.20574366138,0,3.6009879611353983e-4,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,0.1,neophyte_percent,FALSE,abandonment,-0.6710606010844367,0,-0.136,6631.33382283714,0,0.005546979785667177,0.44915918321346704,0.47261994583506833,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,pca1_clima,-1.4269800457982003,6.512666629519575e-12,-0.8215,47.168868803570014,6.5126666295195776e-12,0.2687931080216985,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,pH,-0.2767331288851269,0.04100553353434959,-0.1262,4.175786198292642,0.0410055335343497,0.009517003542592582,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,microrelief,0.027338765856760965,0.08260731094104504,0.0635,3.0128425356902238,0.0826073109410451,0.0012420248018414823,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,heat_index,0.32715894246576693,0.48572454305387547,0.0296,0.485983325618912,0.4857245430538754,0.004269055549911272,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,cover_litter,0.2615131600521489,0.41186210574010207,0.0327,0.6734190457595489,0.41186210574010207,0.005378160812508913,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,cover_herbs_sum,0.6259239556562919,0.0288765984607579,0.089,4.774955157959299,0.028876598460757838,0.013370103883901965,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,cover_gravel_stones,-0.24538609047435056,0.6689049647908379,-0.0188,0.18288568857784138,0.6689049647908379,9.074438899859506e-4,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,builtup_1000m,0.16796536956546337,0.09407461447300733,0.0651,2.803230032506179,0.09407461447300795,0.005849833243154985,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,cropland_1000m,-0.19647173612586066,0.03956482351877428,-0.1036,4.236449597192262,0.03956482351877432,7.756312834429641e-4,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,grazing_intencity,-0.018531752287327924,0.912386287091712,-0.0065,0.012106405473784004,0.912386287091712,2.128380275362788e-4,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,mowing,0.614483155801193,0.18658452870971026,0.0563,1.7443822069697348,0.18658452870971037,0.003689919729254533,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,non_native_percent,FALSE,abandonment,0.0786661334439741,0.7972875047309764,0.0162,0.0659766240050334,0.7972875047309765,6.758517300771769e-5,0.38500915037434,0.4708978606700568,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,pca1_clima,-1.3860492504432185,1.136615886176935e-4,-0.7811,14.895037546713029,1.1366158861769356e-4,0.079760219559858,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,pH,-0.6814251813886816,4.962949326185443e-4,-0.3043,12.129535005901307,4.962949326185436e-4,0.005412665010693359,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,microrelief,0.0427694855754091,0.09015102681990274,0.0973,2.87167452085159,0.09015102681990265,4.230499523292636e-4,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,heat_index,0.9121761311717187,0.2714134845781758,0.0808,1.2095892528150975,0.2714134845781758,3.532186843910332e-4,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,cover_litter,0.6208832202738631,0.25920757280719325,0.0761,1.2729843009078343,0.25920757280719325,2.6423991762593783e-5,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,cover_herbs_sum,-0.485796137575504,0.3204368561274557,-0.0676,0.9871625751371356,0.32043685612745565,0.008235837434308049,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,cover_gravel_stones,-2.3178999921393606,0.1926563614917193,-0.1738,1.6971862822935067,0.19265636149171927,0.002977695735586032,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,builtup_1000m,0.6537720259815888,8.660865223120324e-8,0.2478,28.652353843855806,8.660865223120357e-8,0.014773752323974671,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,cropland_1000m,0.04279405517882954,0.7940714224167036,0.0221,0.06813527306727737,0.7940714224167037,0.002219669437542225,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,grazing_intencity,0.14538291993511224,0.6060415944034484,0.0496,0.2659795064221493,0.6060415944034484,1.0334697840455462e-4,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,mowing,1.1163391529239974,0.06732765645154944,0.1002,3.346998935771321,0.0673276564515495,0.008791843088608106,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,invasive_percent,FALSE,abandonment,0.35883269490208963,0.4634376395244031,0.0723,0.5375793925329926,0.46343763952440303,3.0016599617391928e-5,0.4671413174281001,0.4671413174281001,ok,TRUE,binomial
+climate,1,neophyte_percent,FALSE,pca1_clima,-0.010658319501798644,0.9741577384696289,NA,0.0010959288087842175,0.9735910026486568,4.160133432347264e-6,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,pH,3.26488821198165e-5,0.9998013755076172,NA,6.474944867620537e-8,0.999796970991266,2.9001281268572807e-11,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,microrelief,6.336117253360297e-4,0.9683053169308766,NA,0.001649583008038859,0.9676027788104946,5.404833678651489e-7,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,heat_index,-0.32558864938519927,0.7537886149142854,NA,0.10282094387369428,0.7484702987457864,2.4502656446185255e-4,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,cover_litter,-0.4727664726436906,0.2822808424829957,NA,1.212725327146217,0.2707930487272644,8.34162233523186e-4,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,cover_herbs_sum,-0.6256990099956581,0.07096764309463839,NA,3.4451376323470133,0.06343813787102023,0.0018988508744463906,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,cover_gravel_stones,-4.317903758783227,0.06764466984034073,NA,3.529329090816389,0.06029218032138673,0.028393663920688445,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,builtup_1000m,0.6809151966755964,0.013144085932060042,NA,6.56301034257843,0.010412008282346105,0.019683611634194173,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,cropland_1000m,0.3813349232698279,0.20591120258280066,NA,1.6809076425731326,0.19480389182108693,0.008243887493220935,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,grazing_intencity,-0.38845441802452,0.3895490184652076,NA,0.7748877477118826,0.378709222756054,0.002521819019188472,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,mowing,2.259044297250774,0.04114092207615983,NA,4.409483174961771,0.035739667519529464,0.009857863833173417,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,1,neophyte_percent,FALSE,abandonment,-0.5518888392893969,0.5078105515106266,NA,0.45862539253407025,0.49826709940402075,0.0015490218577052706,0.13708071025768084,0.6933564373449135,ok,TRUE,quasibinomial
+climate,10,non_native_percent,FALSE,pca1_clima,-1.2224281373618102,1.1572737660180807e-13,-0.7237,55.07991657805394,1.1572737660180744e-13,0.2927302763295176,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,pH,-0.183017294792123,0.0939912514369014,-0.0859,2.8046517584713673,0.09399125143690115,0.0045236704746975925,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,microrelief,0.0295536380423427,0.023679676419816748,0.0706,5.117942519358637,0.02367967641981676,0.004214168880498267,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,heat_index,-0.1679633860310617,0.667900002717824,-0.0156,0.18406837974757442,0.6679000027178241,2.4375144122230913e-4,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,cover_litter,0.12435248826274628,0.6471130886689891,0.016,0.20955923744839172,0.647113088668989,0.0024831234049431474,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,cover_herbs_sum,0.3217910239221681,0.165331012013757,0.047,1.924776907718048,0.16533101201375705,0.01075220431013183,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,cover_gravel_stones,0.1291082732495031,0.7549861562193554,0.0102,0.09738864506147864,0.7549861562193553,0.00245163739709328,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,builtup_1000m,0.06813752237804671,0.4501000715366613,0.0271,0.5703998471159698,0.4501000715366613,0.0010266170890308665,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,cropland_1000m,-0.0812892113040661,0.3337582078641314,-0.0441,0.9342607729161093,0.3337582078641314,2.5594469306103784e-4,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,grazing_intencity,0.24714727811465143,0.07877502635294135,0.0886,3.0899954925589816,0.07877502635294183,0.006940586390583565,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,mowing,0.6727764661215911,0.10735141454183766,0.0634,2.592785164533319,0.10735141454183732,0.0076214065875645914,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,non_native_percent,FALSE,abandonment,0.2698559265576531,0.315266212082012,0.0571,1.0084843655661433,0.31526621208201205,0.001920888949917914,0.33378416133882527,0.4375332837240535,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,pca1_clima,-1.002596758482743,4.326986557437054e-5,-0.65,16.722279330716155,4.3269865574370624e-5,0.14737886038253492,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,pH,-0.4966162748492594,0.0010821423916082516,-0.2551,10.681466496000205,0.0010821423916082503,0.025925423940551987,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,microrelief,0.026608832276241008,0.14616002732886194,0.0696,2.1118761550242495,0.14616002732886224,0.0026088425025626322,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,heat_index,0.09858768347836948,0.8613351168006456,0.01,0.03051130941040937,0.8613351168006457,1.2194783786411955e-5,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,cover_litter,0.06635631178273878,0.876210848026425,0.0094,0.024265664516526127,0.876210848026425,3.8516850914502277e-4,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,cover_herbs_sum,-0.43570082633767865,0.22807560962998116,-0.0697,1.4528224270906982,0.22807560962998116,0.0013155030392932236,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,cover_gravel_stones,-0.5861356969020036,0.4621419668889185,-0.0506,0.5407019361266634,0.4621419668889186,8.553300917846751e-5,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,builtup_1000m,0.36398942471790696,2.8798329192339096e-4,0.1587,13.146978313886056,2.8798329192339156e-4,0.020314330888929498,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,cropland_1000m,0.04302760346585224,0.7189060290679553,0.0255,0.12954330259305785,0.7189060290679552,0.006639492020768834,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,grazing_intencity,0.1825403121275907,0.3218607594500954,0.0716,0.9813702015395018,0.32186075945009546,0.001492348521940724,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,mowing,0.06189135998422977,0.9186590092958545,0.0064,0.010429116340736158,0.9186590092958545,2.417494650490036e-4,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,invasive_percent,FALSE,abandonment,0.0923959406013562,0.7921482750003803,0.0214,0.06944384042820866,0.7921482750003803,2.2294231791302786e-4,0.27021820744850855,0.32678778764486893,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,pca1_clima,-0.41118609963454367,0.04360188015705498,-0.2879,4.071912541454047,0.04360188015705489,0.006691217435948656,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,pH,-0.6392693632576013,1.6402464556811012e-4,-0.3546,14.203963648525358,1.6402464556811017e-4,0.01737456191738203,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,microrelief,0.029276812187706613,0.13144051023722303,0.0827,2.2754082401634936,0.1314405102372237,0.0016761049341663017,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,heat_index,0.21939389170880633,0.7244141763671434,0.0241,0.12430245937011261,0.7244141763671434,7.050451489859731e-5,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,cover_litter,0.061538294921616936,0.9036127519047403,0.0094,0.014664927843482868,0.9036127519047404,0.00244580266307192,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,cover_herbs_sum,-0.15047814696755465,0.7234645738808061,-0.026,0.12519728860818857,0.7234645738808061,1.2374026057597285e-5,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,cover_gravel_stones,0.42107038546933995,0.6005071133465445,0.0392,0.2742317317988648,0.6005071133465444,0.0025206408655438057,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,builtup_1000m,0.3816357580672536,0.0031173077655813155,0.1797,8.737504934162025,0.0031173077655813164,0.021393835366011766,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,cropland_1000m,0.28590216051221184,0.06521977463087518,0.1833,3.3994092045427498,0.06521977463087508,0.03489709568078778,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,grazing_intencity,-0.005569683124353295,0.9788521499950938,-0.0024,7.026742481261707e-4,0.978852149995094,2.8681056176245756e-5,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,mowing,0.7474292711716004,0.16539665349624857,0.0833,1.9241794324538817,0.16539665349624863,0.008893497971098266,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,10,neophyte_percent,FALSE,abandonment,-0.24268987782340748,0.5538359404734265,-0.0607,0.35048990005871106,0.5538359404734265,8.973269385136096e-4,0.12797552796375414,0.25514738223136824,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,pca1_clima,-1.1736952235894695,1.395597087501957e-14,-0.6924,59.24011393487047,1.395597087501945e-14,0.2582111905137485,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,pH,-0.06554136580861653,0.43070224961241005,-0.0301,0.6209290634551119,0.43070224961241,5.42495298805357e-7,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,microrelief,0.03665224330448523,9.966425175483795e-5,0.0795,15.143054848626672,9.966425175483788e-5,0.0090029515245815,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,heat_index,-0.2710435824129219,0.2625953903695391,-0.0241,1.2550223960551303,0.2625953903695392,8.774238024630233e-6,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,cover_litter,0.5201704427885147,0.012109495419869089,0.0614,6.2947667041992,0.012109495419869038,0.015462680698222216,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,cover_herbs_sum,0.5808288587104988,9.254081526528227e-4,0.078,10.971159984898742,9.254081526528226e-4,0.010019180159303828,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,cover_gravel_stones,0.39661196087732375,0.24716125550982743,0.0289,1.3392784476011272,0.24716125550982748,0.001816375655585279,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,builtup_1000m,0.05696327886084622,0.29968783038666397,0.0226,1.0755827520453622,0.29968783038666386,0.002883923710971987,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,cropland_1000m,-0.03770289577276751,0.5291717347634437,-0.0204,0.39598183541222687,0.5291717347634437,0.0036778549086474576,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,grazing_intencity,0.27745165388537396,2.9977687330230495e-4,0.0991,13.071787774019956,2.9977687330230495e-4,0.0072919969430428775,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,mowing,0.4098862944202238,0.07598725078221888,0.0385,3.1487049003635357,0.07598725078221892,0.0018204955014212549,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,non_native_percent,FALSE,abandonment,0.31127512760946896,0.040433616689695286,0.0656,4.199595762678432,0.040433616689695126,0.0028914265205043396,0.41693551651476823,0.4250906640044075,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,pca1_clima,-1.4310708523403322,3.7210445096828843e-4,-0.7914,12.667310283528797,3.721044509682893e-4,0.18625454309162323,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,pH,-0.43027632334738725,0.0150041381991152,-0.1855,5.915981907807079,0.015004138199115169,0.013404876446811872,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,microrelief,0.03279124063184763,0.09780228492232797,0.0667,2.741020596474186,0.09780228492232784,3.840768146287976e-6,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,heat_index,0.09100398668082128,0.8582566596805937,0.0076,0.03189574695545672,0.8582566596805937,9.602871062217175e-6,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,cover_litter,0.5293275083480896,0.24959826674414787,0.0586,1.3255508746133833,0.24959826674414787,0.0017079687855604323,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,cover_herbs_sum,-0.36617464298472197,0.3606093001140397,-0.0461,0.8357702156220155,0.3606093001140397,0.009227819100928599,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,cover_gravel_stones,0.2016475626391896,0.7901907459179718,0.0138,0.07078948129719295,0.7901907459179718,3.5356571783552764e-4,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,builtup_1000m,0.22136646699669474,0.03750605832296259,0.0824,4.327283495911494,0.03750605832296254,0.003606287655310465,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,cropland_1000m,0.13344212838175037,0.34427680254055043,0.0676,0.8944405076133015,0.3442768025405506,0.01375120248988007,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,grazing_intencity,0.3147707292636817,0.05731394983381077,0.1054,3.6134545392190955,0.05731394983381081,0.0012779296825866974,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,mowing,0.1352216017738478,0.8105981547063162,0.0119,0.057434252217087596,0.8105981547063162,3.032545961550616e-4,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,invasive_percent,FALSE,abandonment,0.16571783674808072,0.6218637213057581,0.0328,0.24325679028885874,0.621863721305758,2.1172373568305935e-4,0.48134916334220085,0.5231663325023252,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,pca1_clima,-0.6182589762533227,0.011395755659490385,-0.4336,6.402534627791114,0.01139575565949037,0.07998255865798425,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,pH,-0.46268920866884483,0.009409523530367857,-0.253,6.743397923140511,0.009409523530367845,0.023131303870409552,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,microrelief,0.03716658261578132,0.03283295697330494,0.0959,4.554468286212195,0.032832956973304975,2.770485052468631e-4,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,heat_index,0.024235122983501823,0.9606938626083976,0.0026,0.002428802274768868,0.9606938626083976,4.867977496833586e-4,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,cover_litter,0.4700955990754036,0.34445955721611493,0.066,0.8937631723936552,0.3444595572161149,4.0653769151941974e-4,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,cover_herbs_sum,-0.515456714958222,0.24890119750010353,-0.0823,1.3294606155264406,0.24890119750010364,0.02196664885668318,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,cover_gravel_stones,0.9335376416283274,0.19818800788191357,0.0808,1.655677081350956,0.19818800788191354,0.006690691523291375,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,builtup_1000m,0.2502095547264652,0.02169055914242709,0.1181,5.270437617078089,0.02169055914242711,0.0062448707053616515,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,cropland_1000m,0.17673462650512728,0.25904616679687664,0.1135,1.2738473062178166,0.25904616679687664,0.020276722413849393,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,grazing_intencity,0.2342267092549116,0.15194638084774856,0.0995,2.052601314606769,0.15194638084774753,9.390738366304487e-4,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,mowing,0.4311102024395069,0.3790772093825639,0.0482,0.7736923602299783,0.37907720938256384,0.006190764578219975,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+climate,100,neophyte_percent,FALSE,abandonment,-0.1671260550504519,0.6350955354940504,-0.0419,0.22521396617393366,0.6350955354940505,6.977478392370487e-5,0.15583525311801952,0.20200065677115694,ok,TRUE,binomial
+disturbance,1e-4,non_native_percent,FALSE,roads,0.2910665951230707,0.01484676424074837,NA,6.120365957180526,0.013363313278484622,0.007510670159254874,0.4019112090625609,0.7733786102912082,ok,TRUE,quasibinomial
+disturbance,1e-4,non_native_percent,FALSE,Disturbance.Frequency,4.051756059108725,2.0017395820426695e-12,NA,59.00209824811932,1.5750392294619178e-14,0.04313788387663841,0.4019112090625609,0.7733786102912082,ok,TRUE,quasibinomial
+disturbance,1e-4,non_native_percent,FALSE,Disturbance.Severity,27.562712860272953,5.070868454105181e-26,NA,164.1790771165923,1.3824244602377452e-37,0.05275909147039913,0.4019112090625609,0.7733786102912082,ok,TRUE,quasibinomial
+disturbance,0.001,non_native_percent,FALSE,roads,0.06777004579225046,0.44181287176823747,NA,0.60075109249979,0.43829159368717685,9.716516364524842e-4,0.3569398830894876,0.6962178802850756,ok,TRUE,quasibinomial
+disturbance,0.001,non_native_percent,FALSE,Disturbance.Frequency,1.9445448584220355,1.6630525656183198e-5,NA,19.87017804743963,8.288323038121171e-6,0.01996000274292881,0.3569398830894876,0.6962178802850756,ok,TRUE,quasibinomial
+disturbance,0.001,non_native_percent,FALSE,Disturbance.Severity,28.981061337928125,1.99913706338759e-25,NA,154.28089414443255,2.0106790495702997e-35,0.1191141393064308,0.3569398830894876,0.6962178802850756,ok,TRUE,quasibinomial
+disturbance,0.001,invasive_percent,FALSE,roads,28687599509089.023,1.8641776047187917e-9,NA,40.39601838655199,2.073632573513419e-10,0.0775097278581991,0.9999999999999994,1,ok,TRUE,quasibinomial
+disturbance,0.001,invasive_percent,FALSE,Disturbance.Frequency,779471067396784.1,1.8885645739119574e-56,NA,581.8566861834632,1.4798401247997813e-128,0.6120601138544237,0.9999999999999994,1,ok,TRUE,quasibinomial
+disturbance,0.001,invasive_percent,FALSE,Disturbance.Severity,14479145519925078,4.431590312734895e-131,NA,5512.092701407885,0,0.9421039328631092,0.9999999999999994,1,ok,TRUE,quasibinomial
+disturbance,0.001,neophyte_percent,FALSE,roads,268772523776802.06,5.675881010323573e-253,NA,91285.24977893248,0,0.9947608333427369,1,1,ok,TRUE,quasibinomial
+disturbance,0.001,neophyte_percent,FALSE,Disturbance.Frequency,-848842810174355.1,1.660537961734023e-173,NA,17764.431184319074,0,0.9796618578670437,1,1,ok,TRUE,quasibinomial
+disturbance,0.001,neophyte_percent,FALSE,Disturbance.Severity,-8903496440154130,4.4605862541355605e-214,NA,53657.76174417677,0,0.9937266266690841,1,1,ok,TRUE,quasibinomial
+disturbance,0.01,non_native_percent,FALSE,roads,0.02811351785787373,0.48349292939284527,0.0259,0.49097448810978,0.4834929293928453,0.0012240080208246397,0.47351776635101767,0.47351776635101767,ok,TRUE,binomial
+disturbance,0.01,non_native_percent,FALSE,Disturbance.Frequency,1.7120224595593072,1.8914603539339517e-4,0.2335,13.935950367989589,1.8914603539339506e-4,0.04525265032742907,0.47351776635101767,0.47351776635101767,ok,TRUE,binomial
+disturbance,0.01,non_native_percent,FALSE,Disturbance.Severity,27.112430478908454,4.905950536062709e-22,0.6558,93.12637812235594,4.905950536062669e-22,0.27491437955384085,0.47351776635101767,0.47351776635101767,ok,TRUE,binomial
+disturbance,0.01,invasive_percent,FALSE,roads,-11180655313665.277,0.011617966675219239,NA,6.564301354645297,0.010404457573594749,0.012379067226481468,0.999999999999989,1,ok,TRUE,quasibinomial
+disturbance,0.01,invasive_percent,FALSE,Disturbance.Frequency,359966564794660.9,9.8780460122592e-20,NA,105.48829961351196,9.545990583553981e-25,0.22226384370896762,0.999999999999989,1,ok,TRUE,quasibinomial
+disturbance,0.01,invasive_percent,FALSE,Disturbance.Severity,2979421449925511,1.1145909955931006e-30,NA,196.1516710650597,1.4443196988390042e-44,0.3791353394539298,0.999999999999989,1,ok,TRUE,quasibinomial
+disturbance,0.01,neophyte_percent,FALSE,roads,-80266369268067.06,1.3940018033787737e-88,NA,1396.9235445888085,9.79376944169701e-306,0.7273243461273539,1,1,ok,TRUE,quasibinomial
+disturbance,0.01,neophyte_percent,FALSE,Disturbance.Frequency,94385208124944.25,1.6369700738911885e-7,NA,29.946029461826463,4.442406443752412e-8,0.0750402578537024,1,1,ok,TRUE,quasibinomial
+disturbance,0.01,neophyte_percent,FALSE,Disturbance.Severity,3135378362917885,1.0227924403411521e-72,NA,896.9318647902963,4.55824554534833e-197,0.7363089846660276,1,1,ok,TRUE,quasibinomial
+disturbance,0.1,non_native_percent,FALSE,roads,0.05840890416351618,0.02989481297000799,0.0568,4.71533081980028,0.029894812970007973,0.006012871095023878,0.4131293286364684,0.4131293286364684,ok,TRUE,binomial
+disturbance,0.1,non_native_percent,FALSE,Disturbance.Frequency,1.728689147667084,5.48187013974129e-7,0.2357,25.08637944639551,5.481870139741293e-7,0.051834549738198156,0.4131293286364684,0.4131293286364684,ok,TRUE,binomial
+disturbance,0.1,non_native_percent,FALSE,Disturbance.Severity,26.216574078012354,1.3627416947491215e-34,0.586,150.47831036188774,1.3627416947491329e-34,0.44557518158493653,0.4131293286364684,0.4131293286364684,ok,TRUE,binomial
+disturbance,0.1,invasive_percent,FALSE,roads,0.2580270485498496,0.014839598927136486,NA,6.109922635779681,0.013442501271739762,0.016217919520064822,0.18816904654312522,0.729882736027585,ok,TRUE,quasibinomial
+disturbance,0.1,invasive_percent,FALSE,Disturbance.Frequency,-0.5651665979627661,0.3606613671806891,NA,0.8485921719081687,0.35695091078691826,0.0015520588574792547,0.18816904654312522,0.729882736027585,ok,TRUE,quasibinomial
+disturbance,0.1,invasive_percent,FALSE,Disturbance.Severity,25.858790169200404,2.0870920190639397e-11,NA,51.38746443861383,7.582114555627102e-13,0.08084000925378018,0.18816904654312522,0.729882736027585,ok,TRUE,quasibinomial
+disturbance,0.1,neophyte_percent,FALSE,roads,0.12766445854068856,0.2706092937182908,NA,1.2337476338973747,0.26667944860336307,0.0023128592088222035,0.3564836346333525,0.8157375342284542,ok,TRUE,quasibinomial
+disturbance,0.1,neophyte_percent,FALSE,Disturbance.Frequency,-0.05913711736505778,0.9202120299930375,NA,0.010167085774749786,0.9196838493474948,9.776758479783545e-6,0.3564836346333525,0.8157375342284542,ok,TRUE,quasibinomial
+disturbance,0.1,neophyte_percent,FALSE,Disturbance.Severity,47.14738909442513,4.841185555386552e-22,NA,122.23963432707205,2.0457463602833995e-28,0.14379986218545018,0.3564836346333525,0.8157375342284542,ok,TRUE,quasibinomial
+disturbance,1,non_native_percent,FALSE,roads,0.06366519874272278,0.013430108716142019,0.0622,6.111552785331023,0.013430108716142013,0.013120422100672852,0.399523119842981,0.4163938320836408,ok,TRUE,binomial
+disturbance,1,non_native_percent,FALSE,Disturbance.Frequency,1.5178575468510207,8.025155973199661e-7,0.2016,24.351803879875277,8.025155973199668e-7,0.07850682447250541,0.399523119842981,0.4163938320836408,ok,TRUE,binomial
+disturbance,1,non_native_percent,FALSE,Disturbance.Severity,27.811504349045705,2.1028778453722583e-39,0.5882,172.5016037142052,2.1028778453722456e-39,0.5282132299724592,0.399523119842981,0.4163938320836408,ok,TRUE,binomial
+disturbance,1,invasive_percent,FALSE,roads,0.17346190796561245,0.0679807333642361,NA,3.4052698013462757,0.06498848575941338,0.010715912482230415,0.1792823941520189,0.6978477481614468,ok,TRUE,quasibinomial
+disturbance,1,invasive_percent,FALSE,Disturbance.Frequency,0.36182899195308393,0.6010305549105648,NA,0.2772709609628688,0.5984955299492848,8.715707904950519e-4,0.1792823941520189,0.6978477481614468,ok,TRUE,quasibinomial
+disturbance,1,invasive_percent,FALSE,Disturbance.Severity,26.154848593217753,3.167898515817301e-13,NA,62.14417454717126,3.1920991584589915e-15,0.10440808963398311,0.1792823941520189,0.6978477481614468,ok,TRUE,quasibinomial
+disturbance,1,neophyte_percent,FALSE,roads,0.07205891799940287,0.48450602174478774,NA,0.4958258461603935,0.4813399735950632,0.0013973369628084893,0.22972078001245747,0.7511396374304867,ok,TRUE,quasibinomial
+disturbance,1,neophyte_percent,FALSE,Disturbance.Frequency,-1.11959026291503,0.08156161225069901,NA,3.0985816751559914,0.07836053621350686,0.006213254019194665,0.22972078001245747,0.7511396374304867,ok,TRUE,quasibinomial
+disturbance,1,neophyte_percent,FALSE,Disturbance.Severity,34.20023592543411,7.104102808831738e-15,NA,72.37290038967153,1.7814352600522936e-17,0.12984037387932063,0.22972078001245747,0.7511396374304867,ok,TRUE,quasibinomial
+disturbance,10,non_native_percent,FALSE,roads,0.04362510951898685,0.03434320267417169,0.0447,4.4775358602529,0.034343202674171736,0.006861080968526,0.3438747958053618,0.35856634239791113,ok,TRUE,binomial
+disturbance,10,non_native_percent,FALSE,Disturbance.Frequency,1.6828985407814983,1.0202143552401167e-12,0.2296,50.80484747174434,1.0202143552401109e-12,0.07011440946917176,0.3438747958053618,0.35856634239791113,ok,TRUE,binomial
+disturbance,10,non_native_percent,FALSE,Disturbance.Severity,24.73878889303989,1.5019733562414157e-51,0.511,228.15981905648212,1.5019733562414302e-51,0.4419827243725784,0.3438747958053618,0.35856634239791113,ok,TRUE,binomial
+disturbance,10,invasive_percent,FALSE,roads,0.13249575737729286,0.006318590170148814,0.1499,7.45712330924307,0.006318590170148824,0.029040201709387706,0.13749276019798598,0.29659144896932044,ok,TRUE,binomial
+disturbance,10,invasive_percent,FALSE,Disturbance.Frequency,1.239453121115676,0.015389820972099854,0.1868,5.871284226393789,0.01538982097209987,1.668010746264979e-4,0.13749276019798598,0.29659144896932044,ok,TRUE,binomial
+disturbance,10,invasive_percent,FALSE,Disturbance.Severity,11.98559452746945,4.5127967353240597e-4,0.2736,12.306929778347236,4.5127967353240597e-4,0.17476023279076006,0.13749276019798598,0.29659144896932044,ok,TRUE,binomial
+disturbance,10,neophyte_percent,FALSE,roads,0.07562745057589514,0.1484402748462439,0.09,2.0882062068503524,0.1484402748462433,0.015091556867549849,0.043469801567585495,0.253945355867346,ok,TRUE,binomial
+disturbance,10,neophyte_percent,FALSE,Disturbance.Frequency,-0.703830407337602,0.19144410374887502,-0.1117,1.7064692889597401,0.19144410374887497,0.04722670159953371,0.043469801567585495,0.253945355867346,ok,TRUE,binomial
+disturbance,10,neophyte_percent,FALSE,Disturbance.Severity,7.914295822436157,0.03962325127590259,0.1901,4.233944599783248,0.03962325127590251,0.16124625054351838,0.043469801567585495,0.253945355867346,ok,TRUE,binomial
+disturbance,100,non_native_percent,FALSE,roads,0.032926194596198395,0.07879394317828001,0.0353,3.0896047911682962,0.07879394317828017,0.008544268514155417,0.29292096907847315,0.3012850450680374,ok,TRUE,binomial
+disturbance,100,non_native_percent,FALSE,Disturbance.Frequency,1.7717512472954855,1.214755453651265e-9,0.2509,36.945535196090226,1.2147554536512654e-9,0.09551413773083252,0.29292096907847315,0.3012850450680374,ok,TRUE,binomial
+disturbance,100,non_native_percent,FALSE,Disturbance.Severity,22.087678823702632,1.7814675303413802e-36,0.4228,159.0977708889897,1.7814675303413832e-36,0.39720522857055884,0.29292096907847315,0.3012850450680374,ok,TRUE,binomial
+disturbance,100,invasive_percent,FALSE,roads,0.08142021550565313,0.041851344883334383,0.0957,4.141205912018429,0.04185134488333433,0.011128119284922777,0.1103810134177273,0.19311742830474432,ok,TRUE,binomial
+disturbance,100,invasive_percent,FALSE,Disturbance.Frequency,1.2896316253678608,0.0343317514149342,0.2006,4.478105792161226,0.0343317514149342,0.0042328015941459326,0.1103810134177273,0.19311742830474432,ok,TRUE,binomial
+disturbance,100,invasive_percent,FALSE,Disturbance.Severity,9.61203617287949,0.005165971916362639,0.2021,7.820401467799118,0.005165971916362638,0.026488777882997805,0.1103810134177273,0.19311742830474432,ok,TRUE,binomial
+disturbance,100,neophyte_percent,FALSE,roads,0.09679380576866903,0.01576407332833088,0.1193,5.829000966239091,0.0157640733283309,0.01819200418656947,0.045095360536948154,0.10311782062211053,ok,TRUE,binomial
+disturbance,100,neophyte_percent,FALSE,Disturbance.Frequency,0.7204850675619757,0.23627610526601023,0.1175,1.4026755759839764,0.23627610526601023,6.900663468830575e-4,0.045095360536948154,0.10311782062211053,ok,TRUE,binomial
+disturbance,100,neophyte_percent,FALSE,Disturbance.Severity,4.269557558788879,0.2364120510893952,0.0941,1.4018620522388128,0.23641205108939525,0.0025234247919409167,0.045095360536948154,0.10311782062211053,ok,TRUE,binomial
+native,1e-4,non_native_percent,TRUE,native,-0.336944969239861,0.011001012238198054,NA,100.57892798070934,1.1377171661535326e-23,0.8632100071822103,0.11178884147625187,0.11178884147748666,ok,TRUE,quasibinomial
+native,0.001,non_native_percent,TRUE,native,-0.2758357261990309,7.036464393831806e-4,NA,58.2728684798215,2.2816920237898276e-14,0.6617919410538164,0.09110729664641606,0.1094430416552495,ok,TRUE,quasibinomial
+native,0.001,invasive_percent,TRUE,native,-0.5430476254634995,NA,NA,328.5376488097558,2.0012046841241163e-73,0.9904212554472871,0.08226492007355189,0.08226492007473518,ok,TRUE,quasibinomial
+native,0.01,non_native_percent,TRUE,native,-0.14682376275330133,4.9318952490488964e-8,NA,94.51342306142804,2.434360246935056e-22,0.5991163679780875,0.07539606437931962,0.09740916362896616,ok,TRUE,quasibinomial
+native,0.01,invasive_percent,TRUE,native,-0.24230081007867402,0.014326777447590755,NA,83.48141357908644,6.431785357193732e-20,0.9086549181667507,0.09192715792228223,0.09192715792417652,ok,TRUE,quasibinomial
+native,0.01,neophyte_percent,TRUE,native,-0.11523974879236502,5.180926931165706e-4,NA,87.71421989067939,7.562871861067712e-21,0.9359755647890081,0.1420219842682941,0.15173685040090146,ok,TRUE,quasibinomial
+native,0.1,non_native_percent,TRUE,native,-0.07539351967648442,1.1869848133112726e-7,-0.2319,28.042201436915697,1.1869848133112717e-7,0.45842729657198156,0.05378961384246308,0.05378961384246308,ok,TRUE,binomial
+native,0.1,invasive_percent,TRUE,native,-0.09927608757388463,1.1177590574058741e-7,NA,239.14304795250368,6.047288464008403e-54,0.8892041013297974,0.04696808271128997,0.050057115960117346,ok,TRUE,quasibinomial
+native,0.1,neophyte_percent,TRUE,native,-0.06365284339862044,6.690368385350546e-5,NA,158.01076764770923,3.078138516865042e-36,0.8616149641517437,0.07199105217279993,0.07199105217579684,ok,TRUE,quasibinomial
+native,1,non_native_percent,TRUE,native,-0.06274152605471162,3.280013773862369e-14,-0.2938,57.558941914947745,3.2800137738623577e-14,0.4815341451814735,0.0850445804948081,0.10212314884598656,ok,TRUE,binomial
+native,1,invasive_percent,TRUE,native,-0.06254651174094636,4.946097057593682e-8,NA,104.0831039211553,1.940056132288985e-24,0.7164791033239984,0.054603417031893565,0.054603417252223944,ok,TRUE,quasibinomial
+native,1,neophyte_percent,TRUE,native,-0.04717706288036142,2.99480400569292e-8,NA,141.49057048753394,1.256817790803754e-32,0.7886914402698039,0.08932244277938813,0.09176794586224357,ok,TRUE,quasibinomial
+native,10,non_native_percent,TRUE,native,-0.04452203796451887,2.0030856783322454e-20,-0.3014,85.78789539001592,2.0030856783322604e-20,0.3824959484188218,0.08859039801280968,0.1375331385540649,ok,TRUE,binomial
+native,10,invasive_percent,TRUE,native,-0.03616904505170177,8.782657490208007e-11,NA,102.79019758745012,3.72588540593346e-24,0.5643010939037894,0.04885493381106467,0.06379469174347563,ok,TRUE,quasibinomial
+native,10,neophyte_percent,TRUE,native,-0.03283534077837337,5.1597661892959064e-11,NA,128.24683917321795,9.91166579986032e-30,0.6795463392077694,0.07253561109686994,0.09288202822969849,ok,TRUE,quasibinomial
+native,100,non_native_percent,TRUE,native,-0.026479094694805007,2.530266713958867e-16,-0.2619,67.138972569384,2.530266713958884e-16,0.34314308490784623,0.07002799685897931,0.09744616355423731,ok,TRUE,binomial
+native,100,invasive_percent,TRUE,native,-0.022854141711432657,1.6724437741423498e-7,NA,34.09303316598508,5.253903606136367e-9,0.5499468882182986,0.0396359639928619,0.047127093699324385,ok,TRUE,quasibinomial
+native,100,neophyte_percent,TRUE,native,-0.022201757655039463,1.7560049146886185e-4,-0.2307,14.075671281465336,1.7560049146886212e-4,0.6309416894579877,0.05309726950748268,0.05419199597471688,ok,TRUE,binomial
+native,1e-4,non_native_percent,FALSE,native,-0.2445778613266581,2.7661418462470685e-8,NA,34.33379881465887,4.64248916322359e-9,0.008663199117605136,0.01119116048513156,0.5514744450639142,ok,TRUE,quasibinomial
+native,1e-4,invasive_percent,FALSE,native,-104203355550370.77,5.409113771782482e-40,NA,320.3166903462612,1.2357178833260598e-71,0.3265148921799278,0.9999999999999996,1,ok,TRUE,quasibinomial
+native,0.001,non_native_percent,FALSE,native,-0.051618087178283034,0.29705866671154374,NA,1.099985558728233,0.2942692735819162,0.0019282296445484088,0.0015824430861062662,0.5098356801592351,ok,TRUE,quasibinomial
+native,0.001,invasive_percent,FALSE,native,-63458264939198.02,2.67514048090042e-36,NA,261.423173546337,8.400429448801617e-59,0.32439011820260333,0.9999999999999943,1,ok,TRUE,quasibinomial
+native,0.001,neophyte_percent,FALSE,native,78347828377894.98,2.64704132457788e-139,NA,6563.179302564313,0,0.9233968580443219,1,1,ok,TRUE,quasibinomial
+native,0.01,non_native_percent,FALSE,native,-0.07254849187114579,0.01602293693219355,NA,5.938566099868628,0.0148130652490367,0.01065868190923363,0.009807600852768859,0.5197321774885414,ok,TRUE,quasibinomial
+native,0.01,invasive_percent,FALSE,native,-60549858404687.01,3.664381110026732e-82,NA,1167.982434093493,5.5422718212783445e-256,0.6835307984311941,0.9999999999999997,1,ok,TRUE,quasibinomial
+native,0.01,neophyte_percent,FALSE,native,0.3930948935570871,3.264695463961942e-12,NA,55.85947624360354,7.784062925927086e-14,0.007424571789648535,0.10751377372958248,0.8206725443629943,ok,TRUE,quasibinomial
+native,0.1,non_native_percent,FALSE,native,-0.07390862429501904,1.2971924969160993e-5,NA,20.16513244236064,7.103603684433206e-6,0.05907350923093171,0.035876008426963014,0.41771468666527095,ok,TRUE,quasibinomial
+native,0.1,invasive_percent,FALSE,native,-0.14916318043107116,1.3976229498148058e-11,NA,52.0882586090787,5.306125841837627e-13,0.045887126356122396,0.07566589709779348,0.6984919776802868,ok,TRUE,quasibinomial
+native,0.1,neophyte_percent,FALSE,native,-0.033383824749578565,0.08373794085290136,NA,3.0385948414115824,0.0813062686530372,0.0031438793989781674,0.0048112712926033,0.6172549185029018,ok,TRUE,quasibinomial
+native,1,non_native_percent,FALSE,native,-0.0506933578126866,2.5801351815738103e-6,NA,23.631785654324176,1.1664476116047015e-6,0.08244768792055927,0.04092300281729069,0.39160215772721413,ok,TRUE,quasibinomial
+native,1,invasive_percent,FALSE,native,-0.08661078171058795,1.4512348710042043e-7,NA,30.007358939314113,4.304097829249202e-8,0.057299592623127185,0.0686334402162964,0.6504461089870491,ok,TRUE,quasibinomial
+native,1,neophyte_percent,FALSE,native,-0.01657080659600321,0.13212825567974126,NA,2.2989784955887664,0.12945911398973595,0.002398137159714892,0.0027954990244383744,0.6110494971791179,ok,TRUE,quasibinomial
+native,10,non_native_percent,FALSE,native,-0.0328977295228436,2.1361410820289943e-6,-0.2227,22.46853593816308,2.1361410820289917e-6,0.02514378624073928,0.045266350459364495,0.29717979748053347,ok,TRUE,binomial
+native,10,invasive_percent,FALSE,native,-0.0476580732797504,9.820210773344703e-8,-0.3386,28.40911012057831,9.820210773344728e-8,0.031296593961822466,0.10387135561353149,0.2315361457330554,ok,TRUE,binomial
+native,10,neophyte_percent,FALSE,native,-0.006796995356098325,0.46797874597655365,-0.0504,0.5267445430261424,0.46797874597655365,0.009339352319278014,0.0021473457882068628,0.21896832919594403,ok,TRUE,binomial
+native,100,non_native_percent,FALSE,native,-0.019893419886098548,7.10361395255166e-6,NA,21.633934094316587,3.2996217704932782e-6,0.14117026020529028,0.04370659006327706,0.12586324851513253,ok,TRUE,quasibinomial
+native,100,invasive_percent,FALSE,native,-0.024581069320518345,1.9842477783355093e-4,-0.2584,13.845941954926293,1.9842477783355077e-4,0.06912179413490328,0.06437639873284223,0.15671089622624068,ok,TRUE,binomial
+native,100,neophyte_percent,FALSE,native,-0.01600339676346665,0.010319831093990095,-0.1754,6.578836772635588,0.010319831093990095,0.03572615016841509,0.029541059448857546,0.08703721441958837,ok,TRUE,binomial
+climate_native,1e-4,non_native_percent,TRUE,pca1_clima,-0.05937343111957285,0.6943332678830608,NA,0.1937661326593158,0.6598004095213387,0.011206092391515142,0.11211084632565109,0.11211084632694801,ok,TRUE,quasibinomial
+climate_native,1e-4,non_native_percent,TRUE,native,-0.342813969033175,0.013046256479073398,NA,90.18434804916524,2.1697175820887874e-21,0.8506404140004842,0.11211084632565109,0.11211084632694801,ok,TRUE,quasibinomial
+climate_native,0.001,non_native_percent,TRUE,pca1_clima,-0.011946153386649968,0.9347790507966586,NA,0.007462365911964409,0.9311603812621649,2.4136445094833105e-4,0.09097827460344254,0.10915405984379253,ok,TRUE,quasibinomial
+climate_native,0.001,non_native_percent,TRUE,native,-0.27496689065963337,9.014324940371901e-4,NA,53.98747203554824,2.0177202371228566e-13,0.6517684218481469,0.09097827460344254,0.10915405984379253,ok,TRUE,quasibinomial
+climate_native,0.001,invasive_percent,TRUE,pca1_clima,-0.07502833968734954,0.7907976888198066,NA,0.22884351014593723,0.6323826772576308,0.05631473755690905,0.08239279030507717,0.08239279030605706,ok,TRUE,quasibinomial
+climate_native,0.001,invasive_percent,TRUE,native,-0.5456131798961792,NA,NA,334.8377736388653,8.494476933743895e-75,0.9906278758748337,0.08239279030507717,0.08239279030605706,ok,TRUE,quasibinomial
+climate_native,0.01,non_native_percent,TRUE,pca1_clima,-0.09328432941103977,0.2251885373249612,NA,1.5713766559441709,0.21000720249292354,0.024335275962145676,0.07722743782137846,0.0980357291091758,ok,TRUE,quasibinomial
+climate_native,0.01,non_native_percent,TRUE,native,-0.13840556746432456,3.771827942328953e-7,NA,70.84788040952927,3.85858000426451e-17,0.5240761940037816,0.07722743782137846,0.0980357291091758,ok,TRUE,quasibinomial
+climate_native,0.01,invasive_percent,TRUE,pca1_clima,0.0996639996931413,0.6062372307127231,NA,0.4064789570202865,0.5237620796151938,0.03809009915369213,0.09204509144978656,0.09204509145125131,ok,TRUE,quasibinomial
+climate_native,0.01,invasive_percent,TRUE,native,-0.23889204011294976,0.017014102908678313,NA,78.75870872403546,7.017867951238258e-19,0.9046352797558805,0.09204509144978656,0.09204509145125131,ok,TRUE,quasibinomial
+climate_native,0.01,neophyte_percent,TRUE,pca1_clima,-0.2504072838435097,0.1472632847988248,NA,5.632258978961792,0.017632894088962656,0.48419305215884473,0.1464948700986006,0.1513528053292754,ok,TRUE,quasibinomial
+climate_native,0.01,neophyte_percent,TRUE,native,-0.07739068486272514,0.03214750963977785,NA,18.193728256553143,1.995348310387052e-5,0.7520018437585929,0.1464948700986006,0.1513528053292754,ok,TRUE,quasibinomial
+climate_native,0.1,non_native_percent,TRUE,pca1_clima,-0.35734398837474685,0.00790056014534128,-0.1401,7.055877452596519,0.007900560145341273,0.09026221970133375,0.07507827668827541,0.07507827668827541,ok,TRUE,binomial
+climate_native,0.1,non_native_percent,TRUE,native,-0.06004865650656442,1.5302335579318004e-4,-0.1826,14.334636324837584,1.5302335579318e-4,0.37205492985746014,0.07507827668827541,0.07507827668827541,ok,TRUE,binomial
+climate_native,0.1,invasive_percent,TRUE,pca1_clima,0.11157855979281386,0.044524232614353884,NA,4.940157662549104,0.02623964305504151,0.15852237868987762,0.04770466534255161,0.050367446827786246,ok,TRUE,quasibinomial
+climate_native,0.1,invasive_percent,TRUE,native,-0.10173032345223448,6.274184501645418e-8,NA,281.6056856821713,3.3550030494056734e-63,0.9035604694043144,0.04770466534255161,0.050367446827786246,ok,TRUE,quasibinomial
+climate_native,0.1,neophyte_percent,TRUE,pca1_clima,0.015908866092133184,0.8263717840527136,NA,0.05475356412265997,0.8149890194375612,0.0019081746323449244,0.07207410402833352,0.07207410403168851,ok,TRUE,quasibinomial
+climate_native,0.1,neophyte_percent,TRUE,native,-0.0649217651244599,4.132089886820385e-4,NA,76.65415769929515,2.036768157562462e-18,0.7435244371771388,0.07207410402833352,0.07207410403168851,ok,TRUE,quasibinomial
+climate_native,1,non_native_percent,TRUE,pca1_clima,-0.35091659152962085,0.0021467181199374716,-0.1368,9.419655803628878,0.002146718119937469,0.06717785363429411,0.10314432157874368,0.10884004614141395,ok,TRUE,binomial
+climate_native,1,non_native_percent,TRUE,native,-0.04931154830460451,5.69172879253767e-8,-0.229,29.465625666799404,5.691728792537665e-8,0.35575010091736325,0.10314432157874368,0.10884004614141395,ok,TRUE,binomial
+climate_native,1,invasive_percent,TRUE,pca1_clima,0.1500127383630567,0.03976640372315334,NA,4.835453008202559,0.02788031509150789,0.08596083607682758,0.055442715887458915,0.05649430547693288,ok,TRUE,quasibinomial
+climate_native,1,invasive_percent,TRUE,native,-0.06309123331747185,1.758812388084127e-8,NA,124.05382584190231,8.198907942738458e-29,0.7433271966292802,0.055442715887458915,0.05649430547693288,ok,TRUE,quasibinomial
+climate_native,1,neophyte_percent,TRUE,pca1_clima,0.06144933752161926,0.3581636917704152,NA,0.9271253572014886,0.33561101493393897,0.020275637117358077,0.08988558495441118,0.09305163793457952,ok,TRUE,quasibinomial
+climate_native,1,neophyte_percent,TRUE,native,-0.05010695198883433,2.3099864339477095e-7,NA,102.15960887166275,5.1223758559035184e-24,0.7198608299246266,0.08988558495441118,0.09305163793457952,ok,TRUE,quasibinomial
+climate_native,10,non_native_percent,TRUE,pca1_clima,-0.5184078813630831,1.349003537752838e-7,-0.1957,27.794625308955133,1.3490035377528378e-7,0.1587674770964791,0.12374783912974115,0.14925272095323883,ok,TRUE,binomial
+climate_native,10,non_native_percent,TRUE,native,-0.032007415872671606,1.6547127893463174e-10,-0.2143,40.83698890510216,1.6547127893463186e-10,0.24437510104531068,0.12374783912974115,0.14925272095323883,ok,TRUE,binomial
+climate_native,10,invasive_percent,TRUE,pca1_clima,0.24128797500585925,0.0020880930047609443,NA,10.474634033057393,0.001210247608155905,0.11044479359145029,0.05288779946539379,0.06439019347374868,ok,TRUE,quasibinomial
+climate_native,10,invasive_percent,TRUE,native,-0.037761736847234176,1.3704563845017435e-11,NA,122.44882427067527,1.8410319048364695e-28,0.5987447252935904,0.05288779946539379,0.06439019347374868,ok,TRUE,quasibinomial
+climate_native,10,neophyte_percent,TRUE,pca1_clima,0.1007245953553348,0.12529268800913992,NA,2.4968591361328656,0.11407359758920738,0.03875763850626431,0.07269557325597244,0.09179523302264249,ok,TRUE,quasibinomial
+climate_native,10,neophyte_percent,TRUE,native,-0.03544827034009855,1.605689475651087e-10,NA,115.87183193812746,5.070281559852781e-27,0.6409782197536974,0.07269557325597244,0.09179523302264249,ok,TRUE,quasibinomial
+climate_native,100,non_native_percent,TRUE,pca1_clima,-0.6324130153142777,1.3255883798745945e-7,-0.23,27.828501801187848,1.3255883798745966e-7,0.29703245887464147,0.14141080813011148,0.14561882318160055,ok,TRUE,binomial
+climate_native,100,non_native_percent,TRUE,native,-0.021816902174562447,9.134125998224688e-12,-0.2125,46.50593748716004,9.134125998224679e-12,0.2453070136764816,0.14141080813011148,0.14561882318160055,ok,TRUE,binomial
+climate_native,100,invasive_percent,TRUE,pca1_clima,0.07536278064981147,0.6300829595478309,NA,0.2423430058191554,0.6225189704880529,0.010579072336630677,0.03889887536165697,0.04476817503380296,ok,TRUE,quasibinomial
+climate_native,100,invasive_percent,TRUE,native,-0.023162081716150678,1.8110976553407082e-7,NA,34.36553309804057,4.567405207471838e-9,0.5348304129903703,0.03889887536165697,0.04476817503380296,ok,TRUE,quasibinomial
+climate_native,100,neophyte_percent,TRUE,pca1_clima,0.07447590425476874,0.6259341235127938,0.0281,0.23761485621368553,0.6259341235127938,0.016236711312138087,0.052378243958419425,0.052378243958419425,ok,TRUE,binomial
+climate_native,100,neophyte_percent,TRUE,native,-0.023179498921624495,1.0119963927062967e-4,-0.2408,15.114191803890314,1.0119963927062957e-4,0.5567382632191281,0.052378243958419425,0.052378243958419425,ok,TRUE,binomial
+climate_native,1e-4,non_native_percent,FALSE,pca1_clima,-1.3276239395572067,0.03367279998837189,NA,4.619375076206084,0.031612753566268234,0.08160654041300852,0.27361491431970913,0.7643554625428928,ok,TRUE,quasibinomial
+climate_native,1e-4,non_native_percent,FALSE,native,-0.24829850376410706,3.363518394001473e-9,NA,39.52078482520035,3.245862180752073e-10,0.0020825874656957527,0.27361491431970913,0.7643554625428928,ok,TRUE,quasibinomial
+climate_native,1e-4,invasive_percent,FALSE,pca1_clima,401690504864452.2,9.300606399947758e-129,NA,4249.907276550874,0,0.9137256326789591,1,1,ok,TRUE,quasibinomial
+climate_native,1e-4,invasive_percent,FALSE,native,-180171378849208.75,2.843346228084858e-69,NA,953.3744685359447,2.4502958300231255e-209,0.5885893708554639,1,1,ok,TRUE,quasibinomial
+climate_native,0.001,non_native_percent,FALSE,pca1_clima,-1.4259893899816736,0.0012981894543995683,-0.7165,10.345098408015243,0.00129818945439957,0.12247768503456759,0.48792140854895544,0.6241829129490158,ok,TRUE,binomial
+climate_native,0.001,non_native_percent,FALSE,native,-0.11010863335482243,0.3095998778436509,-0.0786,1.032381925087581,0.3095998778436508,3.962591159035473e-4,0.48792140854895544,0.6241829129490158,ok,TRUE,binomial
+climate_native,0.001,invasive_percent,FALSE,pca1_clima,-64897692976837.01,6.603350815265654e-20,NA,106.22154846775335,6.593576226885503e-25,0.1910511916902143,0.9999999999999982,1,ok,TRUE,quasibinomial
+climate_native,0.001,invasive_percent,FALSE,native,113894065205082.02,2.885467027711397e-66,NA,793.2623721955736,1.5738031023754064e-174,0.5946386274639931,0.9999999999999982,1,ok,TRUE,quasibinomial
+climate_native,0.001,neophyte_percent,FALSE,pca1_clima,-53989006060654.03,1.3737499343037462e-83,NA,1211.475177374667,1.9562880675038698e-265,0.7292602885750875,1,1,ok,TRUE,quasibinomial
+climate_native,0.001,neophyte_percent,FALSE,native,128153779591375.06,2.3121387889784352e-173,NA,16551.11470203548,0,0.9683614661612175,1,1,ok,TRUE,quasibinomial
+climate_native,0.01,non_native_percent,FALSE,pca1_clima,-1.015472251230619,2.7138199316921915e-5,-0.606,17.60843489866116,2.713819931692196e-5,0.18887082075754727,0.34387297092319674,0.4548575254954838,ok,TRUE,binomial
+climate_native,0.01,non_native_percent,FALSE,native,-0.018854721474945553,0.655134547302263,-0.0286,0.19948786160047033,0.655134547302263,2.633554013922453e-4,0.34387297092319674,0.4548575254954838,ok,TRUE,binomial
+climate_native,0.01,invasive_percent,FALSE,pca1_clima,-28065786734455.86,2.4964040102900725e-7,NA,28.876977687635378,7.712417550933008e-8,0.06449484366785893,1,1,ok,TRUE,quasibinomial
+climate_native,0.01,invasive_percent,FALSE,native,-472678510034261.94,2.193179602683859e-239,NA,65064.07995167337,0,0.9921676829088606,1,1,ok,TRUE,quasibinomial
+climate_native,0.01,neophyte_percent,FALSE,pca1_clima,-0.5243198677351126,0.059464772996971706,NA,3.624102488905871,0.05694828078793549,0.01274608943456251,0.15546722730428586,0.6912103612836272,ok,TRUE,quasibinomial
+climate_native,0.01,neophyte_percent,FALSE,native,0.3400614755119122,3.33089048116345e-13,NA,61.951504207323715,3.5202080016555832e-15,0.033985428453471904,0.15546722730428586,0.6912103612836272,ok,TRUE,quasibinomial
+climate_native,0.1,non_native_percent,FALSE,pca1_clima,-0.9762232681142182,8.975217325794341e-8,-0.5823,28.583316278063776,8.975217325794368e-8,0.26648663770769865,0.3386345669921699,0.4444081572670235,ok,TRUE,binomial
+climate_native,0.1,non_native_percent,FALSE,native,-0.035599534579410376,0.07171202105398376,-0.0923,3.24339211313649,0.07171202105398367,0.0015974380616112312,0.3386345669921699,0.4444081572670235,ok,TRUE,binomial
+climate_native,0.1,invasive_percent,FALSE,pca1_clima,-0.41918820060910084,0.14197225974765695,NA,2.1918313957468465,0.13874426071025275,0.017676703082049716,0.11385320463440106,0.7133456367939899,ok,TRUE,quasibinomial
+climate_native,0.1,invasive_percent,FALSE,native,-0.14741984981720058,2.6172937051163833e-11,NA,50.649388873014516,1.104308300842783e-12,0.040370642828135093,0.11385320463440106,0.7133456367939899,ok,TRUE,quasibinomial
+climate_native,0.1,neophyte_percent,FALSE,pca1_clima,-0.05173099052847388,0.7794664299540335,NA,0.07925619637772718,0.7783079319471385,3.91094895590501e-4,0.005749344721423457,0.6176622371854394,ok,TRUE,quasibinomial
+climate_native,0.1,neophyte_percent,FALSE,native,-0.03281266941699863,0.09167100537622053,NA,2.896749317599421,0.08875837969935457,0.0029666392987899508,0.005749344721423457,0.6176622371854394,ok,TRUE,quasibinomial
+climate_native,1,non_native_percent,FALSE,pca1_clima,-0.8259768203466044,3.9290010622156995e-8,-0.5072,30.184185965903225,3.9290010622156956e-8,0.2946952783656534,0.268650399834084,0.41820161202164136,ok,TRUE,binomial
+climate_native,1,non_native_percent,FALSE,native,-0.031569981582365514,0.008968435312256608,-0.1285,6.829101819193199,0.008968435312256603,0.007737081998051141,0.268650399834084,0.41820161202164136,ok,TRUE,binomial
+climate_native,1,invasive_percent,FALSE,pca1_clima,-0.6733522669711576,0.023107198138417853,NA,5.287061767517176,0.021484439244473515,0.0647229952819717,0.15930182444232374,0.6874124344796837,ok,TRUE,quasibinomial
+climate_native,1,invasive_percent,FALSE,native,-0.08236927827957459,7.84665101657069e-7,NA,26.309417100219775,2.9086694931132347e-7,0.043499405349548805,0.15930182444232374,0.6874124344796837,ok,TRUE,quasibinomial
+climate_native,1,neophyte_percent,FALSE,pca1_clima,-0.038101757388568754,0.8212472053229657,NA,0.05159676370781845,0.8203077197477137,2.8445257673103276e-4,0.0033197521723632713,0.6106775948101242,ok,TRUE,quasibinomial
+climate_native,1,neophyte_percent,FALSE,native,-0.016317122850370677,0.14062215524983837,NA,2.2067014656284494,0.1374122060520998,0.002286495153884793,0.0033197521723632713,0.6106775948101242,ok,TRUE,quasibinomial
+climate_native,10,non_native_percent,FALSE,pca1_clima,-0.8243867524343595,1.7092990749388436e-12,-0.5081,49.79211045668587,1.7092990749388406e-12,0.4339685956952306,0.27547826271146897,0.39657273565466417,ok,TRUE,binomial
+climate_native,10,non_native_percent,FALSE,native,-0.020749541601500433,0.0015015736460520753,-0.1278,10.07668348501424,0.0015015736460520755,0.002224661397548279,0.27547826271146897,0.39657273565466417,ok,TRUE,binomial
+climate_native,10,invasive_percent,FALSE,pca1_clima,-0.4485980358677419,0.0017718767250779193,-0.3052,9.77202001210287,0.001771876725077919,0.15507308597049016,0.17917241291986802,0.2836861153096215,ok,TRUE,binomial
+climate_native,10,invasive_percent,FALSE,native,-0.04142200947254265,1.145832277818367e-5,-0.2816,19.251451527457675,1.1458322778183704e-5,0.013422125361193152,0.17917241291986802,0.2836861153096215,ok,TRUE,binomial
+climate_native,10,neophyte_percent,FALSE,pca1_clima,-0.06462010048440524,0.5636063006228281,-0.0479,0.3334984478655055,0.5636063006228282,0.010775538768908433,0.003794876188225552,0.22118345716613547,ok,TRUE,binomial
+climate_native,10,neophyte_percent,FALSE,native,-0.005561517916824813,0.565402697313741,-0.0412,0.33043561056406356,0.565402697313741,0.012095832500039871,0.003794876188225552,0.22118345716613547,ok,TRUE,binomial
+climate_native,100,non_native_percent,FALSE,pca1_clima,-0.8928287595436433,4.3464187869425555e-12,-0.5582,47.96163184585073,4.3464187869425304e-12,0.45761567433556005,0.3461203504777483,0.356567332887523,ok,TRUE,binomial
+climate_native,100,non_native_percent,FALSE,native,-0.016360912840100023,3.46044990964752e-7,-0.1487,25.974008583280852,3.4604499096475156e-7,0.015955302157512077,0.3461203504777483,0.356567332887523,ok,TRUE,binomial
+climate_native,100,invasive_percent,FALSE,pca1_clima,-0.878213950520009,0.002285258987251172,-0.5658,9.3050273211865,0.0022852589872511754,0.2451017932580987,0.3344149675714483,0.39699597826114685,ok,TRUE,binomial
+climate_native,100,invasive_percent,FALSE,native,-0.021417480039976775,0.0015490884559246454,-0.2006,10.019293883341454,0.001549088455924648,0.034192030079983324,0.3344149675714483,0.39699597826114685,ok,TRUE,binomial
+climate_native,100,neophyte_percent,FALSE,pca1_clima,-0.45445101662270365,0.008945061413796597,-0.3329,6.833763081589917,0.008945061413796583,0.12971225996057603,0.13219599293836862,0.21825450567934085,ok,TRUE,binomial
+climate_native,100,neophyte_percent,FALSE,native,-0.015903449275739032,0.014597197076622563,-0.1694,5.964444691447682,0.014597197076622596,0.02628454825405966,0.13219599293836862,0.21825450567934085,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,pca1_clima,-3.90928541305637,0.001935926019639397,-1.0464,9.60931728125915,0.0019359260196393964,0.0018880108372339253,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,pH,-0.5186121963959007,0.20164665720830882,-0.1071,1.6304077722007895,0.20164665720830882,1.1764082135874387e-5,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,microrelief,0.025867604298854315,0.5355354362339497,0.0279,0.38387730886748633,0.5355354362339497,3.065624708179556e-9,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,heat_index,2.5284628025028795,0.16507167617743335,0.1032,1.9271400639167098,0.16507167617743332,8.870546874882804e-5,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,cover_litter,0.3473547234981749,0.7362436734826888,0.0201,0.11345568473402515,0.7362436734826888,5.0024941842775185e-6,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,cover_herbs_sum,1.348211874017489,0.12076741939975447,0.081,2.407340001667608,0.120767419399755,6.725266913166479e-6,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,cover_gravel_stones,0.8021290303516226,0.6536909227858932,0.0257,0.2012784104331267,0.6536909227858932,2.2960934128876455e-5,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,builtup_250m,0.8355271082346614,0.004459299795732883,0.1221,8.086630295932624,0.004459299795732887,8.421384124664483e-5,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,cropland_250m,0.34317104734668846,0.3133016039672666,0.0826,1.0167061155620072,0.3133016039672667,1.44634727196742e-5,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,grazing_intencity,0.07828945965891282,0.8738539217016861,0.0126,0.025206366834242398,0.8738539217016862,1.4062020769993605e-6,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,mowing,0.4671609020030062,0.6236462043719675,0.0204,0.2407760045773442,0.6236462043719674,3.987832875516597e-5,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,1e-4,non_native_percent,FALSE,abandonment,-0.17565787648222125,0.8414223409617962,-0.0165,0.040029792878043466,0.8414223409617961,3.5980832185184186e-7,0.8846698192198197,0.8846698192198197,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,pca1_clima,-2.753871053680821,5.822508363685666e-4,-1.0525,11.831882998250883,5.822508363685689e-4,0.07511362124722556,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,pH,-0.3871668641737149,0.18567592491734192,-0.1148,1.7515983397170003,0.18567592491734197,0.002449307367095732,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,microrelief,0.028977858830896402,0.39023525644404206,0.045,0.7382088364976606,0.3902352564440421,2.54783600858916e-4,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,heat_index,1.0127762704669685,0.4298204694610504,0.0617,0.6233085211395604,0.42982046946105046,9.476152095810238e-5,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,cover_litter,1.2464620333915057,0.07512597763247927,0.1042,3.1673123705422617,0.07512597763247918,9.582316721149658e-4,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,cover_herbs_sum,0.9590928059932811,0.11978810178680019,0.0872,2.42008929801468,0.11978810178680069,2.2303285060600806e-5,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,cover_gravel_stones,1.250908927557222,0.34295563655092137,0.0606,0.8993515775074642,0.34295563655092143,0.0052371837078565645,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,builtup_250m,0.5595020666646501,0.00916966846405373,0.1203,6.789478639483785,0.009169668464053723,0.0035935100299382895,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,cropland_250m,-0.11095843627664367,0.6009819501267392,-0.0387,0.27351743098126946,0.6009819501267392,7.25544927195925e-4,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,grazing_intencity,0.07952915975717978,0.8298681390448888,0.0184,0.046169412371130446,0.8298681390448887,8.917904080370054e-5,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,mowing,0.18375561846333033,0.8259433166700724,0.0114,0.04835923992154923,0.8259433166700724,0.0022933992338916858,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.001,non_native_percent,FALSE,abandonment,-0.27425147842789555,0.6607372755267937,-0.0373,0.19262923811510207,0.6607372755267937,4.457391940752567e-4,0.7464620967925494,0.7598312650741655,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,pca1_clima,-1.4009446120443592,7.92498461630019e-6,-0.8162,19.955880343660816,7.924984616300175e-6,0.10684865190552373,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,pH,-0.26578830307673085,0.19720701380921646,-0.1223,1.6629386951919836,0.19720701380921643,0.004654861654077429,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,microrelief,0.03380440866740629,0.1505426503108173,0.0795,2.0667436960343535,0.15054265031081684,9.241814529821438e-4,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,heat_index,-0.7479307580936114,0.3207857392603599,-0.0686,0.9857402041214994,0.32078573926036,0.008166699503605017,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,cover_litter,0.6608112152160939,0.1598201506654271,0.0837,1.9759269674032671,0.1598201506654273,0.0017900293125267222,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,cover_herbs_sum,1.0660034606252933,0.013967515871092738,0.152,6.042244445944646,0.013967515871092736,0.03982992162837981,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,cover_gravel_stones,0.20850196258431242,0.83865993864442,0.0162,0.041456166789950344,0.83865993864442,0.005357356600714185,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,builtup_250m,0.3187418320272467,0.05533182250381495,0.1057,3.6720580235517866,0.055331822503815145,0.010198940549566878,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,cropland_250m,-0.21257855077143878,0.08903031125137296,-0.1144,2.8918197840322377,0.08903031125137277,0.02183475511146407,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,grazing_intencity,0.08025381066024667,0.7497366007881889,0.0282,0.10175251263068374,0.7497366007881889,0.0044424476512106795,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,mowing,0.999727429091781,0.07456268676470978,0.0929,3.1796064426008446,0.07456268676471009,0.007967954113142836,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,non_native_percent,FALSE,abandonment,0.3474690132131994,0.42936925473207693,0.0722,0.6245289694004063,0.42936925473207693,0.004349844734730515,0.40350500948028545,0.45950961206033036,ok,TRUE,binomial
+builtup_250m,0.01,invasive_percent,FALSE,pca1_clima,43029587528447.15,0.04471870510406688,NA,4.259699452701006,0.03902682559294724,0.00914209277058149,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,pH,73210320926931.42,0.01308832169206672,NA,6.575133150019895,0.010341326681316954,0.017970341312328966,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,microrelief,-76437412747216.02,2.090750380412803e-46,NA,473.6557611817618,5.1316241324595535e-105,0.5052893515992739,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,heat_index,-145922334393774.03,0.10867227720871273,NA,2.713877609660148,0.09947891961227419,0.006254683431885571,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,cover_litter,-513001514045568.75,2.3447151380311494e-10,NA,48.42523257802629,3.431246518789636e-12,0.11383645552212215,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,cover_herbs_sum,-221213023672718.72,0.0012750022458533586,NA,11.24864535185565,7.968114759156958e-4,0.029527821505393244,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,cover_gravel_stones,-5984031416694935,2.6579460907719983e-86,NA,2080.6598922625176,0,0.8791128535049445,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,builtup_250m,16412197510052.781,0.5955601777028965,NA,0.29475596380564567,0.587188792772195,0.001197514025780647,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,cropland_250m,-94207434639689.02,2.169462490794764e-6,NA,25.383802655483027,4.6984661301159994e-7,0.06928148154349356,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,grazing_intencity,-98091178998539.19,0.003806488460406256,NA,8.968428641748822,0.002746847361292269,0.020433534148433182,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,mowing,408430888433472.25,1.6214094401924321e-6,NA,25.740330335421604,3.905790283223503e-7,0.040476041493910174,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,invasive_percent,FALSE,abandonment,225297636052675.5,3.555576842894256e-4,NA,13.838161209440747,1.992480966691315e-4,0.032137994300434576,0.9999999999999998,1,ok,FALSE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,pca1_clima,172918031644000.47,7.78294111025542e-62,NA,725.4312628781656,8.823645917038983e-160,0.6110875306917286,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,pH,432962209272334.75,8.558362899744925e-91,NA,2425.1076521851573,0,0.8709559463458076,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,microrelief,49185717179762.44,3.974520198851413e-86,NA,2068.235520952046,0,0.8168467845297193,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,heat_index,-469040091656483.3,7.162997295590433e-36,NA,295.6907658104818,2.861743334414974e-66,0.4067988559104531,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,cover_litter,385136072102325.25,2.5917375928157796e-35,NA,287.8285862445047,1.4780657398606007e-64,0.4329575213331188,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,cover_herbs_sum,145235010398210.22,8.668850193624379e-11,NA,51.13197762274114,8.635993075517196e-13,0.12150151665071438,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,cover_gravel_stones,1376744917756527.8,1.1104007501132095e-69,NA,1161.4257190102162,1.4746221666453307e-254,0.8023455482606177,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,builtup_250m,-237804066296788.66,2.6188579489814756e-54,NA,652.5875644892931,6.114607584984615e-144,0.7263622190831015,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,cropland_250m,98352410078711.06,1.3582813483181083e-35,NA,291.7611417275984,2.0550548138940456e-65,0.46109006703751076,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,grazing_intencity,-533697233112255.7,1.074629657346409e-105,NA,2799.738437747458,0,0.8668786733086854,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,mowing,-1098517665282346.1,1.3849833476844089e-93,NA,1963.6412996334618,0,0.7629225693741607,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.01,neophyte_percent,FALSE,abandonment,-1461564260844014,2.4960141774628228e-133,NA,6141.466042136078,0,0.9364541050117818,1,1,ok,TRUE,quasibinomial
+builtup_250m,0.1,non_native_percent,FALSE,pca1_clima,-1.3892471456082531,2.001069481700275e-10,-0.8284,40.46561355145643,2.001069481700269e-10,0.23732874880098395,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,pH,-0.3249479588244718,0.022616707250825478,-0.1537,5.197706732668932,0.022616707250825572,0.01105359638162623,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,microrelief,0.03740718463478162,0.02116396128795375,0.0901,5.313240026312037,0.021163961287953705,0.006214574926283627,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,heat_index,0.017528475559176575,0.9724418207171424,0.0016,0.0011934209872700337,0.9724418207171424,2.838145725701081e-5,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,cover_litter,0.7061958752687493,0.03339122956242763,0.0917,4.525606937064091,0.03339122956242771,0.021535220941616116,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,cover_herbs_sum,0.5269562620781931,0.0804741602753231,0.0772,3.0552994365482093,0.08047416027532305,0.0173266915322433,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,cover_gravel_stones,-0.02279598094775815,0.9713705472940022,-0.0018,0.0012880490957701577,0.9713705472940022,0.0011981898959768243,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,builtup_250m,0.20482756347490944,0.08713066972761324,0.0695,2.926602639050944,0.08713066972761341,0.005499498421086826,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,cropland_250m,-0.22634850940936835,0.008726658190264936,-0.1251,6.877929858021056,0.008726658190264925,0.007327124036057644,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,grazing_intencity,0.03104858021249357,0.8634908744280633,0.0112,0.029560662653453765,0.8634908744280633,0.0011527023720288795,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,mowing,0.28496732136441705,0.5452343008050544,0.0271,0.36592429681701694,0.5452343008050543,1.1968765352511211e-4,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,non_native_percent,FALSE,abandonment,0.1005518140355003,0.7456400610777412,0.0214,0.10523121062417044,0.7456400610777412,5.84235403462217e-5,0.38059876153477584,0.4239882805134592,ok,TRUE,binomial
+builtup_250m,0.1,invasive_percent,FALSE,pca1_clima,-1.3126328906808968,0.004971839090478428,NA,8.436510562452858,0.0036776125869874225,0.04793540950513241,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,pH,-0.3992459196270281,0.01740447476831952,NA,6.02668438168389,0.014091177891351567,0.00323242337589302,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,microrelief,0.0597813234299382,0.00247510739947388,NA,9.880686785302657,0.0016702258622313532,0.003649841517517333,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,heat_index,4.541631862920945,2.89285245611455e-4,NA,14.372879868645196,1.499464510577056e-4,0.0344841302823159,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,cover_litter,1.7882150401829473,1.137080799958038e-4,NA,16.39440395874341,5.143686451355034e-5,0.009105214725202735,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,cover_herbs_sum,-1.8600419985829313,6.462899167969996e-7,NA,28.23276815469159,1.0756800201677527e-7,0.01252252517064535,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,cover_gravel_stones,-4.4180718201840055,0.13566310795011058,NA,2.3446687898735488,0.12571227834106932,0.022714636245017957,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,builtup_250m,0.9666567035998003,9.9218360376238e-4,NA,11.765594497164175,6.033560903595035e-4,0.02378194411843401,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,cropland_250m,0.2636161939365428,0.31160474543056366,NA,1.0737312269273973,0.3001041683606856,0.003402487493730163,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,grazing_intencity,0.03943675501615822,0.9345931359381531,NA,0.0070348162839118135,0.9331567614359279,1.975079809019786e-5,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,mowing,-0.40813226382117945,0.7725498118146712,NA,0.08728311928433057,0.7676599449916447,2.466571502689231e-4,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,invasive_percent,FALSE,abandonment,-0.9710283681678534,0.2779603485431153,NA,1.233699842565363,0.266688711579272,0.0036094808859827463,0.3618688880158771,0.7761792588998623,ok,TRUE,quasibinomial
+builtup_250m,0.1,neophyte_percent,FALSE,pca1_clima,-0.7514336031096154,0.06398603894579952,-0.4418,3.43093054285675,0.06398603894579938,2.0755068221578858e-4,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,pH,-0.78216670813265,0.015934462563027992,-0.3647,5.810091782790298,0.015934462563028013,1.233797553956001e-4,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,microrelief,0.0453422250881846,0.2181625475580078,0.1077,1.5164167802222563,0.21816254755800774,0.0016266563437915761,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,heat_index,0.008180564023332431,0.9949744832189182,8e-4,3.9672272209788966e-5,0.9949744832189182,5.162862291167858e-4,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,cover_litter,0.8529890677494139,0.293717111810739,0.1092,1.1025045718662323,0.293717111810739,0.0155506967034718,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,cover_herbs_sum,-0.5721759866839119,0.48336015796749604,-0.0827,0.49127263896354606,0.4833601579674961,0.0031653462384057165,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,cover_gravel_stones,-4.912111327215033,0.3488456908841666,-0.3846,0.8776516146696899,0.3488456908841667,0.02204171062280838,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,builtup_250m,0.5879836244652208,0.030652238753932665,0.1967,4.67233427698528,0.03065223875393277,0.0021063131107396404,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,cropland_250m,0.3643229162244174,0.16031955364219866,0.1985,1.9712093607450512,0.16031955364219866,0.01657468019709859,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,grazing_intencity,-0.4601081195442113,0.3263312444692152,-0.1639,0.9634019508424946,0.3263312444692152,0.003013231814248706,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,mowing,0.588863453601872,0.5233570446904512,0.0552,0.4072726732063045,0.5233570446904512,5.3195235559464446e-5,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,0.1,neophyte_percent,FALSE,abandonment,-0.5595358405276182,0.470306671364957,-0.1175,0.5212553612534712,0.47030667136495696,0.006726834027612794,0.32733415898550267,0.5033497334590404,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,pca1_clima,-1.3933683886238424,1.1839252938646931e-11,-0.8094,45.99768959977809,1.183925293864696e-11,0.27336527017336815,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,pH,-0.31090235087676193,0.021449218700558957,-0.1431,5.289918916469975,0.021449218700558974,0.010637847755656401,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,microrelief,0.02331812959014021,0.13861099480724276,0.0547,2.19331185592255,0.13861099480724254,0.0010012538592132426,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,heat_index,0.41057322130427554,0.3794589203601797,0.0375,0.7724541181313508,0.3794589203601797,0.004243110366573576,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,cover_litter,0.2605675125270033,0.40803526751889185,0.0329,0.6845180800911579,0.40803526751889196,0.004948069918312949,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,cover_herbs_sum,0.6358283005797286,0.025128055176824447,0.0912,5.015039561171577,0.02512805517682439,0.015283305683593925,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,cover_gravel_stones,-0.23066193601674292,0.6858642537269612,-0.0178,0.16359915030132852,0.6858642537269612,7.844802862166983e-4,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,builtup_250m,0.18555375768058985,0.11761249096961095,0.0613,2.448830171142389,0.11761249096961056,0.0069404923063942974,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,cropland_250m,-0.1996087675438395,0.021584679307317563,-0.108,5.278956592952351,0.021584679307317577,0.002837515185993089,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,grazing_intencity,-0.034062374735555,0.8389189495454943,-0.012,0.04132132130660942,0.8389189495454942,1.3474353122094667e-4,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,mowing,0.6006540567082391,0.1921312670038929,0.0556,1.701198859836371,0.19213126700389294,0.0037251905427368357,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,non_native_percent,FALSE,abandonment,0.0480768301126423,0.8742378530351747,0.01,0.025051881106087335,0.8742378530351747,3.2543252819247576e-5,0.37447138150596326,0.4617826875675327,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,pca1_clima,-1.346174475493058,3.604797891975845e-4,-0.791,12.726659787180248,3.604797891975844e-4,0.07545870420199643,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,pH,-0.7557391237953278,4.886967686470014e-4,-0.3519,12.158308509145845,4.886967686470007e-4,0.0059593276860796076,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,microrelief,0.02227226996645408,0.41396612148242895,0.0528,0.6673812314902605,0.41396612148242895,4.99868113176652e-4,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,heat_index,0.69022323054481,0.4536311756188283,0.0638,0.561562987974153,0.4536311756188284,1.0850599196525064e-4,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,cover_litter,0.21613222607786253,0.7274269255148142,0.0276,0.12148732989825367,0.7274269255148144,8.246790160889813e-6,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,cover_herbs_sum,-0.2661082775147294,0.6242596791555336,-0.0386,0.23992584414503335,0.6242596791555336,0.009012219445956681,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,cover_gravel_stones,-1.5106542163249301,0.36065199200877646,-0.1181,0.8356216464945231,0.36065199200877657,0.0038004465576398513,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,builtup_250m,0.6735552623657312,5.602762396630048e-6,0.2251,20.619327612977393,5.602762396630032e-6,0.019856354202354716,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,cropland_250m,-0.010086782620691119,0.9494416069960816,-0.0055,0.004020576056224025,0.9494416069960816,5.067824162946884e-4,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,grazing_intencity,0.1302995868410201,0.6603999797856599,0.0464,0.1930380894750235,0.66039997978566,3.6307256470560935e-4,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,mowing,1.005598050741167,0.1432251550353903,0.0941,2.1429616231013373,0.14322515503539124,0.009445117404861673,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,invasive_percent,FALSE,abandonment,0.29968475643615566,0.567140154096311,0.0629,0.32749112224375254,0.567140154096311,1.863543812576808e-5,0.38749763930778897,0.45077566323458507,ok,TRUE,binomial
+builtup_250m,1,neophyte_percent,FALSE,pca1_clima,-0.05757148974534913,0.8558120680551168,NA,0.03448559338848053,0.8526776984342561,1.2671537120317368e-4,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,pH,-0.01522614298936932,0.9076824578224796,NA,0.014050893215144973,0.9056426049296913,6.1468182827644585e-6,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,microrelief,0.0021259403767941608,0.8933333168710398,NA,0.01878687485912473,0.8909792424389082,6.0293309412865965e-6,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,heat_index,-0.7629957948000854,0.4612169366558435,NA,0.5683453636308907,0.45091717492046446,0.0013086276760492339,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,cover_litter,-0.5910388184230287,0.18099802654174701,NA,1.8811882633805035,0.1701991553021802,0.0013027665181293338,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,cover_herbs_sum,-0.6910023086813661,0.04590716958347762,NA,4.221200855506226,0.039921897495752166,0.002289537005271918,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,cover_gravel_stones,-4.504854769702165,0.05507271591429906,NA,3.8939008174928773,0.048461741240509906,0.030447497173878905,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,builtup_250m,0.7918846383675534,0.008221998767456913,NA,7.475553396814843,0.006254233896648054,0.020837355674057912,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,cropland_250m,0.4859153899849789,0.09207676559031527,NA,2.9940169161943104,0.08357262210888185,0.015031135969004886,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,grazing_intencity,-0.37739278951371014,0.4019401099246497,NA,0.7352052512008318,0.3912011496240876,0.002345787339085994,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,mowing,2.181850888918755,0.048085004667901526,NA,4.127956950608567,0.04218024535274397,0.009081450673027382,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,1,neophyte_percent,FALSE,abandonment,-0.5564116838136934,0.5056378596534465,NA,0.4633452667038969,0.49606469431210487,0.001551928825386674,0.14705370419364863,0.6978327904565936,ok,TRUE,quasibinomial
+builtup_250m,10,non_native_percent,FALSE,pca1_clima,-1.2121317922699975,2.5995734986069037e-13,-0.7194,53.48966098400978,2.5995734986069026e-13,0.3042602602289974,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,pH,-0.19525292292189644,0.07440494448822416,-0.0918,3.18306712115865,0.07440494448822436,0.004369936810135775,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,microrelief,0.028880994722778826,0.02676362030540523,0.0692,4.90599552138675,0.02676362030540519,0.0040517179608469504,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,heat_index,-0.15752197060598466,0.6866412058115079,-0.0147,0.16274557962232994,0.6866412058115078,3.620127488219053e-4,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,cover_litter,0.13976845483334976,0.6030855276089511,0.018,0.2703672450104172,0.6030855276089511,0.002344835680441125,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,cover_herbs_sum,0.31232160984873814,0.1753178915424826,0.0458,1.8368730158852957,0.17531789154248276,0.010772828810613424,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,cover_gravel_stones,0.14750343035667318,0.7213808670294695,0.0117,0.12717347661623007,0.7213808670294695,0.002491208749157451,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,builtup_250m,0.043113895454071155,0.6936546726703716,0.0146,0.1551574209476557,0.6936546726703716,2.1592686764503727e-4,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,cropland_250m,-0.06765880497499498,0.3869638297286916,-0.0374,0.7484613007488792,0.3869638297286916,3.616665810622777e-4,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,grazing_intencity,0.24277489901864063,0.08384625217997745,0.0872,2.9887232526241814,0.08384625217997763,0.006921108018343186,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,mowing,0.6335570846550767,0.12846691420781287,0.0599,2.3109330549951146,0.1284669142078123,0.007117611088899956,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,non_native_percent,FALSE,abandonment,0.25330516272031245,0.3442396468269595,0.0537,0.8945782755768505,0.34423964682695957,0.0017190582706646306,0.33020068461688545,0.4350653216688732,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,pca1_clima,-0.9912662487307163,3.933190567366703e-5,-0.6493,16.903359678504792,3.933190567366694e-5,0.1547088624354034,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,pH,-0.5239093579357953,6.095092710544881e-4,-0.2719,11.746708664019668,6.095092710544877e-4,0.026420637037703462,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,microrelief,0.017443070432217413,0.33932165747346693,0.0461,0.9129925293248558,0.339321657473467,0.0019960873099526878,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,heat_index,-0.03267139453660887,0.9538441775079267,-0.0034,0.003350099717576825,0.9538441775079268,4.3587441564501433e-4,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,cover_litter,-0.06775642914110433,0.8739610621382364,-0.0097,0.025163206852533832,0.8739610621382365,0.0010268767846236908,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,cover_herbs_sum,-0.3969984484157365,0.27033781051968764,-0.0642,1.215032109334532,0.27033781051968764,0.0011789422760948157,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,cover_gravel_stones,-0.4796842635178607,0.5343802389042857,-0.0418,0.38605527570884396,0.5343802389042858,3.8844373060433575e-5,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,builtup_250m,0.39431946248798616,4.495570336441461e-4,0.1469,12.31406837592271,4.495570336441468e-4,0.01740490510535316,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,cropland_250m,0.06304684435981353,0.5667200316114573,0.0385,0.32820150408936966,0.5667200316114571,0.010807314987969139,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,grazing_intencity,0.14014932489652826,0.43996102986434127,0.0556,0.5963839985848248,0.4399610298643413,0.0011779873018084805,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,mowing,-0.018858369941459625,0.9752291101254509,-0.002,9.641456797166262e-4,0.9752291101254509,5.4020070674969845e-5,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,invasive_percent,FALSE,abandonment,0.03704033804297727,0.91471925126254106,0.0087,0.011467817004554048,0.91471925126254106,6.887910836942668e-5,0.25454932183789575,0.31533433630635305,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,pca1_clima,-0.43044656460879016,0.03221713171575489,-0.2988,4.586905435569711,0.03221713171575488,0.008883060325392482,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,pH,-0.6626840123544674,1.1063214833585186e-4,-0.3645,14.946003564978385,1.1063214833585187e-4,0.01725273299864048,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,microrelief,0.02270281454446232,0.24066097011374862,0.0636,1.376718077314297,0.24066097011374857,0.0015728126751555567,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,heat_index,-0.03851953274341392,0.9507569848099844,-0.0042,0.0038138281450411917,0.9507569848099845,9.780092553957837e-4,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,cover_litter,-0.1002185848822918,0.8438079676499539,-0.0151,0.03881885384724765,0.8438079676499539,0.0033676807802964386,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,cover_herbs_sum,-0.17224280420303303,0.6856708043212447,-0.0295,0.16381208052951854,0.6856708043212445,7.340695958194822e-5,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,cover_gravel_stones,0.43468048225759276,0.5840588595951834,0.0402,0.2997186438078431,0.5840588595951834,0.002302162495160349,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,builtup_250m,0.45055267452917724,0.0028639260251912694,0.1778,8.89219263821401,0.002863926025191272,0.02042725573172737,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,cropland_250m,0.38492069726296013,0.012054258404769456,0.2489,6.302871096004272,0.012054258404769473,0.060688467406403934,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,grazing_intencity,-0.043317980361947776,0.8355021121127869,-0.0182,0.04311860158846564,0.8355021121127868,1.4200798692801984e-4,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,mowing,0.6812847254206729,0.21233365654472697,0.0753,1.5554433098041374,0.21233365654472702,0.007224088301272973,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,10,neophyte_percent,FALSE,abandonment,-0.24421490152174982,0.5514742052381688,-0.0606,0.3546828009234375,0.5514742052381687,0.0014188301649691358,0.1394598214375517,0.2693804443324588,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,pca1_clima,-1.1722212735380342,1.2176343295155503e-14,-0.6924,59.5085584421392,1.2176343295155503e-14,0.2811714910380714,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,pH,-0.07407734695410964,0.3780769906999298,-0.0341,0.7769453523398436,0.3780769906999297,1.083731905242071e-5,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,microrelief,0.03554143069015291,1.8763276848236872e-4,0.0772,13.951050572836579,1.876327684823688e-4,0.0088868362864905,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,heat_index,-0.2582049501346981,0.2889274232608052,-0.0229,1.124612516547455,0.28892742326080534,4.7456108736138204e-5,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,cover_litter,0.5134120976778753,0.012262799913445439,0.0607,6.272471208946214,0.012262799913445453,0.012642812176410518,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,cover_herbs_sum,0.5811302638091634,8.022921582323389e-4,0.0781,11.23592257519372,8.022921582323395e-4,0.013744036426390103,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,cover_gravel_stones,0.4043943040882473,0.23812555644971606,0.0295,1.391656494705488,0.23812555644971606,0.0025319829513618442,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,builtup_250m,0.04838454166424058,0.473335567797875,0.0163,0.514178548209759,0.47333556779787506,0.007328184254072608,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,cropland_250m,-0.026346603381671586,0.6046897721199997,-0.0145,0.26798039037301297,0.6046897721199997,0.0016173861736730505,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,grazing_intencity,0.27161814274950535,3.9577596387399593e-4,0.0971,12.552030754288351,3.9577596387399577e-4,0.007799180377453612,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,mowing,0.3918383068260595,0.08930703251323098,0.0369,2.8868201535114855,0.0893070325132307,0.002429864181902805,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,non_native_percent,FALSE,abandonment,0.29486607166074563,0.05041055944215121,0.0622,3.82775004817532,0.05041055944215123,0.003677469962091799,0.4162912768980109,0.42427510076587727,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,pca1_clima,-1.4183852292527663,3.372184806942535e-4,-0.7907,12.851446434847464,3.372184806942538e-4,0.20391008578006234,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,pH,-0.41480668440127055,0.020968723750929633,-0.1803,5.329389926946076,0.020968723750929622,0.01399782367934084,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,microrelief,0.026905473364579442,0.1714116575315033,0.0552,1.8705538703835254,0.1714116575315033,2.618325915563219e-5,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,heat_index,-0.03441380545588552,0.9479191945214079,-0.0029,0.004266706359335879,0.9479191945214079,4.133059811744407e-5,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,cover_litter,0.354439153889424,0.43834201317191723,0.0395,0.6006188263240587,0.4383420131719171,6.431488688770979e-4,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,cover_herbs_sum,-0.3473476830223237,0.3890257225292149,-0.0441,0.7419850950191441,0.38902572252921486,0.00867042692043204,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,cover_gravel_stones,0.18757014046670706,0.8019932947414212,0.0129,0.0628847122499774,0.8019932947414212,4.386061479927339e-4,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,builtup_250m,0.24435178745973554,0.03367627664565143,0.0775,4.511064459828405,0.0336762766456514,0.00503793192290805,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,cropland_250m,0.15915549033688633,0.18661350530677706,0.0826,1.7441527471083471,0.18661350530677706,0.01404992984222952,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,grazing_intencity,0.295101090206111,0.07000879310533897,0.0996,3.282814110533276,0.07000879310533907,0.0017358345954833186,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,mowing,0.06668998926421403,0.9056132625192556,0.0059,0.014059674490447425,0.9056132625192557,3.884681201371949e-4,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,invasive_percent,FALSE,abandonment,0.13087960065085613,0.6893095867979824,0.0261,0.15983379168712503,0.6893095867979824,5.505779583309901e-4,0.4787069031602505,0.5177399729488675,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,pca1_clima,-0.6173991348496369,0.008901232167125031,-0.4318,6.8425372957839015,0.00890123216712503,0.0937099973937795,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,pH,-0.4761365453204248,0.008537130787199424,-0.2596,6.917184011770171,0.008537130787199438,0.02359144332707778,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,microrelief,0.03104919387030289,0.07061145113385787,0.0799,3.2687489860421546,0.07061145113385787,1.0285798506384334e-4,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,heat_index,-0.1561896356301145,0.7554178498870563,-0.0164,0.0970344572787285,0.7554178498870564,0.001525435211249454,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,cover_litter,0.27271362985971553,0.5778169416288266,0.0382,0.3097771916409515,0.5778169416288266,1.064129896223439e-6,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,cover_herbs_sum,-0.5352000982666314,0.242975118248845,-0.0852,1.3632494398790804,0.24297511824884496,0.023190674922748823,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,cover_gravel_stones,0.8719384324839097,0.22003550697628835,0.0753,1.5041396448218105,0.22003550697628838,0.006430064506586681,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,builtup_250m,0.28232098942672396,0.017656723743349256,0.1123,5.629891556492571,0.01765672374334927,0.005314241246464003,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,cropland_250m,0.25467835714955234,0.06373271250775073,0.1658,3.437483115671241,0.06373271250775099,0.036169658444015394,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,grazing_intencity,0.22024790608949668,0.17309966721291037,0.0933,1.855892041457856,0.1730996672129103,0.0011246627433549865,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,mowing,0.3655832184053801,0.4497978242241542,0.0407,0.5711612777720185,0.44979782422415415,0.005385674786054028,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_250m,100,neophyte_percent,FALSE,abandonment,-0.157506328381017,0.6482069961567214,-0.0394,0.20816814662914954,0.6482069961567212,2.290251422306143e-4,0.16342669022237055,0.20324544315777004,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,pca1_clima,-3.8978045920162905,0.0020526249561281036,-1.0442,9.50187092270912,0.0020526249561281084,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,pH,-0.5437497471553816,0.17355673145439035,-0.1124,1.8519503150783214,0.17355673145439032,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,microrelief,0.03348003183904196,0.42214723109782193,0.0361,0.6443298498625841,0.42214723109782193,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,heat_index,2.4368874741132913,0.16952893602022667,0.0995,1.8871038906135083,0.16952893602022678,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,cover_litter,0.646928352389197,0.5330945101952522,0.0375,0.38848939540567096,0.5330945101952522,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,cover_herbs_sum,1.1441490344345977,0.179817511555014,0.0688,1.7991316339988588,0.17981751155501408,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,cover_gravel_stones,0.8835864941710194,0.6251843989186701,0.0284,0.23864787748150545,0.6251843989186703,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,builtup_500m,0.7124457554289672,0.008974458363987707,0.1162,6.827902707401331,0.008974458363987725,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,cropland_500m,0.36927343041980865,0.3187999757031893,0.0888,0.9938633169776215,0.3187999757031894,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,grazing_intencity,0.09852567120877999,0.8420756905872151,0.0159,0.03969623146586147,0.8420756905872151,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,mowing,0.4666789208023056,0.6275632482646323,0.0204,0.23537968576499782,0.6275632482646324,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,1e-4,non_native_percent,FALSE,abandonment,-0.17112559843143307,0.8475252121618694,-0.0161,0.03697045524973238,0.8475252121618694,NA,0.8844636446732951,0.8844636446732951,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,pca1_clima,-2.9886876852800253,2.8094892727231e-4,-1.0606,13.19331875976064,2.809489272723105e-4,0.07192457167817014,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,pH,-0.3955214347412791,0.17702255814189338,-0.1089,1.822444654968139,0.17702255814189333,0.001944856852144822,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,microrelief,0.031178069173761987,0.350005159141655,0.045,0.8734384382077102,0.350005159141655,2.164674925369566e-4,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,heat_index,0.9410094071763275,0.464239253036392,0.0532,0.5356544765297279,0.46423925303639213,2.6018487956094978e-5,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,cover_litter,1.384083521328274,0.040529177799375364,0.1074,4.195592931597187,0.04052917779937544,8.286640085408514e-4,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,cover_herbs_sum,0.9229640168997065,0.1429434961726476,0.0779,2.145982546019279,0.14294349617264707,3.7447094661369966e-5,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,cover_gravel_stones,1.2758718130869826,0.31950844385295113,0.0574,0.990957589433582,0.31950844385295113,0.0044983509882390174,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,builtup_500m,0.5642146305831977,0.004466591449933531,0.1238,8.083669367146294,0.0044665914499335225,0.003646047454926268,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,cropland_500m,-0.037951388515506126,0.8674074365170756,-0.0122,0.027873131845834304,0.8674074365170755,1.3316053582008484e-4,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,grazing_intencity,0.03857974835776923,0.9170896377962321,0.0083,0.010836902629023063,0.9170896377962321,2.052557187986033e-5,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,mowing,0.14005645818416224,0.8587270918232002,0.0081,0.03168213418941133,0.8587270918232003,0.0019399744670578018,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.001,non_native_percent,FALSE,abandonment,-0.2667874999245303,0.6676314049941942,-0.0337,0.1843852438045207,0.6676314049941942,4.2802420159027555e-4,0.7834691273727394,0.7920617391750312,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,pca1_clima,-1.426803409690954,1.06217522650614e-5,-0.8241,19.396212173622818,1.0621752265061411e-5,0.10695563155569393,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,pH,-0.2319655900552775,0.2549857088217039,-0.1058,1.295778840951097,0.25498570882170385,0.003544482968524348,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,microrelief,0.035349242460950434,0.12700532681930068,0.0824,2.3287316098994717,0.12700532681930082,0.0012464407956366771,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,heat_index,-0.8623561849081575,0.25016263421721774,-0.0784,1.3223952278199458,0.2501626342172178,0.0094483895497279,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,cover_litter,0.6702483610688277,0.14946392170313927,0.0842,2.0777134839672784,0.14946392170313974,0.002034574767080675,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,cover_herbs_sum,1.0610318059695463,0.01481661305210602,0.15,5.938144034287512,0.014816613052106024,0.038504840749277625,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,cover_gravel_stones,0.19373308334360673,0.8492413267350576,0.0149,0.036132888116735123,0.8492413267350575,0.005397922799892058,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,builtup_500m,0.2726970581171503,0.07413174184160398,0.0983,3.189079542935482,0.0741317418416041,0.010368123503566593,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,cropland_500m,-0.19517734760609629,0.15110609937697805,-0.1036,2.0610491701450813,0.15110609937697803,0.01643673220443962,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,grazing_intencity,0.05984274985220469,0.8090063908096856,0.0209,0.058422781862408,0.8090063908096856,0.003912227066012107,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,mowing,0.9754691686420928,0.08132875489403915,0.0899,3.0381459917461893,0.08132875489403929,0.008408034162216142,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,non_native_percent,FALSE,abandonment,0.3338802109504211,0.44285985622305785,0.0688,0.5888611162140444,0.4428598562230578,0.00418223154345738,0.41625256854487647,0.4662777555091063,ok,TRUE,binomial
+builtup_500m,0.01,neophyte_percent,FALSE,pca1_clima,197672744306720.2,7.821119039145153e-68,NA,885.2650222551421,1.5669571184286758e-194,0.6654882953272174,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,pH,-77858182506064.27,6.309613347002398e-15,NA,79.12041859573642,5.843723290465682e-19,0.18069685939695276,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,microrelief,7172045971380.755,1.0686074685960768e-9,NA,44.37456745216265,2.7118733782042008e-11,0.08685246589714897,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,heat_index,-258596904792445.38,1.661565899577184e-16,NA,90.84774644380441,1.5516363654391653e-21,0.17388468428601747,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,cover_litter,326995676315519.1,7.26692760258857e-29,NA,206.55725702531134,7.744683830876867e-47,0.355085059211126,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,cover_herbs_sum,-134402162296727.66,1.6679514584516712e-9,NA,43.20267668200721,4.9353118633425296e-11,0.10538801202068648,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,cover_gravel_stones,-1557316245323376.5,1.1552311809018598e-76,NA,1489.2688212568876,0,0.8391009147703825,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,builtup_500m,-22605413163351.72,0.006463361366074272,NA,7.95492155038409,0.004795678758148651,0.02736256402480946,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,cropland_500m,327805968262807,1.0433710792666578e-96,NA,2961.011056757149,0,0.9004557328293109,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,grazing_intencity,-424799502823345.44,1.5548135918539438e-90,NA,1793.0782244314153,0,0.8061682512289107,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,mowing,429807192929726.94,2.3377048490065013e-38,NA,300.1020108299264,3.1300167293525005e-67,0.3305078247599046,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.01,neophyte_percent,FALSE,abandonment,-627607387783171.25,8.300104443730913e-76,NA,1142.5541248239983,1.8627155774070652e-250,0.7331248535176775,1,1,ok,TRUE,quasibinomial
+builtup_500m,0.1,non_native_percent,FALSE,pca1_clima,-1.4197936229251098,1.1592422042559007e-10,-0.8391,41.53255667684164,1.1592422042559036e-10,0.2367681072318499,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,pH,-0.3081835411815642,0.02588823964365494,-0.1444,4.963467902682401,0.025888239643654876,0.010429456525705823,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,microrelief,0.03929298250019192,0.011930619469478572,0.0938,6.32115052755328,0.011930619469478565,0.006910747707356682,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,heat_index,-0.039075686187653294,0.9378676779864872,-0.0036,0.006076231533273579,0.9378676779864873,3.8885868408341395e-6,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,cover_litter,0.7133624100182259,0.0281955560010167,0.0918,4.8160703360218795,0.028195556001016687,0.022103257268166174,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,cover_herbs_sum,0.608069982748922,0.04155322947680006,0.0883,4.1533096456196335,0.04155322947679999,0.0176009460563866,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,cover_gravel_stones,0.016590308972929055,0.9789115502127406,0.0013,6.987315216520378e-4,0.9789115502127406,0.0013140660323323393,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,builtup_500m,0.2841556829925914,0.004388030526553031,0.1047,8.11583298721171,0.00438803052655303,0.010657101279571528,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,cropland_500m,-0.247868082567063,0.006117588711914727,-0.1349,7.515335578846486,0.006117588711914727,0.006652228917589899,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,grazing_intencity,0.030609872027838433,0.8627123296548574,0.011,0.029902198034140657,0.8627123296548574,0.0011189590611800301,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,mowing,0.3687174655679998,0.4227175613336954,0.0347,0.6427477050474472,0.4227175613336954,2.546237641422003e-4,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,non_native_percent,FALSE,abandonment,0.16385654141270378,0.588337602729039,0.0346,0.29294791182130125,0.5883376027290391,1.4462703449337223e-4,0.39645990684940013,0.43058333432442747,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,pca1_clima,-1.43819269859839,0.01468750406763015,-0.7152,5.953570934299327,0.014687504067630182,0.021440209721662776,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,pH,-0.7260803664034624,0.02022349514423461,-0.2863,5.392498405317954,0.020223495144234674,0.0018342432950812163,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,microrelief,0.05190264005097319,0.16108897994459592,0.1043,1.963973655975334,0.16108897994459595,6.871534200245954e-4,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,heat_index,0.5944135590481459,0.6500764231674783,0.0465,0.2058037883318405,0.6500764231674783,0.010132988895372856,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,cover_litter,1.2812710819889581,0.10639860502574568,0.1387,2.6069143899775438,0.10639860502574523,0.006318742405304362,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,cover_herbs_sum,-1.2332670349677637,0.12006293030902487,-0.1508,2.4164998126250663,0.12006293030902462,0.005203864749520422,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,cover_gravel_stones,-5.181439179815893,0.28954105722522083,-0.3431,1.121754132255165,0.2895410572252208,0.017734514100747813,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,builtup_500m,0.7859678082929373,2.8617434609861053e-5,0.2437,17.507514627235267,2.8617434609861138e-5,0.014450725244872332,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,cropland_500m,0.29849127402767367,0.26120537765642987,0.1367,1.2623571911649256,0.26120537765643004,0.00853376334995443,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,grazing_intencity,0.030401166794638956,0.9415001603114084,0.0092,0.005385283223339584,0.9415001603114083,1.0244583647250533e-4,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,mowing,0.21175908625795414,0.8422582637243596,0.0168,0.03960327987471326,0.8422582637243596,2.3414456872882035e-5,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,invasive_percent,FALSE,abandonment,-0.22258621659048397,0.7635338400635634,-0.0395,0.09050680817019748,0.7635338400635634,0.0028807997897131784,0.5188921488313887,0.6182307589099766,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,pca1_clima,-0.8393940186681051,0.04264054033593564,-0.4714,4.109596271667115,0.042640540335935534,1.2541923338309078e-4,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,pH,-0.8214663624592855,0.007494186520734449,-0.3658,7.150529331740909,0.007494186520734469,1.7925159458681228e-4,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,microrelief,0.04995770815636292,0.1567978609469481,0.1133,2.004839771022914,0.1567978609469473,0.0012481801767577946,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,heat_index,0.35278247754587344,0.7867840403333195,0.0312,0.07316432587130148,0.7867840403333194,2.088266709599481e-4,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,cover_litter,1.053655845495458,0.17896758268761792,0.1288,1.8061764455070464,0.17896758268761803,0.013869800785693501,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,cover_herbs_sum,-0.4413508105982649,0.5911672352837016,-0.0609,0.2885250990753339,0.5911672352837016,0.002367403089345324,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,cover_gravel_stones,-5.311453453009513,0.3345867727578613,-0.3972,0.9310633263089169,0.33458677275786125,0.01870404693682241,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,builtup_500m,0.7293750110238566,9.129023181352474e-4,0.2554,10.996375606797995,9.129023181352468e-4,0.015507303585504773,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,cropland_500m,0.3726054374380739,0.16661691641758614,0.1927,1.9131216160559423,0.1666169164175862,0.019878646652276313,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,grazing_intencity,-0.5169787695654808,0.2528619261901056,-0.1758,1.307422116078691,0.25286192619010567,0.0036344196363760624,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,mowing,0.7780424583554393,0.3703428183489514,0.0696,0.8025138921855027,0.3703428183489514,2.4409855460373695e-4,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,0.1,neophyte_percent,FALSE,abandonment,-0.6145593356443523,0.40919796984162327,-0.1233,0.6811297506683087,0.4091979698416234,0.004989154923567231,0.41598206461861537,0.516526929157289,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,pca1_clima,-1.427902980460479,5.942938630916809e-12,-0.8216,47.348308270273094,5.9429386309168255e-12,0.2752465712199252,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,pH,-0.300798106215708,0.023762890673594834,-0.1372,5.111855675420533,0.02376289067359481,0.010027019858583952,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,microrelief,0.02563235702722586,0.09786906086510355,0.0595,2.7399298858838925,0.09786906086510366,0.0012257199810374298,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,heat_index,0.36049741806441693,0.43401902392872277,0.0326,0.6120445871230373,0.4340190239287228,0.004075742394987944,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,cover_litter,0.2842966451600939,0.36210412465822234,0.0356,0.8305825777870969,0.3621041246582224,0.005585664616479057,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,cover_herbs_sum,0.6670502071484841,0.0185506839222725,0.0948,5.543383403585669,0.018550683922272503,0.013966456738954537,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,cover_gravel_stones,-0.1987357335789201,0.7248431278304264,-0.0152,0.12389943282060012,0.7248431278304264,8.179841669651004e-4,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,builtup_500m,0.2364020136264205,0.02140217160448943,0.0848,5.293743041975186,0.021402171604489387,0.009550580251519737,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,cropland_500m,-0.19168045738622116,0.03587030118473806,-0.1021,4.403259932132498,0.035870301184738045,4.1923693456920124e-4,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,grazing_intencity,-0.02926783531010358,0.8592560138220657,-0.0102,0.031442846637016846,0.8592560138220656,2.8987385771751703e-4,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,mowing,0.6451012927514111,0.15775745540398428,0.0591,1.9955915898085101,0.15775745540398423,0.003944629751714571,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,non_native_percent,FALSE,abandonment,0.09157266812151474,0.7605572410889473,0.0188,0.09287202171453326,0.7605572410889473,7.677634041276776e-5,0.3898362314992102,0.47020329028182645,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,pca1_clima,-1.4351495257192686,7.616310270422004e-5,-0.8134,15.65122817802035,7.616310270422003e-5,0.08371521453910043,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,pH,-0.7372518346615156,1.7922134414204e-4,-0.3311,14.037286685273914,1.7922134414204027e-4,0.005182154855544196,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,microrelief,0.031469003299888755,0.19488469525211594,0.072,1.6802992404017365,0.19488469525211594,4.008641503154225e-4,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,heat_index,0.7352228331349978,0.3876281365624058,0.0655,0.7463694116063428,0.3876281365624058,1.3603666222764205e-4,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,cover_litter,0.4330186917029511,0.44148137875946686,0.0534,0.5924289867312009,0.4414813787594669,1.801636396089029e-5,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,cover_herbs_sum,-0.20650687596917602,0.6858356958203604,-0.0289,0.16363057391984107,0.6858356958203603,0.007555169396649647,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,cover_gravel_stones,-1.6166776294124279,0.33057793414959946,-0.1219,0.9466325590665753,0.3305779341495995,0.0029476054187682946,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,builtup_500m,0.6827976563100365,1.562503820785213e-9,0.2412,36.454768693696025,1.5625038207852076e-9,0.018835060589978476,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,cropland_500m,0.06790324495322642,0.6799695982101491,0.0356,0.17016005804412057,0.6799695982101492,0.0049618776695215215,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,grazing_intencity,0.07489688288252212,0.7809636266884064,0.0257,0.07731930083390477,0.7809636266884065,2.8646151196544454e-5,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,mowing,1.1148804501747684,0.06803215052158153,0.1006,3.329872444266705,0.06803215052158162,0.008524366165577646,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,invasive_percent,FALSE,abandonment,0.27220388360080894,0.5680843107096817,0.0551,0.3258983799531275,0.5680843107096817,1.0614926886361764e-4,0.46108923768616705,0.46108923768616705,ok,TRUE,binomial
+builtup_500m,1,neophyte_percent,FALSE,pca1_clima,0.002354553561522048,0.9943667943862209,NA,5.205788760997456e-5,0.9942432209107609,1.986824787103495e-7,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,pH,0.0018902550193713916,0.9884472055823279,NA,2.1906612174866624e-4,0.9881910355536736,9.248614954487232e-8,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,microrelief,0.0017878720680588516,0.9100463495724246,NA,0.01333746728928033,0.9080583686947243,4.132172814597335e-6,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,heat_index,-0.5808745873258202,0.573837860811059,NA,0.3308460169865288,0.5651613467767088,7.402879126950792e-4,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,cover_litter,-0.47563360937723215,0.2770613113978457,NA,1.239449288464034,0.26557721576270943,8.156144843477588e-4,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,cover_herbs_sum,-0.6002020580738655,0.08156494806474766,NA,3.2027150273519913,0.07351613198113151,0.0016602745050879344,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,cover_gravel_stones,-4.322637621589062,0.06439879026805469,NA,3.6159967909091257,0.05722641855239668,0.02728627080763553,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,builtup_500m,0.876516218291329,0.0015290666241823494,NA,10.864034733656588,9.804984313097345e-4,0.028711951295478676,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,cropland_500m,0.5107883554124478,0.09883801568426603,NA,2.8731493723828176,0.09006846130411897,0.015303038725674173,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,grazing_intencity,-0.39982779761501275,0.371930215292281,NA,0.8345371647194193,0.3609638330624324,0.002563621193853356,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,mowing,2.290522484759472,0.03733929236595116,NA,4.5858481740841865,0.032237012730630996,0.009682815381000997,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,1,neophyte_percent,FALSE,abandonment,-0.5542402411258606,0.5076573932413855,NA,0.4589569658425374,0.4981118403735523,0.0015035816583131045,0.1644431645490928,0.6999586122412084,ok,TRUE,quasibinomial
+builtup_500m,10,non_native_percent,FALSE,pca1_clima,-1.2269594864068556,2.414560520727918e-13,-0.7234,53.63470599845053,2.4145605207279067e-13,0.30075881721458525,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,pH,-0.18790411301957688,0.08529224098896734,-0.0878,2.961055598005504,0.08529224098896718,0.004487093046883684,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,microrelief,0.02939423111227859,0.02390475406188599,0.07,5.101529639837311,0.023904754061886052,0.004087151553569348,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,heat_index,-0.17464087332292555,0.6541648742594995,-0.0162,0.20068950239033784,0.6541648742594995,3.361766876125385e-4,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,cover_litter,0.14429718242748618,0.5923345245634701,0.0185,0.28671320676672174,0.59233452456347,0.0026488930405737304,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,cover_herbs_sum,0.3130608710482691,0.17722786031326912,0.0456,1.820717787361236,0.1772278603132691,0.0097570934064967,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,cover_gravel_stones,0.13743238520678489,0.739240030022919,0.0108,0.11079572195534516,0.739240030022919,0.002295321036556251,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,builtup_500m,0.08254050799271584,0.39094175662360753,0.0303,0.7360108274425657,0.3909417566236076,4.050467120421332e-4,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,cropland_500m,-0.05381371413295293,0.514249120877728,-0.0294,0.42541143289320815,0.514249120877728,0.002054824196121979,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,grazing_intencity,0.23472809958665197,0.09398523147733573,0.0838,2.804754479769959,0.0939852314773356,0.006145539848545352,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,mowing,0.6755476728750228,0.10589190964431246,0.0634,2.614484827451644,0.10589190964431244,0.0070365618740105456,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,non_native_percent,FALSE,abandonment,0.2542111723351337,0.34388290032788077,0.0536,0.895902063186494,0.3438829003278809,0.0013784568976704297,0.33901702840549996,0.4419000633017852,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,pca1_clima,-1.0387623543905151,3.269436207525081e-5,-0.6668,17.25437630646809,3.269436207525079e-5,0.15860659129617719,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,pH,-0.5189536427238622,5.248075475551166e-4,-0.264,12.0253886375638,5.248075475551159e-4,0.02597025041846953,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,microrelief,0.021522542160772585,0.22134972342253778,0.0558,1.4955993104526548,0.22134972342253784,0.0022358840430827054,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,heat_index,-0.002701598953789429,0.9960937039085637,-3e-4,2.396920694762917e-5,0.9960937039085637,2.1310574661459952e-4,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,cover_litter,0.03349052806622529,0.9361444437178982,0.0047,0.006418685023577972,0.9361444437178982,4.321764083017813e-4,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,cover_herbs_sum,-0.3956331047990525,0.2709313809204848,-0.0627,1.2120253309352678,0.27093138092048497,0.0015074119159315905,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,cover_gravel_stones,-0.48915310135373025,0.5257210504139631,-0.0418,0.4026554465954104,0.5257210504139631,4.0137970889800114e-5,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,builtup_500m,0.4071030671060612,2.6167052055433154e-5,0.1629,17.6777433279679,2.6167052055433137e-5,0.02144376267802213,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,cropland_500m,0.09954160257853148,0.3990307933751378,0.0592,0.7112450551778013,0.3990307933751379,0.016263928649987783,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,grazing_intencity,0.13504931772058473,0.4446758535200429,0.0525,0.5841868999622359,0.44467585352004296,8.441672766429202e-4,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,mowing,0.05293947137122623,0.9292029781452771,0.0054,0.007893907153529328,0.9292029781452771,1.4535909792565602e-4,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,invasive_percent,FALSE,abandonment,0.023368580561259192,0.9452924959067838,0.0054,0.004708635916377346,0.9452924959067838,1.540872977891283e-5,0.2898299568090304,0.3341471906402835,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,pca1_clima,-0.40655387471447113,0.04664497191010351,-0.2807,3.9581488578430917,0.04664497191010334,0.005856399026245594,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,pH,-0.6526236631644642,8.98999148882082e-5,-0.357,15.337792953923003,8.989991488820838e-5,0.01714544844414164,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,microrelief,0.02605097238134925,0.16287785194437265,0.0726,1.9473022859376665,0.16287785194437268,0.0016407847970096325,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,heat_index,0.06442514610599441,0.9161507667491063,0.007,0.011084638870575762,0.9161507667491063,5.159830555867424e-4,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,cover_litter,0.06645825126756691,0.8945089592578286,0.01,0.017583019253246363,0.8945089592578287,0.00235539106414135,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,cover_herbs_sum,-0.14621112513527412,0.7305399258096207,-0.0249,0.11861645598215285,0.7305399258096207,6.306703721892514e-5,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,cover_gravel_stones,0.5236991159554998,0.5075249487524383,0.0481,0.4391666574888195,0.5075249487524383,0.0025663832734432474,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,builtup_500m,0.4923098213505637,1.2278662937947242e-4,0.2119,14.74939944885953,1.2278662937947229e-4,0.031244454963789768,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,cropland_500m,0.3918464672868409,0.013905335091178018,0.2505,6.050122126675602,0.01390533509117804,0.0626662931476238,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,grazing_intencity,-0.022145823572570028,0.9126801903974434,-0.0093,0.012024993166205152,0.9126801903974433,1.1324004907799502e-4,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,mowing,0.738184008210247,0.16128657996816306,0.0812,1.9621217765510663,0.16128657996816315,0.008060570516645254,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,10,neophyte_percent,FALSE,abandonment,-0.25772061859001255,0.5220698595857579,-0.0636,0.4098023148293247,0.522069859585758,0.0012016256096993177,0.15857847433645705,0.2650507203237228,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,pca1_clima,-1.1692647566337722,1.593952098047938e-14,-0.689,58.97861122181774,1.593952098047945e-14,0.2661409439621967,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,pH,-0.07247376272033068,0.3837448789523527,-0.0333,0.7586705887005399,0.38374487895235276,5.738179745710793e-8,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,microrelief,0.03540370958582025,1.6995106428593728e-4,0.0767,14.137182558710562,1.6995106428593733e-4,0.008530204603022137,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,heat_index,-0.26249153977232886,0.2781339625176272,-0.0233,1.1761853028837927,0.27813396251762734,7.109010033272096e-5,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,cover_litter,0.5145203985494193,0.012139292853884865,0.0607,6.290410566368072,0.012139292853884867,0.014402293462803107,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,cover_herbs_sum,0.5885850144567093,8.042763744250234e-4,0.079,11.231338088611361,8.042763744250243e-4,0.010916935691365382,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,cover_gravel_stones,0.40164440008600244,0.23978973191631964,0.0292,1.3818296805815766,0.23978973191631975,0.0021478688916361927,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,builtup_500m,0.08223067719148669,0.17173140833936953,0.0302,1.8677638506319,0.17173140833936956,0.004637505933548715,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,cropland_500m,-0.020343088134690324,0.7175492781419439,-0.0111,0.13085297632345855,0.7175492781419438,0.004574421825603346,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,grazing_intencity,0.2673014875643489,4.744746604720559e-4,0.0954,12.213400739781223,4.7447466047205607e-4,0.006845969910458272,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,mowing,0.39603552824449384,0.0868154880209751,0.0372,2.9324530763600554,0.08681548802097473,0.001768681803594672,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,non_native_percent,FALSE,abandonment,0.3014758557955757,0.04760237458933871,0.0635,3.9239688544109352,0.04760237458933898,0.002655644487680845,0.41727398764784535,0.4251089846234248,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,pca1_clima,-1.4247820130699835,3.868714444804839e-4,-0.7787,12.594558420883631,3.868714444804839e-4,0.19490442931943988,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,pH,-0.4377743784031754,0.012879348916964193,-0.1865,6.185607367409176,0.0128793489169642,0.012299370474482405,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,microrelief,0.02798331970235977,0.1503130095937505,0.0563,2.069071491165948,0.15031300959375174,3.566769853864434e-5,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,heat_index,0.04090007201020925,0.9379606038761752,0.0034,0.006058033027434901,0.9379606038761752,2.241924247395517e-5,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,cover_litter,0.46254394729980153,0.30672759122876936,0.0506,1.0447142494430282,0.30672759122876936,9.857864405298246e-4,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,cover_herbs_sum,-0.3588526270679553,0.37936000262726116,-0.0446,0.772774831162197,0.3793600026272611,0.008263365550551379,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,cover_gravel_stones,0.20689755059037185,0.7826008639128271,0.014,0.07613806002363536,0.7826008639128271,5.032677439173182e-4,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,builtup_500m,0.27851814194268654,0.01202931488968883,0.0949,6.306543324880508,0.012029314889688834,0.002778693059966234,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,cropland_500m,0.21897499504745602,0.11123394402169685,0.1108,2.536601943207214,0.1112339440216963,0.01808975602393868,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,grazing_intencity,0.280568671372392,0.08454287096613865,0.0929,2.9753302444117975,0.08454287096613865,0.0010215032210671414,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,mowing,0.05247285878451719,0.9257311312276433,0.0046,0.00868941798764385,0.9257311312276433,1.9118694670854604e-4,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,invasive_percent,FALSE,abandonment,0.10528585120286793,0.7517408712969993,0.0206,0.10007398160274054,0.7517408712969992,1.059603840696285e-4,0.4957203937575754,0.527985632096112,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,pca1_clima,-0.5442803320024193,0.01602602573432447,-0.3797,5.800016326865188,0.01602602573432446,0.08586627487101176,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,pH,-0.47899239128371934,0.005324750475868904,-0.2605,7.765705165661356,0.0053247504758689125,0.023046080174926622,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,microrelief,0.03259235039491561,0.0534740335156897,0.0836,3.7290426792001647,0.05347403351568981,1.253511837871145e-4,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,heat_index,-0.01967070289223577,0.9692276846185981,-0.0021,0.0014881806094030575,0.9692276846185982,9.314954123462569e-4,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,cover_litter,0.41786116150105723,0.38302142567946396,0.0584,0.7609818631314845,0.38302142567946396,6.931616574969392e-5,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,cover_herbs_sum,-0.442663132537528,0.3456676445265208,-0.0703,0.8892978879554924,0.3456676445265209,0.021131396893664806,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,cover_gravel_stones,0.9099970337775389,0.1978295067251426,0.0784,1.658325917809434,0.1978295067251426,0.006775660219884272,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,builtup_500m,0.36429214535174237,0.0010566258643672354,0.1584,10.72561426833164,0.0010566258643672354,0.006266633997893419,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,cropland_500m,0.30615748662385533,0.03553600554223563,0.1978,4.419233041337078,0.03553600554223558,0.034607886966143864,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,grazing_intencity,0.21186998897144663,0.18893508894253694,0.0895,1.7259020647618835,0.18893508894253697,9.373782276058308e-4,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,mowing,0.3445273462572467,0.4750697248192663,0.0383,0.5101597150899058,0.4750697248192663,0.005353273433039323,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+builtup_500m,100,neophyte_percent,FALSE,abandonment,-0.17840426330813638,0.6078467585249233,-0.0445,0.2633223939474305,0.6078467585249232,8.693009528250917e-5,0.1714403369841137,0.19370526874450825,ok,TRUE,binomial
+climate,0.001,non_native_percent,FALSE,pca1_clima,1992593.6980767169,0.9998359953171536,NA,4.4225122139174296e-8,0.9998322067141566,5.665328423849611e-17,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,pH,53814.259153520456,0.9999071528179944,NA,1.4186387062209155e-8,0.999904966666587,2.9804328060087213e-20,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,microrelief,27065.211315078846,0.9998401447242311,NA,4.2052159488327126e-8,0.9998363808207277,3.97543682286985e-19,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,heat_index,-2976040.949365203,0.9998358114342484,NA,4.436292504727576e-8,0.9998319455004246,8.361768569798204e-18,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,cover_litter,-226168.5468952945,0.9998438517350168,NA,4.012441194280697e-8,0.9998401751156554,7.615799588335542e-20,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,cover_herbs_sum,506747.7760080994,0.9998360881319679,NA,4.421352637234656e-8,0.999832228713184,4.697493330498851e-19,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,cover_gravel_stones,466435.8418420858,0.9998792514168334,NA,2.3993767121045304e-8,0.9998764083075581,1.255658484177961e-19,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,builtup_1000m,-164406.93492523453,0.9998403257895148,NA,4.1956949943011074e-8,0.999836566149319,4.53325242965585e-19,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,cropland_1000m,-299735.9311970419,0.9998370811483568,NA,4.3679437354786335e-8,0.9998332451108332,1.923693448721867e-18,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,grazing_intencity,-77159.48061240712,0.9998769228469542,NA,2.490642672088899e-8,0.9998740796935444,3.9939144384580124e-20,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,mowing,-3340366.107980968,0.9998921888862754,NA,1.9111008473627533e-8,0.9998896983871981,8.976907947008618e-18,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
+climate,0.001,non_native_percent,FALSE,abandonment,-378063.4611912084,0.999843785367434,NA,4.012360685050167e-8,0.9998401767190985,2.9198545288615384e-19,0.9998645109302956,0.9999999999996325,ok,TRUE,quasibinomial
