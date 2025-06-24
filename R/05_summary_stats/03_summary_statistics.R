@@ -115,13 +115,14 @@ plot_proportion  %>%
 # Habitat effects-----------------------------------------------------------------------
 names(alien_dat)
 
-alien_data_100 <- sp_data %>% 
+alien_data <- sp_data %>% 
  # filter(scale==100) %>% 
   left_join(read_csv("data/header_data_prepared.csv") %>% 
   filter(subplot=="x") %>%
   dplyr::select(-subplot), 
   by="series") %>% 
   dplyr::select(-subplot) %>% 
+  mutate(dataset=factor(dataset)) %>% 
   mutate(habitat_broad=fct_relevel(habitat_broad, 
                                    c("saline", "complex", "dry", "wet", 
                                      "mesic", "fringe", "alpine")),
@@ -129,6 +130,9 @@ alien_data_100 <- sp_data %>%
                                    c("saline", "pody", "sandy", "xeric",
                                      "rocky", "meso-xeric", "heats" , "wet", 
                                      "mesic", "fringe", "alpine"))) 
+
+alien_data_100 <- alien_data %>% 
+  filter(type == "p_a" &  scale == 100)
 
 
 alien_data_100
@@ -139,14 +143,13 @@ alien_data_100$habitat_broad
 
 ## non_native_percent ----
 
-mod1h<- glm(non_native_percent ~ habitat_broad, 
+mod1h<- glm(non_native_percent ~  habitat_broad,
             weights = total_species, family = binomial, 
-            data = alien_dat %>%  filter(type == "p_a" &  scale == 100))
+            data = alien_data_100)
 
 #check_convergence(mod1h)
 Anova(mod1h)
 summary(mod1h)
-
 # plot_model(mod1h,type = "pred", terms=c("scale","habitat_group"),  show.data=T)
 
 Table_mod1h <- emmeans(mod1h, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
@@ -170,8 +173,8 @@ emmeans_m1_habitat
 col = c("#4e3910", "#CC6600",  "yellow3", "#CC99FF", "#0066FF" ,  "#00B200",  "#006600")
 col2 = c("#4e3910", "#CC6600",  "yellow", "#CC99FF", "#0066FF" ,  "#00B200",  "#006600")
 
+
 alien_data_100 %>%  
-  filter(type == "p_a" &  scale == 100) %>% 
   ggplot(aes(habitat_broad, non_native_percent, col=habitat_broad))+
   geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
   geom_point( aes(fill=habitat_broad), pch=21,
@@ -190,8 +193,6 @@ alien_data_100 %>%
                 label=emmeans_m1_habitat$.group),vjust=0.5, hjust=0.5, 
             size=4, col="black" , position=position_dodge(0))+
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
-
-
 
 ## native SR ----
 
