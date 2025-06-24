@@ -10,7 +10,7 @@ sp_data <- read_csv("data/database_analysis_summary.csv") %>%
     non_native_percent = non_native / total_species,
     invasive_percent = invasive / total_species,
     archaeophyte_percent =archaeophyte/total_species,
-    neophyte  = neophyte/total_species,
+    neophyte_percent  = neophyte/total_species,
     p_a_non_native = ifelse(non_native > 0, 1, 0),
     p_a_invasive = ifelse(invasive > 0, 1, 0),
     p_a_neophyte = ifelse(neophyte > 0, 1, 0)) %>% 
@@ -130,6 +130,8 @@ alien_data <- sp_data %>%
                                    c("saline", "pody", "sandy", "xeric",
                                      "rocky", "meso-xeric", "heats" , "wet", 
                                      "mesic", "fringe", "alpine"))) 
+
+write_csv(alien_data, "data/alien_dataset_all.csv")
 
 alien_data_100 <- alien_data %>% 
   filter(type == "p_a" &  scale == 100)

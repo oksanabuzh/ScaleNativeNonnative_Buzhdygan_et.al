@@ -48,7 +48,7 @@ names(alien_data_100)
 
 # Models -------------------------------------------
 
-mod1<- glmer(non_native_percent ~  pca1_clima + pH + microrelief + heat_index + 
+m1<- glmer(non_native_percent ~  pca1_clima + pH + microrelief + heat_index + 
  cover_litter + cover_herbs_sum + cover_gravel_stones + builtup_1000m + 
    cropland_1000m + grazing_intencity + mowing + abandonment +
    (1 | dataset), weights = total_species, family = binomial, 
@@ -57,9 +57,10 @@ mod1<- glmer(non_native_percent ~  pca1_clima + pH + microrelief + heat_index +
 
 
 
-check_convergence(mod1)
-check_autocorrelation(mod1)
-car::Anova(mod1)
+check_convergence(m1)
+check_autocorrelation(m1)
+car::Anova(m1)
+vif(m1)
 
 # Morans's I tests -----------------------------------------------------------
 # Get residuals -----------------------------------------------------------
@@ -70,12 +71,12 @@ car::Anova(mod1)
 # https://rdrr.io/cran/DHARMa/man/testSpatialAutocorrelation.html
 
 # (1) get randomized residuals.
-res.sim_mod1 <- DHARMa::simulateResiduals(mod1, re.form = NULL)
+res.sim_mod1 <- DHARMa::simulateResiduals(m1, re.form = NULL)
 # randomized residuals from DHARMa is better than deviance residuals, 
 # because  deviance residuals are not homogeneous)
 # https://stats.stackexchange.com/questions/507934/testing-the-spatiale-autocorrelation-on-the-residuals-of-the-mixed-effect-logist?newreg=e8a0041e387743139c3e9885b71d62eb
 # https://rdrr.io/cran/DHARMa/man/testSpatialAutocorrelation.html
-res.deviance_mod1 <- residuals(mod1, type = "deviance")
+res.deviance_mod1 <- residuals(m1, type = "deviance")
 
 # (2)  generate a matrix of inverse distance weights.
 # In the matrix, entries for pairs of points that are close together
@@ -107,6 +108,7 @@ mod2<- glmer(non_native_percent ~  pca1_clima + roads + Disturbance.Frequency +
 
 
 check_convergence(mod2)
+vif(mod2)
 car::Anova(mod2)
 check_overdispersion(mod2)
 check_autocorrelation(mod2)
