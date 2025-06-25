@@ -360,19 +360,24 @@ ggplot(mod1s_pred, aes(x, predicted)) +
 
 ### native cover ----
 
-cover_data <- alien_dat %>%  filter(type == "p_a"&  scale == 100) %>% 
+native_cover <- alien_dat %>%  filter(type == "cover" &  scale == 100) %>% 
+  dplyr::select (series, native)
+
+
+alien_dat_native_cover <- alien_dat %>%  filter(type == "p_a"&  scale == 100) %>% 
   dplyr::select (dataset, series, pca1_clima, non_native_percent, 
-                 invasive_percent, total_species) %>% 
-  left_join(a, by=c("series"))
+                 invasive_percent, neophyte_percent, total_species) %>% 
+  left_join(native_cover, by=c("series"))
 
 
 mod2s<- glmer(non_native_percent ~ 
-              #  pca1_clima +
+                pca1_clima +
                 native +
                 (1|dataset),
               weights = total_species,
               family = binomial, 
-              data = cover_data 
+              data = alien_dat_native_cover,
+              control = lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 50000))
               ) 
 
 check_convergence(mod2s)
@@ -388,7 +393,7 @@ mod2s_pred <- get_model_data(mod2s,type = "pred", terms="native[0:155, by=0.001]
 ggplot(mod2s_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1)+
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
-  geom_point(data=b %>% 
+  geom_point(data=alien_dat_native_cover %>% 
                filter(!non_native_percent==0), 
              aes(native, non_native_percent),
              col="forestgreen", size=2, alpha=0.6) +
@@ -402,6 +407,7 @@ ggplot(mod2s_pred, aes(x, predicted)) +
 
 ## invasive_percent ----
 
+### native SR ----
 mod1s_inv<- glmer(invasive_percent ~ 
                 pca1_clima +
                 poly(native, 2) +
@@ -446,19 +452,13 @@ ggplot(mod1s_inv_pred, aes(x, predicted)) +
 
 ### native cover ----
 
-
-cover__inv <- alien_dat %>%  filter(type == "p_a"&  scale == 100) %>% 
-  dplyr::select (dataset, series, pca1_clima, non_native_percent, invasive_percent, total_species) %>% 
-  left_join(a, by=c("series"))
-
-
 mod2s_inv<- glmer(invasive_percent ~ 
-              # pca1_clima +
+               pca1_clima +
                 native +
                 (1|dataset),
               weights = total_species,
               family = binomial, 
-              data = cover__inv %>% 
+              data = alien_dat_native_cover %>% 
                 filter(!invasive_percent==0) %>% 
                 filter(!invasive_percent>0.2))
 
@@ -477,7 +477,7 @@ mod2s_inv_pred <- get_model_data(mod2s_inv,type = "pred", terms="native[2:155, b
 ggplot(mod2s_inv_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1)+
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
-  geom_point(data=b %>% 
+  geom_point(data=alien_dat_native_cover %>% 
                filter(!invasive_percent==0) %>% 
                filter(!invasive_percent>0.2),
              aes(native, invasive_percent),
@@ -497,8 +497,8 @@ ggplot(mod2s_inv_pred, aes(x, predicted)) +
 ### native SR ----
 mod1s_neoph<- glmer(neophyte_percent ~ 
                      pca1_clima +
-                    poly(native, 2) +
-                    #  native +
+                      # poly(native, 2) +
+                      native +
                     (1|dataset),
                   weights = total_species,
                   family = binomial, 
@@ -539,22 +539,15 @@ ggplot(mod1s_neoph_pred, aes(x, predicted)) +
 
 ### native cover ----
 
-
-cover_neoph <- alien_dat %>%  filter(type == "p_a"&  scale == 100) %>% 
-  dplyr::select (dataset, series, pca1_clima, non_native_percent, neophyte_percent, total_species) %>% 
-  left_join(a, by=c("series"))
-
-
 mod2s_neoph<- glmer(neophyte_percent ~ 
-                    # pca1_clima +
+                    pca1_clima +
                     native +
                     (1|dataset),
                   weights = total_species,
                   family = binomial, 
-                  data = cover_neoph %>% 
+                  data = alien_dat_native_cover %>% 
                     filter(!neophyte_percent==0) %>% 
                     filter(!neophyte_percent>0.2))
-
 
 check_convergence(mod2s_neoph)
 Anova(mod2s_neoph)
@@ -570,7 +563,7 @@ mod2s_neoph_pred <- get_model_data(mod2s_neoph,type = "pred", terms="native[2:15
 ggplot(mod2s_neoph_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1)+
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
-  geom_point(data=cover_neoph %>% 
+  geom_point(data=alien_dat_native_cover %>% 
                filter(!neophyte_percent==0) %>% 
                filter(!neophyte_percent>0.2),
              aes(native, neophyte_percent),

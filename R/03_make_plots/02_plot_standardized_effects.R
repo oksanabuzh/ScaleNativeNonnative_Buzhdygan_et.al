@@ -154,45 +154,6 @@ std_effect_plot
 
 
 
-## for the supplementary ----
-# we plot only for alien species. For invasive species there is no standardised effcets
-
-std_effect_plot_suppl <- results %>% 
- # filter(scale==100)|> 
- filter(!scale==0.0001  & response_var=="non_native_percent")|> 
-  ggplot(aes(x = std_slope, y = variable_new #variable_of_interest
-  )) +
-#   geom_text(aes(label=std_slope), size=6) +
-  geom_point(aes(
-    color = ifelse(std_slope < 0, "blue", "red"),
-    alpha = significance), 
-    size=4) +
-  # geom_text(aes(label=std_slope), size=6) +
-  # geom_segment( aes(x=0, xend=std_slope, y=variable_new, yend=variable_new,
-  #                    color = ifelse(std_slope < 0, "blue", "red"),
-  #                   alpha = significance) ) +
-  geom_vline(xintercept = 0, linetype = "dashed") +
-  scale_color_manual(values = c( "red", "blue")) +
-  facet_grid(~ scale , scales = "free_x") +
- # scale_x_continuous(limits = c(-1.3, 1)) +
-  scale_alpha_manual(values = c("significant" = 1, "not significant" = 0.4)) +
-  labs(
-    x = "Standardized effect of the driver",
-    y = "Driver" , title = "Scale (plot size, m2)"
-  ) +
-  theme_bw() +
-  theme(text = element_text(size = 12),
-        legend.position = "none",
-        plot.title = element_text(hjust = 0.5, size=10),
-        axis.text.y = element_text(size=10) ,
-        axis.text.x = element_text(size=7)
-  )
-
-
-std_effect_plot_suppl
-
-# ggsave("img/std_effect_plot_Fig_S4.png", std_effect_plot_suppl, width = 20, height = 20, 
-#       units = "cm")
 
 
 # END ------------------------------

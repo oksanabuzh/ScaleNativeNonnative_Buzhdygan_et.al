@@ -6,7 +6,7 @@ library(performance)
 library(car)
 library(sjPlot)
 
-
+dev.off()
 set_theme(base = theme_bw(),
           axis.textsize.x = 0.9, axis.textsize.y = 0.9, axis.textcolor = "black",
           axis.title.color = "black", axis.title.size = 1.2,
@@ -125,7 +125,6 @@ mod2.1<- lm(slope ~ log(scale), data=invas_dat)
 mod2.2<- lm(slope ~ poly(log(scale), 2), data=invas_dat) 
 
 anova(mod2.1, mod2.2)
-Anova(mod2.1)
 Anova(mod2.2)
 summary(mod2.2)
 
