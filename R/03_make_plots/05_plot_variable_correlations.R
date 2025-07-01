@@ -5,7 +5,58 @@ library(car)
 library(piecewiseSEM)
 
 
-
+# Prepare data
+alien_dat <- read_csv("data/model_results_summary.csv") %>% 
+  filter(model_id=="climate" | model_id=="disturbance") %>% 
+  bind_rows(read_csv("data/model_results_summary.csv")%>% 
+              filter(model_id%in% c("builtup_250m", "builtup_500m") & 
+                       predictor %in% c("builtup_1000m", "cropland_1000m",
+                                        "builtup_250m",  "cropland_250m",
+                                        "builtup_500m",  "cropland_500m"))) %>% 
+  bind_rows(read_csv("data/model_results_summary.csv")%>% 
+              filter(model_id =="climate_native" & 
+                       predictor=="native" & remove_zeroes==TRUE)) %>% 
+  filter(!scale==0.0001) %>% 
+  dplyr::select(response_var, scale, predictor, r2_partial) %>% 
+  mutate(variable_new=
+           fct_recode(predictor,
+                      "Native diversity"= "native", 
+                      "Climate PC"= "pca1_clima", 
+                      "Soil pH"= "pH", 
+                      "Heat index"= "heat_index",
+                      "Microrelief"= "microrelief", 
+                      "Gravel & stone cover"= "cover_gravel_stones",
+                      "Herb cover"= "cover_herbs_sum",
+                      "Litter cover"= "cover_litter", 
+                      "Grazing"= "grazing_intencity", 
+                      "Mowing"= "mowing", 
+                      "Abandonment"= "abandonment", 
+                      "Urban built-up (1000 m)"= "builtup_1000m",  
+                      "Croplands cover (1000 m)"= "cropland_1000m",
+                      "Urban built-up (250 m)"= "builtup_250m",  
+                      "Croplands cover (250 m)"= "cropland_250m",
+                      "Urban built-up (500 m)"= "builtup_500m",  
+                      "Croplands cover (500 m)"= "cropland_500m", 
+                      "Road density"= "roads", 
+                      "Disturbance frequency"= "Disturbance.Frequency", 
+                      "Disturbance severity"= "Disturbance.Severity"
+           )) %>% 
+  mutate(variable_new =fct_relevel(variable_new, 
+                                   "Native diversity", "Climate PC", "Soil pH",   "Heat index", 
+                                   "Microrelief", "Gravel & stone cover",
+                                   "Herb cover", "Litter cover", 
+                                   "Grazing", "Mowing", "Abandonment", 
+                                   "Croplands cover (250 m)", "Croplands cover (500 m)", "Croplands cover (1000 m)", 
+                                   "Urban built-up (250 m)","Urban built-up (500 m)", "Urban built-up (1000 m)",
+                                   "Road density",  
+                                   "Disturbance frequency", "Disturbance severity")) %>% 
+  mutate(variable_new =fct_relevel(variable_new, rev)) %>% 
+  mutate(response_var_new=factor(case_when(response_var=="non_native_percent"~
+                                             "Alien species, %",
+                                           response_var=="invasive_percent"~
+                                             "Invasive species, %",
+                                           response_var=="neophyte_percent"~
+                                             "Neophytes, %")))
 
 sp <- read_csv("data/database_analysis_summary.csv")
 header_data <-  read_csv("data/header_data_prepared.csv")%>% 

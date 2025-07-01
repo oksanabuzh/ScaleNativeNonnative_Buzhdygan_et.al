@@ -5,9 +5,9 @@ library(dplyr)
 library(purrr)
 
 # Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary_OB.csv")%>% 
+results <- read_csv("data/model_results_summary.csv")%>% 
   filter(model_id=="climate" | model_id=="disturbance") %>% 
-  bind_rows(results <- read_csv("data/model_results_summary_OB.csv")%>% 
+  bind_rows(results <- read_csv("data/model_results_summary.csv")%>% 
               filter(model_id%in% c("builtup_250m", "builtup_500m") & 
                        predictor %in% c("builtup_1000m", "cropland_1000m",
                                         "builtup_250m",  "cropland_250m",
@@ -78,14 +78,13 @@ models_run_invasive <- results %>%
 # select best model based on the logLik test
 
 invasive_select <- models_run_invasive %>%
-  #setNames(vars) %>%
   map_dfr(with, c(m1 = glance(mod1)[stats] ,
                   m2 = glance(mod2)[stats],
                   logLik_pval = pval(mod1, mod2)), 
           .id = "response")  %>% 
   mutate(final_model=case_when(logLik_pval<0.05 ~ "m2_poly",
                                .default ="m1")) %>% 
-  mutate(final_mod_formula=case_when(logLik_pval<0.05 ~ "slope ~ poly(log(scale), 2)",
+  mutate(final_model_formula=case_when(logLik_pval<0.05 ~ "slope ~ poly(log(scale), 2)",
                                      .default ="slope ~ log(scale)")) %>% 
   rename(predictor=response) %>% 
   mutate(response_var="invasive_percent", .after=predictor)
@@ -114,10 +113,9 @@ models_run_neophyte <- results %>%
 # select best model based on the logLik test
 
 neophyte_select <- models_run_neophyte %>%
-  #setNames(vars) %>%
   map_dfr(with, c(m1 = glance(mod1)[stats] ,
                   m2 = glance(mod2)[stats],
-                  logLik_pval = pval(mod1, mod2)), 
+                  logLik_pval = pval(mod1, mod2)),
           .id = "response")  %>% 
   mutate(final_model=case_when(logLik_pval<0.05 ~ "m2_poly",
                                .default ="m1")) %>% 
@@ -128,6 +126,7 @@ neophyte_select <- models_run_neophyte %>%
 
 
 neophyte_select
+
 
 # Merge tables: 
 
@@ -154,7 +153,7 @@ Table <- bind_rows(alien_select, invasive_select, neophyte_select) %>%
                           "Disturbance frequency"= "Disturbance.Frequency", 
                           "Disturbance severity"= "Disturbance.Severity"),
          .before=predictor) %>% 
-  mutate(variable_new =fct_relevel(variable_new, 
+  mutate(predictor =fct_relevel(variable_new, 
                                    "Climate PC", "Soil pH",   "Heat index", 
                                    "Microrelief", "Gravel & stone cover",
                                    "Herb cover", "Litter cover", 
@@ -164,12 +163,19 @@ Table <- bind_rows(alien_select, invasive_select, neophyte_select) %>%
                                    "Croplands cover (1000 m)", "Urban built-up (1000 m)",
                                    "Road density",  
                                    "Disturbance frequency", "Disturbance severity")) %>% 
-  arrange(response_var, variable_new)
-
+  arrange(response_var, variable_new) %>% 
+  mutate("response_var"=str_replace_all(response_var, "_", " ")) %>% 
+  rename(response_variable=response_var) %>% 
+  rename_with(~ str_replace_all(., c("m1\\." = "model.1_", 
+                                     "m2\\." = "model.2_",
+                                     "statistic" = "F.value"))) %>% 
+  select(-variable_new) %>% 
+  mutate(across(where(is.numeric), ~ round(., 3)))
 
 Table %>% 
   print(n=Inf)
 
-write_csv(Table, "results/Model_selection_Table.csv")
+
+write_csv(Table, "results/Model_selection_Table_scale-depandancy.csv")
 
 

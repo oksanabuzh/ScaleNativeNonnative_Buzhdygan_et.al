@@ -5,3 +5,7 @@
 `emmeans_TableS5.csv` Table is created by [03_summary_statistics](../R/05_summary_stats/03_summary_statistics.R)
 
 `habitat_posthoc_TableS5.csv` Table is created by [03_summary_statistics](../R/05_summary_stats/03_summary_statistics.R)
+
+`Model_selection_Table_scale-depandancy.csv` Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)
+
+`SpatAutocorResid_TableS5.csv` Table is created by [02_driver_scale_dependancy](../R/02_run_models/03_residual_spatial_correlation.R)
