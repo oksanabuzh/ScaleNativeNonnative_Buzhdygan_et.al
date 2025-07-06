@@ -6,3 +6,4 @@
 *.png
 
 data-raw/spatial/human-footprint-geotiff
+data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3
