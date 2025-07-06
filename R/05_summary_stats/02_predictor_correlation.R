@@ -33,7 +33,7 @@ preds <- c(
   "altitude", "pca1_clima", "pH", "microrelief", "heat_index",
   "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
   "builtup_1000m", "builtup_500m", "builtup_250m",
-   "cropland_250m", "cropland_500m", "cropland_1000m",
+  "cropland_1000m", "cropland_500m", "cropland_250m",
   "grazing_intencity", "mowing", "abandonment", "roads",
   "Disturbance.Frequency", "Disturbance.Severity"
 )
