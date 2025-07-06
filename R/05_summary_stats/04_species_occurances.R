@@ -8,6 +8,10 @@ library(tidyverse)
 species_categorized <- read_csv("data-raw/database_analysis_categorized.csv")  
 str(species_categorized)
 
+# how many species in total are there?
+species_categorized %>% distinct(species) %>% nrow()
+#1082 species in total
+
 # at scales 10 and 100 response is cover and we need p/a 
 species_categorized %>% 
   filter(response == "p/a", scale == 100 | scale==10)
