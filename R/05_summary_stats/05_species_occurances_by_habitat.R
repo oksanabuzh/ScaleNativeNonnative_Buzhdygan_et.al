@@ -29,55 +29,77 @@ species_data <- species_categorized %>%
 species_data
 
 total_plots <- read_csv("results/summary_table_habitatas_TableS3_S4.csv") %>% 
-  filter(habitat_broad=="all") %>% 
-  dplyr::select(scale, Plot_number)
+  filter(!habitat_broad=="all" & scale==100) %>% 
+  dplyr::select(habitat_broad, Plot_number)
 
 
 sp_data <- species_data %>% 
-  filter(!scale==0.0001) %>% 
+  filter(scale==100) %>% 
   filter(response=="p/a" ) %>% 
-  group_by(scale, species, naturalisation_level, introduction_time) %>% 
+  group_by(scale, species, naturalisation_level, introduction_time, habitat_broad) %>% 
   count() %>% 
   ungroup() %>% 
-  left_join(total_plots, by = "scale") %>%
-  mutate(Frequency = n / Plot_number * 100) 
+  left_join(total_plots, by = "habitat_broad") %>%
+  mutate(Frequency_total = n / 191 * 100) %>% # total plot number at 100 m2
+  mutate(Frequency = n / Plot_number * 100) %>% #  plot number within each habitat at 100 m2
+    mutate(habitat_broad=case_when(habitat_broad=="saline" ~ "saline (n=21)",
+                   habitat_broad=="complex" ~ "complex (n=2)",
+                   habitat_broad=="dry" ~ "dry (n=135)",
+                   habitat_broad=="mesic" ~ "mesic (n=13)",
+                   habitat_broad=="fringe" ~ "fringe (n=7)",
+                   habitat_broad=="wet" ~ "wet (n=2)",
+                   habitat_broad=="alpine" ~ "alpine (n=11)"))
 
+summary(sp_data)
+
+
+habitat_order <- c("saline (n=21)", "complex (n=2)", "dry (n=135)", "wet (n=2)", 
+                "mesic (n=13)", "fringe (n=7)", "alpine (n=11)") 
 # archaeophytes -----
 archaeophytes <- sp_data %>% 
   filter(introduction_time=="archaeophyte") 
 
 
-# order species by perc at scale = 100
-arch_species_order <- archaeophytes %>%
-  filter(scale == 100) %>%
-  arrange(Frequency) %>%
-  pull(species) %>%
-  unique()
+## by scale -----
 
+# order species 
+arch_species_order <- archaeophytes %>%
+  summarize(total_freq = sum(Frequency_total, na.rm = TRUE), .by="species") %>%
+  arrange(total_freq) %>%
+  pull(species) %>%
+  unique() 
 
 arch_Plot <- archaeophytes %>%
-  mutate(species = factor(species, levels = arch_species_order)) %>%
-  ggplot(aes(Frequency, species))+
+  mutate(species = factor(species, levels = arch_species_order)) %>% 
+  mutate(
+    habitat_broad = fct_relevel(habitat_broad, habitat_order)) %>% 
+    ggplot(aes(Frequency, species)) +
   geom_point() +
   geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
-  geom_point(position = position_dodge(width = dodge_width <- 0.5), size = 1,
+  geom_point(position = position_dodge(width = 0.5), size = 1,
              fill="darkcyan", pch=21) +
   geom_errorbarh(aes(xmin = 0, xmax = Frequency),col="darkcyan", 
                  linetype = "solid",
-                 position = position_dodge(width = dodge_width), height = 0.1) +
-  theme_bw()+
+                 position = position_dodge(width = 0.5), height = 0.1) +
+  theme_bw() +
   theme(legend.key=element_blank(), 
         axis.text.y = element_text(size = 6),
         axis.text.x = element_text(size = 7),
         axis.title = element_text(size = 10),
         plot.margin = margin(2, 2, 10, 2)) +
-  facet_wrap(~scale, nrow=1)+
+  facet_wrap(~habitat_broad, nrow = 1) +
   labs(x="Frequency of occurence, %", y="Archaeophyte species")
 
 arch_Plot
 
+
+archaeophytes %>%
+  mutate(species = factor(species, levels = arch_species_order)) %>% 
+  filter(is.na(species))
+
+## by habitat -----
 arch_species_order2 <- archaeophytes %>%
-#  filter(habitat_broad == "dry") %>%
+  #  filter(habitat_broad == "dry") %>%
   arrange(Frequency) %>%
   pull(species)
 

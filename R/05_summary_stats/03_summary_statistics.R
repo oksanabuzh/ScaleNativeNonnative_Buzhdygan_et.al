@@ -118,7 +118,7 @@ plot_proportion_habitatas
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_alien)) + 
   geom_bar(position="stack", stat="identity", colour = "black", fill="forestgreen")+
-  geom_text(aes(label=non_native), hjust=-0.1, size=3) +
+  geom_text(aes(label=non_native_plot_n), hjust=-0.1, size=3) +
   #  coord_flip() +
   theme_bw() +
   labs(y = expression(paste("Grain size, ", m^{2})), x ="% plots with alien species") +
@@ -138,7 +138,7 @@ plot_proportion  %>%
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_invasive)) + 
   geom_bar(position="stack", stat="identity", colour = "black", fill="brown")+
-  geom_text(aes(label=invasive), hjust=-0.1, size=3) +
+  geom_text(aes(label=invasive_plot_n), hjust=-0.1, size=3) +
   #  coord_flip() +
   theme_bw() +
   labs(y = expression(paste("Grain size, ", m^{2})), x ="% plots with invasive species") +
@@ -158,7 +158,7 @@ plot_proportion  %>%
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_neophyte)) + 
   geom_bar(position="stack", stat="identity", colour = "black", fill="slateblue")+
-  geom_text(aes(label=neophyte), hjust=-0.1, size=3) +
+  geom_text(aes(label=neophyte_plot_n), hjust=-0.1, size=3) +
   #  coord_flip() +
   theme_bw() +
   labs(y = expression(paste("Grain size, ", m^{2})), x ="% plots with neophytes") +
@@ -177,7 +177,7 @@ plot_proportion  %>%
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_archaeophyte)) + 
   geom_bar(position="stack", stat="identity", colour = "black", fill="cadetblue")+
-  geom_text(aes(label=archaeophyte), hjust=-0.1, size=3) +
+  geom_text(aes(label=archaeophyte_plot_n), hjust=-0.1, size=3) +
   #  coord_flip() +
   theme_bw() +
   labs(y = expression(paste("Grain size, ", m^{2})), x ="% plots with archaeophytes") +
@@ -201,6 +201,10 @@ summary_table_habitatas <- alien_data %>%
                 total_species, native, 
                 non_native_percent, invasive_percent, 
                 archaeophyte_percent, neophyte_percent) %>% 
+  mutate(non_native_percent=non_native_percent*100, 
+         invasive_percent=invasive_percent*100, 
+         archaeophyte_percent=archaeophyte_percent*100, 
+         neophyte_percent=neophyte_percent*100) %>% 
 group_by(habitat_broad, scale) %>% 
   summarise(across(everything(),
                    list(min = ~round(min(.x), 2),
@@ -210,12 +214,17 @@ group_by(habitat_broad, scale) %>%
 
 
 
+
 summary_table_all <- alien_data %>% 
   filter(total_species>0, !scale==0.0001, type == "p_a") %>% 
   dplyr::select(scale, 
                 total_species, native, 
                 non_native_percent, invasive_percent, 
                 archaeophyte_percent, neophyte_percent) %>% 
+  mutate(non_native_percent=non_native_percent*100, 
+         invasive_percent=invasive_percent*100, 
+         archaeophyte_percent=archaeophyte_percent*100, 
+         neophyte_percent=neophyte_percent*100) %>% 
   group_by(scale) %>% 
   summarise(across(everything(),
                    list(min = ~round(min(.x), 2),
@@ -315,6 +324,7 @@ Table_mod1h_means
 emmeans_m1_habitat <- cld(emmeans(mod1h, list(pairwise ~ habitat_broad)), 
                           Letters = letters) %>% arrange(habitat_broad)
 emmeans_m1_habitat
+
 
 
 

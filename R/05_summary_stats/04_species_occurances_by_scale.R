@@ -47,6 +47,8 @@ archaeophytes <- sp_data %>%
   filter(introduction_time=="archaeophyte") 
 
 
+## by scale -----
+
 # order species by perc at scale = 100
 arch_species_order <- archaeophytes %>%
   filter(scale == 100) %>%
@@ -76,6 +78,7 @@ arch_Plot <- archaeophytes %>%
 
 arch_Plot
 
+## by habitat -----
 arch_species_order2 <- archaeophytes %>%
 #  filter(habitat_broad == "dry") %>%
   arrange(Frequency) %>%
