@@ -1,5 +1,6 @@
-# Purpose: Run ordination for 100 m2 plots
-
+# Purpose: Non-metric multidimensional scaling (NMDS) of the groups of 
+# alien species (sampled at the 100-m2 plots) based on their time of introduction (residence time), 
+# geographic origin (native range), and invasion status
 
 #dev.off
 
@@ -138,7 +139,10 @@ dplyr::select(series, # altitude,
        cover_litter, 
        grazing_intencity, mowing , abandonment , # burning ,   
       # economic_use, 
-       build_up, roads)
+       roads,
+      builtup_1000m, cropland_1000m,
+      builtup_250m, cropland_250m,
+      builtup_500m, cropland_500m)
 
 variabl <- FuncComp %>%
   left_join(header, by=c("series")) %>% 
@@ -163,8 +167,8 @@ PERM_mod1 <- adonis2(FuncComp %>% dplyr::select(-series) ~   #variabl[, 2:21] ~
                       cover_herbs_sum + # cover_shrub_total+  
                       cover_litter+ 
                       grazing_intencity +  mowing + abandonment + # burning +   
-                      build_up + roads +  
-                   Disturbance.Frequency +  
+                       builtup_500m + cropland_500m + roads +  
+                       Disturbance.Frequency +  
                      Disturbance.Severity,
                      data=variabl,
                      permutations = 1000, method = "bray") #, strata=factor(variabl$series))
@@ -172,7 +176,7 @@ PERM_mod1 <- adonis2(FuncComp %>% dplyr::select(-series) ~   #variabl[, 2:21] ~
 PERM_mod1
 
 
-write.csv(PERM_mod1, "results/PERMANOVA_FuncTraits_Table_S4_B.csv")
+write.csv(PERM_mod1, "results/PERMANOVA_FuncTraits_Table_S8.csv")
 
 # NMDS -----
 # wisconsin(FuncComp)
@@ -207,7 +211,7 @@ fit1 <- vegan::envfit(nmds1   ~  pca1_clima +
                         cover_herbs_sum + # cover_shrub_total+  
                         cover_litter+ 
                         grazing_intencity +  mowing +  abandonment + # burning +   
-                        build_up + roads +  
+                        builtup_500m + cropland_500m + roads +  
                         Disturbance.Frequency +  
                         Disturbance.Severity , 
                       data=variabl, perm=1000) #, strata=factor(variabl$series)) #
@@ -298,17 +302,18 @@ coord_cont <- as.data.frame(scores(fit1, "vectors")) %>%
          Litter="cover_litter",              
          Grazing= "grazing_intencity",    
          Mowing = "mowing",
-         Builtup="build_up",
+        Builtup="builtup_500m",
+        Croplans="cropland_500m",
          Roads="roads",
          Distr.Frqnc="Disturbance.Frequency",
          Distr.Sevr="Disturbance.Severity")) %>% 
   filter(Variables_new %in% c("ClimatePC", "pH", 
-                              "Stones", "Herb.covr", "Builtup", "Distr.Sevr") )
+                              "Stones", "Herb.covr", "Builtup", 
+                              "Distr.Sevr", "Distr.Frqnc") )
 
 coord_cont
 
 ordiArrowMul(fit1)
-
 
 # rescale  all arrows to fill an ordination plot, 
 # where fill =  shows proportion of plot to be filled by the arrows
@@ -317,6 +322,8 @@ coord_cont_standrd  <- coord_cont %>%
   mutate(stand.NMDS2=stand.NMDS2 * ordiArrowMul(fit1, rescale=TRUE, fill = 0.4))
 
 coord_cont_standrd
+
+
 
 
 
@@ -337,8 +344,8 @@ ggplot(data = sites.scores,
                 y = stand.NMDS2+0.02*sign(stand.NMDS2), 
                 label = Variables_new), 
             colour = "black", fontface = "bold", size = 4,
-            vjust=c(0, 0.5, 0,   0, 0, 0), 
-            hjust=c(0, 0, 0.7, 0, 0, 0))+
+            vjust=c(1, 1, 1, 1, 1, 1,1), 
+            hjust=c(0, 0, 0.7, 0, 1, 0,0))+
     geom_point (data = species.scores %>% 
                 filter(!species=="Origin_unknown"), 
               size = 2, pch=19, colour= col) + #, colour=Col, fill=Col
@@ -394,20 +401,5 @@ p1+
                 y = permanona_R2.NMDS2+0.01*sign(permanona_R2.NMDS2),
                 label = Variables_new), 
             colour = "black", fontface = "bold", size = 4)#
-
-,
-            vjust=c(-0.3, 0.7, 0.7, 0.5, 
-                    0.9, 0.9, 0.5, 0,
-                    0.5, 0.5, 0, 0), 
-            hjust=c(0.5, 0, 0.7, 0.9, 
-                    0.9, 1, 0.3, 0.5, 
-                    0.8, 0, 1, 0.3)) # adjust text positions
-
-
-factor(coord_cont$Variables_new)
-#  ClimatePC   pH          Heat.stress    Stones          
-#  Herb.cov    Litter      Grazing        Mowing      
-#  Builtup     Roads       Dist.Freqnc    Dist.Sev   
-
 
 

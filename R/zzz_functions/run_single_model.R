@@ -191,7 +191,7 @@ run_single_model <- function(data_to_model,
   )
 }
 
-#' Run a single quasibinomial model
+#' Run a single binomial model
 #'
 #'
 #' @param data The data frame containing the necessary variables for the model.
@@ -216,18 +216,19 @@ run_single_model <- function(data_to_model,
 #' print(output)
 #'
 #' @importFrom lme4 glmer
-#' @importFrom MASS glmmPQL
 #' @importFrom car Anova
 #' @importFrom MuMIn r.squaredGLMM
 #' @importFrom r2glmm r2beta
 #' @importFrom dplyr bind_rows filter
 #' @importFrom tibble tibble
-run_single_model_quasi <- function(data_to_model,
-                             response_variable,
-                             fixed_effects,
-                             random_effect = "series",
-                             use_optim = TRUE) {
-  # Check if the data contains all necessary variables
+
+run_single_model_binom <- function(data_to_model,
+                                   response_variable,
+                                   fixed_effects,
+                                   random_effect = "series",
+                                   use_optim = TRUE) {
+  
+  # Check if all necessary variables are present in the data
   necessary_variables <- c(response_variable, fixed_effects)
   if (!all(necessary_variables %in% colnames(data_to_model))) {
     stop(paste0(
@@ -235,87 +236,90 @@ run_single_model_quasi <- function(data_to_model,
       paste(setdiff(necessary_variables, colnames(data_to_model)), collapse = ", ")
     ))
   }
-  # Build the model formula
-  model_formula <- paste(
-    response_variable, "~", paste(fixed_effects, collapse = " + ")
-  )
   
-  # # Warning log to record all the warnings during the run of the function
+  # Model formula construction
+  model_formula <- paste(response_variable, "~", paste(fixed_effects, collapse = " + "))
+  
   warning_log <- character()
-  # Use tryCatch to handle errors
+  
+  # Fit the binomial GLMM and extract results
   tryCatch(
     {
       withCallingHandlers(
         {
-          model_converged <- TRUE
-          used_model <- "quasibinomial"
-          # Check over/underdispersion
-            # If overdispersion, use quasibinomial
-            model_1 <- MASS::glmmPQL(
-              formula(model_formula),
-              random = formula(paste0("~ 1 | ", random_effect)),
-              data = data_to_model,
-              family = quasibinomial,
+          # Fit the binomial model (optionally with optimizer control)
+          model_1 <- if (use_optim) {
+            lme4::glmer(
+              formula(paste(model_formula, "+ (1 | ", random_effect, ")")),
+              data = data_to_model, family = binomial,
+              weights = total_species,
+              control = lme4::glmerControl(
+                optimizer = "bobyqa",
+                optCtrl = list(maxfun = 50000)
+              )
+            )
+          } else {
+            lme4::glmer(
+              formula(paste(model_formula, "+ (1 | ", random_effect, ")")),
+              data = data_to_model, family = binomial,
               weights = total_species
             )
-          # Extract relevant model output ---------------------------------------------
+          }
           
-
-            slope <- summary(model_1)$tTable[, c("Value", "p-value")]
-            slope <- slope |>
-              as_tibble(rownames = "predictor") |>
-              rename_all(~ c("predictor", "slope", "p_value_slope")) |>
-              # remove the intercept
-              filter(predictor != "(Intercept)")
-            # add standardized slope
-            slope$std_slope <- NA
-        
+          # Check convergence
+          model_converged <- performance::check_convergence(model_1, tolerance = 1.3)[1]
           
-          # Chisq and p-value for all
-          chisq <- car::Anova(model_1) |>
-            as_tibble(rownames = "predictor") |>
-            select(predictor, Chisq, `Pr(>Chisq)`) |>
+          # Extract model output
+          # Estimates and p-values for all variables (remove intercept)
+          slope <- summary(model_1)$coefficients[, c("Estimate", "Pr(>|z|)")] %>%
+            as_tibble(rownames = "predictor") %>%
+            rename_all(~ c("predictor", "slope", "p_value_slope")) %>%
+            filter(predictor != "(Intercept)")
+          
+          # Standardized estimates if available
+          std_slope <- piecewiseSEM::coefs(model_1) %>%
+            select(Predictor, Std.Estimate) %>%
+            rename(predictor = Predictor, std_slope = Std.Estimate)
+          slope <- slope %>% left_join(std_slope, by = "predictor")
+          
+          # Chisq and p-value for all predictors
+          chisq <- car::Anova(model_1) %>%
+            as_tibble(rownames = "predictor") %>%
+            select(predictor, Chisq, `Pr(>Chisq)`) %>%
             rename_all(~ c("predictor", "chisq", "p_value_chisq"))
           
-          # r2 take theoretical R2m & R2c
+          # Marginal and conditional R2 (theoretical)
           r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())["theoretical", ]
-          # print(environment() |> ls())
-          # print(MuMIn::r.squaredGLMM(model_1, envir = environment()))
           
-          # Partial R2 for fixed effects, only for variable of interest
-          # keep only Rsq but all variables
-          # This can only be run if the model converges. But the conversion criteria are
-          # very strict. So we use tryCatch here to catch errors
-          
+          # Partial R2 for fixed effects (tryCatch for robustness)
           r2_part <- tryCatch(
             {
-              r2glmm::r2beta(model_1, partial = TRUE, method = "sgv") |>
-                as_tibble() |>
-                select(Effect, Rsq) |>
+              r2glmm::r2beta(model_1, partial = TRUE, method = "sgv") %>%
+                as_tibble() %>%
+                select(Effect, Rsq) %>%
                 rename(predictor = Effect, r2_partial = Rsq)
             },
             error = function(e) {
               tibble(predictor = slope$predictor, r2_partial = NA)
             }
           )
+          r2_part <- r2_part %>% filter(predictor != "Model")
           
-          # remove the overall model r2
-          r2_part <- r2_part |> filter(predictor != "Model")
-          
-          # Combine everything in one table
-          model_results <- slope |>
-            left_join(chisq, by = "predictor") |>
-            left_join(r2_part, by = "predictor") |>
+          # Combine results
+          model_results <- slope %>%
+            left_join(chisq, by = "predictor") %>%
+            left_join(r2_part, by = "predictor") %>%
             bind_cols(
               r2m = r2["R2m"],
               r2c = r2["R2c"]
             )
           
+          # Prepare output
           output <- tibble(
             model_res = list(model_results),
             status = "ok",
             model_converged = model_converged,
-            model_used = used_model,
+            model_used = "binomial",
             model_raw = list(model_1),
             warning_log = list(warning_log)
           )
@@ -340,4 +344,3 @@ run_single_model_quasi <- function(data_to_model,
     }
   )
 }
-

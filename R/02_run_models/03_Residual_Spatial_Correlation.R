@@ -518,9 +518,156 @@ neophyte_SpatAutocor %>%
 
 #------------------------------------------------------------------------------#
 
+# (3) archaeophyte_percent -----------
+## Mod 1 -------------------------------------------
+
+archaeoph_m1a<- glmer(archaeophyte_percent ~  
+                        pca1_clima + pH + microrelief + heat_index + 
+                        cover_litter + cover_herbs_sum + cover_gravel_stones + builtup_1000m + 
+                        cropland_1000m + grazing_intencity + mowing + abandonment +
+                        (1 | dataset), weights = total_species, family = binomial, 
+                      data = alien_data_100, 
+                      control = lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 50000)))
+
+
+
+check_convergence(archaeoph_m1a)
+car::Anova(archaeoph_m1a)
+vif(archaeoph_m1a)
+
+archaeoph_m1b<- glmer(archaeophyte_percent ~  
+                        pca1_clima + pH + microrelief + heat_index + 
+                        cover_litter + cover_herbs_sum + cover_gravel_stones + builtup_500m + 
+                        cropland_500m + grazing_intencity + mowing + abandonment +
+                        (1 | dataset), weights = total_species, family = binomial, 
+                      data = alien_data_100, 
+                      control = lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 50000)))
+
+check_convergence(archaeoph_m1b)
+car::Anova(archaeoph_m1b)
+vif(archaeoph_m1b)
+
+
+archaeoph_m1c<- glmer(archaeophyte_percent ~  
+                        pca1_clima + pH + microrelief + heat_index + 
+                        cover_litter + cover_herbs_sum + cover_gravel_stones + builtup_250m + 
+                        cropland_250m + grazing_intencity + mowing + abandonment +
+                        (1 | dataset), weights = total_species, family = binomial, 
+                      data = alien_data_100, 
+                      control = lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 50000)))
+
+check_convergence(archaeoph_m1c)
+car::Anova(archaeoph_m1c)
+vif(archaeoph_m1c)
+
+## Morans's I tests -----------------------------------------------------------
+# (1) get randomized residuals.
+res.sim_archaeoph_mod1a <- DHARMa::simulateResiduals(archaeoph_m1a, re.form = NULL)
+res.sim_archaeoph_mod1b <- DHARMa::simulateResiduals(archaeoph_m1b, re.form = NULL)
+res.sim_archaeoph_mod1c <- DHARMa::simulateResiduals(archaeoph_m1c, re.form = NULL)
+
+# (2)  generate a matrix of inverse distance weights.
+Coord_archaeoph_mod1 <- alien_data_100 %>% 
+  select(series,lon, lat, pca1_clima, pH, microrelief, heat_index, 
+         cover_litter, cover_herbs_sum, cover_gravel_stones, builtup_250m, 
+         cropland_250m, grazing_intencity, mowing, abandonment) %>% 
+  drop_na()
+
+dM_archaeoph_m1 <- 1 /as.matrix(dist(Coord_archaeoph_mod1 %>% select(lon, lat)))
+diag(dM_archaeoph_m1) <- 0
+dM_archaeoph_m1
+
+# (3) calculate Moran’s I (DHARMa works using ape package)
+autocor_archaeoph_mod1a <- DHARMa::testSpatialAutocorrelation(res.sim_archaeoph_mod1a, distMat = dM_archaeoph_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
+  pivot_wider(names_from="stats",values_from ="statistic") %>%  
+  pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
+  mutate(model="model1a")
+
+
+autocor_archaeoph_mod1b <- DHARMa::testSpatialAutocorrelation(res.sim_archaeoph_mod1b, distMat = dM_archaeoph_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
+  pivot_wider(names_from="stats",values_from ="statistic") %>%  
+  pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
+  mutate(model="model1b")
+
+autocor_archaeoph_mod1c <- DHARMa::testSpatialAutocorrelation(res.sim_archaeoph_mod1c, distMat = dM_archaeoph_m1)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
+  pivot_wider(names_from="stats",values_from ="statistic") %>%  
+  pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
+  mutate(model="model1c")
+
+
+#------------------------------------------------------------------------------#
+## Mod 2 ----
+
+archaeoph_mod2<- glmer(archaeophyte_percent ~  roads + Disturbance.Frequency + 
+                         Disturbance.Severity + (1 | dataset), weights = total_species, 
+                       family = binomial, 
+                       data = alien_data_100, 
+                       control = lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 50000)))
+
+check_convergence(archaeoph_mod2)
+vif(archaeoph_mod2)
+car::Anova(archaeoph_mod2)
+check_overdispersion(archaeoph_mod2)
+
+### Morans's I tests -----------------------------------------------------------
+# (1) get randomized residuals.
+res.sim_archaeoph_mod2 <- DHARMa::simulateResiduals(archaeoph_mod2, re.form = NULL)
+
+# (2)  matrix of inverse distance weights.
+dM_archaeoph_m2 <- 1 /as.matrix(dist(alien_data_100 %>% select(lon, lat)))
+diag(dM_archaeoph_m2) <- 0
+dM_archaeoph_m2
+
+# (3) calculate Moran’s I (DHARMa works using ape package)
+
+autocor_archaeoph_mod2 <- DHARMa::testSpatialAutocorrelation(res.sim_archaeoph_mod2, distMat = dM_archaeoph_m2)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
+  pivot_wider(names_from="stats",values_from ="statistic") %>%  
+  pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
+  mutate(model="model2")
+
+
+#------------------------------------------------------------------------------#
+## Mod 3 ----
+archaeoph_mod3 <- glmer(archaeophyte_percent ~  pca1_clima + native + (1 | dataset), weights = total_species, 
+                        family = binomial, 
+                        data = alien_data_100, 
+                        control = lme4::glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 50000)))
+
+
+check_convergence(archaeoph_mod3)
+car::Anova(archaeoph_mod3)
+
+### Morans's I tests -----------------------------------------------------------
+# (1) get randomized residuals.
+res.sim_archaeoph_mod3 <- DHARMa::simulateResiduals(archaeoph_mod3, re.form = NULL)
+
+# (2)  matrix of inverse distance weights.
+dM_archaeoph_m3 <- 1 /as.matrix(dist(alien_data_100 %>% select(lon, lat)))
+diag(dM_archaeoph_m3) <- 0
+dM_archaeoph_m3
+
+# (3) calculate Moran’s I (DHARMa works using ape package)
+autocor_archaeoph_mod3 <- DHARMa::testSpatialAutocorrelation(res.sim_archaeoph_mod3, distMat = dM_archaeoph_m3)[c("statistic" , "p.value")] %>% 
+  as.data.frame() %>% mutate(stats=c("Obs.I", "Exp.I", "sd")) %>% 
+  pivot_wider(names_from="stats",values_from ="statistic") %>%  
+  pivot_longer(everything(), names_to = "statistic", values_to = "values") %>% 
+  mutate(model="model3")
+
+archaeophyte_SpatAutocor <- autocor_archaeoph_mod1a %>% 
+  bind_rows(autocor_archaeoph_mod1b, autocor_archaeoph_mod1c, autocor_archaeoph_mod2, autocor_archaeoph_mod3) %>% 
+  mutate(response="archaeophyte_percent")
+
+archaeophyte_SpatAutocor %>% 
+  filter(statistic=="p.value")
+#------------------------------------------------------------------------------#
+
 #(4) merge data------
 SpatAutocorResid <- alien_SpatAutocor %>% 
-bind_rows(invasive_SpatAutocor, neophyte_SpatAutocor) %>% 
+bind_rows(invasive_SpatAutocor, neophyte_SpatAutocor, archaeophyte_SpatAutocor) %>% 
   pivot_wider(names_from = "statistic", values_from = "values") %>% 
   relocate(p.value, .after="sd") %>% 
   mutate(Obs.I=round(Obs.I, 4),
@@ -531,4 +678,4 @@ bind_rows(invasive_SpatAutocor, neophyte_SpatAutocor) %>%
 SpatAutocorResid
 
 write_csv(SpatAutocorResid ,
-          "results/SpatAutocorResid_TableS5.csv")
+          "results/SpatAutocorResid_TableS6.csv")

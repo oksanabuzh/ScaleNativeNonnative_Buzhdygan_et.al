@@ -134,6 +134,7 @@ plot_proportion  %>%
 
 
 
+
 ## Fig.1 E - Invasives
 plot_proportion  %>% 
   ggplot(aes(y=factor(scale), x=percent_plots_invasive)) + 
@@ -425,10 +426,6 @@ emmeans_m4_habitat <- cld(emmeans(mod4h, list(pairwise ~ habitat_broad)),
 emmeans_m4_habitat
 
 
-?emmeans
-
-
-
 alien_data_100 %>%  
   ggplot(aes(habitat_broad, neophyte_percent, col=habitat_broad))+
   geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -476,10 +473,6 @@ emmeans_mod5h_habitat <- cld(emmeans(mod5h, list(pairwise ~ habitat_broad)),
 emmeans_mod5h_habitat
 
 
-?emmeans
-
-
-
 alien_data_100 %>%  
   ggplot(aes(habitat_broad, archaeophyte_percent, col=habitat_broad))+
   geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -508,7 +501,7 @@ post_hoc_table <- Table_mod1h %>%
   setNames(c("Habitats", "estimate", "SE", "z-ratio", "p-value",
                         "estimate2", "SE2", "z-ratio2", "p-value2"))
 
-# write_csv(post_hoc_table, "results/habitat_posthoc_TableS5.csv")
+write_csv(post_hoc_table, "results/habitat_posthoc_TableS5.csv")
 
 
 emmeans_table <- Table_mod1h_means %>% 
@@ -517,4 +510,4 @@ emmeans_table <- Table_mod1h_means %>%
   setNames(c("habitats", "emmean", "SE", "asymp.LCL", "asymp.UCL",
              "emmean2", "SE2", "asymp.LCL2", "asymp.UCL2"))
 
-# write_csv(emmeans_table, "results/emmeans_TableS5.csv")
+write_csv(emmeans_table, "results/emmeans_TableS5.csv")

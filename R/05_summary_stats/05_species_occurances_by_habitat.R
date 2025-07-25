@@ -1,4 +1,4 @@
-# Purpose: Summary statistics for vegetation data 
+# Purpose: Species occurrences at each habitat for 100 m2 plots
 
 # Load packages
 library(tidyverse)
@@ -11,14 +11,6 @@ species_categorized <- read_csv("data-raw/database_analysis_categorized.csv") %>
             by=c("series", "subplot"))
 str(species_categorized)
 summary(species_categorized)
-
-# how many species in total are there?
-species_categorized %>% distinct(species) %>% nrow()
-#1082 species in total
-
-# at scales 10 and 100 response is cover and we need p/a 
-species_categorized %>% 
-  filter(response == "p/a", scale == 100 | scale==10)
 
 #add p/a for 100 and 10 m2
 species_data <- species_categorized %>%
@@ -55,12 +47,10 @@ summary(sp_data)
 
 habitat_order <- c("saline (n=21)", "complex (n=2)", "dry (n=135)", "wet (n=2)", 
                 "mesic (n=13)", "fringe (n=7)", "alpine (n=11)") 
+
 # archaeophytes -----
 archaeophytes <- sp_data %>% 
   filter(introduction_time=="archaeophyte") 
-
-
-## by scale -----
 
 # order species 
 arch_species_order <- archaeophytes %>%
@@ -71,8 +61,7 @@ arch_species_order <- archaeophytes %>%
 
 arch_Plot <- archaeophytes %>%
   mutate(species = factor(species, levels = arch_species_order)) %>% 
-  mutate(
-    habitat_broad = fct_relevel(habitat_broad, habitat_order)) %>% 
+  mutate(habitat_broad = fct_relevel(habitat_broad, habitat_order)) %>% 
     ggplot(aes(Frequency, species)) +
   geom_point() +
   geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
@@ -93,41 +82,6 @@ arch_Plot <- archaeophytes %>%
 arch_Plot
 
 
-archaeophytes %>%
-  mutate(species = factor(species, levels = arch_species_order)) %>% 
-  filter(is.na(species))
-
-## by habitat -----
-arch_species_order2 <- archaeophytes %>%
-  #  filter(habitat_broad == "dry") %>%
-  arrange(Frequency) %>%
-  pull(species)
-
-arch_Plot_habitat <- archaeophytes %>%
-  filter(scale == 100) %>% 
-  mutate(habitat_broad=fct_relevel(habitat_broad, 
-                                   c("saline", "complex", "dry", "wet", 
-                                     "mesic", "fringe", "alpine"))) %>% 
-  mutate(species = factor(species, levels = arch_species_order)) %>%
-  ggplot(aes(Frequency, species))+
-  geom_point() +
-  geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
-  geom_point(position = position_dodge(width = dodge_width <- 0.5), size = 1,
-             fill="darkcyan", pch=21) +
-  geom_errorbarh(aes(xmin = 0, xmax = Frequency),col="darkcyan", 
-                 linetype = "solid",
-                 position = position_dodge(width = dodge_width), height = 0.1) +
-  theme_bw()+
-  theme(legend.key=element_blank(), 
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 7),
-        axis.title = element_text(size = 10),
-        plot.margin = margin(2, 2, 10, 2)) +
-  facet_wrap(~habitat_broad, nrow=1)+
-  labs(x="Frequency of occurence, %", y="Archaeophyte species")
-
-arch_Plot_habitat
-
 # neophytes -----
 neophytes <- sp_data %>% 
   filter(introduction_time=="neophyte") 
@@ -135,13 +89,14 @@ neophytes <- sp_data %>%
 
 # order species by perc at scale = 100
 neoph_species_order <- neophytes %>%
-  filter(scale == 100) %>%
-  arrange(Frequency) %>%
-  pull(species)
-
+  summarize(total_freq = sum(Frequency_total, na.rm = TRUE), .by="species") %>%
+  arrange(total_freq) %>%
+  pull(species) %>%
+  unique() 
 
 neoph_Plot <- neophytes %>%
-  mutate(species = factor(species, levels = neoph_species_order)) %>%
+  mutate(species = factor(species, levels = neoph_species_order)) %>% 
+  mutate(habitat_broad = factor(habitat_broad, levels = habitat_order)) %>% 
   ggplot(aes(Frequency, species))+
   geom_point() +
   geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
@@ -156,8 +111,8 @@ neoph_Plot <- neophytes %>%
         axis.text.x = element_text(size = 7),
         axis.title = element_text(size = 10),
         plot.margin = margin(2, 2, 10, 2)) +
-  facet_wrap(~scale, nrow=1)+
-  scale_x_continuous(breaks = seq(0,13, by=3))+
+  facet_wrap(~habitat_broad, nrow=1, drop = FALSE)+
+#  scale_x_continuous(breaks = seq(0,13, by=3))+
   labs(x="Frequency of occurence, %", y="Neophyte species")
 
 neoph_Plot
@@ -170,13 +125,15 @@ invasives <- sp_data %>%
 
 # order species by perc at scale = 100
 inv_species_order <- invasives %>%
-  filter(scale == 100) %>%
-  arrange(Frequency) %>%
-  pull(species)
+  summarize(total_freq = sum(Frequency_total, na.rm = TRUE), .by="species") %>%
+  arrange(total_freq) %>%
+  pull(species) %>%
+  unique() 
 
 
 inv_Plot <- invasives %>%
-  mutate(species = factor(species, levels = inv_species_order)) %>%
+  mutate(species = factor(species, levels = inv_species_order)) %>% 
+  mutate(habitat_broad = factor(habitat_broad, levels = habitat_order)) %>% 
   ggplot(aes(Frequency, species))+
   geom_point() +
   geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
@@ -191,7 +148,7 @@ inv_Plot <- invasives %>%
         axis.text.x = element_text(size = 7),
         axis.title = element_text(size = 10),
         plot.margin = margin(2, 2, 10, 2)) +
-  facet_wrap(~scale, nrow=1)+
+  facet_wrap(~habitat_broad, nrow=1, drop = FALSE)+
   labs(x="Frequency of occurence, %", y="Invasive species") 
 
 inv_Plot
@@ -211,5 +168,5 @@ combined_plot <- (arch_Plot / neoph_Plot / inv_Plot) +
 print(combined_plot)
 
 
-ggsave("results/Species_frequency_occurence.png", combined_plot, width = 8, height = 9, dpi = 150)
+ggsave("results/Species_frequency_occurence_by_Habitat.png", combined_plot, width = 8, height = 9, dpi = 150)
 

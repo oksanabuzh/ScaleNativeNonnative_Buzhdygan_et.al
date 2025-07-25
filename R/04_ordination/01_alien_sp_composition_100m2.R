@@ -19,7 +19,6 @@ names(header_data)
 
 header <- header_data %>%
   mutate(cover_grv_stone=cover_gravel + cover_stones) %>% 
-  rename(build_up=built_up_2km) %>% 
   dplyr::select(series, # altitude, 
          pH, #Corg,
          heat_index , #
@@ -29,7 +28,10 @@ header <- header_data %>%
          cover_litter, 
          grazing_intencity, mowing , abandonment , # burning ,   
          # economic_use, 
-         build_up, roads)
+         roads,
+         builtup_1000m, cropland_1000m,
+        builtup_250m, cropland_250m,
+        builtup_500m, cropland_500m)
 
 
 disturb_data <- read_csv("data-raw/Disturbn_commun_mean.csv") %>% 
@@ -79,7 +81,7 @@ PERM_mod2 <- adonis2(com[, 2:87] ~
                        cover_litter+ 
                        grazing_intencity +  mowing + 
                        abandonment + # burning +   
-                       build_up + roads +  
+                       builtup_500m + cropland_500m + roads +  
                        Disturbance.Frequency +  
                        Disturbance.Severity,
                      data=com,
@@ -88,7 +90,7 @@ PERM_mod2 <- adonis2(com[, 2:87] ~
 PERM_mod2
 
 
-write.csv(PERM_mod2, "results/PERMANOVA_Spec_Table_S4_A.csv")
+write.csv(PERM_mod2, "results/PERMANOVA_Spec_Table_S7.csv")
 # NMDS -----
 
 set.seed(100)
@@ -121,7 +123,7 @@ fit2 <- vegan::envfit(nmds2   ~  pca1_clima +
                         cover_herbs_sum + # cover_shrub_total+  
                         cover_litter+ 
                         grazing_intencity +  mowing +  abandonment +   #burning +   
-                        build_up + roads +  
+                        builtup_500m + cropland_500m + roads +  
                         Disturbance.Frequency +  
                         Disturbance.Severity , 
                       data=com, perm=1000) #, strata=factor(variabl$series)) #
@@ -135,6 +137,7 @@ fit2
 set.seed(1)
 plot(nmds2, display = "species",
      scaling = "species")
+
 plot(fit2)
 
 
@@ -198,6 +201,7 @@ p2
 
 
 
+
 #  add standardised scores:
 coord_cont2 <- as.data.frame(scores(fit2, "vectors")) %>% 
   cbind( stand= fit2$vectors$arrows)%>% 
@@ -214,7 +218,8 @@ coord_cont2 <- as.data.frame(scores(fit2, "vectors")) %>%
                       Litter="cover_litter",              
                       Grazing= "grazing_intencity",    
                       Mowing = "mowing",
-                      Builtup="build_up",
+                      Builtup="builtup_500m",
+                      Croplans="cropland_500m",
                       Roads="roads",
                       Distr.Frqnc="Disturbance.Frequency",
                       Distr.Sevr="Disturbance.Severity"))
@@ -231,7 +236,7 @@ coord_cont_standrd2  <- coord_cont2 %>%
   mutate(stand.NMDS2=stand.NMDS2 * ordiArrowMul(fit2, rescale=TRUE, fill = 0.25)) %>% 
   filter(Variables_new %in% c("ClimatePC", "pH", 
                               "Stones", "Heat.stress","Herb.covr", 
-                              "Grazing", "Distr.Sevr", "Distr.Sevr") )
+                               "Distr.Sevr", "Distr.Sevr", "Croplans") )
 
 coord_cont_standrd2
 
@@ -274,31 +279,5 @@ factor(coord_cont$Variables_new)
 #  Herb.cov    Litter      Grazing        Mowing      
 #  Builtup     Roads       Dist.Freqnc    Dist.Sev  
 
-
-
-
-
-
-
-# unstandardized
-p2+
-  xlim(-0.5,0.25)+ #ylim(-0.95,0.7)
-  geom_segment(aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2), 
-               data = coord_cont2, linewidth =0.7, alpha = 1, 
-               colour = "darkgray", 
-               arrow = arrow(length = unit(0.03, "npc")))+
-  geom_text(data = coord_cont2, 
-            aes(x = NMDS1+0.01*sign(NMDS1), y = NMDS2+0.01*sign(NMDS2),
-                label = Variables_new), 
-            colour = "black", fontface = "bold", size = 4 ,
-            vjust=c(-0.3, 0.7, 0.7, 0.5, 
-                    0.9, 0.9, 0.5, 0,
-                    0.5, 0.5, 0, 0), 
-            hjust=c(0.5, 0, 0.7, 0.9, 
-                    0.9, 1, 0.3, 0.5, 
-                    0.8, 0, 1, 0.3)) # adjust text positions
-
-
-factor(coord_cont$Variables_new)
 
 

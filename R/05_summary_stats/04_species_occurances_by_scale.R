@@ -1,4 +1,4 @@
-# Purpose: Summary statistics for vegetation data 
+# Purpose: Species occurrences at each spatial scale
 
 # Load packages
 library(tidyverse)
@@ -47,8 +47,6 @@ archaeophytes <- sp_data %>%
   filter(introduction_time=="archaeophyte") 
 
 
-## by scale -----
-
 # order species by perc at scale = 100
 arch_species_order <- archaeophytes %>%
   filter(scale == 100) %>%
@@ -78,36 +76,6 @@ arch_Plot <- archaeophytes %>%
 
 arch_Plot
 
-## by habitat -----
-arch_species_order2 <- archaeophytes %>%
-#  filter(habitat_broad == "dry") %>%
-  arrange(Frequency) %>%
-  pull(species)
-
-arch_Plot_habitat <- archaeophytes %>%
-  filter(scale == 100) %>% 
-  mutate(habitat_broad=fct_relevel(habitat_broad, 
-                                   c("saline", "complex", "dry", "wet", 
-                                     "mesic", "fringe", "alpine"))) %>% 
-  mutate(species = factor(species, levels = arch_species_order)) %>%
-  ggplot(aes(Frequency, species))+
-  geom_point() +
-  geom_vline(xintercept = 0, color = "gray33", linetype = "dashed") +
-  geom_point(position = position_dodge(width = dodge_width <- 0.5), size = 1,
-             fill="darkcyan", pch=21) +
-  geom_errorbarh(aes(xmin = 0, xmax = Frequency),col="darkcyan", 
-                 linetype = "solid",
-                 position = position_dodge(width = dodge_width), height = 0.1) +
-  theme_bw()+
-  theme(legend.key=element_blank(), 
-        axis.text.y = element_text(size = 6),
-        axis.text.x = element_text(size = 7),
-        axis.title = element_text(size = 10),
-        plot.margin = margin(2, 2, 10, 2)) +
-  facet_wrap(~habitat_broad, nrow=1)+
-  labs(x="Frequency of occurence, %", y="Archaeophyte species")
-
-arch_Plot_habitat
 
 # neophytes -----
 neophytes <- sp_data %>% 
@@ -192,5 +160,5 @@ combined_plot <- (arch_Plot / neoph_Plot / inv_Plot) +
 print(combined_plot)
 
 
-ggsave("results/Species_frequency_occurence.png", combined_plot, width = 8, height = 9, dpi = 150)
+ggsave("results/Species_frequency_occurence_by_scale.png", combined_plot, width = 8, height = 9, dpi = 150)
 

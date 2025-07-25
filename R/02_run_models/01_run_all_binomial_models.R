@@ -10,7 +10,7 @@ source("R/zzz_functions/run_single_model.R")
 # Read the species data and climate principal component data
 species <- read_csv("data/database_analysis_summary.csv")
 climate_pc <- read_csv("data/Clima_PC.csv") |>
-  select(series, pca1_clima) |>
+  dplyr::select(series, pca1_clima) |>
   unique()
 header_data <- read_csv("data/header_data_prepared.csv")
 # read disturbance data
@@ -23,7 +23,9 @@ species <- species |> filter(type == "p_a")
 species <- species |> mutate(
   non_native_percent = non_native / total_species,
   invasive_percent = invasive / total_species,
-  neophyte_percent = neophyte / total_species
+  neophyte_percent = neophyte / total_species,
+  archaeophyte_percent = archaeophyte / total_species
+  
 )
 
 # Join the species data with the climate principal component data
@@ -56,7 +58,7 @@ names(species)
 # Pivot the data to long format and select relevant variables
 data_for_models <- species |>
   pivot_longer(
-    cols = c(non_native_percent, invasive_percent, neophyte_percent),
+    cols = c(non_native_percent, invasive_percent, neophyte_percent, archaeophyte_percent),
     names_to = "response_var",
     values_to = "response_value"
   ) |>
@@ -160,6 +162,7 @@ data_for_models <- data_for_models |>
   mutate(
     use_optimizers = case_when(
       response_var == "non_native_percent" ~ FALSE,
+      response_var == "archaeophyte_percent" ~ FALSE,
       response_var == "invasive_percent" ~ TRUE,
       response_var == "neophyte_percent" ~ TRUE
     )
@@ -178,49 +181,48 @@ model_results <- data_for_models |>
   ) |>
   ungroup()
 
-# Run one quasibinomial model instead of binomial -------------------------
-# For the model with
-# scale = 0.001
-# model_id = "climate"
-# response_var = "non_native_percent"
-# The binomial model does not converge but it is not caught by performance::check_convergence
-# Therefore we replace this single model by hand with a quasibinomial model
+
+# Run  binomial for the model with scale = 100 and model_id = "climate"
+# response_var = "archaeophyte_percent" to get standardised coeficients
 
 # first, we select the model to run again with quasi
-model_quasi <- model_results |> filter(
-  scale == 0.001 &
-  model_id == "climate" &
-  response_var == "non_native_percent"
-) |> 
+model_binom <- model_results |> filter(
+  scale == 100 &
+    model_id%in% c("climate", "builtup_250m", "builtup_500m") &
+    response_var == "archaeophyte_percent")|> 
   select(all_of(names(data_for_models)))
 
-model_quasi_result <- model_quasi |> 
+
+model_binom_result <- model_binom |> 
   rowwise() |> 
   mutate(
-  run_single_model_quasi(
-    data_to_model = data,
-    response_variable = "response_value",
-    random_effect = random_variable,
-    fixed_effects = predictors
+    run_single_model_binom(
+      data_to_model = data,
+      response_variable = "response_value",
+      random_effect = random_variable,
+      fixed_effects = predictors
+    )
   )
-)
 
 # remove the binomial model and add instead the new quasibinomial model
 model_results <- model_results |> 
   filter(
-    !(scale == 0.001 &
-      model_id == "climate" &
-      response_var == "non_native_percent")
+    !(scale == 100 &
+      model_id%in% c("climate", "builtup_250m", "builtup_500m") &
+      response_var == "archaeophyte_percent")
   ) |> 
-  bind_rows(model_quasi_result)
+  bind_rows(model_binom_result)
+
+
 
 # check the status of the model runs
 count(model_results, status)
 
 # Summarize model results
-model_results_summary <- model_results |> select(
-  model_id, scale, response_var, remove_zeroes, model_res, status, model_converged, model_used
+model_results_summary <- model_results |> dplyr::select(
+  model_id, scale, response_var, remove_zeroes, model_res, status, model_converged, model_used,
 )
+
 # Add the tibble from the model_res list column to the tibble, by duplicating the rows
 model_results_summary <- model_results_summary |>
   unnest(model_res)
