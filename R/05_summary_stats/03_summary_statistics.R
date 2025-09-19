@@ -242,7 +242,8 @@ summary_table_all
 # Table S3_S4-----
 write_csv(summary_table_all, "results/summary_table_habitatas_TableS3_S4.csv")
 
-
+# Pairwise comparisons among grassland types --------------------
+## Presence/absence data---------------
 alien_data_100 <- alien_data %>% 
   filter(type == "p_a" &  scale == 100)
 
@@ -252,7 +253,7 @@ alien_data_100
 alien_data_100$habitat_group
 alien_data_100$habitat_broad
 
-## native SR ----
+### native SR ----
 
 
 mod2h<- glm(native ~ 
@@ -302,7 +303,7 @@ alien_data_100 %>%  filter(type == "p_a" &  scale == 100) %>%
             size=4, col="black" , position=position_dodge(0))
 
 
-## non_native_percent ----
+### non_native_percent ----
 
 mod1h<- glm(non_native_percent ~  habitat_broad,
             weights = total_species, family = binomial, 
@@ -351,7 +352,7 @@ alien_data_100 %>%
 
 #------------------------------------------------------------#
 
-## invasive_percent ----
+### invasive_percent ----
 
 mod3h<- glm(invasive_percent ~  habitat_broad,
             weights = total_species, family = binomial, 
@@ -401,7 +402,7 @@ alien_data_100 %>%
   scale_y_continuous(labels = scales::percent_format(accuracy = 1),
                      limits = c(0, 0.11)) 
 
-## neophyte_percent ----
+### neophyte_percent ----
 
 mod4h<- glm(neophyte_percent ~  habitat_broad,
             weights = total_species, family = binomial, 
@@ -448,7 +449,7 @@ alien_data_100 %>%
                      limits = c(0, 0.11)) 
 
 
-## neophyte_percent ----
+### archaeophyte_percent ----
 
 mod5h<- glm(archaeophyte_percent ~  habitat_broad,
             weights = total_species, family = binomial, 
@@ -511,3 +512,227 @@ emmeans_table <- Table_mod1h_means %>%
              "emmean2", "SE2", "asymp.LCL2", "asymp.UCL2"))
 
 write_csv(emmeans_table, "results/emmeans_TableS5.csv")
+
+
+
+
+dev.off()
+
+# Plant Cover data --------------------------------------------------------------------
+alien_data_100_cover <- alien_data %>% 
+  filter(type == "cover" &  scale == 100) 
+
+
+alien_data_100_cover
+
+### non_native_percent ---------------------------------------------------------
+
+# zero-one inflated beta family in glmmTMB 
+# zero-one inflated as data contains 0 or/and 1
+# mod2_cover <- glmmTMB(non_native_percent ~ habitat_broad, 
+#                      family = beta_family(link = "logit"), zi = ~1, 
+#                      data = alien_data_100_cover)
+
+# asin(sqrt) transformation
+mod2_cover <- lm(non_native_percent ~ habitat_broad, 
+                 data = alien_data_100_cover %>% 
+                   mutate(non_native_percent=asin(sqrt(non_native_percent))))
+
+par(mfrow = c(2,2))
+plot(mod2_cover) 
+par(mfrow = c(1, 1))
+
+#check_convergence(mod2_cover)
+Anova(mod2_cover)
+summary(mod2_cover)
+# plot_model(mod2_cover,type = "pred", terms=c("scale","habitat_group"),  show.data=T)
+
+Table_mod2_cover <- emmeans(mod2_cover, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
+  as.tibble()
+Table_mod2_cover
+
+Table_mod2_cover_means <- emmeans(mod2_cover, list(pairwise ~ habitat_broad))$`emmeans of habitat_broad` %>% 
+  as.tibble()
+Table_mod2_cover_means
+
+
+emmeans_mod2_cover_habitat <- cld(emmeans(mod2_cover, list(pairwise ~ habitat_broad)), 
+                                  Letters = letters) %>% arrange(habitat_broad)
+emmeans_mod2_cover_habitat
+
+
+alien_data_100_cover %>%  
+  ggplot(aes(habitat_broad, non_native_percent, col=habitat_broad))+
+  geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
+  geom_point( aes(fill=habitat_broad), pch=21,
+              size=2, alpha=0.4, stroke = 0.8, 
+              position=position_jitterdodge(jitter.width = 0.6, 
+                                            jitter.height = 0)) +
+  scale_color_manual(values = col)+
+  scale_fill_manual(values = col2)+
+  labs(y="Proportion of cover contributed by alien species", x='Grassland type', 
+       col="Grassland type",
+       fill="Grassland type") +
+  # guides(shape = "none") +
+  theme_bw()+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+
+# geom_text(data=emmeans_mod2_cover_habitat,
+#            aes(x=habitat_broad, y=c(0.36, 0.16, 0.27, 0.04, 0.1, 0.02, 0.02),
+#                label=emmeans_mod2_cover_habitat$.group),vjust=0.5, hjust=0.5, 
+#            size=4, col="black" , position=position_dodge(0))
+
+#------------------------------------------------------------#
+
+### invasive_percent ----
+
+mod3_cover<- lm(invasive_percent ~  habitat_broad,
+                data = alien_data_100_cover %>% 
+                  mutate(invasive_percent=asin(sqrt(invasive_percent))))
+
+
+par(mfrow = c(2,2))
+plot(mod3_cover) 
+par(mfrow = c(1, 1))
+
+#check_convergence
+Anova(mod3_cover)
+summary(mod3_cover)
+
+Table_mod3_cover <- emmeans(mod3_cover, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
+  as.tibble()
+Table_mod3_cover
+
+Table_mod3_cover_means <- emmeans(mod3_cover, list(pairwise ~ habitat_broad))$`emmeans of habitat_broad` %>% 
+  as.tibble()
+Table_mod3_cover_means
+
+
+emmeans_m3_habitat <- cld(emmeans(mod3_cover, list(pairwise ~ habitat_broad)), 
+                          Letters = letters) %>% arrange(habitat_broad)
+emmeans_m3_habitat
+
+
+
+alien_data_100_cover %>%  
+  ggplot(aes(habitat_broad, invasive_percent, col=habitat_broad))+
+  geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
+  geom_point( aes(fill=habitat_broad), pch=21,
+              size=2, alpha=0.4, stroke = 0.8, 
+              position=position_jitterdodge(jitter.width = 0.6, 
+                                            jitter.height = 0)) +
+  scale_color_manual(values = col)+
+  scale_fill_manual(values = col2)+
+  labs(y="Proportion of cover contributed by invasive species", x='Grassland type', 
+       col="Grassland type",
+       fill="Grassland type") +
+  # guides(shape = "none") +
+  theme_bw()+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, 0.077)) 
+# geom_text(data=emmeans_m3_habitat,
+#           aes(x=habitat_broad, y=c(0.015, 0.017, 0.081, 0.01, 0.03, 0.005, 0.005),
+#               label=emmeans_m3_habitat$.group),vjust=0.5, hjust=0.5, 
+#          size=4, col="black" , position=position_dodge(0))
+
+### neophyte_percent ----
+
+mod4_cover<- lm(neophyte_percent ~  habitat_broad,
+                data = alien_data_100_cover %>% 
+                  mutate(neophyte_percent=asin(sqrt(invasive_percent))))
+
+
+par(mfrow = c(2,2))
+plot(mod4_cover) 
+par(mfrow = c(1, 1))
+
+#check_convergence
+Anova(mod4_cover)
+summary(mod4_cover)
+# plot_model(mod2_cover,type = "pred", terms=c("scale","habitat_group"),  show.data=T)
+
+Table_mod4_cover <- emmeans(mod4_cover, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
+  as.tibble()
+Table_mod4_cover
+
+Table_mod4_cover_means <- emmeans(mod4_cover, list(pairwise ~ habitat_broad))$`emmeans of habitat_broad` %>% 
+  as.tibble()
+Table_mod4_cover_means
+
+
+emmeans_m4_cover_habitat <- cld(emmeans(mod4_cover, list(pairwise ~ habitat_broad)), 
+                                Letters = letters) %>% arrange(habitat_broad)
+emmeans_m4_cover_habitat
+
+
+alien_data_100_cover %>%  
+  ggplot(aes(habitat_broad, neophyte_percent, col=habitat_broad))+
+  geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
+  geom_point( aes(fill=habitat_broad), pch=21,
+              size=2, alpha=0.4, stroke = 0.8, 
+              position=position_jitterdodge(jitter.width = 0.6, 
+                                            jitter.height = 0)) +
+  scale_color_manual(values = col)+
+  scale_fill_manual(values = col2)+
+  labs(y="Proportion of cover contributed by neophytes", x='Grassland type', 
+       col="Grassland type",
+       fill="Grassland type") +
+  # guides(shape = "none") +
+  theme_bw()+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1),
+                     limits = c(0, 0.077)) 
+# geom_text(data=emmeans_m4_cover_habitat,
+#           aes(x=habitat_broad, y=c(0.015, 0.005, 0.083, 0.007, 0.04, 0.005, 0.005),
+#               label=emmeans_m4_cover_habitat$.group),vjust=0.5, hjust=0.5, 
+#           size=4, col="black" , position=position_dodge(0))
+
+
+### archaeophyte_percent ----
+
+mod5_cover<- lm(archaeophyte_percent ~  habitat_broad,
+                data = alien_data_100_cover %>% 
+                  mutate(neophyte_percent=asin(sqrt(archaeophyte_percent))))
+
+
+par(mfrow = c(2,2))
+plot(mod5_cover) 
+par(mfrow = c(1, 1))
+
+#check_convergence(mod2_cover)
+Anova(mod5_cover)
+summary(mod5_cover)
+# plot_model(mod2_cover,type = "pred", terms=c("scale","habitat_group"),  show.data=T)
+
+Table_mod5_cover <- emmeans(mod5_cover, list(pairwise ~ habitat_broad))$`pairwise differences of habitat_broad` %>% 
+  as.tibble()
+Table_mod5_cover
+
+Table_mod5_cover_means <- emmeans(mod5_cover, list(pairwise ~ habitat_broad))$`emmeans of habitat_broad` %>% 
+  as.tibble()
+Table_mod4_cover_means
+
+
+emmeans_mod5_cover_habitat <- cld(emmeans(mod5_cover, list(pairwise ~ habitat_broad)), 
+                                  Letters = letters) %>% arrange(habitat_broad)
+emmeans_mod5_cover_habitat
+
+
+alien_data_100_cover %>%  
+  ggplot(aes(habitat_broad, archaeophyte_percent, col=habitat_broad))+
+  geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
+  geom_point( aes(fill=habitat_broad), pch=21,
+              size=2, alpha=0.4, stroke = 0.8, 
+              position=position_jitterdodge(jitter.width = 0.6, 
+                                            jitter.height = 0)) +
+  scale_color_manual(values = col)+
+  scale_fill_manual(values = col2)+
+  labs(y="Proportion of cover contributed by archaeophytes", x='Grassland type', 
+       col="Grassland type",
+       fill="Grassland type") +
+  # guides(shape = "none") +
+  theme_bw()+
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) 
+# geom_text(data=emmeans_mod5_cover_habitat,
+#           aes(x=habitat_broad, y=c(0.18, 0.18, 0.09, 0.02, 0.05, 0.015, 0.015),
+#               label=emmeans_mod5_cover_habitat$.group),vjust=0.5, hjust=0.5, 
+#          size=4, col="black" , position=position_dodge(0))
