@@ -1,3 +1,22 @@
+# Drivers of plant invasions and their scale-dependency in grasslands
+
+#### Code and data for
+
+#### Buzhdygan et al. (2025) Drivers of plant invasions and their scale-dependency in grasslands. Biological Conservation
+
+
+Cite the code and data: [![DOI]()
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+### Abstract
+Conservation and management policies for plant invasions often rely on coarse-scale data, while plant diversity effects on ecosystem functions and services are primarily driven by species interactions at small spatial scales. Yet, most evidence on invasion drivers at fine scales is limited to a single grain size, leaving uncertainty about their scale-dependency. Understanding such scale-dependency is essential for predicting and managing invasions effectively.
+We sampled plant communities across grassland habitats in Ukraine to assess how native species richness, environmental factors, and anthropogenic disturbances influence community invasion level – the proportions of all alien species, and separately for invasive species (fast-spreading aliens at advanced stages of invasion), archaeophytes (introduced before AD 1500) and neophytes (post-1500 AD aliens). By analysing these groups across six fine-grain areas (0.001‒100 m2), we tested for scale-dependent effects.
+Native species richness was the strongest driver of invasions, showing negative effects that weakened with increasing scale. Alien species were dominated by archaeophytes and occurred most in dry grasslands, and least in fringe, alpine, and mesic types, driven by climatic and disturbance gradients. A range of abiotic and anthropogenic drivers, including precipitation, temperature, disturbance, land use and urbanization also influenced invasion levels, but their importance varied with scale. Notably, the scale-dependency of invasion drivers differed among archaeophytes, neophytes, and invasive species. 
+Our results highlight the importance of separating alien groups and considering multiple spatial grains to avoid overlooking key drivers of invasion. Focusing on scale- and group-specific factors can enhance the ecological relevance and efficiency of conservation and management strategies targeting plant invasions.
+
+
 # Project Structure
 
 This project is structured as follows:
