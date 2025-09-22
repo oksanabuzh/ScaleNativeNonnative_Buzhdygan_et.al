@@ -17,28 +17,7 @@ Native species richness was the strongest driver of invasions, showing negative 
 Our results highlight the importance of separating alien groups and considering multiple spatial grains to avoid overlooking key drivers of invasion. Focusing on scale- and group-specific factors can enhance the ecological relevance and efficiency of conservation and management strategies targeting plant invasions.
 
 
-# Project Structure
-
-This project is structured as follows:
-
-```md
-.gitignore
-.Rproj.user/
-data/
-    database_analysis_summary.csv
-    invasive_matrix.csv
-    osm_plots.RData
-data-raw/
-    database_analysis_categorized.csv
-    database_analysis.csv
-    headers.csv
-    non_native_species.csv
-img/
-R/
-    01_prepare_data/
-    osm_geographical_indices.R
-scale_native_non-native.Rproj
-```
+## Contents of the folders
 
 ## R Files
 
