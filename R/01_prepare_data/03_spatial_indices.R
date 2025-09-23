@@ -4,8 +4,6 @@ library(tidyverse)
 
 # Read data ---------------------------------------------------------------
 
-# climate raster just to see the right projection
-# climate_raster <- raster('https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio1_1981-2010_V.2.1.tif')
 roads <- raster::raster(
   "data-raw/spatial/GRIP4_density_total/grip4_total_dens_m_km2.asc"
 )

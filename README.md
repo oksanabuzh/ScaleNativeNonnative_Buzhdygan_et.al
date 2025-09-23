@@ -25,16 +25,14 @@ The project contains several R script folders that process and analyze the data:
 
 #### 1. Data Preparation (`R/01_prepare_data/`)
 
+The following scripts are used for preparing the raw data for analysis:
+
 - `00_extract_land_cover.R`: Extracts land cover data from Copernicus raster files (100m resolution) and calculates mean built-up and cropland cover fractions in buffers around sampling points (250-2000m).
-  - Input: 
-    - `data-raw/headers.csv`: Plot coordinates
-    - `data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/`: Downloaded [Copernicus land cover rasters](downloaded from https://land.copernicus.eu/en/products/global-dynamic-land-cover/copernicus-global-land-service-land-cover-100m-collection-3-epoch-2019-globe)
-  - Output: 
-    - `data-raw/header_landcover_buffers.csv`: Mean land cover values for different buffer sizes
 - `01_prepare_species_data.R`: Prepares vegetation survey data by filtering vascular plants, calculating mean values for multi-layer species, and adding naturalization status
 - `02_prepare_matrix.R`: Creates species composition matrices for analysis
-- `03_prepare_header_data.R`: Processes environmental variables and site metadata
-- `04_spatial_indices.R`: Handles spatial data and road density calculations
+- `03_spatial_indices.R`: Extract road density data and add it to the header data
+- `04_prepare_header_data.R`: Prepare the header data with environmental variables and combine with the land cover data from `00_extract_land_cover.R`
+
 
 #### 2. Statistical Analysis (`R/02_run_models/`)
 - `01_run_all_binomial_models.R`: Runs binomial models for all scales using presence/absence data

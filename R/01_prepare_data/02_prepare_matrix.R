@@ -13,7 +13,6 @@ traits <- read_csv("data-raw/non_native_species.csv")
 
 # Prepare matrix of invasive species ---------------------------------------
 invasive_matrix <- species |>
-  # filter(naturalisation_level == "invasive") |>
   filter(!is.na(naturalisation_level)) |>
   filter(response == "cover") |>
   unite(col = "plot_name", series, subplot, scale, sep = "-") |>
