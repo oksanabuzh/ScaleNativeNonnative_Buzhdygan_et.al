@@ -30,41 +30,61 @@ header_data |>
 
 # Correlate all variables for the model --------------------------------------
 preds <- c(
-  "altitude", "pca1_clima", "pH", "microrelief", "heat_index",
-  "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "builtup_1000m", "builtup_500m", "builtup_250m",
-  "cropland_1000m", "cropland_500m", "cropland_250m",
-  "grazing_intencity", "mowing", "abandonment", "roads",
-  "Disturbance.Frequency", "Disturbance.Severity"
+  "altitude",
+  "pca1_clima",
+  "pH",
+  "microrelief",
+  "heat_index",
+  "cover_litter",
+  "cover_herbs_sum",
+  "cover_gravel_stones",
+  "builtup_1000m",
+  "builtup_500m",
+  "builtup_250m",
+  "cropland_1000m",
+  "cropland_500m",
+  "cropland_250m",
+  "grazing_intencity",
+  "mowing",
+  "abandonment",
+  "roads",
+  "Disturbance.Frequency",
+  "Disturbance.Severity"
 )
 
 
 header_data |>
   filter(subplot == "x") |>
   dplyr::select(all_of(preds)) |>
-  rename("Altitude"= "altitude", 
-         "Climate PC"= "pca1_clima", 
-         "Soil pH"= "pH", 
-      #   "Soil humus"= "Corg", 
-         "Microrelief"= "microrelief", 
-         "Gravel & stone cover"= "cover_gravel_stones",
-         "Herb cover"= "cover_herbs_sum",
-       #  "Shrub cover"= "cover_shrub_total",
-         "Litter cover"= "cover_litter", 
-         "Grazing"= "grazing_intencity", 
-         "Mowing"= "mowing", 
-         "Abandonment"= "abandonment", 
-         "Heat stress"= "heat_index",
-      "Urban built-up (1000 m)"= "builtup_1000m",  
-      "Croplands cover (1000 m)"= "cropland_1000m",
-      "Urban built-up (250 m)"= "builtup_250m",  
-      "Croplands cover (250 m)"= "cropland_250m",
-      "Urban built-up (500 m)"= "builtup_500m",  
-      "Croplands cover (500 m)"= "cropland_500m",
-         "Road density"= "roads", 
-         "Disturbance frequency"= "Disturbance.Frequency", 
-         "Disturbance severity"= "Disturbance.Severity") %>% 
+  rename(
+    "Altitude" = "altitude",
+    "Climate PC" = "pca1_clima",
+    "Soil pH" = "pH",
+    #   "Soil humus"= "Corg",
+    "Microrelief" = "microrelief",
+    "Gravel & stone cover" = "cover_gravel_stones",
+    "Herb cover" = "cover_herbs_sum",
+    #  "Shrub cover"= "cover_shrub_total",
+    "Litter cover" = "cover_litter",
+    "Grazing" = "grazing_intencity",
+    "Mowing" = "mowing",
+    "Abandonment" = "abandonment",
+    "Heat stress" = "heat_index",
+    "Urban built-up (1000 m)" = "builtup_1000m",
+    "Croplands cover (1000 m)" = "cropland_1000m",
+    "Urban built-up (250 m)" = "builtup_250m",
+    "Croplands cover (250 m)" = "cropland_250m",
+    "Urban built-up (500 m)" = "builtup_500m",
+    "Croplands cover (500 m)" = "cropland_500m",
+    "Road density" = "roads",
+    "Disturbance frequency" = "Disturbance.Frequency",
+    "Disturbance severity" = "Disturbance.Severity"
+  ) %>%
   cor() |>
-  ggcorrplot::ggcorrplot(type = "upper", lab = TRUE, lab_size = 3.5, 
-                         hc.order = F, 
-                         colors = c("red", "white", "blue"))
+  ggcorrplot::ggcorrplot(
+    type = "upper",
+    lab = TRUE,
+    lab_size = 3.5,
+    hc.order = F,
+    colors = c("red", "white", "blue")
+  )

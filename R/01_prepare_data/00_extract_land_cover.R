@@ -11,8 +11,12 @@ hea_sf <- st_as_sf(hea, coords = c("lon", "lat"), crs = 4326)
 
 # Raster data is downloaded from https://land.copernicus.eu/en/products/global-dynamic-land-cover/copernicus-global-land-service-land-cover-100m-collection-3-epoch-2019-globe
 # Loading raster data
-builtup_rast <- rast("data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/PROBAV_LC100_global_v3.0.1_2019-nrt_BuiltUp-CoverFraction-layer_EPSG-4326.tif")
-cropland_rast <- rast("data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/PROBAV_LC100_global_v3.0.1_2019-nrt_Crops-CoverFraction-layer_EPSG-4326.tif")
+builtup_rast <- rast(
+  "data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/PROBAV_LC100_global_v3.0.1_2019-nrt_BuiltUp-CoverFraction-layer_EPSG-4326.tif"
+)
+cropland_rast <- rast(
+  "data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/PROBAV_LC100_global_v3.0.1_2019-nrt_Crops-CoverFraction-layer_EPSG-4326.tif"
+)
 
 crs_raster <- crs(builtup_rast)
 

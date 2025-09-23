@@ -20,45 +20,57 @@ disturbance_data <- read_csv("data-raw/Disturbn_commun_mean.csv")
 species <- species |> filter(type == "p_a")
 
 # Add additional columns to the species data
-species <- species |> mutate(
-  non_native_percent = non_native / total_species,
-  invasive_percent = invasive / total_species,
-  neophyte_percent = neophyte / total_species,
-  archaeophyte_percent = archaeophyte / total_species
-  
-)
+species <- species |>
+  mutate(
+    non_native_percent = non_native / total_species,
+    invasive_percent = invasive / total_species,
+    neophyte_percent = neophyte / total_species,
+    archaeophyte_percent = archaeophyte / total_species
+  )
 
 # Join the species data with the climate principal component data
-species <- left_join(species, climate_pc, by = "series", relationship = "many-to-many")
+species <- left_join(
+  species,
+  climate_pc,
+  by = "series",
+  relationship = "many-to-many"
+)
 
 # Add header data to the species data
 species <- species |> left_join(header_data, by = c("series", "subplot"))
 
 # Add disturbance data to the species data
-species <- species |> left_join(disturbance_data, by = c("series", "subplot", "scale"))
+species <- species |>
+  left_join(disturbance_data, by = c("series", "subplot", "scale"))
 
 # Scale predictor variables ----------------------------------------------
 # Predictor variables are on very different scales which causes problems in the
 # models. Therefore, we rescale some of the variables
-species <- species |> mutate(
-  cover_gravel_stones = cover_gravel_stones / 100,
-  roads = roads / 100,
-  builtup_1000m = log1p(builtup_1000m), # builtup_1000m / 100,
-  builtup_250m = log1p(builtup_250m), #builtup_250m / 100,
-  builtup_500m = log1p(builtup_500m), #builtup_500m / 100,
-  cropland_1000m = log1p(cropland_1000m), # cropland_1000m / 100,
+species <- species |>
+  mutate(
+    cover_gravel_stones = cover_gravel_stones / 100,
+    roads = roads / 100,
+    builtup_1000m = log1p(builtup_1000m), # builtup_1000m / 100,
+    builtup_250m = log1p(builtup_250m), #builtup_250m / 100,
+    builtup_500m = log1p(builtup_500m), #builtup_500m / 100,
+    cropland_1000m = log1p(cropland_1000m), # cropland_1000m / 100,
     cropland_250m = log1p(cropland_250m), # cropland_250m / 100,
-  cropland_500m = log1p(cropland_500m), # cropland_500m / 100,
-  cover_litter = cover_litter / 100,
-  cover_herbs_sum = cover_herbs_sum / 100
-)
+    cropland_500m = log1p(cropland_500m), # cropland_500m / 100,
+    cover_litter = cover_litter / 100,
+    cover_herbs_sum = cover_herbs_sum / 100
+  )
 names(species)
 # Prepare the data for the models -------------------------------------------
 
 # Pivot the data to long format and select relevant variables
 data_for_models <- species |>
   pivot_longer(
-    cols = c(non_native_percent, invasive_percent, neophyte_percent, archaeophyte_percent),
+    cols = c(
+      non_native_percent,
+      invasive_percent,
+      neophyte_percent,
+      archaeophyte_percent
+    ),
     names_to = "response_var",
     values_to = "response_value"
   ) |>
@@ -72,13 +84,26 @@ data_for_models <- species |>
 
 # Model 1
 predictors_model_1 <- c(
-  "pca1_clima", "pH", "microrelief", "heat_index",
-  "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "builtup_1000m", "cropland_1000m", "grazing_intencity", "mowing", "abandonment"
+  "pca1_clima",
+  "pH",
+  "microrelief",
+  "heat_index",
+  "cover_litter",
+  "cover_herbs_sum",
+  "cover_gravel_stones",
+  "builtup_1000m",
+  "cropland_1000m",
+  "grazing_intencity",
+  "mowing",
+  "abandonment"
 )
 
 # Model 2
-predictors_model_2 <- c("roads", "Disturbance.Frequency", "Disturbance.Severity")
+predictors_model_2 <- c(
+  "roads",
+  "Disturbance.Frequency",
+  "Disturbance.Severity"
+)
 
 # Model 3
 predictors_model_3 <- c("native")
@@ -89,18 +114,34 @@ predictors_model4 <- c("pca1_clima", "native")
 # Model 5 (revision): Add other buffer radius options
 # urban and cropland buffer 250 m
 predictors_model_5 <- c(
-  "pca1_clima", "pH", "microrelief", "heat_index",
-  "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "builtup_250m", "cropland_250m",  
-  "grazing_intencity", "mowing", "abandonment"
+  "pca1_clima",
+  "pH",
+  "microrelief",
+  "heat_index",
+  "cover_litter",
+  "cover_herbs_sum",
+  "cover_gravel_stones",
+  "builtup_250m",
+  "cropland_250m",
+  "grazing_intencity",
+  "mowing",
+  "abandonment"
 )
 
 # urban and cropland buffer 500 m
 predictors_model_6 <- c(
-  "pca1_clima", "pH", "microrelief", "heat_index",
-  "cover_litter", "cover_herbs_sum", "cover_gravel_stones",
-  "builtup_500m", "cropland_500m",  
-  "grazing_intencity", "mowing", "abandonment"
+  "pca1_clima",
+  "pH",
+  "microrelief",
+  "heat_index",
+  "cover_litter",
+  "cover_herbs_sum",
+  "cover_gravel_stones",
+  "builtup_500m",
+  "cropland_500m",
+  "grazing_intencity",
+  "mowing",
+  "abandonment"
 )
 
 # Check which target predictors are not in the data
@@ -117,7 +158,14 @@ predictors_model_6[!predictors_model_6 %in% colnames(species)]
 # Remove zeroes is a column that states if zero values in the response should be
 # removed from the data or not
 data_for_models <- expand_grid(
-  model_id = c("climate", "disturbance", "native", "climate_native", "builtup_250m", "builtup_500m"),
+  model_id = c(
+    "climate",
+    "disturbance",
+    "native",
+    "climate_native",
+    "builtup_250m",
+    "builtup_500m"
+  ),
   remove_zeroes = c(TRUE, FALSE),
   data_for_models
 )
@@ -125,14 +173,20 @@ data_for_models <- expand_grid(
 # we only want to remove zeroes for native and climate_native models
 data_for_models <- data_for_models |>
   filter(
-    !(model_id %in% c("climate", "disturbance", "builtup_250m", "builtup_500m") & remove_zeroes)
+    !(model_id %in%
+      c("climate", "disturbance", "builtup_250m", "builtup_500m") &
+      remove_zeroes)
   )
 
 # Remove the zeroes from the response_value column for those models where the
 # remove_zeroes column is TRUE, else leave all response values inside
 data_for_models <- data_for_models |>
   mutate(
-    data = map2(data, remove_zeroes, ~ if (.y) filter(.x, response_value != 0) else .x)
+    data = map2(
+      data,
+      remove_zeroes,
+      ~ if (.y) filter(.x, response_value != 0) else .x
+    )
   )
 
 # Add the predictors to the table
@@ -186,15 +240,17 @@ model_results <- data_for_models |>
 # response_var = "archaeophyte_percent" to get standardised coeficients
 
 # first, we select the model to run again with quasi
-model_binom <- model_results |> filter(
-  scale == 100 &
-    model_id%in% c("climate", "builtup_250m", "builtup_500m") &
-    response_var == "archaeophyte_percent")|> 
+model_binom <- model_results |>
+  filter(
+    scale == 100 &
+      model_id %in% c("climate", "builtup_250m", "builtup_500m") &
+      response_var == "archaeophyte_percent"
+  ) |>
   select(all_of(names(data_for_models)))
 
 
-model_binom_result <- model_binom |> 
-  rowwise() |> 
+model_binom_result <- model_binom |>
+  rowwise() |>
   mutate(
     run_single_model_binom(
       data_to_model = data,
@@ -205,23 +261,30 @@ model_binom_result <- model_binom |>
   )
 
 # remove the binomial model and add instead the new quasibinomial model
-model_results <- model_results |> 
+model_results <- model_results |>
   filter(
     !(scale == 100 &
-      model_id%in% c("climate", "builtup_250m", "builtup_500m") &
+      model_id %in% c("climate", "builtup_250m", "builtup_500m") &
       response_var == "archaeophyte_percent")
-  ) |> 
+  ) |>
   bind_rows(model_binom_result)
-
 
 
 # check the status of the model runs
 count(model_results, status)
 
 # Summarize model results
-model_results_summary <- model_results |> dplyr::select(
-  model_id, scale, response_var, remove_zeroes, model_res, status, model_converged, model_used,
-)
+model_results_summary <- model_results |>
+  dplyr::select(
+    model_id,
+    scale,
+    response_var,
+    remove_zeroes,
+    model_res,
+    status,
+    model_converged,
+    model_used,
+  )
 
 # Add the tibble from the model_res list column to the tibble, by duplicating the rows
 model_results_summary <- model_results_summary |>

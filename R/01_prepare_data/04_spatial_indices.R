@@ -6,7 +6,9 @@ library(tidyverse)
 
 # climate raster just to see the right projection
 # climate_raster <- raster('https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V2/GLOBAL/climatologies/1981-2010/bio/CHELSA_bio1_1981-2010_V.2.1.tif')
-roads <- raster::raster("data-raw/spatial/GRIP4_density_total/grip4_total_dens_m_km2.asc")
+roads <- raster::raster(
+  "data-raw/spatial/GRIP4_density_total/grip4_total_dens_m_km2.asc"
+)
 ukr_shape <- sf::st_read("data-raw/spatial/ukraine_shape/ukr_adm0.shp")
 
 # check the projection
@@ -40,7 +42,8 @@ plot_roads <- ggplot() +
     aes(fill = grip4_total_dens_m_km2, x = x, y = y)
   ) +
   geom_sf(
-    data = location_roads, aes(color = roads),
+    data = location_roads,
+    aes(color = roads),
     size = .5
   ) +
   scale_fill_gradient(low = "grey", high = "black") +
@@ -50,16 +53,23 @@ plot_roads <- ggplot() +
   labs(title = "Road density (map + extracted)") +
   theme(axis.title = element_blank())
 
-ggsave("img/roads_map.png", 
-       plot = plot_roads, 
-       width = 16, height = 10, units = "cm", scale = 1.3)
+ggsave(
+  "img/roads_map.png",
+  plot = plot_roads,
+  width = 16,
+  height = 10,
+  units = "cm",
+  scale = 1.3
+)
 
 # Add the new variables to the header data -------------------------------
 headers_raw <- read_csv("data-raw/headers.csv")
 
 new_vars <- headers_raw |>
-  left_join(as.data.frame(location_roads) |> dplyr::select(series, roads),
-            by = "series")
+  left_join(
+    as.data.frame(location_roads) |> dplyr::select(series, roads),
+    by = "series"
+  )
 # we set the road density to 0 where it is NA because we checked the data points and
 # they are in the middle of nowhere
 new_vars$roads[is.na(new_vars$roads)] <- 0
