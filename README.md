@@ -17,43 +17,74 @@ Native species richness was the strongest driver of invasions, showing negative 
 Our results highlight the importance of separating alien groups and considering multiple spatial grains to avoid overlooking key drivers of invasion. Focusing on scale- and group-specific factors can enhance the ecological relevance and efficiency of conservation and management strategies targeting plant invasions.
 
 
-## Contents of the folders
+## Project Structure
 
-## R Files
+### R Scripts
 
-### Folder `01_prepare_data`
+The project contains several R script folders that process and analyze the data:
 
-In this folder, the raw data is prepared for analysis:
+#### 1. Data Preparation (`R/01_prepare_data/`)
+- `00_extract_land_cover.R`: Extracts land cover data from Copernicus raster files (100m resolution) and calculates mean built-up and cropland cover fractions in buffers around sampling points (250-2000m). Requires:
+  - Input: 
+    - `data-raw/headers.csv`: Plot coordinates
+    - `data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/`: Downloaded [Copernicus land cover rasters](downloaded from https://land.copernicus.eu/en/products/global-dynamic-land-cover/copernicus-global-land-service-land-cover-100m-collection-3-epoch-2019-globe)
+  - Output: 
+    - `data/header_landcover_buffers.csv`: Mean land cover values for different buffer sizes
+- `01_prepare_species_data.R`: Prepares vegetation survey data by filtering vascular plants, calculating mean values for multi-layer species, and adding naturalization status
+- `02_prepare_matrix.R`: Creates species composition matrices for analysis
+- `03_prepare_header_data.R`: Processes environmental variables and site metadata
+- `04_spatial_indices.R`: Handles spatial data and road density calculations
 
-- `01_prepare_data.R`: This script prepares the data for analysis. It reads in the raw data, filters for vascular plants, and calculates the mean value for species present in multiple layers. It also adds information on the 
-naturalization levels of the species and summarized species richness and cover for each plot for
-all species, native vs. non-native and invasive species.
+#### 2. Statistical Analysis (`R/02_run_models/`)
+- `01_run_all_binomial_models.R`: Runs binomial models for all scales using presence/absence data
+- `02_driver_scale_dependancy.R`: Analyzes scale dependency of different drivers
+- `03_Residual_Spatial_Correlation.R`: Tests for spatial autocorrelation in model residuals
 
-- `02_prepare_matrix.R`: This script prepares a matrix for all plots with cover (10,100) and all invasive species. This matrix is used for NMDS analysis.
+#### 3. Visualization (`R/03_make_plots/`)
+- Scripts numbered 01-05 creating various plots and figures for the publication
 
-## Data files
+#### 4. Ordination Analysis (`R/04_ordination/`)
+- `01_alien_sp_composition_100m2.R`: NMDS analysis of alien species composition
+- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
 
-### Folder `data-raw`
+#### 5. Summary Statistics (`R/05_summary_stats/`)
+- Scripts calculating various summary statistics and tables
 
-This folder contains the raw data files:
+### Data Files
 
-- `database_analysis.csv`: This is the raw data file used in the `01_prepare_data.R` script. It contains data from vegetation surveys.
-- `non_native_species.csv`: This file contains a list of non-native species and their categorization, which is used in the `01_prepare_data.R` script to categorize species based on their naturalization level.
-- `database_analysis_categorized.csv`: This file is created by the `01_prepare_data.R` script. It contains the categorized species data.
-- `headers.csv`: This file contains environmental variables for all plots.
+#### Raw Data (`data-raw/`)
+- `database_analysis.csv`: Raw vegetation survey data
+- `non_native_species.csv`: List of non-native species and their categorization
+- `database_analysis_categorized.csv`: Categorized species data
+- `headers.csv`: Environmental variables for all plots
+- `Disturbn_commun_mean.csv`: Disturbance data
+- Additional spatial data in `spatial/` subfolder
 
-### Folder `data`
+#### Processed Data (`data/`)
+- `database_analysis_summary.csv`: Summary of species data at plot level
+- `alien_dataset_all.csv`: Combined dataset with all alien species information
+- `header_data_prepared.csv`: Processed environmental variables
+- Various matrices used in analyses (e.g., `invasive_matrix.csv`, `non-native_matrix.csv`)
 
-This folder contains the processed data files:
+### Results (`results/`)
+Contains output tables and figures from analyses:
+- Model results summaries
+- Statistical test results
+- Generated figures
 
-- `database_analysis_summary.csv`: This file is created by the `01_prepare_data.R` script. It contains a summary of the species data on the plot level.
+### Other Files
+- `.gitignore`: Git ignore rules
+- `scale_native_non-native.Rproj`: R Project file
 
-- `invasive_matrix.csv`: This file is created by the `02_prepare_data.R` script. It contains a matrix of all plots with cover (10,100) and all invasive species.
+## Usage
 
+Scripts should be run in numerical order within each folder, starting with data preparation (01_prepare_data).
 
+## Requirements
 
-
-## Other Files
-
-- `.gitignore`: This file specifies intentionally untracked files that Git should ignore.
-- `scale_native_non-native.Rproj`: This is the R project file for this project.
+R packages required:
+- tidyverse
+- vegan
+- lme4
+- ggplot2
+- And others (complete list TBD)
