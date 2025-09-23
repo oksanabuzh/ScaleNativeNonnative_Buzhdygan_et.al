@@ -32,22 +32,29 @@
 #' @importFrom r2glmm r2beta
 #' @importFrom dplyr bind_rows filter
 #' @importFrom tibble tibble
-run_single_model <- function(data_to_model,
-                             response_variable,
-                             fixed_effects,
-                             random_effect = "series",
-                             use_optim = TRUE) {
+run_single_model <- function(
+  data_to_model,
+  response_variable,
+  fixed_effects,
+  random_effect = "series",
+  use_optim = TRUE
+) {
   # Check if the data contains all necessary variables
   necessary_variables <- c(response_variable, fixed_effects)
   if (!all(necessary_variables %in% colnames(data_to_model))) {
     stop(paste0(
       "The data does not contain all necessary variables. Missing: ",
-      paste(setdiff(necessary_variables, colnames(data_to_model)), collapse = ", ")
+      paste(
+        setdiff(necessary_variables, colnames(data_to_model)),
+        collapse = ", "
+      )
     ))
   }
   # Build the model formula
   model_formula <- paste(
-    response_variable, "~", paste(fixed_effects, collapse = " + ")
+    response_variable,
+    "~",
+    paste(fixed_effects, collapse = " + ")
   )
 
   # # Warning log to record all the warnings during the run of the function
@@ -61,7 +68,8 @@ run_single_model <- function(data_to_model,
           if (use_optim) {
             model_1 <- lme4::glmer(
               formula(paste(model_formula, "+ (1 | ", random_effect, ")")),
-              data = data_to_model, family = binomial,
+              data = data_to_model,
+              family = binomial,
               weights = total_species,
               control = lme4::glmerControl(
                 optimizer = "bobyqa",
@@ -71,16 +79,22 @@ run_single_model <- function(data_to_model,
           } else {
             model_1 <- lme4::glmer(
               formula(paste(model_formula, "+ (1 | ", random_effect, ")")),
-              data = data_to_model, family = binomial,
+              data = data_to_model,
+              family = binomial,
               weights = total_species
             )
           }
           # check model convergence
-          model_converged <- performance::check_convergence(model_1, tolerance = 1.3)[1]
+          model_converged <- performance::check_convergence(
+            model_1,
+            tolerance = 1.3
+          )[1]
 
           used_model <- "binomial"
           # Check over/underdispersion
-          dispersion_ratio <- performance::check_overdispersion(model_1)$dispersion_ratio
+          dispersion_ratio <- performance::check_overdispersion(
+            model_1
+          )$dispersion_ratio
           if (dispersion_ratio < 0.4 | dispersion_ratio > 1.6) {
             # If overdispersion, use quasibinomial
             model_1 <- MASS::glmmPQL(
@@ -128,10 +142,12 @@ run_single_model <- function(data_to_model,
             rename_all(~ c("predictor", "chisq", "p_value_chisq"))
 
           # r2 take theoretical R2m & R2c
-          r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())["theoretical", ]
+          r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())[
+            "theoretical",
+          ]
           # print(environment() |> ls())
           # print(MuMIn::r.squaredGLMM(model_1, envir = environment()))
-            
+
           # Partial R2 for fixed effects, only for variable of interest
           # keep only Rsq but all variables
           # This can only be run if the model converges. But the conversion criteria are
@@ -180,7 +196,11 @@ run_single_model <- function(data_to_model,
     error = function(e) {
       output <- tibble(
         model_res = NA,
-        model_converged = ifelse(exists("model_converged"), model_converged, NA),
+        model_converged = ifelse(
+          exists("model_converged"),
+          model_converged,
+          NA
+        ),
         status = e$message,
         model_used = NA,
         model_raw = NA,
@@ -222,26 +242,34 @@ run_single_model <- function(data_to_model,
 #' @importFrom dplyr bind_rows filter
 #' @importFrom tibble tibble
 
-run_single_model_binom <- function(data_to_model,
-                                   response_variable,
-                                   fixed_effects,
-                                   random_effect = "series",
-                                   use_optim = TRUE) {
-  
+run_single_model_binom <- function(
+  data_to_model,
+  response_variable,
+  fixed_effects,
+  random_effect = "series",
+  use_optim = TRUE
+) {
   # Check if all necessary variables are present in the data
   necessary_variables <- c(response_variable, fixed_effects)
   if (!all(necessary_variables %in% colnames(data_to_model))) {
     stop(paste0(
       "The data does not contain all necessary variables. Missing: ",
-      paste(setdiff(necessary_variables, colnames(data_to_model)), collapse = ", ")
+      paste(
+        setdiff(necessary_variables, colnames(data_to_model)),
+        collapse = ", "
+      )
     ))
   }
-  
+
   # Model formula construction
-  model_formula <- paste(response_variable, "~", paste(fixed_effects, collapse = " + "))
-  
+  model_formula <- paste(
+    response_variable,
+    "~",
+    paste(fixed_effects, collapse = " + ")
+  )
+
   warning_log <- character()
-  
+
   # Fit the binomial GLMM and extract results
   tryCatch(
     {
@@ -251,7 +279,8 @@ run_single_model_binom <- function(data_to_model,
           model_1 <- if (use_optim) {
             lme4::glmer(
               formula(paste(model_formula, "+ (1 | ", random_effect, ")")),
-              data = data_to_model, family = binomial,
+              data = data_to_model,
+              family = binomial,
               weights = total_species,
               control = lme4::glmerControl(
                 optimizer = "bobyqa",
@@ -261,36 +290,45 @@ run_single_model_binom <- function(data_to_model,
           } else {
             lme4::glmer(
               formula(paste(model_formula, "+ (1 | ", random_effect, ")")),
-              data = data_to_model, family = binomial,
+              data = data_to_model,
+              family = binomial,
               weights = total_species
             )
           }
-          
+
           # Check convergence
-          model_converged <- performance::check_convergence(model_1, tolerance = 1.3)[1]
-          
+          model_converged <- performance::check_convergence(
+            model_1,
+            tolerance = 1.3
+          )[1]
+
           # Extract model output
           # Estimates and p-values for all variables (remove intercept)
-          slope <- summary(model_1)$coefficients[, c("Estimate", "Pr(>|z|)")] %>%
+          slope <- summary(model_1)$coefficients[, c(
+            "Estimate",
+            "Pr(>|z|)"
+          )] %>%
             as_tibble(rownames = "predictor") %>%
             rename_all(~ c("predictor", "slope", "p_value_slope")) %>%
             filter(predictor != "(Intercept)")
-          
+
           # Standardized estimates if available
           std_slope <- piecewiseSEM::coefs(model_1) %>%
             select(Predictor, Std.Estimate) %>%
             rename(predictor = Predictor, std_slope = Std.Estimate)
           slope <- slope %>% left_join(std_slope, by = "predictor")
-          
+
           # Chisq and p-value for all predictors
           chisq <- car::Anova(model_1) %>%
             as_tibble(rownames = "predictor") %>%
             select(predictor, Chisq, `Pr(>Chisq)`) %>%
             rename_all(~ c("predictor", "chisq", "p_value_chisq"))
-          
+
           # Marginal and conditional R2 (theoretical)
-          r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())["theoretical", ]
-          
+          r2 <- MuMIn::r.squaredGLMM(model_1, envir = environment())[
+            "theoretical",
+          ]
+
           # Partial R2 for fixed effects (tryCatch for robustness)
           r2_part <- tryCatch(
             {
@@ -304,7 +342,7 @@ run_single_model_binom <- function(data_to_model,
             }
           )
           r2_part <- r2_part %>% filter(predictor != "Model")
-          
+
           # Combine results
           model_results <- slope %>%
             left_join(chisq, by = "predictor") %>%
@@ -313,7 +351,7 @@ run_single_model_binom <- function(data_to_model,
               r2m = r2["R2m"],
               r2c = r2["R2c"]
             )
-          
+
           # Prepare output
           output <- tibble(
             model_res = list(model_results),
@@ -334,7 +372,11 @@ run_single_model_binom <- function(data_to_model,
     error = function(e) {
       output <- tibble(
         model_res = NA,
-        model_converged = ifelse(exists("model_converged"), model_converged, NA),
+        model_converged = ifelse(
+          exists("model_converged"),
+          model_converged,
+          NA
+        ),
         status = e$message,
         model_used = NA,
         model_raw = NA,
