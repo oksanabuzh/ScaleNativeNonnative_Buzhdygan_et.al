@@ -1,3 +1,7 @@
+# Purpose: Extract land cover data from Copernicus raster files (100m resolution)
+# and calculate mean built-up and cropland cover fractions in buffers around
+# sampling points (250-2000m).
+
 library(readr)
 library(terra)
 library(sf)
