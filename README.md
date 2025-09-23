@@ -24,12 +24,13 @@ Our results highlight the importance of separating alien groups and considering 
 The project contains several R script folders that process and analyze the data:
 
 #### 1. Data Preparation (`R/01_prepare_data/`)
-- `00_extract_land_cover.R`: Extracts land cover data from Copernicus raster files (100m resolution) and calculates mean built-up and cropland cover fractions in buffers around sampling points (250-2000m). Requires:
+
+- `00_extract_land_cover.R`: Extracts land cover data from Copernicus raster files (100m resolution) and calculates mean built-up and cropland cover fractions in buffers around sampling points (250-2000m).
   - Input: 
     - `data-raw/headers.csv`: Plot coordinates
     - `data-raw/spatial/LandCover2019_raster_100m_global_yearly_version3/`: Downloaded [Copernicus land cover rasters](downloaded from https://land.copernicus.eu/en/products/global-dynamic-land-cover/copernicus-global-land-service-land-cover-100m-collection-3-epoch-2019-globe)
   - Output: 
-    - `data/header_landcover_buffers.csv`: Mean land cover values for different buffer sizes
+    - `data-raw/header_landcover_buffers.csv`: Mean land cover values for different buffer sizes
 - `01_prepare_species_data.R`: Prepares vegetation survey data by filtering vascular plants, calculating mean values for multi-layer species, and adding naturalization status
 - `02_prepare_matrix.R`: Creates species composition matrices for analysis
 - `03_prepare_header_data.R`: Processes environmental variables and site metadata
