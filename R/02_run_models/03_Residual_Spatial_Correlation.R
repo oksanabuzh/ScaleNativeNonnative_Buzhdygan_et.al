@@ -4,7 +4,6 @@
 # https://theoreticalecology.wordpress.com/2012/05/12/spatial-autocorrelation-in-statistical-models-friend-or-foe/
 # https://rdrr.io/cran/DHARMa/man/testSpatialAutocorrelation.html
 
-rm(list = ls())
 # Load libraries -----------------------------------------------------------
 library(tidyverse)
 library(car)
@@ -36,13 +35,7 @@ alien_data_100 <- read_csv("data/alien_dataset_all.csv") %>%
     cover_herbs_sum = cover_herbs_sum / 100
   )
 
-
-alien_data_100
-
-
-names(alien_data_100)
-
-# (1) non_native_percent -----------
+# (1) non_native_percent ------------------------------------------------------
 ## Mod 1 -------------------------------------------
 
 m1a <- glmer(
