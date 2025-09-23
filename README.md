@@ -25,7 +25,9 @@ The project contains several R script folders that process and analyze the data:
 
 #### 1. Data Preparation (`R/01_prepare_data/`)
 
-The following scripts are used for preparing the raw data for analysis:
+The following scripts are used for preparing the raw data for analysis. The
+prepared data sets are already included in the project, so preparation does not
+need to be repeated.:
 
 - `00_extract_land_cover.R`: Extracts land cover data from Copernicus raster files (100m resolution) and calculates mean built-up and cropland cover fractions in buffers around sampling points (250-2000m).
 - `01_prepare_species_data.R`: Prepares vegetation survey data by filtering vascular plants, calculating mean values for multi-layer species, and adding naturalization status
@@ -35,8 +37,9 @@ The following scripts are used for preparing the raw data for analysis:
 
 
 #### 2. Statistical Analysis (`R/02_run_models/`)
+
 - `01_run_all_binomial_models.R`: Runs binomial models for all scales using presence/absence data
-- `02_driver_scale_dependancy.R`: Analyzes scale dependency of different drivers
+- `02_driver_scale_dependency.R`: Analyses scale dependency of different drivers
 - `03_Residual_Spatial_Correlation.R`: Tests for spatial autocorrelation in model residuals
 
 #### 3. Visualization (`R/03_make_plots/`)
