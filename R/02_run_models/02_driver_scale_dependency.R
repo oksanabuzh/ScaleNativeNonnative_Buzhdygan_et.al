@@ -179,7 +179,7 @@ neophyte_select <- models_run_neophyte %>%
 neophyte_select
 
 # -----------------------------------------------------------------------------#
-# (4) Archaeophytes ----------------------------------------------------------------
+# (4) Archaeophytes ------------------------------------------------------------
 # -----------------------------------------------------------------------------#
 
 # Run models without and with the polynomial:
@@ -258,30 +258,6 @@ model_selection_table <- bind_rows(
     ),
     .before = predictor
   ) %>%
-  mutate(
-    variable_new = fct_relevel(
-      variable_new,
-      "Climate PC",
-      "Soil pH",
-      "Heat index",
-      "Microrelief",
-      "Gravel & stone cover",
-      "Herb cover",
-      "Litter cover",
-      "Grazing",
-      "Mowing",
-      "Abandonment",
-      "Croplands cover (250 m)",
-      "Urban built-up (250 m)",
-      "Croplands cover (500 m)",
-      "Urban built-up (500 m)",
-      "Croplands cover (1000 m)",
-      "Urban built-up (1000 m)",
-      "Road density",
-      "Disturbance frequency",
-      "Disturbance severity"
-    )
-  ) %>%
   arrange(response_var, variable_new)
 
 
@@ -335,7 +311,7 @@ supplementary_data3 <- bind_rows(
   ) %>%
   mutate(across(where(is.numeric), ~ round(., 3))) %>%
   relocate(response_variable, .before = predictor)
-
+original <- read_csv("results/Model_selection_Table.csv")
 # Save results
 write_csv(model_selection_table, "results/Model_selection_Table.csv")
 write_csv(
