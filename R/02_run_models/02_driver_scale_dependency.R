@@ -13,7 +13,7 @@ library(broom)
 library(tidyverse)
 
 # Load and prepare data --------------------------------------------------------
-results <- read_csv("data/model_results_summary.csv") |>
+results <- read_csv("data/model_results_summary.csv") %>%
   filter(
     model_id %in%
       c("climate", "disturbance") |
@@ -30,22 +30,22 @@ results <- read_csv("data/model_results_summary.csv") |>
           ))
   )
 
-# (1) Alien ----
-# Run models without and with the polinomial:
-models_run_alien <- results |>
-  filter(response_var == "non_native_percent") |>
-  filter(!scale == 0.0001) |>
-  mutate(predictor = as_factor(predictor)) |>
-  # group_by(predictor) |>
-  split(f = as.factor(.$predictor)) |>
-  # group_split(predictor) |>
+# -----------------------------------------------------------------------------#
+# (1) Alien Species ------------------------------------------------------------
+# -----------------------------------------------------------------------------#
+
+# Run models without and with the polynomial:
+models_run_alien <- results %>%
+  filter(response_var == "non_native_percent") %>%
+  filter(!scale == 0.0001) %>%
+  mutate(predictor = as_factor(predictor)) %>%
+  split(f = as.factor(.$predictor)) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
       mod2 = lm(slope ~ poly(log(scale), 2), data = df)
     )
   })
-
 
 # select best model using the logLik test:
 
@@ -61,8 +61,8 @@ stats <- c(
 pval <- function(x, y) anova(x, y, test = "Chisq")$"Pr(>Chi)"[2]
 
 #
-alien_select <- models_run_alien |>
-  #setNames(vars) |>
+alien_select <- models_run_alien %>%
+  #setNames(vars) %>%
   map_dfr(
     with,
     c(
@@ -71,30 +71,30 @@ alien_select <- models_run_alien |>
       logLik_pval = pval(mod1, mod2)
     ),
     .id = "response"
-  ) |>
+  ) %>%
   mutate(
     final_model = case_when(logLik_pval < 0.05 ~ "m2_poly", .default = "m1")
-  ) |>
+  ) %>%
   mutate(
     final_mod_formula = case_when(
       logLik_pval < 0.05 ~ "slope ~ poly(log(scale), 2)",
       .default = "slope ~ log(scale)"
     )
-  ) |>
-  rename(predictor = response) |>
+  ) %>%
+  rename(predictor = response) %>%
   mutate(response_var = "non_native_percent", .after = predictor)
 
 alien_select
 
 # (2) Invasive ----
 # Run models without and with the polinomial:
-models_run_invasive <- results |>
-  filter(response_var == "invasive_percent") |>
-  filter(!scale %in% c(0.0001, 0.001, 0.01)) |>
-  mutate(predictor = as_factor(predictor)) |>
-  # group_by(predictor) |>
-  split(f = as.factor(.$predictor)) |>
-  # group_split(predictor) |>
+models_run_invasive <- results %>%
+  filter(response_var == "invasive_percent") %>%
+  filter(!scale %in% c(0.0001, 0.001, 0.01)) %>%
+  mutate(predictor = as_factor(predictor)) %>%
+  # group_by(predictor) %>%
+  split(f = as.factor(.$predictor)) %>%
+  # group_split(predictor) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
@@ -105,7 +105,7 @@ models_run_invasive <- results |>
 
 # select best model based on the logLik test
 
-invasive_select <- models_run_invasive |>
+invasive_select <- models_run_invasive %>%
   map_dfr(
     with,
     c(
@@ -114,17 +114,17 @@ invasive_select <- models_run_invasive |>
       logLik_pval = pval(mod1, mod2)
     ),
     .id = "response"
-  ) |>
+  ) %>%
   mutate(
     final_model = case_when(logLik_pval < 0.05 ~ "m2_poly", .default = "m1")
-  ) |>
+  ) %>%
   mutate(
     final_model_formula = case_when(
       logLik_pval < 0.05 ~ "slope ~ poly(log(scale), 2)",
       .default = "slope ~ log(scale)"
     )
-  ) |>
-  rename(predictor = response) |>
+  ) %>%
+  rename(predictor = response) %>%
   mutate(response_var = "invasive_percent", .after = predictor)
 
 
@@ -133,13 +133,13 @@ invasive_select
 
 # (3) Neophites ----
 # Run models without and with the polinomial:
-models_run_neophyte <- results |>
-  filter(response_var == "neophyte_percent") |>
-  filter(!scale %in% c(0.0001, 0.001, 0.01)) |>
-  mutate(predictor = as_factor(predictor)) |>
-  # group_by(predictor) |>
-  split(f = as.factor(.$predictor)) |>
-  # group_split(predictor) |>
+models_run_neophyte <- results %>%
+  filter(response_var == "neophyte_percent") %>%
+  filter(!scale %in% c(0.0001, 0.001, 0.01)) %>%
+  mutate(predictor = as_factor(predictor)) %>%
+  # group_by(predictor) %>%
+  split(f = as.factor(.$predictor)) %>%
+  # group_split(predictor) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
@@ -150,7 +150,7 @@ models_run_neophyte <- results |>
 
 # select best model based on the logLik test
 
-neophyte_select <- models_run_neophyte |>
+neophyte_select <- models_run_neophyte %>%
   map_dfr(
     with,
     c(
@@ -159,17 +159,17 @@ neophyte_select <- models_run_neophyte |>
       logLik_pval = pval(mod1, mod2)
     ),
     .id = "response"
-  ) |>
+  ) %>%
   mutate(
     final_model = case_when(logLik_pval < 0.05 ~ "m2_poly", .default = "m1")
-  ) |>
+  ) %>%
   mutate(
     final_mod_formula = case_when(
       logLik_pval < 0.05 ~ "slope ~ poly(log(scale), 2)",
       .default = "slope ~ log(scale)"
     )
-  ) |>
-  rename(predictor = response) |>
+  ) %>%
+  rename(predictor = response) %>%
   mutate(response_var = "neophyte_percent", .after = predictor)
 
 
@@ -177,13 +177,13 @@ neophyte_select
 
 # (4) Archaeophytes ----
 # Run models without and with the polinomial:
-models_run_archaeophyte <- results |>
-  filter(response_var == "archaeophyte_percent") |>
-  filter(!scale == 0.0001) |>
-  mutate(predictor = as_factor(predictor)) |>
-  # group_by(predictor) |>
-  split(f = as.factor(.$predictor)) |>
-  # group_split(predictor) |>
+models_run_archaeophyte <- results %>%
+  filter(response_var == "archaeophyte_percent") %>%
+  filter(!scale == 0.0001) %>%
+  mutate(predictor = as_factor(predictor)) %>%
+  # group_by(predictor) %>%
+  split(f = as.factor(.$predictor)) %>%
+  # group_split(predictor) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
@@ -194,7 +194,7 @@ models_run_archaeophyte <- results |>
 
 # select best model based on the logLik test
 
-archaeophyte_select <- models_run_archaeophyte |>
+archaeophyte_select <- models_run_archaeophyte %>%
   map_dfr(
     with,
     c(
@@ -203,22 +203,22 @@ archaeophyte_select <- models_run_archaeophyte |>
       logLik_pval = pval(mod1, mod2)
     ),
     .id = "response"
-  ) |>
+  ) %>%
   mutate(
     final_model = case_when(logLik_pval < 0.05 ~ "m2_poly", .default = "m1")
-  ) |>
+  ) %>%
   mutate(
     final_mod_formula = case_when(
       logLik_pval < 0.05 ~ "slope ~ poly(log(scale), 2)",
       .default = "slope ~ log(scale)"
     )
-  ) |>
-  rename(predictor = response) |>
+  ) %>%
+  rename(predictor = response) %>%
   mutate(response_var = "archaeophyte_percent", .after = predictor)
 
 
-archaeophyte_select |>
-  filter(response_var == "archaeophyte_percent") |>
+archaeophyte_select %>%
+  filter(response_var == "archaeophyte_percent") %>%
   filter(predictor == "builtup_250m")
 
 
@@ -229,7 +229,7 @@ Table <- bind_rows(
   invasive_select,
   neophyte_select,
   archaeophyte_select
-) |>
+) %>%
   mutate(
     variable_new = fct_recode(
       predictor,
@@ -254,7 +254,7 @@ Table <- bind_rows(
       "Disturbance severity" = "Disturbance.Severity"
     ),
     .before = predictor
-  ) |>
+  ) %>%
   mutate(
     variable_new = fct_relevel(
       variable_new,
@@ -278,13 +278,13 @@ Table <- bind_rows(
       "Disturbance frequency",
       "Disturbance severity"
     )
-  ) |>
+  ) %>%
   arrange(response_var, variable_new)
 
-Table |>
+Table %>%
   print(n = Inf)
 
-Table |>
+Table %>%
   filter(response_var == "archaeophyte_percent")
 
 write_csv(Table, "results/Model_selection_Table.csv")
@@ -294,7 +294,7 @@ Table2 <- bind_rows(
   invasive_select,
   neophyte_select,
   archaeophyte_select
-) |>
+) %>%
   mutate(
     predictor = fct_recode(
       predictor,
@@ -319,7 +319,7 @@ Table2 <- bind_rows(
       "Disturbance severity" = "Disturbance.Severity"
     ),
     .before = predictor
-  ) |>
+  ) %>%
   mutate(
     predictor = fct_relevel(
       predictor,
@@ -343,8 +343,8 @@ Table2 <- bind_rows(
       "Disturbance frequency",
       "Disturbance severity"
     )
-  ) |>
-  # arrange(predictor, response_var) |>
+  ) %>%
+  # arrange(predictor, response_var) %>%
   mutate(
     response_variable = case_when(
       response_var == "non_native_percent" ~ "alien",
@@ -353,19 +353,19 @@ Table2 <- bind_rows(
       response_var == "invasive_percent" ~ "invasive"
     ),
     .before = response_var
-  ) |>
-  dplyr::select(-response_var, -m1.AIC, -m2.AIC) |>
-  arrange(response_variable, predictor) |>
+  ) %>%
+  dplyr::select(-response_var, -m1.AIC, -m2.AIC) %>%
+  arrange(response_variable, predictor) %>%
   rename_with(
     ~ str_replace_all(
       .,
       c("m1\\." = "model.1_", "m2\\." = "model.2_", "statistic" = "F.value")
     )
-  ) |>
-  mutate(across(where(is.numeric), ~ round(., 3))) |>
+  ) %>%
+  mutate(across(where(is.numeric), ~ round(., 3))) %>%
   relocate(response_variable, .before = predictor)
 
-Table2 |>
+Table2 %>%
   print(n = Inf)
 
 write_csv(
