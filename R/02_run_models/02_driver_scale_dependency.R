@@ -2,7 +2,7 @@
 # spatial scale for different plant invasion metrics
 #
 # Input:
-#   - data/model_results_summary_.csv: Summary of model results across scales
+#   - data/model_results_summary.csv: Summary of model results across scales
 #
 # Output:
 #   - results/Model_selection_Table.csv: Model selection results
@@ -70,7 +70,6 @@ models_run_alien <- results %>%
 
 # select best model using the logLik test:
 alien_select <- models_run_alien %>%
-  #setNames(vars) %>%
   map_dfr(
     with,
     c(
@@ -94,15 +93,16 @@ alien_select <- models_run_alien %>%
 
 alien_select
 
-# (2) Invasive ----
-# Run models without and with the polinomial:
+# -----------------------------------------------------------------------------#
+# (2) Invasive -----------------------------------------------------------------
+# -----------------------------------------------------------------------------#
+
+# Run models without and with the polynomial:
 models_run_invasive <- results %>%
   filter(response_var == "invasive_percent") %>%
   filter(!scale %in% c(0.0001, 0.001, 0.01)) %>%
   mutate(predictor = as_factor(predictor)) %>%
-  # group_by(predictor) %>%
   split(f = as.factor(.$predictor)) %>%
-  # group_split(predictor) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
@@ -112,7 +112,6 @@ models_run_invasive <- results %>%
 
 
 # select best model based on the logLik test
-
 invasive_select <- models_run_invasive %>%
   map_dfr(
     with,
@@ -135,19 +134,18 @@ invasive_select <- models_run_invasive %>%
   rename(predictor = response) %>%
   mutate(response_var = "invasive_percent", .after = predictor)
 
-
 invasive_select
 
+# -----------------------------------------------------------------------------#
+# (3) Neophytes ----------------------------------------------------------------
+# -----------------------------------------------------------------------------#
 
-# (3) Neophites ----
-# Run models without and with the polinomial:
+# Run models without and with the polynomial:
 models_run_neophyte <- results %>%
   filter(response_var == "neophyte_percent") %>%
   filter(!scale %in% c(0.0001, 0.001, 0.01)) %>%
   mutate(predictor = as_factor(predictor)) %>%
-  # group_by(predictor) %>%
   split(f = as.factor(.$predictor)) %>%
-  # group_split(predictor) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
@@ -155,9 +153,7 @@ models_run_neophyte <- results %>%
     )
   })
 
-
 # select best model based on the logLik test
-
 neophyte_select <- models_run_neophyte %>%
   map_dfr(
     with,
@@ -180,18 +176,18 @@ neophyte_select <- models_run_neophyte %>%
   rename(predictor = response) %>%
   mutate(response_var = "neophyte_percent", .after = predictor)
 
-
 neophyte_select
 
-# (4) Archaeophytes ----
-# Run models without and with the polinomial:
+# -----------------------------------------------------------------------------#
+# (4) Archaeophytes ----------------------------------------------------------------
+# -----------------------------------------------------------------------------#
+
+# Run models without and with the polynomial:
 models_run_archaeophyte <- results %>%
   filter(response_var == "archaeophyte_percent") %>%
   filter(!scale == 0.0001) %>%
   mutate(predictor = as_factor(predictor)) %>%
-  # group_by(predictor) %>%
   split(f = as.factor(.$predictor)) %>%
-  # group_split(predictor) %>%
   lapply(function(df) {
     model_list = list(
       mod1 = lm(slope ~ log(scale), data = df),
@@ -199,9 +195,7 @@ models_run_archaeophyte <- results %>%
     )
   })
 
-
 # select best model based on the logLik test
-
 archaeophyte_select <- models_run_archaeophyte %>%
   map_dfr(
     with,
@@ -224,15 +218,16 @@ archaeophyte_select <- models_run_archaeophyte %>%
   rename(predictor = response) %>%
   mutate(response_var = "archaeophyte_percent", .after = predictor)
 
-
 archaeophyte_select %>%
   filter(response_var == "archaeophyte_percent") %>%
   filter(predictor == "builtup_250m")
 
+# -----------------------------------------------------------------------------#
+# (5) Combine and Save Results -------------------------------------------------
+# -----------------------------------------------------------------------------#
 
-# Merge tables:
-
-Table <- bind_rows(
+# Merge all selected results into one table and clean it up for readability
+model_selection_table <- bind_rows(
   alien_select,
   invasive_select,
   neophyte_select,
@@ -289,15 +284,8 @@ Table <- bind_rows(
   ) %>%
   arrange(response_var, variable_new)
 
-Table %>%
-  print(n = Inf)
 
-Table %>%
-  filter(response_var == "archaeophyte_percent")
-
-write_csv(Table, "results/Model_selection_Table.csv")
-
-Table2 <- bind_rows(
+supplementary_data3 <- bind_rows(
   alien_select,
   invasive_select,
   neophyte_select,
@@ -329,31 +317,6 @@ Table2 <- bind_rows(
     .before = predictor
   ) %>%
   mutate(
-    predictor = fct_relevel(
-      predictor,
-      "Climate PC",
-      "Soil pH",
-      "Heat index",
-      "Microrelief",
-      "Gravel & stone cover",
-      "Herb cover",
-      "Litter cover",
-      "Grazing",
-      "Mowing",
-      "Abandonment",
-      "Croplands cover (250 m)",
-      "Urban built-up (250 m)",
-      "Croplands cover (500 m)",
-      "Urban built-up (500 m)",
-      "Croplands cover (1000 m)",
-      "Urban built-up (1000 m)",
-      "Road density",
-      "Disturbance frequency",
-      "Disturbance severity"
-    )
-  ) %>%
-  # arrange(predictor, response_var) %>%
-  mutate(
     response_variable = case_when(
       response_var == "non_native_percent" ~ "alien",
       response_var == "archaeophyte_percent" ~ "archaeophyte",
@@ -373,10 +336,9 @@ Table2 <- bind_rows(
   mutate(across(where(is.numeric), ~ round(., 3))) %>%
   relocate(response_variable, .before = predictor)
 
-Table2 %>%
-  print(n = Inf)
-
+# Save results
+write_csv(model_selection_table, "results/Model_selection_Table.csv")
 write_csv(
-  Table2,
+  supplementary_data3,
   "results/Supplem_Data3_Model_selection_Table_scale-depandancy.csv"
 )
