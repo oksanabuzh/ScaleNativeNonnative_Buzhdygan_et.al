@@ -13,25 +13,22 @@ library(broom)
 library(tidyverse)
 
 # Load and prepare data --------------------------------------------------------
-results <- read_csv("data/model_results_summary_.csv") |>
-  filter(model_id == "climate" | model_id == "disturbance") |>
-  bind_rows(
-    results <- read_csv("data/model_results_summary_.csv") |>
-      filter(
-        model_id %in%
-          c("builtup_250m", "builtup_500m") &
-          predictor %in%
-            c(
-              "builtup_250m",
-              "cropland_250m",
-              "builtup_500m",
-              "cropland_500m",
-              "builtup_1000m",
-              "cropland_1000m"
-            )
-      )
+results <- read_csv("data/model_results_summary.csv") |>
+  filter(
+    model_id %in%
+      c("climate", "disturbance") |
+      (model_id %in%
+        c("builtup_250m", "builtup_500m") &
+        predictor %in%
+          c(
+            "builtup_250m",
+            "cropland_250m",
+            "builtup_500m",
+            "cropland_500m",
+            "builtup_1000m",
+            "cropland_1000m"
+          ))
   )
-
 
 # (1) Alien ----
 # Run models without and with the polinomial:
