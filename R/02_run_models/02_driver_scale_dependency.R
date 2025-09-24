@@ -258,6 +258,30 @@ model_selection_table <- bind_rows(
     ),
     .before = predictor
   ) %>%
+  mutate(
+    variable_new = fct_relevel(
+      variable_new,
+      "Climate PC",
+      "Soil pH",
+      "Heat index",
+      "Microrelief",
+      "Gravel & stone cover",
+      "Herb cover",
+      "Litter cover",
+      "Grazing",
+      "Mowing",
+      "Abandonment",
+      "Croplands cover (250 m)",
+      "Urban built-up (250 m)",
+      "Croplands cover (500 m)",
+      "Urban built-up (500 m)",
+      "Croplands cover (1000 m)",
+      "Urban built-up (1000 m)",
+      "Road density",
+      "Disturbance frequency",
+      "Disturbance severity"
+    )
+  ) %>%
   arrange(response_var, variable_new)
 
 
@@ -293,6 +317,30 @@ supplementary_data3 <- bind_rows(
     .before = predictor
   ) %>%
   mutate(
+    predictor = fct_relevel(
+      predictor,
+      "Climate PC",
+      "Soil pH",
+      "Heat index",
+      "Microrelief",
+      "Gravel & stone cover",
+      "Herb cover",
+      "Litter cover",
+      "Grazing",
+      "Mowing",
+      "Abandonment",
+      "Croplands cover (250 m)",
+      "Urban built-up (250 m)",
+      "Croplands cover (500 m)",
+      "Urban built-up (500 m)",
+      "Croplands cover (1000 m)",
+      "Urban built-up (1000 m)",
+      "Road density",
+      "Disturbance frequency",
+      "Disturbance severity"
+    )
+  ) %>%
+  mutate(
     response_variable = case_when(
       response_var == "non_native_percent" ~ "alien",
       response_var == "archaeophyte_percent" ~ "archaeophyte",
@@ -316,5 +364,5 @@ supplementary_data3 <- bind_rows(
 write_csv(model_selection_table, "results/model_selection_table.csv")
 write_csv(
   supplementary_data3,
-  "results/supplementary_data_3_model_selection_table.csv"
+  "results/Supplem_Data3_Model_selection_Table_scale-depandancy.csv"
 )
