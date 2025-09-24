@@ -13,7 +13,10 @@ library(tidyverse)
 library(broom)
 library(tidyverse)
 
-# Load and prepare data --------------------------------------------------------
+#===============================================================================
+# Load and Prepare Data
+#===============================================================================
+
 results <- read_csv("data/model_results_summary.csv") %>%
   filter(
     model_id %in%
@@ -30,6 +33,23 @@ results <- read_csv("data/model_results_summary.csv") %>%
             "cropland_1000m"
           ))
   )
+
+#===============================================================================
+# Helper Functions
+#===============================================================================
+
+# Define statistics to extract from models
+stats <- c(
+  "statistic",
+  "p.value",
+  "AIC",
+  "logLik"
+)
+
+# Function to extract p-value from model comparison
+pval <- function(x, y) {
+  anova(x, y, test = "Chisq")$"Pr(>Chi)"[2]
+}
 
 # -----------------------------------------------------------------------------#
 # (1) Alien Species ------------------------------------------------------------
@@ -49,19 +69,6 @@ models_run_alien <- results %>%
   })
 
 # select best model using the logLik test:
-
-# which statistics to use form glance():
-stats <- c(
-  "statistic",
-  "p.value", # "statistics" and "p.value" are for the F-statistics
-  "AIC",
-  "logLik"
-) # "statistics"
-
-# extract p-value from model comparison using LogLik test: anova(mod1, mod2)
-pval <- function(x, y) anova(x, y, test = "Chisq")$"Pr(>Chi)"[2]
-
-#
 alien_select <- models_run_alien %>%
   #setNames(vars) %>%
   map_dfr(
