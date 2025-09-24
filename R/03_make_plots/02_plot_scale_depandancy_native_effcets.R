@@ -12,7 +12,6 @@ library(car) # Anova and regression diagnostics
 library(sjPlot) # Quick visualization of regression models and
 
 # Set consistent plotting theme for all ggplot2 outputs
-dev.off() # Reset graphics device (clears plots)
 set_theme(
   base = theme_bw(),
   axis.textsize.x = 0.9,
@@ -35,23 +34,53 @@ log_scale_breaks <- c(
 )
 log_scale_labels <- c("0.0001", "0.001", "0.01", "0.1", "1", "10", "100")
 
-# ------------------ (1) Alien species, % ------------------
-# Load and filter data for alien species analysis
-alien_dat <- read_csv("data/model_results_summary.csv") %>%
+# ---------------------------------------------------------------------------#
+# Read and prepare data ------------------------------------------------------
+# ---------------------------------------------------------------------------#
+
+# Read all model results and filter for the relevant model
+# We also remove the smallest scale because at this scale we do not have
+# enough data points with non-zero alien species richness
+all_models <- read_csv("data/model_results_summary.csv") |>
   filter(
-    model_id == "climate_native", # Only models with native as predictor
-    remove_zeroes == TRUE, # Remove zero plots
-    response_var == "non_native_percent", # Alien species percent
-    scale != 0.0001, # Remove smallest scale
-    predictor == "native"
+    model_id == "climate_native",
+    remove_zeroes == TRUE,
+    predictor == "native",
+    scale != 0.0001
   )
 
-# Inspect data columns
-names(alien_dat)
+# Create subsets for different response variables
+
+alien_dat <- all_models |>
+  filter(
+    response_var == "non_native_percent"
+  )
+
+archaeophyte_dat <- all_models |>
+  filter(
+    response_var == "archaeophyte_percent"
+  )
+# For neophytes and invasive we also remove the 2 other scale because at this scale
+# we do not have enough data points with non-zero neophyte species richness
+neoph_dat <- all_models |>
+  filter(
+    response_var == "neophyte_percent",
+    !scale %in% c(0.0001, 0.001, 0.01),
+  )
+
+invas_dat <- all_models |>
+  filter(
+    response_var == "invasive_percent",
+    !scale %in% c(0.0001, 0.001, 0.01)
+  )
+
+# ---------------------------------------------------------------------------#
+# Response 1: alien species, %
+# ---------------------------------------------------------------------------#
 
 # Calculate contribution of random effects
-alien_dat %>%
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) %>%
+alien_dat |>
+  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 # Fit linear and quadratic relationships of slope vs log(scale)
@@ -163,20 +192,13 @@ ggplot(alien_dat, aes(y = log(scale), x = r2m)) +
     labels = log_scale_labels[-1]
   )
 
-# ------------------ (2) Archaeophyte species, % ------------------
-archaeophyte_dat <- read_csv("data/model_results_summary.csv") %>%
-  filter(
-    model_id == "climate_native",
-    remove_zeroes == TRUE,
-    response_var == "archaeophyte_percent",
-    scale != 0.0001,
-    predictor == "native"
-  )
+# ---------------------------------------------------------------------------#
+# Response 2: Archaeophyte species, %
+# ---------------------------------------------------------------------------#
 
-names(archaeophyte_dat)
-
-archaeophyte_dat %>%
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) %>%
+# Check contribution of random effects
+archaeophyte_dat |>
+  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 mod2.1 <- lm(slope ~ log(scale), data = archaeophyte_dat)
@@ -289,20 +311,12 @@ ggplot(archaeophyte_dat, aes(y = log(scale), x = r2m)) +
     labels = log_scale_labels[-1]
   )
 
-# ------------------ (3) Neophyte species, % ------------------
-neoph_dat <- read_csv("data/model_results_summary.csv") %>%
-  filter(
-    model_id == "climate_native",
-    remove_zeroes == TRUE,
-    response_var == "neophyte_percent",
-    !scale %in% c(0.0001, 0.001, 0.01),
-    predictor == "native"
-  )
+# ---------------------------------------------------------------------------#
+# Response 3: Neophyte species, % -------------------------------------------
+# ---------------------------------------------------------------------------#
 
-names(neoph_dat)
-
-neoph_dat %>%
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) %>%
+neoph_dat |>
+  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 mod3.1 <- lm(slope ~ log(scale), data = neoph_dat)
@@ -404,31 +418,22 @@ ggplot(neoph_dat, aes(y = log(scale), x = r2m)) +
     labels = log_scale_labels
   )
 
-# ------------------ (4) Invasive species, % ------------------
-invas_dat <- read_csv("data/model_results_summary.csv") %>%
-  filter(
-    model_id == "climate_native",
-    remove_zeroes == TRUE,
-    response_var == "invasive_percent",
-    !scale %in% c(0.0001, 0.001, 0.01),
-    predictor == "native"
-  )
+# ---------------------------------------------------------------------------#
+# Response 4: Invasive species, % -------------------------------------------
+# ---------------------------------------------------------------------------#
 
-names(invas_dat)
-
-invas_dat %>%
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) %>%
+# Random effects contribution
+invas_dat |>
+  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 mod4.1 <- lm(slope ~ log(scale), data = invas_dat)
 mod4.2 <- lm(slope ~ poly(log(scale), 2), data = invas_dat)
 
-
 anova(mod4.1, mod4.2)
 Anova(mod4.2)
 summary(mod4.2)
 
-#plot_model(mod4.2, type = "pred", terms = c("scale"), show.data = TRUE)
 mod2s_pred <- get_model_data(
   mod4.2,
   type = "pred",
@@ -469,7 +474,6 @@ ggplot(mod2s_pred, aes(log(x), predicted)) +
     breaks = log_scale_breaks[-1],
     labels = log_scale_labels[-1]
   )
-
 
 cor(
   invas_dat$slope,
