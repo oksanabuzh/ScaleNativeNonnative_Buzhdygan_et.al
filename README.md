@@ -19,7 +19,7 @@ Our results highlight the importance of separating alien groups and considering 
 
 ## Project Structure
 
-### R Scripts
+### R Scripts (`R/`)
 
 The project contains several R script folders that process and analyze the data:
 
