@@ -1,66 +1,39 @@
 # Purpose: Plot standardized effects of the predictors on the response variables
-dev.off()
+# Input:
+#   - data/model_results_summary.csv: Summary of model results across scales
 
 # Load necessary libraries
 library(tidyverse)
 
+# -----------------------------------------------------------------------------#
+# Load and Prepare Data
+# -----------------------------------------------------------------------------#
 
-# Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary.csv") %>%
-  filter(model_id == "climate" | model_id == "disturbance") %>%
-  bind_rows(
-    results <- read_csv("data/model_results_summary.csv") %>%
-      filter(
-        model_id %in%
-          c("builtup_250m", "builtup_500m") &
-          predictor %in%
-            c(
-              "builtup_1000m",
-              "cropland_1000m",
-              "builtup_250m",
-              "cropland_250m",
-              "builtup_500m",
-              "cropland_500m"
-            )
-      )
+results <- read_csv("data/model_results_summary.csv") |>
+  filter(
+    model_id %in%
+      c("climate", "disturbance") |
+      (model_id %in%
+        c("builtup_250m", "builtup_500m") &
+        predictor %in%
+          c(
+            "builtup_250m",
+            "cropland_250m",
+            "builtup_500m",
+            "cropland_500m",
+            "builtup_1000m",
+            "cropland_1000m"
+          ))
   )
 
-
-str(results)
-
-names(results)
-
-
-unique(results$model_id)
-unique(results$response_var)
-
-results %>%
-  filter(scale == 100) %>%
-  filter(response_var == "archaeophyte_percent") %>%
-  dplyr::select(model_id, predictor, status, model_converged, model_used)
-
 write_csv(
-  results %>%
-    filter(!scale == 0.0001) %>%
+  results |>
+    filter(!scale == 0.0001) |>
     dplyr::select(-status, -r2_partial),
   "results/GLMM_results_Table_S5.csv"
 )
 
-
-results <- results |>
-  filter(
-    response_var %in%
-      c(
-        "non_native_percent",
-        "archaeophyte_percent",
-        "neophyte_percent",
-        "invasive_percent"
-      )
-  )
-
-
-# Add information whether the models have just one predictor or whether
-# they were run with climate or SR
+# Add information indicating whether the effect is significant or not
 results <- results |>
   mutate(
     significance = ifelse(
@@ -69,14 +42,6 @@ results <- results |>
       "not significant"
     )
   )
-# filter(!is.na(std_slope))
-
-# Subset only models with climate as a secondary predictor OR the model with
-# only climate as predictor
-#results <- results |>
-#  filter(secondary_variable == "pca1_clima" | variable_of_interest == "pca1_clima"
-#         | variable_of_interest == "altitude" # | variable_of_interest == "total_species"
-#        )
 
 # Reorder Predictor variables based on the standardized effect of the small scale
 variable_order <- results |>
@@ -85,12 +50,12 @@ variable_order <- results |>
   pull(predictor) |>
   unique()
 
-# did I miss any predictors?
+# If any predictors are missing, add them to the variable order
 missing_vars <- setdiff(results$predictor |> unique(), variable_order)
 variable_order <- c(variable_order, missing_vars)
 
+# Configure factor levels for response_var and predictor
 results <- results |>
-  distinct() |>
   mutate(
     response_var = factor(
       response_var,
@@ -103,12 +68,8 @@ results <- results |>
     ),
     predictor = factor(predictor, levels = variable_order)
   )
-
-
-unique(results$predictor)
-unique(results$response_var)
-
-results <- results %>%
+# Rename and relevel factor variables for better readability in plots
+results <- results |>
   mutate(
     variable_new = fct_recode(
       predictor,
@@ -122,7 +83,6 @@ results <- results %>%
       "Grazing" = "grazing_intencity",
       "Mowing" = "mowing",
       "Abandonment" = "abandonment",
-      # "Urban built-up"= "built_up_2km",
       "Urban built-up (1000 m)" = "builtup_1000m",
       "Croplands cover (1000 m)" = "cropland_1000m",
       "Urban built-up (250 m)" = "builtup_250m",
@@ -133,7 +93,7 @@ results <- results %>%
       "Disturbance frequency" = "Disturbance.Frequency",
       "Disturbance severity" = "Disturbance.Severity"
     )
-  ) %>%
+  ) |>
   mutate(
     variable_new = fct_relevel(
       variable_new,
@@ -157,8 +117,8 @@ results <- results %>%
       "Disturbance frequency",
       "Disturbance severity"
     )
-  ) %>%
-  mutate(variable_new = fct_relevel(variable_new, rev)) %>%
+  ) |>
+  mutate(variable_new = fct_relevel(variable_new, rev)) |>
   mutate(
     response_var_new = case_when(
       response_var == "non_native_percent" ~ "Alien species, %",
@@ -166,8 +126,8 @@ results <- results %>%
       response_var == "neophyte_percent" ~ "Neophytes, %",
       response_var == "invasive_percent" ~ "Invasive species, %"
     )
-  ) %>%
-  mutate(response_var_new = factor(response_var_new)) %>%
+  ) |>
+  mutate(response_var_new = factor(response_var_new)) |>
   mutate(
     response_var_new = fct_relevel(
       response_var_new,
@@ -178,13 +138,12 @@ results <- results %>%
     )
   )
 
-
-std_effect_plot <- results %>%
+# Create the standardized effect plot ------------------------------------------
+std_effect_plot <- results |>
   filter(scale == 100) |>
-  #filter(!scale==0.0001 & !scale==0.001)|>
   ggplot(aes(
     x = std_slope,
-    y = variable_new #variable_of_interest
+    y = variable_new
   )) +
   geom_point(
     aes(
@@ -193,10 +152,6 @@ std_effect_plot <- results %>%
     ),
     size = 4
   ) +
-  # geom_text(aes(label=std_slope), size=6) +
-  # geom_segment( aes(x=0, xend=std_slope, y=variable_new, yend=variable_new,
-  #                    color = ifelse(std_slope < 0, "blue", "red"),
-  #                   alpha = significance) ) +
   geom_vline(xintercept = 0, linetype = "dashed") +
   scale_color_manual(values = c("red", "blue")) +
   facet_grid(~response_var_new) +
@@ -204,7 +159,7 @@ std_effect_plot <- results %>%
   scale_alpha_manual(values = c("significant" = 1, "not significant" = 0.4)) +
   labs(
     x = "Standardized effect of the driver",
-    y = "Driver" #, title = "Scale (plot size, m2)"
+    y = "Driver"
   ) +
   theme_bw() +
   theme(
@@ -215,10 +170,7 @@ std_effect_plot <- results %>%
     axis.text.x = element_text(size = 9, colour = "black")
   )
 
-
 std_effect_plot
 
 #ggsave("img/std_effect_plot_Fig_3AB.png", std_effect_plot, width = 20, height = 20,
 #       units = "cm")
-
-# END ------------------------------
