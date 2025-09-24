@@ -70,6 +70,7 @@ results <- results |>
   )
 # Rename and relevel factor variables for better readability in plots
 results <- results |>
+  distinct() |>
   mutate(
     variable_new = fct_recode(
       predictor,
