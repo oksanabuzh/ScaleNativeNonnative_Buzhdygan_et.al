@@ -311,10 +311,10 @@ supplementary_data3 <- bind_rows(
   ) %>%
   mutate(across(where(is.numeric), ~ round(., 3))) %>%
   relocate(response_variable, .before = predictor)
-original <- read_csv("results/Model_selection_Table.csv")
+
 # Save results
-write_csv(model_selection_table, "results/Model_selection_Table.csv")
+write_csv(model_selection_table, "results/model_selection_table.csv")
 write_csv(
   supplementary_data3,
-  "results/Supplem_Data3_Model_selection_Table_scale-depandancy.csv"
+  "results/supplementary_data_3_model_selection_table.csv"
 )
