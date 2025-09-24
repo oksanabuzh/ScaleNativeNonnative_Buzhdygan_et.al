@@ -1,40 +1,35 @@
 # Purpose: Plot the correlation coefficient of each slope with scale for the
 # different drivers
+# Input:
+#   - data/model_results_summary.csv: Summary of model results across scales
 
 # Load necessary libraries
 library(tidyverse)
+library(patchwork)
 
-library(jtools)
+# -----------------------------------------------------------------------------#
+# Load and prepare data  ----------------------------------------------
+# -----------------------------------------------------------------------------#
 
-# Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary.csv") %>%
-  filter(model_id == "builtup_500m" | model_id == "disturbance") %>%
-  bind_rows(
-    results <- read_csv("data/model_results_summary.csv") %>%
-      filter(
-        model_id %in%
-          c("builtup_250m", "climate") &
-          predictor %in%
-            c(
-              "builtup_1000m",
-              "cropland_1000m",
-              "builtup_250m",
-              "cropland_250m"
-            )
-      )
+results <- read_csv("data/model_results_summary.csv") |>
+  filter(
+    model_id %in%
+      c("builtup_500m", "disturbance") |
+      (model_id %in%
+        c("builtup_250m", "climate") &
+        predictor %in%
+          c("builtup_1000m", "cropland_1000m", "builtup_250m", "cropland_250m"))
   )
-results %>%
-  pull(response_var)
 
-Suppl_dat2 <- results %>%
-  filter(!scale == 0.0001) %>%
+# Prepare Supplementary data 2
+Suppl_dat2 <- results |>
   filter(
     response_var %in%
       c("non_native_percent", "archaeophyte_percent") |
       response_var %in%
         c("invasive_percent", "neophyte_percent") &
         !scale %in% c(0.0001, 0.001, 0.01)
-  ) %>%
+  ) |>
   mutate(
     response_variable = case_when(
       response_var == "non_native_percent" ~ "alien",
@@ -42,7 +37,7 @@ Suppl_dat2 <- results %>%
       response_var == "neophyte_percent" ~ "neophyte",
       response_var == "invasive_percent" ~ "invasive"
     )
-  ) %>%
+  ) |>
   dplyr::select(
     scale,
     response_variable,
@@ -53,7 +48,7 @@ Suppl_dat2 <- results %>%
     r2_partial,
     r2m,
     r2c
-  ) %>%
+  ) |>
   mutate(
     predictor = fct_recode(
       predictor,
@@ -78,7 +73,7 @@ Suppl_dat2 <- results %>%
       "Disturbance severity" = "Disturbance.Severity"
     ),
     .before = predictor
-  ) %>%
+  ) |>
   mutate(
     predictor = fct_relevel(
       predictor,
@@ -102,13 +97,13 @@ Suppl_dat2 <- results %>%
       "Disturbance frequency",
       "Disturbance severity"
     )
-  ) %>%
+  ) |>
   arrange(scale, response_variable, predictor)
 
 write_csv(Suppl_dat2, "results/Supplementary_Data2.csv")
 
-# to transform back slopes
-results = results %>%
+# Backtransform the slopes
+results <- results |>
   mutate(
     slope = case_when(
       # predictor=="cover_gravel_stones" ~ slope * 100,
@@ -125,11 +120,7 @@ results = results %>%
     )
   )
 
-results
-
-
-# Add information whether the models have just one predictor or whether
-# they were run with climate or SR
+# Add indication of significance
 results <- results |>
   mutate(
     significance = ifelse(
@@ -139,15 +130,6 @@ results <- results |>
     )
   )
 
-# filter(!is.na(std_slope))
-
-# Subset only models with climate as a secondary predictor OR the model with
-# only climate as predictor
-#results <- results |>
-#  filter(secondary_variable == "pca1_clima" | variable_of_interest == "pca1_clima"
-#         | variable_of_interest == "altitude" # | variable_of_interest == "total_species"
-#        )
-
 # Reorder Predictor variables based on the standardized effect of the small scale
 variable_order <- results |>
   filter(response_var == "non_native_percent" & scale == 100) |>
@@ -155,7 +137,7 @@ variable_order <- results |>
   pull(predictor) |>
   unique()
 
-# did I miss any predictors?
+# If predictors are missing, add them to the variable order
 missing_vars <- setdiff(results$predictor |> unique(), variable_order)
 variable_order <- c(variable_order, missing_vars)
 
@@ -174,8 +156,8 @@ results <- results |>
     predictor = factor(predictor, levels = variable_order)
   )
 
-
-results <- results %>%
+# Rename and relevel factor variables for better readability in plots
+results <- results |>
   mutate(
     variable_new = fct_recode(
       predictor,
@@ -189,7 +171,6 @@ results <- results %>%
       "Grazing" = "grazing_intencity",
       "Mowing" = "mowing",
       "Abandonment" = "abandonment",
-      #"Urban built-up"= "built_up_2km",
       "Urban built-up (1000 m)" = "builtup_1000m",
       "Croplands (1000 m)" = "cropland_1000m",
       "Urban built-up (250 m)" = "builtup_250m",
@@ -200,7 +181,7 @@ results <- results %>%
       "Disturbance frequency" = "Disturbance.Frequency",
       "Disturbance severity" = "Disturbance.Severity"
     )
-  ) %>%
+  ) |>
   mutate(
     variable_new = fct_relevel(
       variable_new,
@@ -221,12 +202,11 @@ results <- results %>%
       "Urban built-up (500 m)",
       "Croplands (1000 m)",
       "Urban built-up (1000 m)",
-
       "Disturbance frequency",
       "Disturbance severity"
     )
-  ) %>%
-  mutate(variable_new = fct_relevel(variable_new, rev)) %>%
+  ) |>
+  mutate(variable_new = fct_relevel(variable_new, rev)) |>
   mutate(
     response_var_new = factor(case_when(
       response_var == "non_native_percent" ~ "Alien species, %",
@@ -234,47 +214,38 @@ results <- results %>%
       response_var == "neophyte_percent" ~ "Neophytes, %",
       response_var == "archaeophyte_percent" ~ "Archaeophytes, %"
     ))
-  ) %>%
+  ) |>
   filter(!variable_new == "Mowing")
 
+# ----------------------------------------------------------------------------#
+# Create plots ------------------------------------------------
+# ----------------------------------------------------------------------------#
 
-# Plots of scale-dependency of driver effects -----
-
-# Alien species ----
+# Alien species ----------------------------------------------------------------
 # Predicted effects with scale
 
-model_type_alien <- read_csv("results/Model_selection_Table.csv") %>%
-  filter(response_var == "non_native_percent") %>%
-  # dplyr::select(variable_new, predictor, final_model) %>%
+model_type_alien <- read_csv("results/Model_selection_Table.csv") |>
+  filter(response_var == "non_native_percent") |>
   mutate(
     my.formula = case_when(
       final_model == "m1" ~ "y ~ x",
       .default = "y ~ poly(x, 2)"
     )
-  ) %>%
+  ) |>
   mutate(
     p_value = case_when(final_model == "m1" ~ m1.p.value, TRUE ~ m2.p.value)
-  ) %>%
+  ) |>
   mutate(
     signif = case_when(
       p_value < 0.05 ~ "Sign",
       p_value >= 0.05 & p_value < 0.095 ~ "Marg",
       .default = "Nonsig"
     )
-  ) %>%
-  dplyr::select(
-    variable_new,
-    predictor,
-    my.formula,
-    final_model,
-    signif,
-    p_value
   )
 
-
-P1 <- ggplot(
-  results %>%
-    filter(response_var == "non_native_percent") %>%
+plot_native_percent <- ggplot(
+  results |>
+    filter(response_var == "non_native_percent") |>
     filter(!scale == 0.0001),
   aes(log(scale), slope)
 ) +
@@ -331,46 +302,32 @@ P1 <- ggplot(
     labels = c("0.001", "0.01", "0.1", "1", "10", "100")
   )
 
-P1
+plot_native_percent
 
+# Invasive species ------------------------------------------------------------
 
-# Invasive species ----
-# Predicted effects with scale
-
-model_type_invas <- read_csv("results/Model_selection_Table.csv") %>%
-  filter(response_var == "invasive_percent") %>%
+model_type_invas <- read_csv("results/Model_selection_Table.csv") |>
+  filter(response_var == "invasive_percent") |>
   mutate(
     my.formula = case_when(
       final_model == "m1" ~ "y ~ x",
       .default = "y ~ poly(x, 2)"
     )
-  ) %>%
+  ) |>
   mutate(
     p_value = case_when(final_model == "m1" ~ m1.p.value, TRUE ~ m2.p.value)
-  ) %>%
+  ) |>
   mutate(
     signif = case_when(
       p_value < 0.05 ~ "Sign",
       p_value >= 0.05 & p_value < 0.095 ~ "Marg",
       .default = "Nonsig"
     )
-  ) %>%
-  dplyr::select(
-    variable_new,
-    predictor,
-    my.formula,
-    final_model,
-    signif,
-    p_value
   )
 
-
-results %>% pull(predictor) %>% unique()
-
-
-P2 <- ggplot(
-  results %>%
-    filter(response_var == "invasive_percent") %>%
+plot_invasive_percent <- ggplot(
+  results |>
+    filter(response_var == "invasive_percent") |>
     filter(!scale %in% c(0.0001, 0.001, 0.01)),
   aes(log(scale), slope)
 ) +
@@ -428,47 +385,31 @@ P2 <- ggplot(
   )
 
 
-P2
+plot_invasive_percent
 
-# Neophytes species ----
-# Predicted effects with scale
-
-model_type_neophytes <- read_csv("results/Model_selection_Table.csv") %>%
-  filter(response_var == "neophyte_percent") %>%
-  # dplyr::select(variable_new, predictor, final_model) %>%
+# Neophytes species ------------------------------------------------------------
+model_type_neophytes <- read_csv("results/Model_selection_Table.csv") |>
+  filter(response_var == "neophyte_percent") |>
   mutate(
     my.formula = case_when(
       final_model == "m1" ~ "y ~ x",
       .default = "y ~ poly(x, 2)"
     )
-  ) %>%
+  ) |>
   mutate(
     p_value = case_when(final_model == "m1" ~ m1.p.value, TRUE ~ m2.p.value)
-  ) %>%
+  ) |>
   mutate(
     signif = case_when(
       p_value < 0.05 ~ "Sign",
       p_value >= 0.05 & p_value < 0.095 ~ "Marg",
       .default = "Nonsig"
     )
-  ) %>%
-  dplyr::select(
-    variable_new,
-    predictor,
-    my.formula,
-    final_model,
-    signif,
-    p_value
   )
 
-results %>%
-  filter(response_var == "neophyte_percent") %>%
-  # filter(!scale==0.0001) %>%
-  pull(response_var)
-
-P3 <- ggplot(
-  results %>%
-    filter(response_var == "neophyte_percent") %>%
+plot_neophyte_percent <- ggplot(
+  results |>
+    filter(response_var == "neophyte_percent") |>
     filter(!scale %in% c(0.0001, 0.001, 0.01)),
   aes(log(scale), slope)
 ) +
@@ -526,49 +467,32 @@ P3 <- ggplot(
   )
 
 
-P3
+plot_neophyte_percent
 
-# Archaeophytes species ----
-# Predicted effects with scale
+# Archaeophytes species --------------------------------------------------------
 
-names(model_type_archaeophytes)
-
-model_type_archaeophytes <- read_csv("results/Model_selection_Table.csv") %>%
-  filter(response_var == "archaeophyte_percent") %>%
-  # dplyr::select(variable_new, predictor, final_model) %>%
+model_type_archaeophytes <- read_csv("results/Model_selection_Table.csv") |>
+  filter(response_var == "archaeophyte_percent") |>
   mutate(
     my.formula = case_when(
       final_model == "m1" ~ "y ~ x",
       .default = "y ~ poly(x, 2)"
     )
-  ) %>%
+  ) |>
   mutate(
     p_value = case_when(final_model == "m1" ~ m1.p.value, TRUE ~ m2.p.value)
-  ) %>%
+  ) |>
   mutate(
     signif = case_when(
       p_value < 0.05 ~ "Sign",
       p_value >= 0.05 & p_value < 0.095 ~ "Marg",
       .default = "Nonsig"
     )
-  ) %>%
-  dplyr::select(
-    variable_new,
-    predictor,
-    my.formula,
-    final_model,
-    signif,
-    p_value
   )
 
-results %>%
-  filter(response_var == "archaeophyte_percent") %>%
-  # filter(!scale==0.0001) %>%
-  pull(response_var)
-
-P4 <- ggplot(
-  results %>%
-    filter(response_var == "archaeophyte_percent") %>%
+plot_archaeophyte_percent <- ggplot(
+  results |>
+    filter(response_var == "archaeophyte_percent") |>
     filter(!scale %in% c(0.0001)),
   aes(log(scale), slope)
 ) +
@@ -626,15 +550,14 @@ P4 <- ggplot(
     labels = c("0.001", "0.01", "0.1", "1", "10", "100")
   )
 
+plot_archaeophyte_percent
 
-P4
-# ---- Combine plots ----
-library(patchwork)
+# Combine plots ---------------------------------------------------------------
 
-combined_plot <- P1 +
-  P4 +
-  P3 +
-  P2 +
+combined_plot <- plot_native_percent +
+  plot_archaeophyte_percent +
+  plot_neophyte_percent +
+  plot_invasive_percent +
   plot_layout(ncol = 4) +
   plot_annotation(tag_levels = "A") &
   theme(
@@ -643,10 +566,6 @@ combined_plot <- P1 +
     plot.margin = margin(t = 20, r = 10, b = 5, l = 15)
   )
 
-
-print(combined_plot)
-
+combined_plot
 
 ggsave("results/Fig4.png", combined_plot, width = 12, height = 16, dpi = 150)
-
-# END ----------
