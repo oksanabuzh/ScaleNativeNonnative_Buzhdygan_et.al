@@ -194,7 +194,9 @@ combined_plot <- (arch_Plot / neoph_Plot / inv_Plot) +
 
 print(combined_plot)
 
-
+# Fig. S4. Frequency of occurrence 
+# (proportion of plots in which a particular species occurred) 
+# of individual alien species across six spatial grain sizes 
 ggsave(
   "results/Species_frequency_occurence_by_scale.png",
   combined_plot,

@@ -59,9 +59,10 @@ The following scripts create various plots and figures for the publication:
 - Scripts calculating various summary statistics and tables
 - `01_correlation_invasive_categories.R`: Calculates correlations between different categories of alien species
 - `02_predictor_correlation.R`: Tests the correlation between different predictor variables 
-- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
-- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
-- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
+- `03_summary_statistics.R`: Summary statistics
+
+- `04_species_occurances_by_scale.R`: Plots frequency of occurrence of individual alien species across spatial grain sizes 
+- `05_species_occurances_by_habitat.R`: Plots frequency of occurrence of individual alien species across grassland habitat types at the 100-m2 scale
 
 ### Data Files
 
