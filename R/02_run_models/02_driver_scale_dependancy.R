@@ -1,15 +1,15 @@
 # Purpose: Test relationships of drivers effects (slopes) with scale
 
-
+library(tidyverse)
 library(broom)
 library(dplyr)
 library(purrr)
 
 
 # Load the data and prepare it ----------------------------------------------
-results <- read_csv("data/model_results_summary_.csv")%>% 
+results <- read_csv("data/model_results_summary.csv")%>% 
   filter(model_id=="climate" | model_id=="disturbance") %>% 
-  bind_rows(results <- read_csv("data/model_results_summary_.csv")%>% 
+  bind_rows(results <- read_csv("data/model_results_summary.csv")%>% 
               filter(model_id%in% c("builtup_250m", "builtup_500m") & 
                        predictor %in% c("builtup_250m",  "cropland_250m",
                                         "builtup_500m",  "cropland_500m",

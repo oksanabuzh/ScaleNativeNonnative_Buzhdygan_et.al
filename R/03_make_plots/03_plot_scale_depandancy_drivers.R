@@ -3,7 +3,6 @@
 
 # Load necessary libraries
 library(tidyverse)
-
 library(jtools)
 
 # Load the data and prepare it ----------------------------------------------
@@ -211,7 +210,7 @@ P1 <- ggplot(results %>%
   labs(y = "Slope of the driver effect on proportion of alien species", 
        x = expression(paste('Grain size, ', m^{2}))) +
   theme_bw()+
-  theme(axis.text.x = element_text(size = 7, colour = "black"), 
+  theme(axis.text.x = element_text(size = 6, colour = "black"), 
         axis.text.y = element_text(size = 6, colour = "black"),
         axis.title = element_text(size = 13, colour = "black"),        
         strip.background=element_rect(colour="black",
@@ -268,7 +267,7 @@ P2 <- ggplot(results %>%
   labs(y = "Slope of the driver effect on % invasive species", 
        x = expression(paste('Grain size, ', m^{2}))) +
   theme_bw()+
-  theme(axis.text.x = element_text(size = 7, colour = "black"), 
+  theme(axis.text.x = element_text(size = 6, colour = "black"), 
         axis.text.y = element_text(size = 6, colour = "black"),
         axis.title = element_text(size = 13, colour = "black"), 
         legend.text = element_text(size = 10, colour = "black"),        
@@ -325,7 +324,7 @@ P3 <- ggplot(results %>%
   labs(y = "Slope of the driver effect on % neophytes", 
        x = expression(paste('Grain size, ', m^{2}))) +
   theme_bw()+
-  theme(axis.text.x = element_text(size = 7, colour = "black"), 
+  theme(axis.text.x = element_text(size = 6, colour = "black"), 
         axis.text.y = element_text(size = 6, colour = "black"),
         axis.title = element_text(size = 13, colour = "black"), 
         legend.text = element_text(size = 10, colour = "black"),
@@ -383,7 +382,7 @@ P4 <- ggplot(results %>%
   labs(y = "Slope of the driver effect on % archaeophytes", 
        x = expression(paste('Grain size, ', m^{2}))) +
   theme_bw()+
-  theme(axis.text.x = element_text(size = 7, colour = "black"), 
+  theme(axis.text.x = element_text(size = 6, colour = "black"), 
         axis.text.y = element_text(size = 6, colour = "black"),
         axis.title = element_text(size = 13, colour = "black"), 
         legend.text = element_text(size = 10, colour = "black"),
