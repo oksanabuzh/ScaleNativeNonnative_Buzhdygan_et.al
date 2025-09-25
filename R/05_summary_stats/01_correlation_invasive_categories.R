@@ -1,5 +1,4 @@
-# Calculate correlations between different categories of invasive species
-# Correlation between archaeophytes and invasive species
+# Calculate correlations between different categories of alien species
 
 # Load packages
 library(tidyverse)
@@ -15,16 +14,10 @@ species <- read_csv("data/database_analysis_summary.csv") |>
   ) %>%
   mutate(scale = factor(scale))
 
-species$scale
-dplyr::select(-type, -subplot) %>%
-  group_by(series, scale) %>%
-  summarise_all(mean) %>%
-  ungroup()
-
 
 names(species)
 
-# Corrlation between number of neophytes and number of invasive in each plot
+# Correlation between number of neophytes and number of invasive in each plot
 ggplot(species, aes(x = neophyte, y = invasive)) +
   geom_point(
     aes(fill = scale),
@@ -39,7 +32,7 @@ ggplot(species, aes(x = neophyte, y = invasive)) +
   scale_y_continuous(breaks = 0:5) +
   facet_wrap(~scale, nrow = 1)
 
-# Corrlation between % neophytes and % invasive in each plot
+# Correlation between % neophytes and % invasive in each plot
 ggplot(species, aes(x = neophyte_percent, y = invasive_percent)) +
   geom_point(
     aes(fill = scale),
@@ -57,7 +50,7 @@ ggplot(species, aes(x = neophyte_percent, y = invasive_percent)) +
   guides(fill = guide_legend(nrow = 1))
 
 
-# Corrlation between number of archaeophytes and number of aliens in each plot
+# Correlation between number of archaeophytes and number of aliens in each plot
 ggplot(species, aes(x = non_native, y = archaeophyte)) +
   geom_point(
     aes(fill = scale),
@@ -72,7 +65,7 @@ ggplot(species, aes(x = non_native, y = archaeophyte)) +
   scale_y_continuous(breaks = seq(0, 16, by = 2)) +
   facet_wrap(~scale, nrow = 1)
 
-# Corrlation between number of archaeophytes and number of aliens in each plot
+# Correlation between number of archaeophytes and number of aliens in each plot
 ggplot(species, aes(x = non_native_percent, y = archaeophyte_percent)) +
   geom_point(
     aes(fill = scale),
@@ -87,7 +80,7 @@ ggplot(species, aes(x = non_native_percent, y = archaeophyte_percent)) +
   scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
   facet_wrap(~scale, nrow = 1)
 
-
+# Pairwise Pearson correlations among alien species groups
 species %>%
   dplyr::select(
     invasive,

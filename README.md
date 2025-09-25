@@ -43,7 +43,13 @@ need to be repeated.:
 - `03_residual_spatial_correlation.R`: Tests for spatial autocorrelation in model residuals
 
 #### 3. Visualization (`R/03_make_plots/`)
-- Scripts numbered 01-05 creating various plots and figures for the publication
+The following scripts create various plots and figures for the publication:
+- `01_plot_standardized_effects.R`: Plots standardized effects of the predictors 
+- `02_plot_scale_dependency_native_effcets.R`: Generates plots and statistical summaries that illustrate how the relationship between native and non-native species richness varies with spatial scale
+- `03_plot_scale_dependency_drivers.R`: Plots the relationship of each driver slope with scale  
+- `04_plot_native_alien.R`: Plots relationship between alien and native richness and cover 
+- `05_R2_heatmap.R`: Plots variance explained by each predictor (R2) as heatmap 
+
 
 #### 4. Ordination Analysis (`R/04_ordination/`)
 - `01_alien_sp_composition_100m2.R`: NMDS analysis of alien species composition
@@ -51,6 +57,11 @@ need to be repeated.:
 
 #### 5. Summary Statistics (`R/05_summary_stats/`)
 - Scripts calculating various summary statistics and tables
+- `01_correlation_invasive_categories.R`: Calculates correlations between different categories of alien species
+- `02_predictor_correlation.R`: Tests the correlation between different predictor variables 
+- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
+- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
+- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
 
 ### Data Files
 

@@ -1,5 +1,5 @@
-# Purpose: Plot the correlation coefficient of each slope with scale for the
-# different drivers
+# Purpose: Plot the relationship of each driver slope with scale 
+
 # Input:
 #   - data/model_results_summary.csv: Summary of model results across scales
 
@@ -286,7 +286,7 @@ plot_native_percent <- ggplot(
   ) +
   theme_bw() +
   theme(
-    axis.text.x = element_text(size = 7, colour = "black"),
+    axis.text.x = element_text(size = 6.5, colour = "black"),
     axis.text.y = element_text(size = 6, colour = "black"),
     axis.title = element_text(size = 13, colour = "black"),
     strip.background = element_rect(colour = "black", fill = "#EFF7EF")
@@ -368,7 +368,7 @@ plot_invasive_percent <- ggplot(
   ) +
   theme_bw() +
   theme(
-    axis.text.x = element_text(size = 7, colour = "black"),
+    axis.text.x = element_text(size = 6.5, colour = "black"),
     axis.text.y = element_text(size = 6, colour = "black"),
     axis.title = element_text(size = 13, colour = "black"),
     legend.text = element_text(size = 10, colour = "black"),
@@ -450,7 +450,7 @@ plot_neophyte_percent <- ggplot(
   ) +
   theme_bw() +
   theme(
-    axis.text.x = element_text(size = 7, colour = "black"),
+    axis.text.x = element_text(size = 6.5, colour = "black"),
     axis.text.y = element_text(size = 6, colour = "black"),
     axis.title = element_text(size = 13, colour = "black"),
     legend.text = element_text(size = 10, colour = "black"),
@@ -533,7 +533,7 @@ plot_archaeophyte_percent <- ggplot(
   ) +
   theme_bw() +
   theme(
-    axis.text.x = element_text(size = 7, colour = "black"),
+    axis.text.x = element_text(size = 6.5, colour = "black"),
     axis.text.y = element_text(size = 6, colour = "black"),
     axis.title = element_text(size = 13, colour = "black"),
     legend.text = element_text(size = 10, colour = "black"),
@@ -563,9 +563,9 @@ combined_plot <- plot_native_percent +
   theme(
     plot.tag = element_text(face = 'bold', size = 18),
     plot.tag.position = c(0.17, 1.045),
-    plot.margin = margin(t = 20, r = 10, b = 5, l = 15)
+    plot.margin = margin(t = 22, r = 10, b = 5, l = 15)
   )
 
 combined_plot
 
-ggsave("results/Fig4.png", combined_plot, width = 12, height = 16, dpi = 150)
+ggsave("results/Fig4.png", combined_plot, width = 18, height = 12, dpi = 150)

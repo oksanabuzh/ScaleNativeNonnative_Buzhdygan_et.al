@@ -1,4 +1,4 @@
-# Purpose: Test the correlation between different variables in the header data
+# Purpose: Test the correlation between different predictor variables 
 
 # Load packages
 library(tidyverse)
@@ -53,6 +53,9 @@ preds <- c(
 )
 
 
+# Fig. S2. Pairwise Pearson correlations among predictor variables 
+# measured at the 100-m2 plots and used in the analysis of proportions of alien,
+# invasive, archaeophyte and neophyte species. 
 header_data |>
   filter(subplot == "x") |>
   dplyr::select(all_of(preds)) |>
