@@ -1,6 +1,5 @@
 # Purpose: Run ordination for alien species composition for 100 m2 plots
 # Produces Table S7 and Fig. S9
-#dev.off
 
 library(tidyverse)
 library(vegan)
@@ -99,7 +98,7 @@ PERM_mod2 <- adonis2(
 PERM_mod2
 
 
-write.csv(PERM_mod2, "results/PERMANOVA_Spec_Table_S7.csv")
+# write.csv(PERM_mod2, "results/PERMANOVA_Spec_Table_S7.csv")
 
 # NMDS -----
 
@@ -114,31 +113,28 @@ nmds2 <- vegan::metaMDS(
 
 nmds2 # the stress value shows how easy it was to condense multidimensional data into two dimensional space, below 0.2 is generally good
 
-
 vegan::stressplot(nmds2, main = "Shepard plot")
-plot(nmds2)
 
-#set.seed(1)
-
+# Quick plots:
 plot(nmds2, display = "species")
 
 
 # envfit -----
+# posthoc fit of environmental variables
 set.seed(1)
 
 fit2 <- vegan::envfit(
   nmds2 ~
     pca1_clima +
-      # altitude, # lon,
-      pH + # Corg +
-      heat_index + #
+      pH + 
+      heat_index + 
       microrelief +
       cover_grv_stone +
-      cover_herbs_sum + # cover_shrub_total+
+      cover_herbs_sum + 
       cover_litter +
       grazing_intencity +
       mowing +
-      abandonment + #burning +
+      abandonment + 
       builtup_500m +
       cropland_500m +
       roads +
@@ -146,22 +142,17 @@ fit2 <- vegan::envfit(
       Disturbance.Severity,
   data = com,
   perm = 1000
-) #, strata=factor(variabl$series)) #
+) 
 
 
 fit2
 
-
+# Quick plots:
 set.seed(1)
 plot(nmds2, display = "species", scaling = "species")
-
 plot(fit2)
 
-
-library(ggvegan)
-library(ggplot2)
-
-autoplot(nmds2)
+ggvegan::autoplot(nmds2)
 
 
 # plots ------
@@ -198,7 +189,7 @@ species.scores2$naturalisation_level <- as.factor(
 )
 
 
-p2 <- ggplot(data = species.scores2, aes(x = NMDS1, y = NMDS2)) +
+p1 <- ggplot(data = species.scores2, aes(x = NMDS1, y = NMDS2)) +
   geom_vline(xintercept = 0, col = "grey", linetype = "dashed") +
   geom_hline(yintercept = 0, col = "grey", linetype = "dashed") +
   # scale_shape_manual(values=c( 19, 1))+
@@ -223,9 +214,7 @@ p2 <- ggplot(data = species.scores2, aes(x = NMDS1, y = NMDS2)) +
     axis.text = element_text(size = 13, colour = "black")
   )
 
-# scale_color_manual(values=c("#619CFF", "#F8766D", "#00BA38"))
-
-p2
+p1
 
 
 #  add standardized scores:
@@ -284,7 +273,7 @@ coord_cont_standrd2 <- coord_cont2 %>%
 coord_cont_standrd2
 
 
-# standardized
+# standardized driver vectors fitted posthoc to the NMDS
 ggplot(data = species.scores2, aes(x = NMDS1, y = NMDS2)) +
   geom_vline(xintercept = 0, col = "grey", linetype = "dashed") +
   geom_hline(yintercept = 0, col = "grey", linetype = "dashed") +
@@ -330,8 +319,3 @@ ggplot(data = species.scores2, aes(x = NMDS1, y = NMDS2)) +
     axis.text = element_text(size = 13, colour = "black"),
     legend.position = "none"
   )
-
-factor(coord_cont$Variables_new)
-#  ClimatePC   pH          Heat.stress    Stones
-#  Herb.cov    Litter      Grazing        Mowing
-#  Builtup     Roads       Dist.Freqnc    Dist.Sev
