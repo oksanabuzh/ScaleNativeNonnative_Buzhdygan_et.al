@@ -54,7 +54,7 @@ The following scripts create various plots and figures for the publication:
 #### 4. Ordination Analysis (`R/04_ordination/`)
 - `01_alien_sp_composition_100m2.R`: NMDS analysis of alien species composition for 100 m2 plots. Produces Table S7 and Fig. S9.
 
-- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition. . Produces Table S8 and Fig. S10.
+- `02_alien_Trait_Composition_100m2.R`: NMDS analysis for trait composition of alien species. Produces Table S8 and Fig. S10.
 
 #### 5. Summary Statistics (`R/05_summary_stats/`)
 - Scripts calculating various summary statistics and tables
