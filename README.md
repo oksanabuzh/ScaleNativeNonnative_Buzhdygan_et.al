@@ -52,16 +52,17 @@ The following scripts create various plots and figures for the publication:
 
 
 #### 4. Ordination Analysis (`R/04_ordination/`)
-- `01_alien_sp_composition_100m2.R`: NMDS analysis of alien species composition
-- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition
+- `01_alien_sp_composition_100m2.R`: NMDS analysis of alien species composition for 100 m2 plots. Produces Table S7 and Fig. S9.
+
+- `02_alien_Trait_Composition_100m2.R`: Analysis of trait composition. . Produces Table S8 and Fig. S10.
 
 #### 5. Summary Statistics (`R/05_summary_stats/`)
 - Scripts calculating various summary statistics and tables
 - `01_correlation_invasive_categories.R`: # Calculate relationships between different categories of alien species (Fig. S3)
 - `02_predictor_correlation.R`: Tests the correlation between different predictor variables (Fig. S2) 
 - `03_summary_statistics.R`: Summary statistics for the number of sampled plots, number of plots containing alien species (Table S3, Fig1 D,E,F), minimum, maximum, and mean values for total species richness, native species richness, and the percentage of aliens (Table S4) across spatial scales and habitat types.
-- `04_species_occurances_by_scale.R`: Plots frequency of occurrence of individual alien species across spatial grain sizes 
-- `05_species_occurances_by_habitat.R`: Plots frequency of occurrence of individual alien species across grassland habitat types at the 100-m2 scale
+- `04_species_occurances_by_scale.R`: Plots frequency of occurrence of individual alien species across spatial grain sizes (Fig S4) 
+- `05_species_occurances_by_habitat.R`: Plots frequency of occurrence of individual alien species across grassland habitat types at the 100-m2 scale (Fig S5)
 - `06_pairwise_habitat_differences_alien_marginal_means.R`: Pairwise comparisons among grassland types in marginal means of alien species proportions (Table S5, Fig.S11, Fig.S12).
 
 ### Data Files

@@ -1,5 +1,5 @@
 # Purpose: Species occurrences at each habitat for 100 m2 plots
-
+# Produses Fig S5
 # Load packages
 library(tidyverse)
 
@@ -215,7 +215,7 @@ inv_Plot
 # combine plots ---------
 library(patchwork)
 
-# Fig. S5. Frequency of occurrence of individual alien species 
+# Fig. S5. Frequency of occurrence of individual alien species ----
 # across grassland habitat types at the 100-m2 scale
 combined_plot <- (arch_Plot / neoph_Plot / inv_Plot) +
   plot_layout(ncol = 1, heights = c(0.60, 0.26, 0.14)) +

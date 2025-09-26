@@ -1,5 +1,5 @@
-# Purpose: Run ordination for 100 m2 plots
-
+# Purpose: Run ordination for alien species composition for 100 m2 plots
+# Produces Table S7 and Fig. S9
 #dev.off
 
 library(tidyverse)
@@ -54,7 +54,7 @@ climate_pc <- read_csv("data/Clima_PC.csv") %>%
 traits_st <- read_csv("data/non-native_trait_matrix.csv")
 
 
-# Species composition of allien species
+# Species composition of alien species
 com <- read_csv("data/non-native_matrix.csv") %>%
   separate(plot_name, c("series", "subplot", "scale"), "-") %>%
   filter(scale == 100) %>%
@@ -66,7 +66,6 @@ com <- read_csv("data/non-native_matrix.csv") %>%
   drop_na()
 
 names(com)
-# write.csv(com, "data/non-native_matr_OB.csv")
 
 #  Species composition ------
 
@@ -101,6 +100,7 @@ PERM_mod2
 
 
 write.csv(PERM_mod2, "results/PERMANOVA_Spec_Table_S7.csv")
+
 # NMDS -----
 
 set.seed(100)
@@ -228,7 +228,7 @@ p2 <- ggplot(data = species.scores2, aes(x = NMDS1, y = NMDS2)) +
 p2
 
 
-#  add standardised scores:
+#  add standardized scores:
 coord_cont2 <- as.data.frame(scores(fit2, "vectors")) %>%
   cbind(stand = fit2$vectors$arrows) %>%
   cbind(manual = fit2$vectors$arrows * sqrt(fit2$vectors$r)) %>%

@@ -1,4 +1,5 @@
 # Purpose: Species occurrences at each spatial scale
+# Produses Fig S4
 
 # Load packages
 library(tidyverse)
@@ -194,7 +195,7 @@ combined_plot <- (arch_Plot / neoph_Plot / inv_Plot) +
 
 print(combined_plot)
 
-# Fig. S4. Frequency of occurrence 
+# Fig. S4. Frequency of occurrence ----
 # (proportion of plots in which a particular species occurred) 
 # of individual alien species across six spatial grain sizes 
 ggsave(
