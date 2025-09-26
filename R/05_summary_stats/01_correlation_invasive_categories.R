@@ -1,6 +1,6 @@
-# Calculate correlations between different categories of alien species
+# Calculate relationships between different categories of alien species (Fig. S3)
 
-# Load packages
+#Load packages
 library(tidyverse)
 
 # Read the data --------------------------------------------------------------
@@ -18,6 +18,7 @@ species <- read_csv("data/database_analysis_summary.csv") |>
 names(species)
 
 # Correlation between number of neophytes and number of invasive in each plot
+# Fig. S3A ----
 ggplot(species, aes(x = neophyte, y = invasive)) +
   geom_point(
     aes(fill = scale),
@@ -33,6 +34,7 @@ ggplot(species, aes(x = neophyte, y = invasive)) +
   facet_wrap(~scale, nrow = 1)
 
 # Correlation between % neophytes and % invasive in each plot
+# Fig. S3B ----
 ggplot(species, aes(x = neophyte_percent, y = invasive_percent)) +
   geom_point(
     aes(fill = scale),
@@ -51,6 +53,7 @@ ggplot(species, aes(x = neophyte_percent, y = invasive_percent)) +
 
 
 # Correlation between number of archaeophytes and number of aliens in each plot
+# Fig. S3C ----
 ggplot(species, aes(x = non_native, y = archaeophyte)) +
   geom_point(
     aes(fill = scale),
@@ -66,6 +69,7 @@ ggplot(species, aes(x = non_native, y = archaeophyte)) +
   facet_wrap(~scale, nrow = 1)
 
 # Correlation between number of archaeophytes and number of aliens in each plot
+# Fig. S3D ----
 ggplot(species, aes(x = non_native_percent, y = archaeophyte_percent)) +
   geom_point(
     aes(fill = scale),

@@ -57,12 +57,12 @@ The following scripts create various plots and figures for the publication:
 
 #### 5. Summary Statistics (`R/05_summary_stats/`)
 - Scripts calculating various summary statistics and tables
-- `01_correlation_invasive_categories.R`: Calculates correlations between different categories of alien species
-- `02_predictor_correlation.R`: Tests the correlation between different predictor variables 
-- `03_summary_statistics.R`: Summary statistics
-
+- `01_correlation_invasive_categories.R`: # Calculate relationships between different categories of alien species (Fig. S3)
+- `02_predictor_correlation.R`: Tests the correlation between different predictor variables (Fig. S2) 
+- `03_summary_statistics.R`: Summary statistics for the number of sampled plots, number of plots containing alien species (Table S3, Fig1 D,E,F), minimum, maximum, and mean values for total species richness, native species richness, and the percentage of aliens (Table S4) across spatial scales and habitat types.
 - `04_species_occurances_by_scale.R`: Plots frequency of occurrence of individual alien species across spatial grain sizes 
 - `05_species_occurances_by_habitat.R`: Plots frequency of occurrence of individual alien species across grassland habitat types at the 100-m2 scale
+- `06_pairwise_habitat_differences_alien_marginal_means.R`: Pairwise comparisons among grassland types in marginal means of alien species proportions (Table S5, Fig.S11, Fig.S12).
 
 ### Data Files
 

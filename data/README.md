@@ -8,7 +8,8 @@
 
 `non-native_trait_matrix.csv`-  matrix of alien species with their traits; produced by [R/01_prepare_data/02_prepare_matrix.R]
 
-
 `header_data_prepared.csv`- selected predictor variables; produced by [R/01_prepare_data/03_prepare_header_data.R]
+
+`alien_dataset_all.csv`- number, proportion and presence of alien species groups, natives and total species richness, merged with the environmental data ; produced by [R/05_summary_stats/03_summary_statistics.R]
 
 
