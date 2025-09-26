@@ -75,16 +75,15 @@ set.seed(1)
 PERM_mod2 <- adonis2(
   com[, 2:87] ~
     pca1_clima +
-      # altitude +
       pH +
       heat_index +
       microrelief +
       cover_grv_stone +
-      cover_herbs_sum + # cover_shrub_total+
+      cover_herbs_sum + 
       cover_litter +
       grazing_intencity +
       mowing +
-      abandonment + # burning +
+      abandonment + 
       builtup_500m +
       cropland_500m +
       roads +
@@ -93,7 +92,7 @@ PERM_mod2 <- adonis2(
   data = com,
   permutations = 1000,
   method = "bray"
-) #, strata=factor(variabl$series))
+) 
 
 PERM_mod2
 

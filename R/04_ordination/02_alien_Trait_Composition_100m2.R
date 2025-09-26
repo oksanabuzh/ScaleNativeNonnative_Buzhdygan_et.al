@@ -1,8 +1,7 @@
 # Purpose: Non-metric multidimensional scaling (NMDS) of the groups of
 # alien species (sampled at the 100-m2 plots) based on their time of introduction (residence time),
 # geographic origin (native range), and invasion status
-
-#dev.off
+# Produces Table S8 and Fig. S10
 
 library(tidyverse)
 library(vegan)
@@ -39,11 +38,10 @@ com <- read_csv("data/non-native_matrix.csv") %>%
   drop_na()
 
 names(com)
-# write.csv(com, "data/non-native_matr_OB.csv")
 
 # Traits of the alien species----
 traits_st <- read_csv("data/non-native_trait_matrix.csv") %>%
-  select(-naturalisation_category)
+  dplyr::select(-naturalisation_category)
 names(traits_st)
 
 trait <- com[1:87] %>% # select only species
@@ -54,9 +52,7 @@ trait <- com[1:87] %>% # select only species
   as.matrix()
 
 row.names(trait)
-
 str(trait)
-
 trait[, 2:4]
 
 Com_comp <- com[1:87] %>%
@@ -89,9 +85,7 @@ FNComp <- functcomp(trait[, 2:4], Com_comp, CWM.type = "all") #  bin.num - indic
 
 FNComp
 head(FNComp)
-
 str(FNComp)
-
 
 FuncComp <- FNComp %>%
   tibble(series = com$series) %>%
@@ -120,7 +114,7 @@ FuncComp <- FNComp %>%
     #  Ergasiophigophyte ="naturalisation_category_ergasiophigophyte",
     # Hemiepoecophyte ="naturalisation_category_hemiepoecophyte"
   ) %>%
-  select(-Origin_unknown)
+  dplyr::select(-Origin_unknown)
 
 names(FuncComp)
 
@@ -131,17 +125,16 @@ header <- header_data %>%
   mutate(cover_grv_stone = cover_gravel + cover_stones) %>%
   rename(build_up = built_up_2km) %>%
   dplyr::select(
-    series, # altitude,
-    pH, #Corg,
-    heat_index, #
+    series, 
+    pH, 
+    heat_index, 
     microrelief,
     cover_grv_stone,
-    cover_herbs_sum, # cover_shrub_total,
+    cover_herbs_sum, 
     cover_litter,
     grazing_intencity,
     mowing,
-    abandonment, # burning ,
-    # economic_use,
+    abandonment, 
     roads,
     builtup_1000m,
     cropland_1000m,
@@ -155,7 +148,6 @@ variabl <- FuncComp %>%
   left_join(header, by = c("series")) %>%
   left_join(disturb_data, by = c("series")) %>%
   left_join(climate_pc, by = c("series")) %>%
-  # mutate(dataset=factor(dataset)) %>%
   drop_na()
 
 
@@ -190,48 +182,44 @@ PERM_mod1 <- adonis2(
 PERM_mod1
 
 
-write.csv(PERM_mod1, "results/PERMANOVA_FuncTraits_Table_S8.csv")
+# write.csv(PERM_mod1, "results/PERMANOVA_FuncTraits_Table_S8.csv")
 
 # NMDS -----
-# wisconsin(FuncComp)
-
 names(variabl)
-
-rankindex(variabl[, 2:16], variabl[, 17:29])
-
 
 set.seed(11)
 nmds1 <- vegan::metaMDS(
-  FuncComp %>% dplyr::select(-series), # variabl[, 2:21],
+  FuncComp %>% dplyr::select(-series), 
   distance = "gow",
   k = 2,
   trymax = 100
 )
 
 nmds1 # the stress value shows how easy it was to condense multidimensional data into two dimensional space, below 0.2 is generally good
-
-
 vegan::stressplot(nmds1, main = "Shepard plot")
-plot(nmds1)
 
+# Quick plots:
+plot(nmds1)
 vegan::scores(nmds1)
 
 
 # envfit -----
+# posthoc fit of environmental variables
+
 set.seed(1)
 
 fit1 <- vegan::envfit(
   nmds1 ~
     pca1_clima +
-      pH + # Corg +
+      pH + 
       heat_index +
       microrelief +
       cover_grv_stone +
-      cover_herbs_sum + # cover_shrub_total+
+      cover_herbs_sum + 
       cover_litter +
       grazing_intencity +
       mowing +
-      abandonment + # burning +
+      abandonment + 
       builtup_500m +
       cropland_500m +
       roads +
@@ -239,23 +227,16 @@ fit1 <- vegan::envfit(
       Disturbance.Severity,
   data = variabl,
   perm = 1000
-) #, strata=factor(variabl$series)) #
+) 
 
 
 fit1
 
-
+# Quick plots:
 set.seed(1)
-
 plot(nmds1, display = "species", scaling = "species")
-
 plot(fit1)
-
-
-library(ggvegan)
-library(ggplot2)
-
-autoplot(nmds1)
+ggvegan::autoplot(nmds1)
 
 
 # plots ------
@@ -273,7 +254,6 @@ sites.scores
 
 
 # Assign colours for the traits:
-
 names(variabl[, 2:16])
 
 col = c(
@@ -294,8 +274,6 @@ col = c(
   "red",
   "red"
 )
-#  "darkmagenta", "darkmagenta", "darkmagenta", "darkmagenta","darkmagenta","darkmagenta","darkmagenta",
-#  "darkcyan", "darkcyan", "darkcyan", "darkcyan","darkcyan")
 
 p1 <- ggplot(data = sites.scores, aes(x = NMDS1, y = NMDS2)) +
   geom_vline(xintercept = 0, col = "grey", linetype = "dashed") +
@@ -380,7 +358,7 @@ coord_cont_standrd <- coord_cont %>%
 coord_cont_standrd
 
 
-# standardized
+# standardized driver vectors fitted posthoc to the NMDS
 ggplot(data = sites.scores, aes(x = NMDS1, y = NMDS2)) +
   geom_vline(xintercept = 0, col = "grey", linetype = "dashed") +
   geom_hline(yintercept = 0, col = "grey", linetype = "dashed") +
@@ -430,59 +408,3 @@ ggplot(data = sites.scores, aes(x = NMDS1, y = NMDS2)) +
 
 
 factor(coord_cont$Variables_new)
-
-#  Builtup Stones Herb.covr Distr.Sevr ClimatePC pH
-
-# unstandardized
-p1 +
-  geom_segment(
-    aes(x = 0, y = 0, xend = NMDS1, yend = NMDS2),
-    data = coord_cont,
-    linewidth = 0.7,
-    alpha = 1,
-    colour = "darkgray",
-    arrow = arrow(length = unit(0.03, "npc"))
-  ) +
-  geom_text(
-    data = coord_cont,
-    aes(
-      x = NMDS1 + 0.01 * sign(NMDS1),
-      y = NMDS2 + 0.01 * sign(NMDS2),
-      label = Variables_new
-    ),
-    colour = "black",
-    fontface = "bold",
-    size = 4,
-    vjust = c(0, 0, 0, 0.5, 0),
-    hjust = c(0, 0, 0, 0.5, 0)
-  ) # adjust text positions
-
-
-factor(coord_cont$Variables_new)
-#  ClimatePC   pH          Heat.stress    Stones
-#  Herb.cov    Litter      Grazing        Mowing
-#  Builtup     Roads       Dist.Freqnc    Dist.Sev
-
-# from permanova
-
-# unstandardized
-p1 +
-  geom_segment(
-    aes(x = 0, y = 0, xend = permanona_R2.NMDS1, yend = permanona_R2.NMDS2),
-    data = coord_cont,
-    linewidth = 0.7,
-    alpha = 1,
-    colour = "darkgray",
-    arrow = arrow(length = unit(0.03, "npc"))
-  ) +
-  geom_text(
-    data = coord_cont,
-    aes(
-      x = permanona_R2.NMDS1 + 0.01 * sign(permanona_R2.NMDS1),
-      y = permanona_R2.NMDS2 + 0.01 * sign(permanona_R2.NMDS2),
-      label = Variables_new
-    ),
-    colour = "black",
-    fontface = "bold",
-    size = 4
-  ) #
