@@ -40,7 +40,7 @@ need to be repeated.:
 
 - `01_run_all_binomial_models.R`: Runs binomial GLMM models for all scales using presence/absence data using the functions from `zzz_functions/run_single_model.R`
 - `02_driver_scale_dependency.R`: Analyses scale dependency of different drivers
-- `03_residual_spatial_correlation.R`: Tests for spatial autocorrelation in model residuals
+- `03_Residual_Spatial_Correlation.R`: Tests for spatial autocorrelation in model residuals
 
 #### 3. Visualization (`R/03_make_plots/`)
 The following scripts create various plots and figures for the publication:
