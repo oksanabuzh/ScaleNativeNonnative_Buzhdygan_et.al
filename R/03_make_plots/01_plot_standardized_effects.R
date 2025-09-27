@@ -1,4 +1,5 @@
 # Purpose: Plot standardized effects of the predictors on the response variables
+# (Fig. 3)
 # Input:
 #   - data/model_results_summary.csv: Summary of model results across scales
 
@@ -133,7 +134,7 @@ results <- results |>
     )
   )
 
-# Create the standardized effect plot ------------------------------------------
+# Create the standardized effect plot (Fig. 3) ------------------------------------------
 std_effect_plot <- results |>
   filter(scale == 100) |>
   ggplot(aes(
