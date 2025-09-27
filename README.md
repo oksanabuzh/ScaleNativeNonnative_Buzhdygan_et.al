@@ -74,7 +74,7 @@ See data-raw/README.md for details.
 #### Processed Data (`data/`)
 Contains data prepared and used in this study.
 
-See [data/README.md](..data) for details.
+See [data/README.md](data) for details.
 
 ### Results (`results/`)
 Contains output tables and figures from analyses:
