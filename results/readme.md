@@ -10,7 +10,7 @@
 
 `Model_selection_Table.csv` - Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependency.R)
 
-`Supplem_Data3_Model_selection_Table_scale-depandancy.csv` - Supplementary data 3 for publication. Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)
+`Supplem_Data3_Model_selection_Table_scale-depandancy.csv` - Supplementary data 3 for publication. Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependency.R)
 
 `SpatAutocorResid_TableS6.csv` - Results of Moran’s I statistics from the tests of spatial autocorrelation of residuals for each model for % of alien species (Table S6). Table is created by [03_residual_spatial_correlation](../R/02_run_models/03_residual_spatial_correlation.R)
 
