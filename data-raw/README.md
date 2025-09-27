@@ -13,8 +13,8 @@ for each plot and scale; produced by [01_prepare_species_data](../R/01_prepare_d
 
 `headers.csv`- contains environmental variables for all plots
 
-`Disturbn_species.csv`: contains disturbance data for each species
+`Disturbn_species.csv` - contains disturbance data for each species
 
-`Disturbn_commun_mean.csv`: contains disturbance data for community (community weighted mean)
+`Disturbn_commun_mean.csv` - contains disturbance data for community (community weighted mean)
 
-`spatial/` subfolder contains spatial data
+`spatial/` - subfolder contains spatial data

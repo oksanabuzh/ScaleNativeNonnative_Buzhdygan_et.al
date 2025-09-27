@@ -1,9 +1,13 @@
 # Purpose: Plot scale-dependency of species richness for different plant groups
 # (alien, archaeophyte, neophyte, and invasive species).
 
-## Output: The script generates plots and statistical summaries that illustrate
+## Output: The script generates plots (Fig 1 C,F,I,L) and statistical summaries that illustrate
 # how the relationship between native and non-native species richness varies
 # with spatial scale, for each group of interest.
+
+# Scale-dependency is estimated as the slopes of native species richness effects 
+# (obtained from GLMMs at each grain size) regressed against grain size 
+# sing least-squares linear models 
 
 library(tidyverse) # Data manipulation and plotting
 library(lme4) # Mixed-effects models
@@ -80,7 +84,7 @@ invas_dat <- all_models |>
 
 # Calculate contribution of random effects
 alien_dat |>
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
+  dplyr::select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 # Fit linear and quadratic relationships of slope vs log(scale)
@@ -105,6 +109,7 @@ mod1s_pred <- get_model_data(
   terms = "scale[0.001:100, by=0.001]"
 )
 
+## Fig 1 C ----
 ggplot(mod1s_pred, aes(log(x), predicted)) +
   geom_ribbon(
     aes(ymin = conf.low, ymax = conf.high),
@@ -198,7 +203,7 @@ ggplot(alien_dat, aes(y = log(scale), x = r2m)) +
 
 # Check contribution of random effects
 archaeophyte_dat |>
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
+  dplyr::select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 mod2.1 <- lm(slope ~ log(scale), data = archaeophyte_dat)
@@ -217,6 +222,8 @@ mod1s_pred <- get_model_data(
   type = "pred",
   terms = "scale[0.001:100, by=0.001]"
 )
+
+## Fig 1 F ----
 
 ggplot(mod1s_pred, aes(log(x), predicted)) +
   geom_ribbon(
@@ -316,7 +323,7 @@ ggplot(archaeophyte_dat, aes(y = log(scale), x = r2m)) +
 # ---------------------------------------------------------------------------#
 
 neoph_dat |>
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
+  dplyr::select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 mod3.1 <- lm(slope ~ log(scale), data = neoph_dat)
@@ -332,6 +339,8 @@ mod3s_pred <- get_model_data(
   type = "pred",
   terms = "scale[0.1:100, by=0.001]"
 )
+
+## Fig 1 I ----
 
 ggplot(mod3s_pred, aes(log(x), predicted)) +
   geom_ribbon(
@@ -424,7 +433,7 @@ ggplot(neoph_dat, aes(y = log(scale), x = r2m)) +
 
 # Random effects contribution
 invas_dat |>
-  select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
+  dplyr::select(scale, slope, p_value_slope, r2_partial, r2m, r2c) |>
   mutate(random = r2c - r2m)
 
 mod4.1 <- lm(slope ~ log(scale), data = invas_dat)
@@ -439,6 +448,8 @@ mod2s_pred <- get_model_data(
   type = "pred",
   terms = "scale[0.1:100, by=0.001]"
 )
+
+## Fig 1 L ----
 
 ggplot(mod2s_pred, aes(log(x), predicted)) +
   geom_ribbon(
