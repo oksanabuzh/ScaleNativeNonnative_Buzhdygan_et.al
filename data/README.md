@@ -10,7 +10,6 @@
 
 `header_data_prepared.csv`- selected predictor variables; produced by [04_prepare_header_data](../R/01_prepare_data/04_prepare_header_data.R)
 
-
 `Clima_PC.csv`- Climate gradient form principal component analysis; produced in Buzhdygan et.al 2025 Ecology and Evolution https://doi.org/10.1002/ece3.70941
 
 `alien_dataset_all.csv`- number, proportion and presence of alien species groups, natives and total species richness, merged with the environmental data; produced by [03_summary_statistics](../R/05_summary_stats/03_summary_statistics.R)
