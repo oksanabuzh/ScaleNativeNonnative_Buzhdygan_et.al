@@ -1,4 +1,5 @@
 # Purpose: Plot relationship between alien and native richness and cover
+# Fig. 2 A,B,D,E,J,K,G,H; Fig. S6; Fig. S7
 
 # Load necessary libraries
 library(tidyverse)
@@ -61,6 +62,7 @@ summary(alien_dat)
 
 # data points:
 
+### Fig. S7 A ----
 alien_dat %>%
   filter(type == "p_a") %>%
   filter(!scale == 0.0001) %>%
@@ -103,6 +105,7 @@ alien_dat %>%
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
 
+### Fig. 2 A ----
 # mean +- Variation
 
 alien_dat %>%
@@ -159,6 +162,7 @@ alien_dat %>%
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
 
+### Fig. S7 B ----
 # SD:
 
 alien_dat %>%
@@ -215,6 +219,7 @@ alien_dat %>%
 
 ## Archaeophyte ----
 
+### Fig. S7 C ----
 # data points:
 
 alien_dat %>%
@@ -258,7 +263,7 @@ alien_dat %>%
   ) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
-
+### Fig. 2 D ----
 # mean +- Variation
 
 alien_dat %>%
@@ -309,6 +314,7 @@ alien_dat %>%
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
 
+### Fig. S7 C ----
 # SD:
 
 alien_dat %>%
@@ -359,6 +365,7 @@ alien_dat %>%
 
 ## Invasive ----
 
+### Fig. S7 G ----
 # data points:
 alien_dat %>%
   filter(!scale %in% c(0.0001)) %>%
@@ -401,6 +408,7 @@ alien_dat %>%
   ) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
+### Fig. 2 J ----
 # mean +- Variation
 alien_dat %>%
   filter(!scale == 0.0001) %>%
@@ -443,6 +451,7 @@ alien_dat %>%
   ) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))
 
+### Fig. S7 H ----
 # SD
 
 # mean +- Variation
@@ -490,6 +499,7 @@ alien_dat %>%
 
 ## Invasive ----
 
+### Fig. S7 E ----
 # data points:
 alien_dat %>%
   filter(!scale %in% c(0.0001)) %>%
@@ -532,6 +542,7 @@ alien_dat %>%
   ) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 
+### Fig. 2 G ----
 # mean +- Variation
 alien_dat %>%
   filter(!scale == 0.0001) %>%
@@ -574,6 +585,8 @@ alien_dat %>%
   ) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 0.1))
 
+
+### Fig. S7 F ----
 # SD
 
 # mean +- Variation
@@ -650,7 +663,7 @@ mod1s_pred <- get_model_data(
   terms = "native[0:94, by=0.001]"
 )
 
-
+### Fig. 2 B ----
 ggplot(mod1s_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -724,6 +737,7 @@ mod2s_pred <- get_model_data(
   terms = "native[0:155, by=0.001]"
 )
 
+### Fig. S6 A ----
 ggplot(mod2s_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -773,7 +787,7 @@ mod1s_pred <- get_model_data(
   terms = "native[0:94, by=0.001]"
 )
 
-
+### Fig. 2 E ----
 ggplot(mod1s_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -847,6 +861,8 @@ mod2s_pred <- get_model_data(
   terms = "native[0:155, by=0.001]"
 )
 
+### Fig. S6 B ----
+
 ggplot(mod2s_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -893,6 +909,7 @@ plot_model(mod1s_inv, type = "pred", terms = c("native"), show.data = T)
 
 mod1s_inv_pred <- get_model_data(mod1s_inv, type = "pred", terms = "native")
 
+### Fig. 2 K ----
 ggplot(mod1s_inv_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -950,7 +967,7 @@ mod2s_inv_pred <- get_model_data(
   terms = "native[2:155, by=0.001]"
 )
 
-
+### Fig. S6 D ----
 ggplot(mod2s_inv_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
@@ -997,6 +1014,8 @@ summary(mod1s_neoph)
 plot_model(mod1s_neoph, type = "pred", terms = c("native"), show.data = T)
 
 mod1s_neoph_pred <- get_model_data(mod1s_neoph, type = "pred", terms = "native")
+
+### Fig. 2 H ----
 
 ggplot(mod1s_neoph_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
@@ -1051,7 +1070,7 @@ mod2s_neoph_pred <- get_model_data(
   terms = "native[2:155, by=0.001]"
 )
 
-
+### Fig. S6 C ----
 ggplot(mod2s_neoph_pred, aes(x, predicted)) +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.1) +
   # geom_boxplot(alpha=0, lwd=0.6, outlier.shape = NA)+
