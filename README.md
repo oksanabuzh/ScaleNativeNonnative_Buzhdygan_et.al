@@ -69,7 +69,7 @@ The following scripts create various plots and figures for the publication:
 #### Raw Data (`data-raw/`)
 Contains raw data used in this study.
 
-See data-raw/README.md for details.
+See [data-raw/README.md](data-raw) for details.
 
 #### Processed Data (`data/`)
 Contains data prepared and used in this study.
@@ -82,7 +82,7 @@ Contains output tables and figures from analyses:
 - Statistical test results
 - Generated figures
 
-See results/README.md for details.
+See [results/README.md](results) for details.
 
 ### Other Files
 - `.gitignore`: Git ignore rules
