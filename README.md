@@ -67,6 +67,9 @@ The following scripts create various plots and figures for the publication:
 ### Data Files
 
 #### Raw Data (`data-raw/`)
+Contains raw data used in this study.
+See data-raw/README.md for details.
+
 - `database_analysis.csv`: Raw vegetation survey data
 - `non_native_species.csv`: List of non-native species and their categorization
 - `database_analysis_categorized.csv`: Categorized species data
@@ -75,16 +78,15 @@ The following scripts create various plots and figures for the publication:
 - Additional spatial data in `spatial/` subfolder
 
 #### Processed Data (`data/`)
-- `database_analysis_summary.csv`: Summary of species data at plot level
-- `alien_dataset_all.csv`: Combined dataset with all alien species information
-- `header_data_prepared.csv`: Processed environmental variables
-- Various matrices used in analyses (e.g., `invasive_matrix.csv`, `non-native_matrix.csv`)
+Contains data prepared and used in this study.
+See data/README.md for details.
 
 ### Results (`results/`)
 Contains output tables and figures from analyses:
 - Model results summaries
 - Statistical test results
 - Generated figures
+See results/README.md for details.
 
 ### Other Files
 - `.gitignore`: Git ignore rules
