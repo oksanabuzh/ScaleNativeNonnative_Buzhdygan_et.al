@@ -26,12 +26,6 @@ results <- read_csv("data/model_results_summary.csv") |>
           ))
   )
 
-write_csv(
-  results |>
-    filter(!scale == 0.0001) |>
-    dplyr::select(-status, -r2_partial),
-  "results/GLMM_results_Table_S5.csv"
-)
 
 # Add information indicating whether the effect is significant or not
 results <- results |>
