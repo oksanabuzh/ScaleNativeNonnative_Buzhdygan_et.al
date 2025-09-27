@@ -10,6 +10,8 @@
 
 `header_data_prepared.csv`- selected predictor variables; produced by [R/01_prepare_data/03_prepare_header_data.R]
 
-`alien_dataset_all.csv`- number, proportion and presence of alien species groups, natives and total species richness, merged with the environmental data ; produced by [R/05_summary_stats/03_summary_statistics.R]
+`alien_dataset_all.csv`- number, proportion and presence of alien species groups, natives and total species richness, merged with the environmental data; produced by [R/05_summary_stats/03_summary_statistics.R]
 
+`model_results.rds`- Results of binomial GLMM models testing the effects of native species richness and environmental drivers on proportions of alien species for all scales. produced by [01_run_all_binomial_models.R](..R/02_run_models/01_run_all_binomial_models.R)
 
+`model_results_summary.csv`- Summarized results of binomial GLMM models testing the effects of native species richness and environmental drivers on proportions of alien species for all scales. produced by [01_run_all_binomial_models.R](..R/02_run_models/01_run_all_binomial_models.R)
