@@ -8,7 +8,7 @@
 
 `non-native_trait_matrix.csv`-  matrix of alien species with their traits; produced by [02_prepare_matrix](../R/01_prepare_data/02_prepare_matrix.R)
 
-`header_data_prepared.csv`- selected predictor variables; produced by [03_prepare_header_data](../R/01_prepare_data/04_prepare_header_data.R)
+`header_data_prepared.csv`- selected predictor variables; produced by [04_prepare_header_data](../R/01_prepare_data/04_prepare_header_data.R)
 
 
 `Clima_PC.csv`- Climate gradient form principal component analysis; produced in Buzhdygan et.al 2025 Ecology and Evolution https://doi.org/10.1002/ece3.70941
