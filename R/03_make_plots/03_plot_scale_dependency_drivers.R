@@ -1,4 +1,4 @@
-# Purpose: Plot the relationship of each driver slope with scale 
+# Purpose: Plot the relationship of each driver slope with scale (Fig. 4)
 
 # Input:
 #   - data/model_results_summary.csv: Summary of model results across scales
