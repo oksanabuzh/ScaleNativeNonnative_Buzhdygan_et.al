@@ -12,10 +12,8 @@
 
 `Supplem_Data3_Model_selection_Table_scale-depandancy.csv` - Supplementary data 3 for publication. Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)
 
-`SpatAutocorResid_TableS5.csv` Table is created by [03_residual_spatial_correlation](../R/02_run_models/03_residual_spatial_correlation.R)
+`SpatAutocorResid_TableS6.csv` - Results of Moran’s I statistics from the tests of spatial autocorrelation of residuals for each model for % of alien species (Table S6). Table is created by [03_residual_spatial_correlation](../R/02_run_models/03_residual_spatial_correlation.R)
 
 `PERMANOVA_Spec_Table_S7.csv` - Results of a PERMANOVA testing the effects of environmental drivers on alien plant species composition sampled at the 100-m2 plots (Table S7). Table is created by [01_alien_sp_composition_100m2](../R/04_ordination/01_alien_sp_composition_100m2.R)
 
 `PERMANOVA_FuncTraits_Table_S8.csv` - Results of a PERMANOVA testing the effects of environmental drivers on groups of alien plant species (sampled at the 100-m2 plots) based on their time of introduction (residence time), geographic origin (native range), and invasion status (Table S8). Table is created by [02_alien_Trait_Composition_100m2](../R/04_ordination/02_alien_Trait_Composition_100m2.R)
-
-`SpatAutocorResid_TableS6.csv` - Results of Moran’s I statistics from the tests of spatial autocorrelation of residuals for each model for % of alien species (Table S6). Table is created by [03_residual_spatial_correlation](../R/03_residual_spatial_correlation.R)
