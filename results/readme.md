@@ -8,7 +8,7 @@
 
 `Supplementary_Data2.csv` - Supplementary data 2 for publication. Table is created by [03_plot_scale_dependency_drivers](../R/03_make_plots/03_plot_scale_dependency_drivers.R)
 
-`Model_selection_Table.csv` - Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)
+`Model_selection_Table.csv` - Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependency.R)
 
 `Supplem_Data3_Model_selection_Table_scale-depandancy.csv` - Supplementary data 3 for publication. Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)
 
