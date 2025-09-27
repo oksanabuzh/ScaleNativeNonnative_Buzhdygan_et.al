@@ -26,7 +26,7 @@ library(performance)
 # read disturbance data
 disturbance_data <- read_csv("data-raw/Disturbn_commun_mean.csv") %>%
   filter(scale == 100) %>%
-  select(-subplot, -scale)
+  dplyr::select(-subplot, -scale)
 
 alien_data_100 <- read_csv("data/alien_dataset_all.csv") %>%
   filter(type == "p_a" & scale == 100) %>%
@@ -167,7 +167,7 @@ residuals(m1a, type = "deviance")
 
 # First, we remove NA values in the variables used in the model
 data_for_distance_matrix <- alien_data_100 %>%
-  select(
+  dplyr::select(
     series,
     lon,
     lat,
@@ -190,7 +190,7 @@ data_for_distance_matrix <- alien_data_100 %>%
 # In the matrix, each off-diagonal entry [i, j] in the matrix is
 # equal to 1/(distance between point i and point j).
 dist_matrix_m1 <- 1 /
-  as.matrix(dist(data_for_distance_matrix %>% select(lon, lat)))
+  as.matrix(dist(data_for_distance_matrix %>% dplyr::select(lon, lat)))
 diag(dist_matrix_m1) <- 0
 
 # (3) calculate Moran’s I (DHARMa works using ape package)
@@ -258,7 +258,7 @@ check_overdispersion(mod2)
 res.sim_mod2 <- DHARMa::simulateResiduals(mod2, re.form = NULL)
 
 # (2)  matrix of inverse distance weights.
-dist_matrix_m2 <- 1 / as.matrix(dist(alien_data_100 %>% select(lon, lat)))
+dist_matrix_m2 <- 1 / as.matrix(dist(alien_data_100 %>%  dplyr::select(lon, lat)))
 diag(dist_matrix_m2) <- 0
 
 # (3) calculate Moran’s I
@@ -295,7 +295,7 @@ car::Anova(mod3)
 res.sim_mod3 <- DHARMa::simulateResiduals(mod3, re.form = NULL)
 
 # (2)  matrix of inverse distance weights.
-dist_matrix_m3 <- 1 / as.matrix(dist(alien_data_100 %>% select(lon, lat)))
+dist_matrix_m3 <- 1 / as.matrix(dist(alien_data_100 %>%  dplyr::select(lon, lat)))
 diag(dist_matrix_m3) <- 0
 
 # (3) calculate Moran’s I
@@ -961,6 +961,14 @@ spatial_autocor <-
     Exp.I = round(Exp.I, 4),
     sd = round(sd, 4),
     p.value = round(p.value, 2)
+  ) %>% 
+  mutate(
+    response = case_when(
+      response == "non_native_percent" ~ "Alien species, %",
+      response == "archaeophyte_percent" ~ "Archaeophytes, %",
+      response == "neophyte_percent" ~ "Neophytes, %",
+      response == "invasive_percent" ~ "Invasive species, %"
+    )
   )
 
 spatial_autocor
