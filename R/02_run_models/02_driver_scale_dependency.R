@@ -358,7 +358,12 @@ supplementary_data3 <- bind_rows(
     )
   ) %>%
   mutate(across(where(is.numeric), ~ round(., 3))) %>%
-  relocate(response_variable, .before = predictor)
+  relocate(response_variable, .before = predictor) %>% 
+  mutate(final_mod_formula=ifelse(is.na(final_mod_formula), 
+                                  final_model_formula, final_mod_formula)) %>% 
+  rename(selected_final_model=final_model) %>% 
+  dplyr::select(-final_model_formula)
+
 
 # Save results
 write_csv(model_selection_table, "results/model_selection_table.csv")
