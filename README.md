@@ -68,10 +68,12 @@ The following scripts create various plots and figures for the publication:
 
 #### Raw Data (`data-raw/`)
 Contains raw data used in this study.
+
 See data-raw/README.md for details.
 
 #### Processed Data (`data/`)
 Contains data prepared and used in this study.
+
 See data/README.md for details.
 
 ### Results (`results/`)
@@ -79,6 +81,7 @@ Contains output tables and figures from analyses:
 - Model results summaries
 - Statistical test results
 - Generated figures
+
 See results/README.md for details.
 
 ### Other Files
