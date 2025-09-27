@@ -6,6 +6,8 @@
 
 `habitat_posthoc_TableS5.csv` Table is created by [06_pairwise_habitat_differences_alien_marginal_means](../R/05_summary_stats/06_pairwise_habitat_differences_alien_marginal_means.R)
 
+`Supplementary_Data2.csv` - Supplementary data 2 for publication. Table is created by [03_plot_scale_dependency_drivers](../R/03_make_plots/03_plot_scale_dependency_drivers.R)
+
 `Model_selection_Table_scale-depandancy.csv` Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)
 
 `Supplem_Data3_Model_selection_Table_scale-depandancy.csv` - Supplementary data 3 for publication. Table is created by [02_driver_scale_dependancy](../R/02_run_models/02_driver_scale_dependancy.R)

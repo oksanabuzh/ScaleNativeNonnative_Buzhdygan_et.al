@@ -25,7 +25,8 @@ results <- read_csv("data/model_results_summary.csv") |>
 Suppl_dat2 <- results |>
   filter(
     response_var %in%
-      c("non_native_percent", "archaeophyte_percent") |
+      c("non_native_percent", "archaeophyte_percent")&
+      !scale %in% c(0.0001) |
       response_var %in%
         c("invasive_percent", "neophyte_percent") &
         !scale %in% c(0.0001, 0.001, 0.01)
