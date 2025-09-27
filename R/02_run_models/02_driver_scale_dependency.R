@@ -7,7 +7,7 @@
 # Output:
 #   - results/Model_selection_Table.csv: Model selection results
 #   - results/Supplem_Data3_Model_selection_Table_scale-dependency.csv:
-#     Supplementary data for publication
+#     Supplementary data 3 for publication
 
 library(tidyverse)
 library(broom)
