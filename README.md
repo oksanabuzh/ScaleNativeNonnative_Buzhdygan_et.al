@@ -47,7 +47,7 @@ The following scripts create various plots and figures for the publication:
 - `01_plot_standardized_effects.R`: Plots standardized effects of the predictors (Fig. 3) 
 - `02_plot_scale_dependency_native_effcets.R`: Generates plots and statistical summaries that illustrate how the relationship between native and non-native species richness varies with spatial scale (Fig. 1 C,F,I,L)
 - `03_plot_scale_dependency_drivers.R`: Plots the relationship of each driver slope with scale (Fig. 4), creates Table for Supplementary Data 2  
-- `04_plot_native_alien.R`: Plots relationship between alien and native richness and cover 
+- `04_plot_native_alien.R`: Plots relationship between alien and native richness and cover (Fig. 2 A,B,D,E,J,K,G,H; Fig. S6; Fig. S7)
 - `05_R2_heatmap.R`: Plots variance explained by each predictor (R2) as heatmap
 
 #### 4. Ordination Analysis (`R/04_ordination/`)
