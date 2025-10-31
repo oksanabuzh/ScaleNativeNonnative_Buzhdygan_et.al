@@ -6,6 +6,7 @@
 
 
 Cite the code and data: [![DOI]()
+https://img.shields.io/badge/any_text-you_like-blue
 
 <!-- badges: start -->
 <!-- badges: end -->
