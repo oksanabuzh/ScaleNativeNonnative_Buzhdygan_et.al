@@ -35,12 +35,12 @@ alien_data_100 <- read_csv("data/alien_dataset_all.csv") %>%
     grazing = log1p(grazing),
     cover_gravel_stones = cover_gravel_stones / 100,
     roads = roads / 100,
-    builtup_1000m = log1p(builtup_1000m), # builtup_1000m / 100,
-    builtup_250m = log1p(builtup_250m), #builtup_250m / 100,
-    builtup_500m = log1p(builtup_500m), #builtup_500m / 100,
-    cropland_1000m = log1p(cropland_1000m), # cropland_1000m / 100,
-    cropland_250m = log1p(cropland_250m), # cropland_250m / 100,
-    cropland_500m = log1p(cropland_500m), # cropland_500m / 100,
+    builtup_1000m = log1p(builtup_1000m), 
+    builtup_250m = log1p(builtup_250m), 
+    builtup_500m = log1p(builtup_500m), 
+    cropland_1000m = log1p(cropland_1000m), 
+    cropland_250m = log1p(cropland_250m), 
+    cropland_500m = log1p(cropland_500m), 
     cover_litter = cover_litter / 100,
     cover_herbs_sum = cover_herbs_sum / 100
   )
@@ -974,3 +974,4 @@ spatial_autocor <-
 spatial_autocor
 
 write_csv(spatial_autocor, "results/SpatAutocorResid_TableS6.csv")
+
