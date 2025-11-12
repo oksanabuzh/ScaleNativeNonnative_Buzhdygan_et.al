@@ -2,7 +2,7 @@
 
 #### Code and data for
 
-#### Buzhdygan et al. (2025) Drivers of plant invasions and their scale-dependency in grasslands. [Biological Conservation](https://doi.org/10.1016/j.biocon.2025.111584), 111584, https://doi.org/10.1016/j.biocon.2025.111584
+#### Buzhdygan et al. (2026) Drivers of plant invasions and their scale-dependency in grasslands. [Biological Conservation](https://doi.org/10.1016/j.biocon.2025.111584), 313, 111584, https://doi.org/10.1016/j.biocon.2025.111584
 
 
 Cite the code and data:[![DOI](https://zenodo.org/badge/919374662.svg)](https://doi.org/10.5281/zenodo.17491738)
